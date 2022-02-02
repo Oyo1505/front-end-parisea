@@ -1,17 +1,18 @@
 import "./App.css";
-import { Router, Route } from "react-router-dom";
-import UserEdit from "./components/user/UserEdit";
-import APIHandler from "./api/APIHandler";
-import React, { useState, useEffect } from "react";
+import { Routes, Route } from "react-router-dom";
+import AllPosts from "./components/posts/AllPosts";
 
 function App() {
-  const [users, setUsers] = useState([]); // i need a state
-
   return (
-    <div className="App">
-      <h1>PariSea</h1>
-      <main>Routes</main>
-    </div>
+    <>
+      <div className="App">
+        <a href="/">HOME</a>
+        <a href="/posts">POSTS</a>
+        <Routes>
+          <Route path="/posts" element={<AllPosts />} />
+        </Routes>
+      </div>
+    </>
   );
 }
 
