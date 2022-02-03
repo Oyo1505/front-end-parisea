@@ -1,11 +1,10 @@
-// SPDX-License-Identifier: MIT OR Apache-2.0
+//SPDX-License-Identifier: Unlicense
 pragma solidity ^0.8.4;
-
 import "@openzeppelin/contracts/utils/Counters.sol";
-import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
-import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
+import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 
+import "hardhat/console.sol";
 import "./NFT.sol";
 
 contract NFTMarket is ReentrancyGuard {
@@ -17,7 +16,7 @@ contract NFTMarket is ReentrancyGuard {
     // owner of the marketplace
     address payable owner;
     // price for putting something to sale in the Marketplace
-    uint256 listingPrice = 0.001 ether;
+    uint256 listingPrice = 0.01 ether;
 
     constructor() {
         //set the owner of the contract to the one that deployed it
@@ -55,9 +54,9 @@ contract NFTMarket is ReentrancyGuard {
     //mateus
 
     event ProductUpdated(
-        uint256 indexed itemId,
-        uint256 indexed oldPrice,
-        uint256 indexed newPrice
+      uint256 indexed itemId,
+      uint256 indexed oldPrice,
+      uint256 indexed newPrice
     );
 
     event MarketItemDeleted(uint256 itemId);
@@ -72,7 +71,9 @@ contract NFTMarket is ReentrancyGuard {
         uint256 price
     );
 
-    event ProductListed(uint256 indexed itemId);
+     event ProductListed(
+        uint256 indexed itemId
+    );
 
     modifier onlyProductOrMarketPlaceOwner(uint256 id) {
         if (idToMarketItem[id].owner != address(0)) {
@@ -88,8 +89,7 @@ contract NFTMarket is ReentrancyGuard {
     modifier onlyProductSeller(uint256 id) {
         require(
             idToMarketItem[id].owner == address(0) &&
-                idToMarketItem[id].seller == msg.sender,
-            "Only the product can do this operation"
+                idToMarketItem[id].seller == msg.sender, "Only the product can do this operation"
         );
         _;
     }
@@ -103,7 +103,7 @@ contract NFTMarket is ReentrancyGuard {
     }
 
     function getListingPrice() public view returns (uint256) {
-        return listingPrice;
+      return listingPrice;
     }
 
     //mateus
@@ -145,7 +145,7 @@ contract NFTMarket is ReentrancyGuard {
     }
 
     function updateMarketItemPrice(uint256 id, uint256 newPrice)
-        public
+        public 
         payable
         onlyProductSeller(id)
     {
@@ -190,11 +190,12 @@ contract NFTMarket is ReentrancyGuard {
         );
     }
 
-    function putItemToResell(
-        address nftContract,
-        uint256 itemId,
-        uint256 newPrice
-    ) public payable nonReentrant onlyItemOwner(itemId) {
+    function putItemToResell(address nftContract, uint256 itemId, uint256 newPrice)
+        public
+        payable
+        nonReentrant
+        onlyItemOwner(itemId)
+    {
         uint256 tokenId = idToMarketItem[itemId].tokenId;
         require(newPrice > 0, "Price must be at least 1 wei");
         require(
@@ -205,7 +206,7 @@ contract NFTMarket is ReentrancyGuard {
         NFT tokenContract = NFT(nftContract);
 
         tokenContract.transferToken(msg.sender, address(this), tokenId);
-
+        
         address payable oldOwner = idToMarketItem[itemId].owner;
         idToMarketItem[itemId].owner = payable(address(0));
         idToMarketItem[itemId].seller = oldOwner;
@@ -216,32 +217,9 @@ contract NFTMarket is ReentrancyGuard {
         emit ProductListed(itemId);
     }
 
-    function burnItem(address nftContract, uint256 itemId)
-        public
-        payable
-        nonReentrant
-    {
-        uint256 tokenId = idToMarketItem[itemId].tokenId;
-
-        NFT tokenContract = NFT(nftContract);
-
-        tokenContract.transferToken(msg.sender, address(this), tokenId);
-
-        address payable oldOwner = idToMarketItem[itemId].owner;
-        idToMarketItem[itemId].owner = payable(address(0));
-        idToMarketItem[itemId].seller = oldOwner;
-        idToMarketItem[itemId].price = 0;
-        idToMarketItem[itemId].sold = true;
-        _itemsSold.decrement();
-
-        emit ProductListed(itemId);
-    }
-
     function fetchMarketItems() public view returns (MarketItem[] memory) {
         uint256 itemCount = _itemsIds.current();
-        uint256 unsoldItemCount = _itemsIds.current() -
-            _itemsSold.current() -
-            _itemsDeleted.current();
+        uint256 unsoldItemCount = _itemsIds.current() - _itemsSold.current() - _itemsDeleted.current();
         uint256 currentIndex = 0;
 
         MarketItem[] memory items = new MarketItem[](unsoldItemCount);
@@ -291,30 +269,20 @@ contract NFTMarket is ReentrancyGuard {
         return items;
     }
 
-    function fetchAuthorsCreations(address author)
-        public
-        view
-        returns (MarketItem[] memory)
-    {
+    function fetchAuthorsCreations(address author) public view returns (MarketItem[] memory){
         uint256 totalItemCount = _itemsIds.current();
         uint256 itemCount = 0;
         uint256 currentIndex = 0;
 
         for (uint256 i = 0; i < totalItemCount; i++) {
-            if (
-                idToMarketItem[i + 1].creator == author &&
-                !idToMarketItem[i + 1].sold
-            ) {
+            if (idToMarketItem[i + 1].creator == author && !idToMarketItem[i + 1].sold) {
                 itemCount += 1;
             }
         }
 
         MarketItem[] memory items = new MarketItem[](itemCount);
         for (uint256 i = 0; i < totalItemCount; i++) {
-            if (
-                idToMarketItem[i + 1].creator == author &&
-                !idToMarketItem[i + 1].sold
-            ) {
+            if (idToMarketItem[i + 1].creator == author && !idToMarketItem[i + 1].sold) {
                 uint256 currentId = i + 1;
                 MarketItem storage currentItem = idToMarketItem[currentId];
                 items[currentIndex] = currentItem;

@@ -14,7 +14,7 @@ contract NFT is ERC721URIStorage {
 
     address contractAddress;
 
-    constructor(address marketplaceAddress) ERC721("MelHenMin", "MHM") {
+    constructor(address marketplaceAddress) ERC721("Metaverse Tokens", "METT") {
         contractAddress = marketplaceAddress;
     }
 
@@ -28,16 +28,13 @@ contract NFT is ERC721URIStorage {
         return newTokenId;
     }
 
-    function transferToken(
-        address from,
-        address to,
-        uint256 tokenId
-    ) external {
+    function transferToken(address from, address to, uint256 tokenId) external {
         require(ownerOf(tokenId) == from, "From address must be token owner");
         _transfer(from, to, tokenId);
     }
 
-    function getContractAddress() public view returns (address) {
-        return contractAddress;
+
+    function getContractAddress() public view returns (address){
+      return contractAddress;
     }
 }
