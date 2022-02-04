@@ -1,6 +1,8 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import AllPosts from "./components/posts/AllPosts";
+import FormCreatePost from "./components/posts/FormCreatePost";
+import FormUpdatePost from "./components/posts/FormUpdatePost";
 
 function App() {
   return (
@@ -10,6 +12,8 @@ function App() {
         <a href="/posts">POSTS</a>
         <Routes>
           <Route path="/posts" element={<AllPosts />} />
+          <Route path="/posts/create" element={<FormCreatePost />} />
+          <Route path="/posts/:id" element={<FormUpdatePost />} />
         </Routes>
       </div>
     </>
