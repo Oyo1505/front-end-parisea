@@ -1,30 +1,26 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useRef } from "react";
 import APIHandler from "../../api/APIHandler";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function FormCreatePost() {
   const navigate = useNavigate();
   const imageRef = useRef("");
 
   const [posts, setPosts] = useState({
+    userId: "",
     userName: "Mimi",
-    userPfp: undefined,
+    userPfp: "",
     image: "",
     description: "Behhhhh",
     // postedTime: new Date.now(),
   });
 
-  // UPDATE
-  // useEffect(async () => {
-  //   const { data } = await APIHandler.get("/posts/" + id);
-  //   setPosts(data);
-  // }, [id]);
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const { userName, userPfp, description } = posts;
+    const { userId, userName, userPfp, description } = posts;
     const fd = new FormData();
+    // fd.append("userId", userId);
     fd.append("userName", userName);
     fd.append("userPfp", userPfp);
     fd.append("description", description);
@@ -39,16 +35,6 @@ function FormCreatePost() {
     } catch (err) {
       console.error(err);
     }
-
-    // axios
-    //   .post("http://localhost:4000/posts/create", fd)
-    //   .then((response) => {
-    //     console.log(response);
-    //     navigate("/posts");
-    //   })
-    //   .catch((e) => {
-    //     console.error(e);
-    //   });
   };
 
   return (

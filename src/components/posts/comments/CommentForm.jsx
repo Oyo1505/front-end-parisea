@@ -12,8 +12,8 @@ const CommentForm = ({ textSubmit }) => {
 
   return (
     <form onSubmit={onSubmit} className="commentForm">
-      <input value={text} onChange={(e) => setText(e.target.value)} />
-      <button disabled={isTextAreaDisabled}>OK</button>
+      <div><input value={text} onChange={(e) => setText(e.target.value)} /></div>
+      <div><button disabled={isTextAreaDisabled}>OK</button></div>
     </form>
   );
 };

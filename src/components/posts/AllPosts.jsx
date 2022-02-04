@@ -1,33 +1,15 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import APIHandler from "../../api/APIHandler";
 import Comments from "./comments/Comments";
 import "./post.css";
-import "./comment.css";
+import "./comments/comment.css";
 
 function AllPosts() {
-  const { id } = useParams();
   const navigate = useNavigate();
   const [posts, setPosts] = useState([]);
   const [count, setCount] = useState(0);
   const [showComment, setShowComment] = useState(true); //FALSE
-
-  // const [mode, setMode] = useState("");
-
-  // const createPost = async () => {
-  //   try {
-  //     const res = await APIHandler.get("/posts/create");
-  //     console.log("api res => ", res);
-  //     setPosts(res.data);
-  //   } catch (err) {
-  //     console.error(err);
-  //   }
-  // };
-
-  // const handleView = (mode) => {
-  //   setMode(mode);
-  //   createPost();
-  // };
 
   useEffect(() => {
     fetchPosts();
@@ -47,12 +29,12 @@ function AllPosts() {
     navigate("/posts/create");
   };
 
-  const updatePost = () => {
+  const updatePost = (id) => {
+    console.log(id);
     navigate("/posts/" + id);
   };
 
   const deletePost = async (id) => {
-    console.log(id);
     try {
       await APIHandler.post("/posts/delete/" + id);
       fetchPosts();
@@ -63,12 +45,9 @@ function AllPosts() {
 
   return (
     <>
-      {/* {mode === "create" && <Create handler={createPost} />} */}
       <h1>All Posts Page</h1>
-      {/* <button onClick={() => handleView(null, "create")}>Create a post</button> */}
-      <br></br>
       <hr></hr>
-      <br></br>
+
       <button onClick={createPost}>Create a post</button>
 
       <div className="container">
@@ -99,7 +78,10 @@ function AllPosts() {
                       ></i>
                     </div>
                     <div>
-                      <i className="far fa-edit" onClick={updatePost}></i>
+                      <i
+                        className="far fa-edit"
+                        onClick={() => updatePost(id)}
+                      ></i>
                     </div>
                     <div>
                       <i
@@ -109,16 +91,9 @@ function AllPosts() {
                     </div>
                   </div>
                 </div>
-                <div className="commentDiv">
-                  {showComment && (
-                    <Comments
-                      commentsUrl="http://localhost:4000/comments"
-                      currentUserId="1"
-                    />
-                  )}
-                </div>
+                <div className="commentDiv">{showComment && <Comments />}</div>
                 <div className="postedTime">
-                  Posted on {post.postedTime.slice(0, 10)}
+                  Posted on {post.postedTime.slice(0, 10)}{" "}
                   {post.postedTime.slice(11, 19)}
                 </div>
               </div>
