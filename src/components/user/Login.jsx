@@ -49,8 +49,7 @@ const Login = (props) => {
 
   return (
     <div>
-      <button onClick={connectAccounts}>Connect Wallet</button>
-      {user.length === 0 ? (
+      {user.length !== 0 ? (
         <Link to={`/${user._id}`}>Profile</Link>
       ) : (
         <button onClick={connectAccounts}>Connect Wallet</button>

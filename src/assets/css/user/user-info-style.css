@@ -186,3 +186,21 @@
     transition: ease-in-out;
     box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.15);
 }
+
+.biography {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.bio-title {
+    border-bottom: solid 2px #E6E6E6;
+    padding-bottom: 20px
+}
+
+.balance-title {
+    border-bottom: solid 2px #E6E6E6;
+    border-top: solid 2px #E6E6E6;
+    padding-bottom: 20px;
+    width: 350px
+}

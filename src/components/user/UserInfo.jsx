@@ -3,25 +3,24 @@ import { Link } from "react-router-dom";
 import "../../assets/css/user/user-info-style.css";
 import { useParams } from "react-router-dom";
 import APIHandler from "../../api/APIHandler";
+import useAuth from "./UseAuth";
 
 const UserInfo = () => {
   const { id } = useParams();
-  const imageRef = useRef("");
-  const coverImageRef = useRef("");
   const [user, setUser] = useState({
-    name: "Name",
+    name: "",
     image: "",
-    userName: "@Something",
+    userName: "",
     email: "",
     bio: "",
     coverImage: "",
-    id_metamask: "0xd7a0164b3ab7325Fc1eF1051fC400543751b3a2A",
+    id_metamask: "",
     followers: [],
     following: [],
     balance: 200,
-    twitter: "https://twitter.com/rivoire_julien",
-    facebook: "https://www.facebook.com/zuck",
-    instagram: "https://www.instagram.com/obvious_art/",
+    twitter: "",
+    facebook: "",
+    instagram: "",
   });
 
   useEffect(() => {
@@ -39,6 +38,7 @@ const UserInfo = () => {
         followers: data.followers,
         following: data.following,
         balance: data.balance,
+        twitter: data.twitter,
       });
     };
 
@@ -50,7 +50,7 @@ const UserInfo = () => {
   return (
     <div>
       <div className="profile-info-section">
-        <h4>INFO</h4>
+        {/* <h4>INFO</h4> */}
         <div className="id-metamask">
           <p className="id-name">#{user.id_metamask}</p>
         </div>
@@ -70,22 +70,22 @@ const UserInfo = () => {
             <p className="following-title">Following</p>
           </div>
           <div className="followers">
-            <strong className="followers-count">{user.followers.length}</strong>
+            {/* <strong className="followers-count">{user.followers.length}</strong> */}
             <p className="followers-title">Followers</p>
           </div>
 
           <div>
-            <Link to={`/profile/edit/${user.id}`}>
+            <Link to={`/profile/edit/${id}`}>
               <button className="edit-profile">Edit Profile</button>
             </Link>
           </div>
         </div>
 
         <div>
-          <hr style={{ color: "#7F7F7F", width: 350 }} />
+          {/* <hr style={{ color: "#7F7F7F", width: 350 }} /> */}
           <div
             style={{ paddingTop: 20, paddingBottom: 20 }}
-            className="balance"
+            className="balance balance-title"
           >
             <span>
               <strong>Balance</strong>
@@ -94,14 +94,21 @@ const UserInfo = () => {
               <strong>{user.balance} $MHM</strong>
             </div>
           </div>
-          <hr style={{ color: "#7F7F7F", width: 350 }} />
+          {/* <hr style={{ color: "#7F7F7F", width: 350 }} /> */}
         </div>
 
         <div className="social-media-links">
           <div>
-            <a className="twitter" href={user.twitter}>
-              <i className="fab fa-twitter"></i>
-            </a>
+            {user &&
+            user?.twitter &&
+            user?.twitter !== "" &&
+            user?.twitter !== "undefined" ? (
+              <a className="twitter" href={user.twitter}>
+                <i className="fab fa-twitter"></i>
+              </a>
+            ) : (
+              <></>
+            )}
           </div>
           <div>
             <a className="twitter" href={user.facebook}>
@@ -112,6 +119,15 @@ const UserInfo = () => {
             <a className="twitter" href={user.instagram}>
               <i className="fab fa-instagram"></i>
             </a>
+          </div>
+        </div>
+
+        <div className="biography">
+          <strong className="bio-title">Bio</strong>
+          {/* <hr style={{ color: "#7F7F7F", width: 350 }} /> */}
+
+          <div>
+            <p>{user.bio}</p>
           </div>
         </div>
       </div>
