@@ -7,7 +7,6 @@ const Login = () => {
   const [accounts, setAccounts] = useState([]);
   const [user, setUser] = useState([]);
 
-  console.log(user._id);
   async function connectAccounts() {
     try {
       if (window.ethereum) {
@@ -15,6 +14,7 @@ const Login = () => {
           method: "eth_requestAccounts",
         });
         //setAccounts(accounts);
+        console.log(account);
         const { data } = await APIHandler.post(`/connect-wallet/${account[0]}`);
         console.log("THIS >>>>>", data);
         setUser(data[0]);
@@ -23,14 +23,6 @@ const Login = () => {
       console.log(e);
     }
   }
-
-  //   useEffect(async () => {
-  //     try {
-  //       connectAccounts();
-  //     } catch (e) {
-  //       console.error(e);
-  //     }
-  //   }, []);
 
   return (
     <div>

@@ -5,10 +5,7 @@ import ListNfts from "./components/nft/ListNfts";
 import Header from "./components/header/Header";
 import FormNFT from "./components/nft/FormNFT";
 import SingleNFT from "./components/nft/SingleNFT";
-import { Routes, Route, Link } from "react-router-dom";
-import AllPosts from "./components/posts/AllPosts";
 import UserEdit from "./components/user/UserEdit";
-import React, { useState, useEffect } from "react";
 import Login from "./components/user/Login";
 import UserProfile from "./components/user/UserProfile";
 
@@ -17,9 +14,6 @@ function App() {
     <>
       <div className="App">
         <Header />
-        <a href="/">HOME</a>
-        <Login />
-        <a href="/posts">POSTS</a>
 
         <Routes>
           <Route path="/posts" element={<AllPosts />} />
