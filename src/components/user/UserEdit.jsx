@@ -158,7 +158,7 @@ const UserEdit = () => {
               <label className="label-section-edit-profile" htmlFor="bio">
                 Enter a short bio
               </label>
-              <input
+              <textarea
                 className="input-section bio"
                 type="text"
                 name="Bio"

@@ -1,0 +1,50 @@
+.nav-header {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: flex-end;
+    font-size: 18px;
+    font-weight: 600;
+
+    gap: 30px;
+}
+
+.button-create {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: black;
+    color: white;
+
+    font-size: 18px;
+    min-height: 54px;
+    max-height: 54px;
+    padding-left: 24px;
+    padding-right: 24px;
+
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.05);
+    border-radius: 9999px;
+}
+
+.button-create:hover {
+    background-color: black;
+    color: white;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.15);
+
+}
+
+.logo-style {
+    background-image: url(../../img/Logo-02.png);
+    padding-top: 20px;
+    padding-right: 70px;
+    width: 600px;
+
+}
+
+.logo-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+    height: 0px;
+}

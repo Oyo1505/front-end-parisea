@@ -59,7 +59,7 @@ const UserInfo = () => {
           <div className="name-username">
             <h2 className="h2-profil-info">{user.name}</h2>
             <div>
-              <p className="user-namer-color">{user.userName}</p>
+              <p className="user-namer-color">@{user.userName}</p>
             </div>
           </div>
         </div>
@@ -81,22 +81,6 @@ const UserInfo = () => {
           </div>
         </div>
 
-        <div>
-          {/* <hr style={{ color: "#7F7F7F", width: 350 }} /> */}
-          <div
-            style={{ paddingTop: 20, paddingBottom: 20 }}
-            className="balance balance-title"
-          >
-            <span>
-              <strong>Balance</strong>
-            </span>
-            <div>
-              <strong>{user.balance} $MHM</strong>
-            </div>
-          </div>
-          {/* <hr style={{ color: "#7F7F7F", width: 350 }} /> */}
-        </div>
-
         <div className="social-media-links">
           <div>
             {user &&
@@ -111,14 +95,28 @@ const UserInfo = () => {
             )}
           </div>
           <div>
-            <a className="twitter" href={user.facebook}>
-              <i className="fab fa-facebook-f"></i>
-            </a>
+            {user &&
+            user?.facebook &&
+            user?.facebook !== "" &&
+            user?.facebook !== "undefined" ? (
+              <a className="twitter" href={user.facebook}>
+                <i className="fab fa-facebook-f"></i>
+              </a>
+            ) : (
+              <></>
+            )}
           </div>
           <div>
-            <a className="twitter" href={user.instagram}>
-              <i className="fab fa-instagram"></i>
-            </a>
+            {user &&
+            user?.instagram &&
+            user?.instagram !== "" &&
+            user?.instagram !== "undefined" ? (
+              <a className="twitter" href={user.instagram}>
+                <i className="fab fa-instagram"></i>
+              </a>
+            ) : (
+              <></>
+            )}
           </div>
         </div>
 
@@ -128,6 +126,20 @@ const UserInfo = () => {
 
           <div>
             <p>{user.bio}</p>
+          </div>
+        </div>
+
+        <div>
+          <div
+            style={{ paddingTop: 20, paddingBottom: 20 }}
+            className="balance balance-title"
+          >
+            <span>
+              <strong>Balance</strong>
+            </span>
+            <div>
+              <strong>{user.balance} $MHM</strong>
+            </div>
           </div>
         </div>
       </div>
