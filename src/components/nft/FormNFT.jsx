@@ -2,32 +2,40 @@ import React, { useEffect, useRef, useState } from "react";
 import { useParams,useNavigate } from "react-router-dom";
 
 import APIHandler from "../../api/APIHandler";
+import useAuth from "../user/UseAuth";
 
 const FormNFT = () => {
   const { id } = useParams();
+  const currentUser = useAuth();
+  console.log(currentUser)
   const [nft, setNft] = useState({
     title: "test",
     description: "test",
     price: 0,
-    seller: "61fbe7614062cc57767ce3d5",
-    owner: "61fbe7614062cc57767ce3d5",
-    creator: "61fbe7614062cc57767ce3d5",
+    seller: "",
+    owner: "",
+    creator: currentUser[0]._id,
+    sold : false
   });
 
   const imageRef = useRef('')
   const navigate = useNavigate()
-  useEffect(async () => {
-    try {
-      const { data } = await APIHandler.get(`/nfts/${id}`);
-      setNft({ title: data.title, description: data.description, price: data.price, image : data.image });
-    } catch (e) {
-      console.error(e);
+  useEffect( () => {
+    const x = async ()=>{
+      try {
+        const { data } = await APIHandler.get(`/nfts/${id}`);
+        setNft({ title: data.title, description: data.description, price: data.price, image : data.image });
+      } catch (e) {
+        console.error(e);
+      }
     }
+    x()
+    
   }, [id]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const { title, description, price, owner, creator, seller } = nft;
+    const { title, description, price, owner, creator, seller,sold } = nft;
     const formData = new FormData(); 
 
     formData.append("title", title); 
@@ -36,7 +44,7 @@ const FormNFT = () => {
     formData.append("seller", seller); 
     formData.append("owner", owner); 
     formData.append("creator", creator); 
-  
+    formData.append("sold", sold); 
     formData.append("image", imageRef.current.files[0]); 
 
     // console.log("------ FORM DATA -----");
@@ -49,8 +57,10 @@ const FormNFT = () => {
       const { data } = await APIHandler.patch(`/nfts-edit/${id}`, nft);
       setNft(data);
     } else {
-      const res = await APIHandler.post(`/nfts/create-item`, formData);
+       await APIHandler.post(`/nfts/create-item`, formData);
+       navigate('/nfts')
     }
+   
   };
   const handleDelete = async ()=>{
     try{
@@ -110,7 +120,7 @@ const FormNFT = () => {
           
          </div>
         }
-      { nft.image && <img src={nft.image} />}
+      { nft.image && <img src={nft.image}  alt='-uploaded'/>}
         <div>
           <input
             id="seller"
@@ -123,7 +133,7 @@ const FormNFT = () => {
           <input
             id="creator"
             name="creator"
-            value={nft.create}
+            value={nft.creator}
             type="hidden"
           />
         </div>

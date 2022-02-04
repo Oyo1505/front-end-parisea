@@ -23,6 +23,8 @@ const UserProvider = ({ children }) => {
          
           if (accounts.length !== 0) {
             const account = accounts[0];
+
+            
             const { data } = await APIHandler.get(`/connect-wallet/${account}`);
             setUser(data);
             console.log("Found an authorized account:", account);
@@ -34,7 +36,7 @@ const UserProvider = ({ children }) => {
         }
       }
 
-
+      console.log(user)
 	return (
 		<UserContext.Provider  value={user}>{children}</UserContext.Provider>
 	);
