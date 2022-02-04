@@ -2,7 +2,7 @@ import React, { useRef, useState, useEffect } from "react";
 import "../../App.css";
 import APIHandler from "../../api/APIHandler";
 import { useParams } from "react-router-dom";
-import "../../styles/user/user-edit-style.css";
+import "../../assets/css/user/user-edit-style.css";
 
 const UserEdit = () => {
   const { id } = useParams();
