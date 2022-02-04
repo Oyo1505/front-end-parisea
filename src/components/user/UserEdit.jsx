@@ -69,32 +69,36 @@ const UserEdit = () => {
   return (
     <div className="main">
       <div>
-        <h1>Edit your profile</h1>
+        <h1 className="h1-edit-profile">Edit your profile</h1>
       </div>
       <div className="form">
-        <form>
+        <form className="formulaire-edit-profile">
           <div className="details">
             <div className="title">
-              <h2>Enter your details</h2>
+              <h2 className="h2-edit-profile">Enter your details</h2>
             </div>
 
             <div className="inputs">
-              <label htmlFor="name">Name</label>
+              <label className="label-section-edit-profile" htmlFor="name">
+                Name
+              </label>
               <input
                 className="input-section"
                 type="text"
                 name="name"
-                placeholder="name"
+                placeholder="Name"
                 value={user.name}
                 onChange={(e) => setUser({ ...user, name: e.target.value })}
               />
 
-              <label htmlFor="userName">Username</label>
+              <label className="label-section-edit-profile" htmlFor="userName">
+                Username
+              </label>
               <input
                 className="input-section"
                 type="text"
                 name="userName"
-                placeholder="userName"
+                placeholder="UserName"
                 value={user.userName}
                 onChange={(e) => setUser({ ...user, userName: e.target.value })}
               />
@@ -103,10 +107,10 @@ const UserEdit = () => {
 
           <div className="details">
             <div className="title">
-              <h2>
+              <h2 className="h2-edit-profile">
                 Receive email <br></br> notifications
               </h2>
-              <p>
+              <p className="p-edit-profile">
                 Add your email address to <br></br> receive notifications about
                 your <br></br> activity on Foundation. This will <br></br> not
                 be shown on your profile.
@@ -114,12 +118,14 @@ const UserEdit = () => {
             </div>
 
             <div className="inputs">
-              <label htmlFor="email">Email</label>
+              <label className="label-section-edit-profile" htmlFor="email">
+                Email
+              </label>
               <input
                 className="input-section"
                 type="email"
                 name="email"
-                placeholder="email"
+                placeholder="Email"
                 value={user.email}
                 onChange={(e) => setUser({ ...user, email: e.target.value })}
               />
@@ -128,15 +134,17 @@ const UserEdit = () => {
 
           <div className="details">
             <div className="title">
-              <h2>Add a short bio</h2>
+              <h2 className="h2-edit-profile">Add a short bio</h2>
             </div>
 
             <div className="inputs">
-              <label htmlFor="bio">Enter a short bio</label>
+              <label className="label-section-edit-profile" htmlFor="bio">
+                Enter a short bio
+              </label>
               <input
                 className="input-section bio"
                 type="text"
-                name="bio"
+                name="Bio"
                 placeholder="Enter a short bio"
                 value={user.bio}
                 onChange={(e) => setUser({ ...user, bio: e.target.value })}
@@ -146,8 +154,8 @@ const UserEdit = () => {
 
           <div className="details">
             <div className="title">
-              <h2>Upload a profile image</h2>
-              <p>
+              <h2 className="h2-edit-profile">Upload a profile image</h2>
+              <p className="p-edit-profile">
                 Recommended size: <br></br> 1000x1000px. <br></br> JPG or PNG.
                 <br></br>
                 10MB max size.
@@ -157,7 +165,7 @@ const UserEdit = () => {
             <div className="profile-image">
               <div className="section-padding">
                 <div className="image-section">
-                  <label htmlFor="files">
+                  <label className="label-section-edit-profile" htmlFor="files">
                     {imageRef && <img width="350" src={imageRef} />}
                   </label>
                 </div>
@@ -177,8 +185,8 @@ const UserEdit = () => {
 
           <div className="details">
             <div className="title">
-              <h2>Upload a cover image</h2>
-              <p>
+              <h2 className="h2-edit-profile">Upload a cover image</h2>
+              <p className="p-edit-profile">
                 Recommended size: <br></br> 1500x500px. <br></br> JPG or PNG.{" "}
                 <br></br> 10MB max size.
               </p>
@@ -187,7 +195,7 @@ const UserEdit = () => {
             <div className="profile-image">
               <div className="section-padding">
                 <div className="image-section">
-                  <label htmlFor="files">
+                  <label className="label-section-edit-profile" htmlFor="files">
                     {coverImageRef && <img width="350" src={coverImageRef} />}
                   </label>
                 </div>
@@ -206,48 +214,67 @@ const UserEdit = () => {
             </div>
           </div>
 
-          <div className="details">
+          <div className="details-links">
             <div className="title">
-              <h2>
+              <h2 className="h2-edit-profile">
                 Add links to your <br></br> social media profiles.
               </h2>
             </div>
-            <div className="inputs">
-              <label htmlFor="twitter">Twitter Link</label>
-              <input
-                className="input-section"
-                type="text"
-                name="twitter"
-                placeholder="twitter"
-                value={user.twitter}
-                onChange={(e) => setUser({ ...user, twitter: e.target.value })}
-              />
-            </div>
 
-            <div className="inputs">
-              <label htmlFor="facebook">Facebook Link</label>
-              <input
-                className="input-section"
-                type="text"
-                name="facebook"
-                placeholder="facebook"
-                value={user.facebook}
-                onChange={(e) => setUser({ ...user, facebook: e.target.value })}
-              />
-            </div>
+            <div>
+              <div className="inputs">
+                <label className="label-section-edit-profile" htmlFor="twitter">
+                  Twitter
+                </label>
+                <input
+                  className="input-section"
+                  type="url"
+                  name="twitter"
+                  placeholder="Twitter Link"
+                  value={user.twitter}
+                  onChange={(e) =>
+                    setUser({ ...user, twitter: e.target.value })
+                  }
+                />
+              </div>
 
-            <div className="inputs">
-              <label htmlFor="instagram">Instagram Link</label>
-              <input
-                className="input-section"
-                type="link"
-                name="instagram"
-                placeholder="instagram"
-                value={user.twitter}
-                onChange={(e) =>
-                  setUser({ ...user, instagram: e.target.value })
-                }
-              />
+              <div className="inputs">
+                <label
+                  className="label-section-edit-profile"
+                  htmlFor="facebook"
+                >
+                  Facebook
+                </label>
+                <input
+                  className="input-section"
+                  type="url"
+                  name="facebook"
+                  placeholder="Facebook Link"
+                  value={user.facebook}
+                  onChange={(e) =>
+                    setUser({ ...user, facebook: e.target.value })
+                  }
+                />
+              </div>
+
+              <div className="inputs">
+                <label
+                  className="label-section-edit-profile"
+                  htmlFor="instagram"
+                >
+                  Instagram
+                </label>
+                <input
+                  className="input-section"
+                  type="url"
+                  name="instagram"
+                  placeholder="Instagram Link"
+                  value={user.instagram}
+                  onChange={(e) =>
+                    setUser({ ...user, instagram: e.target.value })
+                  }
+                />
+              </div>
             </div>
           </div>
 

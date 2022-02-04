@@ -1,10 +1,8 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
 import APIHandler from "../../api/APIHandler";
 import { Link } from "react-router-dom";
 
 const Login = () => {
-  const [accounts, setAccounts] = useState([]);
   const [user, setUser] = useState([]);
 
   async function connectAccounts() {
@@ -14,7 +12,7 @@ const Login = () => {
           method: "eth_requestAccounts",
         });
         const { data } = await APIHandler.post(`/connect-wallet/0xD6Fd92dc982df8b35623F72E71bBD67C834Ba477`);
-        setUser(data[0]);
+        setUser(data);
       }
     } catch (e) {
       console.error(e);
@@ -23,7 +21,6 @@ const Login = () => {
 
   return (
     <div>
-      <Link to={`/users/edit/${user._id}`}>Edit profile</Link>
       {user.length !== 0 ? (
         <Link to={`/users/edit/${user._id}`}>Edit profile</Link>
       ) : (
