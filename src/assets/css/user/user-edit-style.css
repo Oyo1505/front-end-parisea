@@ -57,8 +57,6 @@ form {
 
     margin-bottom: 8px;
     width: 100%;
-
-
 }
 
 
@@ -183,4 +181,24 @@ label {
     font-weight: 600;
     cursor: pointer;
     font-size: 16px;
+}
+
+.details-links {
+    display: flex;
+    flex-direction: column;
+
+    min-width: 0px;
+}
+
+input:focus {
+    outline: none !important;
+    border-color: black;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.05);
+}
+
+input:hover {
+    outline: none !important;
+    border-color: black;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.05);
+    cursor: text;
 }

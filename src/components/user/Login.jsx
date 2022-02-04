@@ -1,13 +1,11 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
 import APIHandler from "../../api/APIHandler";
 import { Link } from "react-router-dom";
 
 const Login = () => {
-  const [accounts, setAccounts] = useState([]);
   const [user, setUser] = useState([]);
 
-  console.log(user._id);
+  // console.log(user._id);
   async function connectAccounts() {
     try {
       if (window.ethereum) {
@@ -34,7 +32,7 @@ const Login = () => {
 
   return (
     <div>
-      {user.length !== 0 ? (
+      {user.length === 0 ? (
         <Link to={`/users/edit/${user._id}`}>Edit profile</Link>
       ) : (
         <button onClick={connectAccounts}>Connect Wallet</button>
