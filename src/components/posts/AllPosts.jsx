@@ -91,7 +91,7 @@ function AllPosts() {
                     </div>
                   </div>
                 </div>
-                <div className="commentDiv">{showComment && <Comments />}</div>
+                <div className="commentDiv">{showComment && <Comments id={id}/>}</div>
                 <div className="postedTime">
                   Posted on {post.postedTime.slice(0, 10)}{" "}
                   {post.postedTime.slice(11, 19)}

@@ -1,11 +1,12 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import APIHandler from "../../../api/APIHandler";
 import CommentForm from "./CommentForm";
 
-const Comments = () => {
+const Comments = ({ id, text }) => {
   const [existComments, setExistComments] = useState([]);
   // console.log(existComments);
 
-  const creatComment = async (text) => {
+  const creatComment = (text) => {
     return {
       id: Math.random().toString(36),
       userId: "",
@@ -16,9 +17,10 @@ const Comments = () => {
   };
 
   const addComment = (text) => {
-      creatComment(text).then((comment) => {
-      setExistComments([comment, ...existComments]);
-    });
+    console.log("text", text);
+    const newComm = creatComment(text);
+
+    setExistComments([newComm, ...existComments]);
   };
 
   const deleteComment = (id) => {
@@ -30,12 +32,26 @@ const Comments = () => {
     }
   };
 
+  useEffect(() => {
+    fetchComments();
+  }, []);
+
+  const fetchComments = async () => {
+    try {
+      const { data } = await APIHandler.get("/api/comments");
+      console.log(data);
+      setExistComments(data);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   return (
     <>
-      <CommentForm textSubmit={addComment} />
-      {existComments.map((existComment) => {
+      <CommentForm textSubmit={addComment} id={id} />
+      {existComments.map((existComment, index) => {
         return (
-          <div className="commentedArea">
+          <div key={index} className="commentedArea">
             <img
               src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlvCJ44jSvkr8W9bYID4eqPeoJctZjBULPDg&usqp=CAU"
               alt=""
