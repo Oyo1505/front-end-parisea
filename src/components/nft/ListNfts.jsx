@@ -4,13 +4,10 @@ import { Link } from "react-router-dom";
 
 const ListNfts = () => {
   const [nfts, setNfts] = useState([]);
-  const [loadingState, setLoadingState] = useState("not-loaded");
 
   useEffect(async () => {
     try {
       const { data } = await APIHandler.get("/nfts");
-
-      setLoadingState("loaded");
       setNfts(data);
     } catch (e) {
       console.error(e);

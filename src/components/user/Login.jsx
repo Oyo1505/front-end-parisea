@@ -13,19 +13,17 @@ const Login = () => {
         const account = await window.ethereum.request({
           method: "eth_requestAccounts",
         });
-        //setAccounts(accounts);
-        console.log(account);
         const { data } = await APIHandler.post(`/connect-wallet/${account[0]}`);
-        console.log("THIS >>>>>", data);
         setUser(data[0]);
       }
     } catch (e) {
-      console.log(e);
+      console.error(e);
     }
   }
 
   return (
     <div>
+      <Link to={`/users/edit/${user._id}`}>Edit profile</Link>
       {user.length !== 0 ? (
         <Link to={`/users/edit/${user._id}`}>Edit profile</Link>
       ) : (

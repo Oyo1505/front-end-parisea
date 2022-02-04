@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams,useNavigate } from "react-router-dom";
+
 import APIHandler from "../../api/APIHandler";
 
 const FormNFT = () => {
@@ -7,16 +8,18 @@ const FormNFT = () => {
   const [nft, setNft] = useState({
     title: "test",
     description: "test",
-    price: 1,
+    price: 0,
     seller: "61fbe7614062cc57767ce3d5",
     owner: "61fbe7614062cc57767ce3d5",
     creator: "61fbe7614062cc57767ce3d5",
   });
+
   const imageRef = useRef('')
+  const navigate = useNavigate()
   useEffect(async () => {
     try {
       const { data } = await APIHandler.get(`/nfts/${id}`);
-      setNft({ title: data.title, description: data.description });
+      setNft({ title: data.title, description: data.description, price: data.price, image : data.image });
     } catch (e) {
       console.error(e);
     }
@@ -25,18 +28,16 @@ const FormNFT = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const { title, description, price, owner, creator, seller } = nft;
-    console.log(price)
     const formData = new FormData(); 
 
-    // appending the keys / values pairs to the FormData
-    formData.append("title", title); // create a key [name] on the formDate
-    formData.append("description", description); // create a key [age] on the formDate
+    formData.append("title", title); 
+    formData.append("description", description); 
     formData.append("price", price); 
     formData.append("seller", seller); 
     formData.append("owner", owner); 
     formData.append("creator", creator); 
-    // last: accessing the image out of the ref ...
-    formData.append("image", imageRef.current.files[0]); // target the image file associated to the input[type=file]
+  
+    formData.append("image", imageRef.current.files[0]); 
 
     // console.log("------ FORM DATA -----");
     // console.log(formData); // <= this looks like a empty object
@@ -49,11 +50,15 @@ const FormNFT = () => {
       setNft(data);
     } else {
       const res = await APIHandler.post(`/nfts/create-item`, formData);
-      console.log(res)
     }
   };
-  const handleImage = ()=>{
-    console.log(imageRef.current.files[0])
+  const handleDelete = async ()=>{
+    try{
+       await APIHandler.post(`/nfts/delete/${id}`);
+      navigate('/nfts')
+    }catch(e){
+      console.log(e)
+    }
   }
   return (
     <>
@@ -92,17 +97,20 @@ const FormNFT = () => {
             type="text"
           />
         </div>
-        <div>
-          <label htmlFor="description">Image</label>
-          <input
-            ref={imageRef}
-            id="image"
-            name="image"
-            onChange={(e) => handleImage(e)}
-            type="file"
-          />
-          {imageRef.current.files?.[0]  && <img src={imageRef.current.files[0].name} />}
-        </div>
+        {!id &&
+           <div>
+           <label htmlFor="description">Image</label>
+           <input
+             ref={imageRef}
+             id="image"
+             name="image"
+            
+             type="file"
+           />
+          
+         </div>
+        }
+      { nft.image && <img src={nft.image} />}
         <div>
           <input
             id="seller"
@@ -120,7 +128,9 @@ const FormNFT = () => {
           />
         </div>
         <button>{id ? "Update" : "Create"}</button>
+      
       </form>
+      {id && <button onClick={handleDelete}>Delete</button>}
     </>
   );
 };
