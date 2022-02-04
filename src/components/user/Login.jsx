@@ -32,11 +32,11 @@ const Login = () => {
 
   return (
     <div>
-      <Link to={`/profile/edit/${user._id}`}>Edit profile</Link>
-      <button onClick={connectAccounts}>Connect Wallet</button>
-      {/* {user.length === 0 ? (
+      {user.length === 0 ? (
+        <Link to={`/profile/edit/${user._id}`}>Edit profile</Link>
       ) : (
-      )} */}
+        <button onClick={connectAccounts}>Connect Wallet</button>
+      )}
     </div>
   );
 };
