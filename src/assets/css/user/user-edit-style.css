@@ -16,7 +16,7 @@ h1 {
     font-size: 56px;
 }
 
-form {
+.formulaire-edit-profile {
     background-color: white;
     max-width: 740px;
     padding: 48px;

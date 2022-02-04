@@ -72,7 +72,7 @@ const UserEdit = () => {
         <h1>Edit your profile</h1>
       </div>
       <div className="form">
-        <form>
+        <form className="formulaire-edit-profile">
           <div className="details">
             <div className="title">
               <h2>Enter your details</h2>
@@ -249,7 +249,7 @@ const UserEdit = () => {
                   type="url"
                   name="instagram"
                   placeholder="Instagram Link"
-                  value={user.twitter}
+                  value={user.instagram}
                   onChange={(e) =>
                     setUser({ ...user, instagram: e.target.value })
                   }
