@@ -30,10 +30,13 @@ const Login = () => {
   //     }
   //   }, []);
 
+  console.log("ici", user);
+
   return (
     <div>
+      <button onClick={connectAccounts}>Connect Wallet</button>
       {user.length === 0 ? (
-        <Link to={`/profile/edit/${user._id}`}>Edit profile</Link>
+        <Link to={`/${user._id}`}>Profile</Link>
       ) : (
         <button onClick={connectAccounts}>Connect Wallet</button>
       )}
