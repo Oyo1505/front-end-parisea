@@ -1,15 +1,34 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import APIHandler from "../../api/APIHandler";
 import { Link } from "react-router-dom";
+import useAuth from "./UseAuth";
 
-const Login = () => {
+const Login = (props) => {
+  console.log(useAuth())
   const [user, setUser] = useState([]);
-  
-  function handleAccountsChanged(accounts) {
-
-    console.log(accounts)
+  const checkIfWalletIsConnected = async () => {
+    try {
+      const { ethereum } = window;
+      if (!ethereum) {
+        console.log("Make sure you have metamask!");
+        return;
+      } else {
+        console.log("We have the ethereum object", ethereum);
+      }
+      const accounts = await ethereum.request({ method: 'eth_accounts' });
+     
+      if (accounts.length !== 0) {
+        const account = accounts[0];
+        const { data } = await APIHandler.post(`/connect-wallet/${account}`);
+        setUser(data);
+        console.log("Found an authorized account:", account);
+      } else {
+        console.log("No authorized account found")
+      }
+    } catch (error) {
+      console.log(error);
+    }
   }
-  window.ethereum.on('accountsChanged', handleAccountsChanged);  
   async function connectAccounts() {
     try {
       if (window.ethereum) {
@@ -23,6 +42,10 @@ const Login = () => {
       console.error(e);
     }
   }
+
+  useEffect(()=>{
+    checkIfWalletIsConnected()
+  },[])
 
   return (
     <div>

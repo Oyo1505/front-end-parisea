@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import APIHandler from "../../api/APIHandler";
 import { Link } from "react-router-dom";
-
-const ListNfts = () => {
+import useAuth from "../user/UseAuth";
+const ListNfts = (props) => {
   const [nfts, setNfts] = useState([]);
-
+ 
   useEffect(async () => {
     try {
       const { data } = await APIHandler.get("/nfts");
