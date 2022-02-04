@@ -13,11 +13,12 @@ function App() {
         <a href="/">HOME</a>
         <Login />
         <a href="/posts">POSTS</a>
+        <a href="/profile">PROFILE</a>
 
         <Routes>
           <Route path="/posts" element={<AllPosts />} />
-          <Route path="/users/:id" element={<UserProfile />} />
-          <Route path="/users/edit/:id" element={<UserEdit />} />
+          <Route path="/:id" element={<UserProfile />} />
+          <Route path="/profile/edit/:id" element={<UserEdit />} />
         </Routes>
       </div>
     </>
