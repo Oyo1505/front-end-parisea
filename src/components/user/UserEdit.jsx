@@ -69,17 +69,19 @@ const UserEdit = () => {
   return (
     <div className="main">
       <div>
-        <h1>Edit your profile</h1>
+        <h1 className="h1-edit-profile">Edit your profile</h1>
       </div>
       <div className="form">
         <form className="formulaire-edit-profile">
           <div className="details">
             <div className="title">
-              <h2>Enter your details</h2>
+              <h2 className="h2-edit-profile">Enter your details</h2>
             </div>
 
             <div className="inputs">
-              <label htmlFor="name">Name</label>
+              <label className="label-section-edit-profile" htmlFor="name">
+                Name
+              </label>
               <input
                 className="input-section"
                 type="text"
@@ -89,7 +91,9 @@ const UserEdit = () => {
                 onChange={(e) => setUser({ ...user, name: e.target.value })}
               />
 
-              <label htmlFor="userName">Username</label>
+              <label className="label-section-edit-profile" htmlFor="userName">
+                Username
+              </label>
               <input
                 className="input-section"
                 type="text"
@@ -103,10 +107,10 @@ const UserEdit = () => {
 
           <div className="details">
             <div className="title">
-              <h2>
+              <h2 className="h2-edit-profile">
                 Receive email <br></br> notifications
               </h2>
-              <p>
+              <p className="p-edit-profile">
                 Add your email address to <br></br> receive notifications about
                 your <br></br> activity on Foundation. This will <br></br> not
                 be shown on your profile.
@@ -114,7 +118,9 @@ const UserEdit = () => {
             </div>
 
             <div className="inputs">
-              <label htmlFor="email">Email</label>
+              <label className="label-section-edit-profile" htmlFor="email">
+                Email
+              </label>
               <input
                 className="input-section"
                 type="email"
@@ -128,11 +134,13 @@ const UserEdit = () => {
 
           <div className="details">
             <div className="title">
-              <h2>Add a short bio</h2>
+              <h2 className="h2-edit-profile">Add a short bio</h2>
             </div>
 
             <div className="inputs">
-              <label htmlFor="bio">Enter a short bio</label>
+              <label className="label-section-edit-profile" htmlFor="bio">
+                Enter a short bio
+              </label>
               <input
                 className="input-section bio"
                 type="text"
@@ -146,8 +154,8 @@ const UserEdit = () => {
 
           <div className="details">
             <div className="title">
-              <h2>Upload a profile image</h2>
-              <p>
+              <h2 className="h2-edit-profile">Upload a profile image</h2>
+              <p className="p-edit-profile">
                 Recommended size: <br></br> 1000x1000px. <br></br> JPG or PNG.
                 <br></br>
                 10MB max size.
@@ -157,7 +165,7 @@ const UserEdit = () => {
             <div className="profile-image">
               <div className="section-padding">
                 <div className="image-section">
-                  <label htmlFor="files">
+                  <label className="label-section-edit-profile" htmlFor="files">
                     {imageRef && <img width="350" src={imageRef} />}
                   </label>
                 </div>
@@ -177,8 +185,8 @@ const UserEdit = () => {
 
           <div className="details">
             <div className="title">
-              <h2>Upload a cover image</h2>
-              <p>
+              <h2 className="h2-edit-profile">Upload a cover image</h2>
+              <p className="p-edit-profile">
                 Recommended size: <br></br> 1500x500px. <br></br> JPG or PNG.{" "}
                 <br></br> 10MB max size.
               </p>
@@ -187,7 +195,7 @@ const UserEdit = () => {
             <div className="profile-image">
               <div className="section-padding">
                 <div className="image-section">
-                  <label htmlFor="files">
+                  <label className="label-section-edit-profile" htmlFor="files">
                     {coverImageRef && <img width="350" src={coverImageRef} />}
                   </label>
                 </div>
@@ -208,14 +216,16 @@ const UserEdit = () => {
 
           <div className="details-links">
             <div className="title">
-              <h2>
+              <h2 className="h2-edit-profile">
                 Add links to your <br></br> social media profiles.
               </h2>
             </div>
 
             <div>
               <div className="inputs">
-                <label htmlFor="twitter">Twitter</label>
+                <label className="label-section-edit-profile" htmlFor="twitter">
+                  Twitter
+                </label>
                 <input
                   className="input-section"
                   type="url"
@@ -229,7 +239,12 @@ const UserEdit = () => {
               </div>
 
               <div className="inputs">
-                <label htmlFor="facebook">Facebook</label>
+                <label
+                  className="label-section-edit-profile"
+                  htmlFor="facebook"
+                >
+                  Facebook
+                </label>
                 <input
                   className="input-section"
                   type="url"
@@ -243,7 +258,12 @@ const UserEdit = () => {
               </div>
 
               <div className="inputs">
-                <label htmlFor="instagram">Instagram</label>
+                <label
+                  className="label-section-edit-profile"
+                  htmlFor="instagram"
+                >
+                  Instagram
+                </label>
                 <input
                   className="input-section"
                   type="url"
