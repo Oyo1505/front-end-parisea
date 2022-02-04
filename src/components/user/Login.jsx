@@ -4,14 +4,19 @@ import { Link } from "react-router-dom";
 
 const Login = () => {
   const [user, setUser] = useState([]);
+  
+  function handleAccountsChanged(accounts) {
 
+    console.log(accounts)
+  }
+  window.ethereum.on('accountsChanged', handleAccountsChanged);  
   async function connectAccounts() {
     try {
       if (window.ethereum) {
         const account = await window.ethereum.request({
           method: "eth_requestAccounts",
         });
-        const { data } = await APIHandler.post(`/connect-wallet/0xD6Fd92dc982df8b35623F72E71bBD67C834Ba477`);
+        const { data } = await APIHandler.post(`/connect-wallet/${account[0]}`);
         setUser(data);
       }
     } catch (e) {
