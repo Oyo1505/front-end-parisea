@@ -13,7 +13,7 @@ const Login = () => {
         const account = await window.ethereum.request({
           method: "eth_requestAccounts",
         });
-        const { data } = await APIHandler.post(`/connect-wallet/${account[0]}`);
+        const { data } = await APIHandler.post(`/connect-wallet/0xD6Fd92dc982df8b35623F72E71bBD67C834Ba477`);
         setUser(data[0]);
       }
     } catch (e) {
