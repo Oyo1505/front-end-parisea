@@ -14,18 +14,18 @@ function App() {
   return (
     <>
       <div className="App">
-          <Header />
+        <Header />
 
-          <Routes>
-            <Route path="/posts" element={<AllPosts />} />
-            <Route path="/nfts" element={<ListNfts />} />
-            <Route path="/nfts/create-item" element={<FormNFT />} />
-            <Route path="/nfts/:id" element={<SingleNFT />} />
-            <Route path="/nfts-edit/:id" element={<FormNFT />} />
-            <Route path="/posts" element={<AllPosts />} />
-            <Route path="/users/:id" element={<UserProfile />} />
-            <Route path="/users/edit/:id" element={<UserEdit />} />
-          </Routes>
+        <Routes>
+          <Route path="/posts" element={<AllPosts />} />
+          <Route path="/nfts" element={<ListNfts />} />
+          <Route path="/nfts/create-item" element={<FormNFT />} />
+          <Route path="/nfts/:id" element={<SingleNFT />} />
+          <Route path="/nfts-edit/:id" element={<FormNFT />} />
+          <Route path="/posts" element={<AllPosts />} />
+          <Route path="/:id" element={<UserProfile />} />
+          <Route path="/profile/edit/:id" element={<UserEdit />} />
+        </Routes>
       </div>
     </>
   );

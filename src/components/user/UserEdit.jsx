@@ -3,6 +3,7 @@ import "../../App.css";
 import APIHandler from "../../api/APIHandler";
 import { useParams } from "react-router-dom";
 import "../../assets/css/user/user-edit-style.css";
+import useAuth from "./UseAuth";
 
 const UserEdit = () => {
   const { id } = useParams();
@@ -15,11 +16,17 @@ const UserEdit = () => {
     email: "",
     bio: "",
     coverImage: "",
+    twitter: "",
+    facebook: "",
+    instagram: "",
   });
 
-  console.log(id);
+  // console.log(id);
+  console.log("useAuth", useAuth());
 
   // console.log(user);
+
+  const { user: connectedUser, checkIfWalletIsConnected } = useAuth();
 
   useEffect(() => {
     const x = async () => {
@@ -32,6 +39,9 @@ const UserEdit = () => {
         email: data.email,
         bio: data.bio,
         coverImage: data.coverImage,
+        twitter: data.twitter,
+        facebook: data.facebook,
+        instagram: data.instagram,
       });
     };
 
@@ -48,16 +58,23 @@ const UserEdit = () => {
     formData.append("userName", user.userName);
     formData.append("email", user.email);
     formData.append("bio", user.bio);
+    formData.append("twitter", user.twitter);
+    formData.append("facebook", user.facebook);
+    formData.append("instagram", user.instagram);
 
     try {
       const { data } = await APIHandler.patch(`/users/edit/${id}`, formData);
       console.log("Data >>>>>>>>>>> ", formData);
+      checkIfWalletIsConnected();
       setUser({
         name: data.name,
         userName: data.userName,
         email: data.email,
         bio: data.bio,
         image: data.image,
+        twitter: data.twitter,
+        facebook: data.facebook,
+        instagram: data.instagram,
       });
     } catch (e) {
       console.error(e);
@@ -141,7 +158,7 @@ const UserEdit = () => {
               <label className="label-section-edit-profile" htmlFor="bio">
                 Enter a short bio
               </label>
-              <input
+              <textarea
                 className="input-section bio"
                 type="text"
                 name="Bio"

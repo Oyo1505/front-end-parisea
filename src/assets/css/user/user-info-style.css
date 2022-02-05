@@ -1,0 +1,207 @@
+.profile-info-section {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: start;
+    width: 344px;
+    gap: 20px
+}
+
+.id-metamask {
+    display: flex;
+
+    min-height: 35px;
+    border-radius: 9999px;
+    align-items: center;
+    background-color: white;
+    color: black;
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-top: 9px;
+    padding-bottom: 9px;
+    font-size: 14px;
+    letter-spacing: 0.6px;
+    font-weight: 400;
+
+
+    /* text-transform: uppercase;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; */
+
+    /* width: 265.65px; */
+    width: 265.65px;
+    height: 36.05px;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.05);
+
+}
+
+.id-name {
+    text-transform: uppercase;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.about-user {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.h2-profil-info {
+    font-size: 36px
+}
+
+.user-namer-color {
+    letter-spacing: -0.01em;
+
+    background-image: linear-gradient(110.78deg, rgb(118, 230, 80) -1.13%, rgb(249, 214, 73) 15.22%, rgb(240, 142, 53) 32.09%, rgb(236, 81, 87) 48.96%, rgb(255, 24, 189) 67.94%, rgb(26, 75, 255) 85.34%, rgb(98, 216, 249) 99.57%);
+    background-position-x: initial;
+    background-position-y: initial;
+    background-size: initial;
+
+    background-attachment: initial;
+    background-origin: initial;
+    background-clip: text;
+    background-color: initial;
+    -webkit-text-fill-color: transparent;
+
+    font-weight: 600;
+    font-size: 24px;
+}
+
+.followers-following {
+    display: flex;
+    gap: 32px;
+    align-items: center;
+}
+
+.following {
+    /* margin-right: 20px */
+    display: flex;
+    flex-direction: column;
+}
+
+.followers {
+    display: flex;
+    flex-direction: column;
+}
+
+.following-count {
+    color: black;
+    font-weight: 600;
+    font-size: 24px;
+}
+
+.followers-count {
+    color: black;
+    font-weight: 600;
+    font-size: 24px;
+}
+
+.following-title {
+    color: #7F7F7F;
+    font-size: 18px;
+    font-weight: 600;
+
+}
+
+.followers-title {
+    color: #7F7F7F;
+    font-size: 18px;
+    font-weight: 600;
+
+}
+
+.edit-profile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 52px;
+    padding-right: 16px;
+    padding-left: 16px;
+
+    background-color: #F2F2F2;
+    color: black;
+    border: solid 2px #E6E6E6;
+    border-radius: 9999px;
+    min-width: 120px;
+    white-space: nowrap;
+
+    font-size: 18px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+}
+
+.edit-profile:hover {
+    background-color: black;
+    color: white;
+    border: solid 2px black;
+}
+
+.balance {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    width: 100%;
+
+
+}
+
+.social-media-links {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 30px;
+}
+
+
+.twitter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.05);
+    border-radius: 50%;
+    padding: 12px;
+
+    text-decoration: none;
+    background-color: white;
+    color: black;
+    border: none;
+    font-size: 20px;
+    font-weight: 600;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+}
+
+
+.twitter:hover {
+    transition: ease-in-out;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.biography {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    resize: none;
+}
+
+.bio-title {
+    border-bottom: solid 2px #E6E6E6;
+    padding-bottom: 20px
+}
+
+.balance-title {
+    border-bottom: solid 2px #E6E6E6;
+    border-top: solid 2px #E6E6E6;
+    padding-bottom: 20px;
+    width: 350px
+}
