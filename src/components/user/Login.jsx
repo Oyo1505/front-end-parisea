@@ -1,10 +1,8 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState } from "react";
 import APIHandler from "../../api/APIHandler";
 import { Link } from "react-router-dom";
-import useAuth from "./UseAuth";
 
-const Login = (props) => {
-  console.log(useAuth())
+const Login = () => {
   const [user, setUser] = useState([]);
   const checkIfWalletIsConnected = async () => {
     try {
@@ -15,20 +13,20 @@ const Login = (props) => {
       } else {
         console.log("We have the ethereum object", ethereum);
       }
-      const accounts = await ethereum.request({ method: 'eth_accounts' });
-     
+      const accounts = await ethereum.request({ method: "eth_accounts" });
+
       if (accounts.length !== 0) {
         const account = accounts[0];
         const { data } = await APIHandler.post(`/connect-wallet/${account}`);
         setUser(data);
         console.log("Found an authorized account:", account);
       } else {
-        console.log("No authorized account found")
+        console.log("No authorized account found");
       }
     } catch (error) {
       console.log(error);
     }
-  }
+  };
   async function connectAccounts() {
     try {
       if (window.ethereum) {
@@ -39,18 +37,18 @@ const Login = (props) => {
         setUser(data);
       }
     } catch (e) {
-      console.error(e);
+      console.log(e);
     }
   }
 
-  useEffect(()=>{
-    checkIfWalletIsConnected()
-  },[])
+  useEffect(() => {
+    checkIfWalletIsConnected();
+  }, []);
 
   return (
     <div>
       {user.length !== 0 ? (
-        <Link to={`/users/edit/${user._id}`}>Edit profile</Link>
+        <Link to={`/${user._id}`}>Profile</Link>
       ) : (
         <button onClick={connectAccounts}>Connect Wallet</button>
       )}

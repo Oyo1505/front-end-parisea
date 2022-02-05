@@ -10,13 +10,14 @@ import FormNFT from "./components/nft/FormNFT";
 import SingleNFT from "./components/nft/SingleNFT";
 import UserEdit from "./components/user/UserEdit";
 import UserProfile from "./components/user/UserProfile";
-import UserProvider from "./components/user/UserProvider";
+import Marketplace from "./components/marketplace/Marketplace";
+import HomeNfts from "./components/nft/HomeNfts";
 
 function App() {
   return (
     <>
       <div className="App">
-          <Header />
+        <Header />
 
         <Routes>
           <Route path="/posts" element={<AllPosts />} />

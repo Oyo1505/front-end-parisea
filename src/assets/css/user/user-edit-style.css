@@ -77,8 +77,7 @@
     border-radius: 8px;
     border: solid 1px #E6E6E6;
     margin-bottom: 24px;
-
-
+    font-size: 16px;
 
     min-height: 60px;
     width: 100%;
@@ -90,9 +89,13 @@
 
 .bio {
     height: 226px;
+    line-height: 1.7;
+
     align-items: flex-start;
     text-align: start;
     text-align: start;
+    font-family: inherit;
+    font-size: 16px;
 }
 
 
