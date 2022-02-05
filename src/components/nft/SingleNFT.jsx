@@ -12,7 +12,6 @@ const SingleNFT = () => {
     const x = async () => {
       try {
         const { data } = await APIHandler.get(`/nfts/${id}`);
-        console.log(data);
         setNft(data);
       } catch (e) {
         console.error(e);
@@ -20,7 +19,11 @@ const SingleNFT = () => {
     };
     x();
   }, [id]);
-
+  const showBuyBtn = () => {
+    if (nft.seller !== user[0]._id) {
+      return <BuyNFT nftId={nft._id} buyerId={user[0]._id} />;
+    }
+  };
   // if (!user) return <p>Loading</p>;
   //console.log(nft.sold);
   return (
@@ -34,7 +37,7 @@ const SingleNFT = () => {
       ) : nft.sold === true ? (
         <ResellNFT nftId={nft._id} />
       ) : (
-        <BuyNFT nftId={nft._id} buyerId={user[0]._id} />
+        showBuyBtn()
       )}
     </>
   );
