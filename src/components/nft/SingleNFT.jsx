@@ -17,7 +17,7 @@ const SingleNFT = () => {
   return (
   <>
     <h1>{nft.title}</h1>
-    <img src="#" />
+    <img src={nft.image} />
     <p>{nft.description}</p>
     <Link to={`/nfts-edit/${id}`}>Edit NFT</Link>
   </>);

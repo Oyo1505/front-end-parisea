@@ -1,26 +1,23 @@
 import { useState } from "react";
 import APIHandler from "../../../api/APIHandler";
 
-const CommentForm = ({ id, textSubmit }) => {
-  const [texts, setTexts] = useState({
-    commentUserID: id,
-    // userName: "",
-    // userPfp: "",
-    // commentText: "",
-  });
-  const isTextAreaDisabled = texts.length === 0;
-  console.log(id);
+const CommentForm = ({ postId, onSuccess }) => {
+  const [comment, setComment] = useState("");
+  const disabled = comment.length === 0;
+
   const onSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      const res = await APIHandler.patch("/comments", texts);
-      console.log(texts, res.data);
-      //console.log("Comment data created >>", res.data);
-      textSubmit(texts);
-      setTexts("");
+      const res = await APIHandler.patch(`/posts/${postId}/comments`, {
+        userId: "61fd561abf55f166cca50c9e",
+        comment,
+      });
+      console.log("Comment data created >>", res.data);
+      onSuccess(res.data); // post
+      setComment("");
     } catch (err) {
-      console.log("err");
+      console.log("OnSubmit err", err);
       console.error(err);
     }
   };
@@ -30,12 +27,12 @@ const CommentForm = ({ id, textSubmit }) => {
       <div>
         <input
           type="text"
-          // value={texts.text}
-          onChange={(e) => setTexts({ ...texts, text: e.target.value })}
+          value={comment}
+          onChange={(e) => setComment(e.target.value)}
         />
       </div>
       <div>
-        <button disabled={isTextAreaDisabled}>OK</button>
+        <button disabled={disabled}>OK</button>
       </div>
     </form>
   );

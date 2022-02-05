@@ -2,26 +2,26 @@ import { useState, useEffect } from "react";
 import APIHandler from "../../../api/APIHandler";
 import CommentForm from "./CommentForm";
 
-const Comments = ({ id, text }) => {
+const Comments = ({ postId, text }) => {
   const [existComments, setExistComments] = useState([]);
-  // console.log(existComments);
+  console.log(existComments);
 
-  const creatComment = (text) => {
-    return {
-      id: Math.random().toString(36),
-      userId: "",
-      username: "Mimi",
-      body: text,
-      createdAt: new Date().toISOString(),
-    };
-  };
+  // const creatComment = (post) => {
+  //   return {
+  //     id: Math.random().toString(36),
+  //     userId: "",
+  //     username: "Mimi",
+  //     body: post,
+  //     createdAt: new Date().toISOString(),
+  //   };
+  // };
 
-  const addComment = (text) => {
-    console.log("text", text);
-    const newComm = creatComment(text);
+  // const addComment = (post) => {
+  //   console.log("text", post);
+  //   const newComm = creatComment(post);
 
-    setExistComments([newComm, ...existComments]);
-  };
+  //   setExistComments([newComm, ...existComments]);
+  // };
 
   const deleteComment = (id) => {
     if (window.confirm("Are you sure you want to delete comment?")) {
@@ -38,7 +38,7 @@ const Comments = ({ id, text }) => {
 
   const fetchComments = async () => {
     try {
-      const { data } = await APIHandler.get("/api/comments");
+      const { data } = await APIHandler.get("/posts");
       console.log(data);
       setExistComments(data);
     } catch (err) {
@@ -48,7 +48,7 @@ const Comments = ({ id, text }) => {
 
   return (
     <>
-      <CommentForm textSubmit={addComment} id={id} />
+      <CommentForm onSuccess={()=>fetchComments()} postId={postId} />
       {existComments.map((existComment, index) => {
         return (
           <div key={index} className="commentedArea">

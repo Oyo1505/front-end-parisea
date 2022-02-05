@@ -1,16 +1,13 @@
 import React, { useEffect, useState } from "react";
 import APIHandler from "../../api/APIHandler";
 import { Link } from "react-router-dom";
-
-const ListNfts = () => {
+import useAuth from "../user/UseAuth";
+const ListNfts = (props) => {
   const [nfts, setNfts] = useState([]);
-  const [loadingState, setLoadingState] = useState("not-loaded");
-
+ 
   useEffect(async () => {
     try {
       const { data } = await APIHandler.get("/nfts");
-
-      setLoadingState("loaded");
       setNfts(data);
     } catch (e) {
       console.error(e);
