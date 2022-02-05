@@ -111,7 +111,11 @@ const UserInfo = () => {
             user?.instagram &&
             user?.instagram !== "" &&
             user?.instagram !== "undefined" ? (
-              <a className="twitter" href={user.instagram}>
+              <a
+                className="twitter"
+                target="_blank"
+                href={`https://twitter.com/${user.instagram}`}
+              >
                 <i className="fab fa-instagram"></i>
               </a>
             ) : (
@@ -119,7 +123,12 @@ const UserInfo = () => {
             )}
           </div>
         </div>
-
+        <a
+          target="_blank"
+          href="https://meetflo.zendesk.com/hc/en-us/articles/230425728-Privacy-Policies"
+        >
+          Policies
+        </a>
         <div className="biography">
           <strong className="bio-title">Bio</strong>
           {/* <hr style={{ color: "#7F7F7F", width: 350 }} /> */}

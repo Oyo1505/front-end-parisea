@@ -1,51 +1,64 @@
 import React, { useEffect, useRef, useState } from "react";
-import { useParams,useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 import APIHandler from "../../api/APIHandler";
 import useAuth from "../user/UseAuth";
 
 const FormNFT = () => {
   const { id } = useParams();
-  const currentUser = useAuth();
-  console.log(currentUser)
+  const { user } = useAuth();
   const [nft, setNft] = useState({
     title: "test",
     description: "test",
     price: 0,
-    seller: "",
-    owner: "",
-    creator: currentUser[0]._id,
-    sold : false
+    seller: null,
+    owner: null,
+    creator: null,
+    sold: false,
   });
 
-  const imageRef = useRef('')
-  const navigate = useNavigate()
-  useEffect( () => {
-    const x = async ()=>{
+  const imageRef = useRef("");
+  const navigate = useNavigate();
+  useEffect(() => {
+    const x = async () => {
       try {
         const { data } = await APIHandler.get(`/nfts/${id}`);
-        setNft({ title: data.title, description: data.description, price: data.price, image : data.image });
+        setNft({
+          title: data.title,
+          description: data.description,
+          price: data.price,
+          image: data.image,
+          seller: data.seller,
+          owner: data.owner,
+          creator: data.creator,
+        });
       } catch (e) {
         console.error(e);
       }
-    }
-    x()
-    
+    };
+    x();
   }, [id]);
+
+  useEffect(() => {
+    setNft({
+      creator: user[0]._id,
+      owner: user[0]._id,
+      seller: user[0]._id,
+    });
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const { title, description, price, owner, creator, seller,sold } = nft;
-    const formData = new FormData(); 
+    const { title, description, price, owner, creator, seller, sold } = nft;
+    const formData = new FormData();
 
-    formData.append("title", title); 
-    formData.append("description", description); 
-    formData.append("price", price); 
-    formData.append("seller", seller); 
-    formData.append("owner", owner); 
-    formData.append("creator", creator); 
-    formData.append("sold", sold); 
-    formData.append("image", imageRef.current.files[0]); 
+    formData.append("title", title);
+    formData.append("description", description);
+    formData.append("price", price);
+    formData.append("seller", seller);
+    formData.append("owner", owner);
+    formData.append("creator", creator);
+    formData.append("sold", sold);
 
     // console.log("------ FORM DATA -----");
     // console.log(formData); // <= this looks like a empty object
@@ -56,20 +69,23 @@ const FormNFT = () => {
     if (id) {
       const { data } = await APIHandler.patch(`/nfts-edit/${id}`, nft);
       setNft(data);
+      navigate("/nfts");
     } else {
-       await APIHandler.post(`/nfts/create-item`, formData);
-       navigate('/nfts')
+      formData.append("image", imageRef.current.files[0]);
+      await APIHandler.post(`/nfts/create-item`, formData);
+      navigate("/nfts");
     }
-   
   };
-  const handleDelete = async ()=>{
-    try{
-       await APIHandler.post(`/nfts/delete/${id}`);
-      navigate('/nfts')
-    }catch(e){
-      console.log(e)
+
+  const handleDelete = async () => {
+    try {
+      await APIHandler.post(`/nfts/delete/${id}`);
+      navigate("/nfts");
+    } catch (e) {
+      console.log(e);
     }
-  }
+  };
+  if (!user[0]) return <p>Loading</p>;
   return (
     <>
       {id ? <h1>Update</h1> : <h1>Create</h1>}
@@ -97,6 +113,7 @@ const FormNFT = () => {
             type="number"
           />
         </div>
+
         <div>
           <label htmlFor="description">Description</label>
           <input
@@ -107,38 +124,14 @@ const FormNFT = () => {
             type="text"
           />
         </div>
-        {!id &&
-           <div>
-           <label htmlFor="description">Image</label>
-           <input
-             ref={imageRef}
-             id="image"
-             name="image"
-            
-             type="file"
-           />
-          
-         </div>
-        }
-      { nft.image && <img src={nft.image}  alt='-uploaded'/>}
-        <div>
-          <input
-            id="seller"
-            name="seller"
-            type="hidden"
-            value={nft.seller}
-          />
-        </div>
-        <div>
-          <input
-            id="creator"
-            name="creator"
-            value={nft.creator}
-            type="hidden"
-          />
-        </div>
+        {!id && (
+          <div>
+            <label htmlFor="description">Image</label>
+            <input ref={imageRef} id="image" name="image" type="file" />
+          </div>
+        )}
+        <div>{nft.image && <img src={nft.image} alt="-uploaded" />}</div>
         <button>{id ? "Update" : "Create"}</button>
-      
       </form>
       {id && <button onClick={handleDelete}>Delete</button>}
     </>

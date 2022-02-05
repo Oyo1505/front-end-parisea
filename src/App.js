@@ -8,7 +8,7 @@ import FormNFT from "./components/nft/FormNFT";
 import SingleNFT from "./components/nft/SingleNFT";
 import UserEdit from "./components/user/UserEdit";
 import UserProfile from "./components/user/UserProfile";
-import UserProvider from "./components/user/UserProvider";
+import Marketplace from "./components/marketplace/Marketplace";
 
 function App() {
   return (
@@ -17,12 +17,12 @@ function App() {
         <Header />
 
         <Routes>
+          <Route path="/" element={<Marketplace />}></Route>
           <Route path="/posts" element={<AllPosts />} />
           <Route path="/nfts" element={<ListNfts />} />
           <Route path="/nfts/create-item" element={<FormNFT />} />
           <Route path="/nfts/:id" element={<SingleNFT />} />
           <Route path="/nfts-edit/:id" element={<FormNFT />} />
-          <Route path="/posts" element={<AllPosts />} />
           <Route path="/:id" element={<UserProfile />} />
           <Route path="/profile/edit/:id" element={<UserEdit />} />
         </Routes>

@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from "react";
 import APIHandler from "../../api/APIHandler";
 import { Link } from "react-router-dom";
-import useAuth from "./UseAuth";
 
-const Login = (props) => {
-  console.log(useAuth());
+const Login = () => {
   const [user, setUser] = useState([]);
   const checkIfWalletIsConnected = async () => {
     try {

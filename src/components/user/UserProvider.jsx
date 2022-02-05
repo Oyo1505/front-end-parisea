@@ -5,10 +5,6 @@ import UserContext from "./UserContext";
 const UserProvider = ({ children }) => {
   const [user, setUser] = useState([]);
 
-  useEffect(() => {
-    checkIfWalletIsConnected();
-  }, []);
-
   const checkIfWalletIsConnected = async () => {
     try {
       const { ethereum } = window;
@@ -32,7 +28,9 @@ const UserProvider = ({ children }) => {
       console.log(error);
     }
   };
-
+  useEffect(() => {
+    checkIfWalletIsConnected();
+  }, []);
   const isLogged = { user, checkIfWalletIsConnected };
 
   return (
