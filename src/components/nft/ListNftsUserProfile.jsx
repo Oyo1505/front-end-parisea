@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from "react";
 import APIHandler from "../../api/APIHandler";
 import { Link } from "react-router-dom";
-const ListNfts = (props) => {
+const ListNftsUserProfile = ({ mode, userId }) => {
   const [nfts, setNfts] = useState([]);
-
   useEffect(() => {
     const x = async () => {
       try {
-        const { data } = await APIHandler.get("/nfts");
+        const { data } = await APIHandler.get(`/list-nfts/${mode}/${userId}`);
         setNfts(data);
       } catch (e) {
         console.error(e);
@@ -40,4 +39,4 @@ const ListNfts = (props) => {
   );
 };
 
-export default ListNfts;
+export default ListNftsUserProfile;

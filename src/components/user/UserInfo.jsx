@@ -87,7 +87,11 @@ const UserInfo = () => {
             user?.twitter &&
             user?.twitter !== "" &&
             user?.twitter !== "undefined" ? (
-              <a className="twitter" href={user.twitter}>
+              <a
+                className="twitter"
+                target="_blank"
+                href={`https://twitter.com/${user.twitter}`}
+              >
                 <i className="fab fa-twitter"></i>
               </a>
             ) : (
