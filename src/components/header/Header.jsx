@@ -20,6 +20,10 @@ const Header = () => {
           Create
         </NavLink>
       </div>
+      <NavLink to={"/"}>HOME</NavLink>
+      <NavLink to={"/posts"}>POSTS</NavLink>
+      <NavLink to={"/nfts"}>NFTS</NavLink>
+      <Login />
     </nav>
   );
 };

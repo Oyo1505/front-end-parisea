@@ -1,50 +1,46 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import APIHandler from "../../api/APIHandler";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
-function FormCreatePost() {
+function FormUpdatePost() {
+  const { id } = useParams();
+  // console.log(id);
   const navigate = useNavigate();
-  const imageRef = useRef("");
+  const imageRef = useRef();
+  const [posts, setPosts] = useState(null);
 
-  const [posts, setPosts] = useState({
-    userId: "",
-    userName: "Mimi",
-    userPfp: "",
-    image: "",
-    description: "Behhhhh",
-    // postedTime: new Date.now(),
-  });
+  // UPDATE
+  useEffect(async () => {
+    const { data } = await APIHandler.get("/posts/" + id);
+    setPosts(data);
+  }, [id]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const { userId, userName, userPfp, description } = posts;
     const fd = new FormData();
-    // fd.append("userId", userId);
-    fd.append("userName", userName);
-    fd.append("userPfp", userPfp);
-    fd.append("description", description);
+    fd.append("description", posts.description);
     console.log(imageRef.current.files[0]);
     fd.append("image", imageRef.current.files[0]);
 
     try {
-      console.log(fd);
-      const res = await APIHandler.post("/posts/create", fd);
-      console.log("Post data created >>", res.data);
+      const { data } = await APIHandler.patch("/posts/" + id, fd);
+      console.log("Post data updated >> ", data);
       navigate("/posts");
     } catch (err) {
       console.error(err);
     }
   };
 
-  return (
+  return posts ? (
     <>
       <div className="container">
-        <h1>Create - post</h1>
-        <form className="form">
+        <h1>Update - post</h1>
+        <form className="form" onSubmit={handleSubmit}>
           <div>
             <p>Image</p>
             <input ref={imageRef} name="image" type="file" />
+            <input type="file" name="existingImage" hidden />
           </div>
           <div>
             <p>Description</p>
@@ -59,11 +55,13 @@ function FormCreatePost() {
               }
             />
           </div>
-          <button onClick={handleSubmit}>CREATE</button>
+          <button>UPDATE</button>
         </form>
       </div>
     </>
+  ) : (
+    <p>...loading</p>
   );
 }
 
-export default FormCreatePost;
+export default FormUpdatePost;

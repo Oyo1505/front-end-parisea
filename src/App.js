@@ -2,6 +2,8 @@ import "./App.css";
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import AllPosts from "./components/posts/AllPosts";
+import FormCreatePost from "./components/posts/FormCreatePost";
+import FormUpdatePost from "./components/posts/FormUpdatePost";
 import Header from "./components/header/Header";
 import FormNFT from "./components/nft/FormNFT";
 import SingleNFT from "./components/nft/SingleNFT";
@@ -20,6 +22,8 @@ function App() {
           <Route path="/" element={<Marketplace />}></Route>
           <Route path="/posts" element={<AllPosts />} />
           <Route path="/nfts" element={<HomeNfts />} />
+          <Route path="/posts/create" element={<FormCreatePost />} />
+          <Route path="/posts/:id" element={<FormUpdatePost />} />
           <Route path="/nfts/create-item" element={<FormNFT />} />
           <Route path="/nfts/:id" element={<SingleNFT />} />
           <Route path="/nfts-edit/:id" element={<FormNFT />} />
