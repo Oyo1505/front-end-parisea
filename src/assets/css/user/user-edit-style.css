@@ -11,21 +11,20 @@
 }
 
 .formulaire-edit-profile {
-  /* form {
-    background-color: white;
-    max-width: 740px;
-    padding: 48px;
-    margin-left: auto;
-    margin-right: auto;
-    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.05);
-    border-radius: 12px;
+  background-color: white;
+  max-width: 740px;
+  padding: 48px;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.05);
+  border-radius: 12px;
 
-    margin-top: 48px;
-    margin-bottom: 48px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-self: center;*/
+  margin-top: 48px;
+  margin-bottom: 48px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-self: center;
 }
 
 .details {
