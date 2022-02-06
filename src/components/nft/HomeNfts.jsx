@@ -19,7 +19,7 @@ const HomeNfts = () => {
       }
     };
   }, []);
-  console.log(user[0]);
+  if (user.length === 0) return <p>Loading</p>;
   return (
     <div>
       <h1>Created</h1>

@@ -7,7 +7,7 @@ const Marketplace = () => {
     <div>
       <h1>Marketplace</h1>
       <RandomNFTMarketPlace />
-      <ListNFTMarketplace limit={5} />
+      <ListNFTMarketplace limit={10} />
     </div>
   );
 };

@@ -6,7 +6,7 @@ const BuyNFT = ({ nftId, buyerId }) => {
     try {
       await APIHandler.patch(`/buy-nft/${nftId}/${buyerId}`);
     } catch (e) {
-      console.log(e);
+      console.error(e);
     }
   };
 
