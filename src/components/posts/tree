@@ -1,0 +1,4 @@
+- all posts GET
+--- single post (CRUD)
+------ comment GET 
+------ comment form Create/Delete

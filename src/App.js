@@ -2,9 +2,10 @@ import "./App.css";
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import AllPosts from "./components/posts/AllPosts";
+import Post from "./components/posts/Post";
 import FormCreatePost from "./components/posts/FormCreatePost";
 import FormUpdatePost from "./components/posts/FormUpdatePost";
-import ListNfts from "./components/nft/ListNfts";
+// import ListNfts from "./components/nft/ListNfts";
 import Header from "./components/header/Header";
 import FormNFT from "./components/nft/FormNFT";
 import SingleNFT from "./components/nft/SingleNFT";
@@ -22,8 +23,9 @@ function App() {
         <Routes>
           <Route path="/posts" element={<AllPosts />} />
           <Route path="/posts/create" element={<FormCreatePost />} />
-          <Route path="/posts/:id" element={<FormUpdatePost />} />
-          <Route path="/nfts" element={<ListNfts />} />
+          <Route path="/posts/:id" element={<Post />} />
+          <Route path="/posts/update/:id" element={<FormUpdatePost />} />
+          {/* <Route path="/nfts" element={<ListNfts />} /> */}
           <Route path="/nfts/create-item" element={<FormNFT />} />
           <Route path="/nfts/:id" element={<SingleNFT />} />
           <Route path="/nfts-edit/:id" element={<FormNFT />} />

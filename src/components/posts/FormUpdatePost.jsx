@@ -24,7 +24,7 @@ function FormUpdatePost() {
     fd.append("image", imageRef.current.files[0]);
 
     try {
-      const { data } = await APIHandler.patch("/posts/" + id, fd);
+      const { data } = await APIHandler.patch("/posts/update" + id, fd);
       console.log("Post data updated >> ", data);
       navigate("/posts");
     } catch (err) {

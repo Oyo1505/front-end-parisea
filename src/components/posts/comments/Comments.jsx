@@ -38,7 +38,7 @@ const Comments = ({ postId, text }) => {
 
   const fetchComments = async () => {
     try {
-      const { data } = await APIHandler.get("/posts");
+      const { data } = await APIHandler.get(`/posts/${postId}/comments`);
       console.log(data);
       setExistComments(data);
     } catch (err) {
