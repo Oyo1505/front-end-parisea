@@ -3,7 +3,7 @@ import APIHandler from "../../api/APIHandler";
 import UserContext from "./UserContext";
 
 const UserProvider = ({ children }) => {
-  const [user, setUser] = useState([]);
+  const [currentUser, setCurrentUser] = useState([]);
 
   const checkIfWalletIsConnected = async () => {
     try {
@@ -19,7 +19,7 @@ const UserProvider = ({ children }) => {
       if (accounts.length !== 0) {
         const account = accounts[0];
         const { data } = await APIHandler.get(`/connect-wallet/${account}`);
-        setUser(data);
+        setCurrentUser(data);
         console.log("Found an authorized account:", account);
       } else {
         console.log("No authorized account found");
@@ -31,7 +31,7 @@ const UserProvider = ({ children }) => {
   useEffect(() => {
     checkIfWalletIsConnected();
   }, []);
-  const isLogged = { user, checkIfWalletIsConnected };
+  const isLogged = { currentUser, checkIfWalletIsConnected };
 
   return (
     <UserContext.Provider value={isLogged}>{children}</UserContext.Provider>

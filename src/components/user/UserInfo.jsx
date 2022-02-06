@@ -7,6 +7,8 @@ import useAuth from "./UseAuth";
 
 const UserInfo = () => {
   const { id } = useParams();
+  const { currentUser } = useAuth();
+  const [isfollowed, setIsFollowed] = useState(false);
   const [user, setUser] = useState({
     name: "",
     image: "",
@@ -24,9 +26,20 @@ const UserInfo = () => {
   });
 
   useEffect(() => {
+    const y = async () => {
+      if (currentUser.length !== 0) {
+        try {
+          const { data } = await APIHandler.get(
+            `/follower/${id}/` + currentUser[0]._id
+          );
+          setIsFollowed(data ? true : false);
+        } catch (err) {
+          console.error(err);
+        }
+      }
+    };
     const x = async () => {
       const { data } = await APIHandler.get("/users/edit/" + id);
-      // console.log(data);
       setUser({
         name: data.name,
         image: data.image,
@@ -45,9 +58,19 @@ const UserInfo = () => {
     };
 
     x();
+    y();
   }, [id]);
 
-  console.log(user);
+  const handleFollow = async (e) => {
+    try {
+      const { data } = await APIHandler.patch(
+        `/add-follow/${id}/${currentUser[0]._id}`
+      );
+      setIsFollowed(!isfollowed);
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
   return (
     <div>
@@ -86,9 +109,15 @@ const UserInfo = () => {
           </div>
 
           <div>
-            <Link to={`/profile/edit/${id}`}>
-              <button className="edit-profile">Edit Profile</button>
-            </Link>
+            {currentUser[0]._id !== id ? (
+              <button onClick={(e) => handleFollow(e)} className="edit-profile">
+                {!isfollowed ? "Follow" : "Following"}
+              </button>
+            ) : (
+              <Link to={`/profile/edit/${id}`}>
+                <button className="edit-profile">Edit Profile</button>
+              </Link>
+            )}
           </div>
         </div>
 
