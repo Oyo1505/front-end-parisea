@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 
 const CommentForm = ({ postId, onSuccess }) => {
   const { id } = useParams();
-  // console.log(postId);
+  console.log(id);
   const { user } = useAuth();
   const [comment, setComment] = useState("");
   const disabled = comment.length === 0;
@@ -14,7 +14,7 @@ const CommentForm = ({ postId, onSuccess }) => {
     e.preventDefault();
 
     try {
-      const res = await APIHandler.patch(`/posts/` + id, {
+      const res = await APIHandler.patch(`/posts/${id}`, {
         userId: user[0]._id,
         comment,
       });
