@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import APIHandler from "../../api/APIHandler";
 import { useNavigate, useParams } from "react-router-dom";
 
@@ -11,7 +11,7 @@ function FormUpdatePost() {
 
   // UPDATE
   useEffect(async () => {
-    const { data } = await APIHandler.get("/posts/update/" + id);
+    const { data } = await APIHandler.get("/posts/" + id);
     setPosts(data);
   }, [id]);
 
@@ -24,7 +24,7 @@ function FormUpdatePost() {
     fd.append("image", imageRef.current.files[0]);
 
     try {
-      const { data } = await APIHandler.patch("/posts/update" + id, fd);
+      const { data } = await APIHandler.patch("/posts/update/" + id, fd);
       console.log("Post data updated >> ", data);
       navigate("/posts");
     } catch (err) {

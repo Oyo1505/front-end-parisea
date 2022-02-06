@@ -1,7 +1,12 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import APIHandler from "../../../api/APIHandler";
+import useAuth from "../../user/UseAuth";
+import { useParams } from "react-router-dom";
 
 const CommentForm = ({ postId, onSuccess }) => {
+  const { id } = useParams();
+  // console.log(postId);
+  const { user } = useAuth();
   const [comment, setComment] = useState("");
   const disabled = comment.length === 0;
 
@@ -9,8 +14,8 @@ const CommentForm = ({ postId, onSuccess }) => {
     e.preventDefault();
 
     try {
-      const res = await APIHandler.patch(`/posts/${postId}/comments`, {
-        userId: "61fd561abf55f166cca50c9e",
+      const res = await APIHandler.patch(`/posts/` + id, {
+        userId: user[0]._id,
         comment,
       });
       console.log("Comment data created >>", res.data);

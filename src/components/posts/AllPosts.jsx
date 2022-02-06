@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import APIHandler from "../../api/APIHandler";
 import Post from "./Post";
 import "./post.css";
@@ -31,13 +31,13 @@ function AllPosts() {
 
       <div className="container">
         {posts.map((post) => {
-          if (posts.length === 0) return <p>all loading...</p>;
+          if (posts.length === 0) return <p>Loading...</p>;
           const id = String(post._id);
           return (
             <div>
-              <Link to={id}>
-                <Post post={post} postId={id} key={id} />
-              </Link>
+              {/* <Link to={id}> */}
+              <Post post={post} postId={id} key={id} />
+              {/* </Link> */}
             </div>
           );
         })}

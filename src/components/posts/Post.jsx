@@ -1,27 +1,28 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Comments from "./comments/Comments";
 import APIHandler from "../../api/APIHandler";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import useAuth from "../user/UseAuth";
 import "./post.css";
 import "./comments/comment.css";
-import useAuth from "../user/UseAuth";
 
 const Post = (props) => {
   const { user } = useAuth();
-  console.log(user);
+  // console.log(user);
   const navigate = useNavigate();
   const [post, setPost] = useState(props.post);
   const [showComment, setShowComment] = useState(true); //FALSE
   const [count, setCount] = useState(0);
 
   const updatePost = (postId) => {
-    console.log(postId);
+    // console.log(postId);
     navigate("/posts/update/" + postId);
   };
 
   const deletePost = async (postId) => {
     try {
       await APIHandler.post("/posts/delete/" + postId);
+      navigate("/posts");
     } catch (err) {
       console.error(err);
     }
@@ -32,7 +33,6 @@ const Post = (props) => {
 
   if (post.length === 0) return <p>one loading...</p>;
 
-  console.log(post);
   return (
     <>
       {post ? (

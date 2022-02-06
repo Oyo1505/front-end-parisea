@@ -16,7 +16,6 @@ const Header = () => {
         <div>
           <NavLink to={"/"}>Home</NavLink>
         </div>
-        <NavLink to={"/posts"}>POSTS</NavLink>
         <Login />
         <NavLink className={"button-create"} to={"/nfts"}>
           Create
