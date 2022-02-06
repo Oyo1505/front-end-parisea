@@ -10,23 +10,18 @@ function AllPosts() {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
-    fetchPosts();
-  }, []);
-
-  const fetchPosts = async () => {
-    try {
-      const { data } = await APIHandler.get("/posts");
+    (async () => {
+      const { data } = await APIHandler.get(`/posts`);
       console.log(data);
       setPosts(data);
-    } catch (err) {
-      console.error(err);
-    }
-  };
+    })();
+  }, []);
 
   const createPost = () => {
     navigate("/posts/create");
   };
 
+  if (posts.length === 0) return <p>all loading...</p>;
   return (
     <>
       <h1>All Posts Page</h1>
@@ -36,15 +31,13 @@ function AllPosts() {
 
       <div className="container">
         {posts.map((post) => {
-          const id = post._id;
+          const id = String(post._id);
           return (
-            <>
-              <div>
-                <Link to={id} key={id}>
-                  <Post postId={id} />
-                </Link>
-              </div>
-            </>
+            <div>
+              <Link to={id}>
+                <Post post={post} postId={id} key={id} />
+              </Link>
+            </div>
           );
         })}
       </div>

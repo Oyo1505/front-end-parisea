@@ -11,7 +11,7 @@ function FormUpdatePost() {
 
   // UPDATE
   useEffect(async () => {
-    const { data } = await APIHandler.get("/posts/" + id);
+    const { data } = await APIHandler.get("/posts/update/" + id);
     setPosts(data);
   }, [id]);
 
