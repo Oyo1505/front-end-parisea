@@ -133,8 +133,8 @@ const UserEdit = () => {
               </h2>
               <p className="p-edit-profile">
                 Add your email address to <br></br> receive notifications about
-                your <br></br> activity on Foundation. This will <br></br> not
-                be shown on your profile.
+                your <br></br> activity on PariSea. This will <br></br> not be
+                shown on your profile.
               </p>
             </div>
 
