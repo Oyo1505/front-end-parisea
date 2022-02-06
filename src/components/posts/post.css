@@ -12,6 +12,14 @@
   padding: 20px 0;
 }
 
+/* POST CREATE & UPDATE FORM */
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+/* ALL POSTS */
+
 .postDiv {
   display: flex;
   flex-direction: column;
@@ -19,6 +27,7 @@
   border: 1px gray solid;
   border-radius: 10px;
   padding: 20px;
+  margin-bottom: 50px;
 }
 
 .postUser {
@@ -38,10 +47,6 @@
   font-size: 1.5rem;
 }
 
-.postDetail {
-  /* padding: 10px; */
-}
-
 .postDetail img {
   width: 100%;
 }
@@ -56,7 +61,8 @@
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  margin: 10px 0;
+  margin: 15px 0;
+  cursor: pointer;
 }
 
 .postIcons i {
@@ -68,4 +74,8 @@
   align-self: flex-end;
   color: grey;
   font-size: 0.7rem;
+}
+
+.fas.fa-heart {
+  color: red;
 }

@@ -23,15 +23,5 @@ const APIHandler = {
       errorHandler(e);
     }
   },
-
-  async getAllPosts() {
-    try {
-      const { data } = await service.get("/posts");
-      console.log(data);
-      return data;
-    } catch (e) {
-      errorHandler(e);
-    }
-  },
 };
 export default APIHandler;
