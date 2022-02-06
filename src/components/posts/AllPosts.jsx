@@ -21,7 +21,7 @@ function AllPosts() {
     navigate("/posts/create");
   };
 
-  if (posts.length === 0) return <p>all loading...</p>;
+  console.log(posts);
   return (
     <>
       <h1>All Posts Page</h1>
@@ -31,6 +31,7 @@ function AllPosts() {
 
       <div className="container">
         {posts.map((post) => {
+          if (posts.length === 0) return <p>all loading...</p>;
           const id = String(post._id);
           return (
             <div>

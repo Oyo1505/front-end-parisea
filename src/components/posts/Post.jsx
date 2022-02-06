@@ -4,9 +4,11 @@ import APIHandler from "../../api/APIHandler";
 import { useNavigate, useParams } from "react-router-dom";
 import "./post.css";
 import "./comments/comment.css";
+import useAuth from "../user/UseAuth";
 
 const Post = (props) => {
-  console.log(props);
+  const { user } = useAuth();
+  console.log(user);
   const navigate = useNavigate();
   const [post, setPost] = useState(props.post);
   const [showComment, setShowComment] = useState(true); //FALSE
@@ -30,14 +32,15 @@ const Post = (props) => {
 
   if (post.length === 0) return <p>one loading...</p>;
 
+  console.log(post);
   return (
     <>
       {post ? (
         <>
           <div className="postDiv">
             <div className="postUser">
-              <img src="" alt={post.userName} />
-              <div className="postUserName">{post.userName}</div>
+              <img src={post.userId.image} alt={post.userId.name} />
+              <div className="postUserName">{post.userId.name}</div>
             </div>
             <div className="postDetail">
               <div className="postComment">{post.description}</div>

@@ -5,7 +5,6 @@ import AllPosts from "./components/posts/AllPosts";
 import Post from "./components/posts/Post";
 import FormCreatePost from "./components/posts/FormCreatePost";
 import FormUpdatePost from "./components/posts/FormUpdatePost";
-// import ListNfts from "./components/nft/ListNfts";
 import Header from "./components/header/Header";
 import FormNFT from "./components/nft/FormNFT";
 import SingleNFT from "./components/nft/SingleNFT";
@@ -21,17 +20,17 @@ function App() {
         <Header />
 
         <Routes>
+          <Route path="/" element={<Marketplace />}></Route>
           <Route path="/posts" element={<AllPosts />} />
           <Route path="/posts/create" element={<FormCreatePost />} />
           <Route path="/posts/:id" element={<Post />} />
           <Route path="/posts/update/:id" element={<FormUpdatePost />} />
-          {/* <Route path="/nfts" element={<ListNfts />} /> */}
+          <Route path="/nfts" element={<HomeNfts />} />
           <Route path="/nfts/create-item" element={<FormNFT />} />
           <Route path="/nfts/:id" element={<SingleNFT />} />
           <Route path="/nfts-edit/:id" element={<FormNFT />} />
-          <Route path="/posts" element={<AllPosts />} />
-          <Route path="/users/:id" element={<UserProfile />} />
-          <Route path="/users/edit/:id" element={<UserEdit />} />
+          <Route path="/:id" element={<UserProfile />} />
+          <Route path="/profile/edit/:id" element={<UserEdit />} />
         </Routes>
       </div>
     </>

@@ -15,7 +15,7 @@ const UserInfo = () => {
     bio: "",
     coverImage: "",
     id_metamask: "",
-    followers: [],
+    follower: [],
     following: [],
     balance: 200,
     twitter: "",
@@ -26,7 +26,7 @@ const UserInfo = () => {
   useEffect(() => {
     const x = async () => {
       const { data } = await APIHandler.get("/users/edit/" + id);
-      console.log(data);
+      // console.log(data);
       setUser({
         name: data.name,
         image: data.image,
@@ -35,24 +35,34 @@ const UserInfo = () => {
         bio: data.bio,
         coverImage: data.coverImage,
         id_metamask: data.id_metamask,
-        followers: data.followers,
+        follower: data.follower,
         following: data.following,
         balance: data.balance,
         twitter: data.twitter,
+        facebook: data.facebook,
+        instagram: data.instagram,
       });
     };
 
     x();
   }, [id]);
 
-  console.log(id);
+  console.log(user);
 
   return (
     <div>
       <div className="profile-info-section">
         {/* <h4>INFO</h4> */}
         <div className="id-metamask">
-          <p className="id-name">#{user.id_metamask}</p>
+          <i class="fas fa-hashtag"></i>
+          <strong className="id-name">{user.id_metamask}</strong>
+          <i
+            style={{ cursor: "pointer" }}
+            onClick={() => {
+              navigator.clipboard.writeText(user.id_metamask);
+            }}
+            className="far fa-clone"
+          ></i>
         </div>
 
         <div className="about-user">
@@ -70,7 +80,8 @@ const UserInfo = () => {
             <p className="following-title">Following</p>
           </div>
           <div className="followers">
-            {/* <strong className="followers-count">{user.followers.length}</strong> */}
+            <strong className="followers-count">{user.follower.length}</strong>
+
             <p className="followers-title">Followers</p>
           </div>
 
@@ -103,7 +114,11 @@ const UserInfo = () => {
             user?.facebook &&
             user?.facebook !== "" &&
             user?.facebook !== "undefined" ? (
-              <a className="twitter" href={user.facebook}>
+              <a
+                className="twitter"
+                target="_blank"
+                href={`https://facebook.com/${user.facebook}`}
+              >
                 <i className="fab fa-facebook-f"></i>
               </a>
             ) : (
@@ -118,7 +133,7 @@ const UserInfo = () => {
               <a
                 className="twitter"
                 target="_blank"
-                href={`https://twitter.com/${user.instagram}`}
+                href={`https://instagram.com/${user.instagram}/`}
               >
                 <i className="fab fa-instagram"></i>
               </a>
@@ -127,12 +142,7 @@ const UserInfo = () => {
             )}
           </div>
         </div>
-        <a
-          target="_blank"
-          href="https://meetflo.zendesk.com/hc/en-us/articles/230425728-Privacy-Policies"
-        >
-          Policies
-        </a>
+
         <div className="biography">
           <strong className="bio-title">Bio</strong>
           {/* <hr style={{ color: "#7F7F7F", width: 350 }} /> */}
