@@ -34,17 +34,20 @@
 }
 
 .logo-style {
-    background-image: url(../../img/Logo-02.png);
-    padding-top: 20px;
-    padding-right: 70px;
-    width: 600px;
+
+    /* background-image: url(../../logo/logo-black.png); */
+    /* padding-top: 42px; */
+    /* padding-left: 153px; */
+    /* padding-right: 70px; */
+    width: 200px;
+    padding-right: 0px;
 
 }
 
 .logo-section {
     display: flex;
     align-items: center;
-    justify-content: center;
-    width: 200px;
+    justify-content: flex-start;
+    width: 100%;
     height: 0px;
 }

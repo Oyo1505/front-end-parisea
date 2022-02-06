@@ -1,26 +1,28 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import APIHandler from "../../../api/APIHandler";
+import useAuth from "../../user/UseAuth";
+import { useParams } from "react-router-dom";
 
-const CommentForm = ({ id, textSubmit }) => {
-  const [texts, setTexts] = useState({
-    commentUserID: id,
-    // userName: "",
-    // userPfp: "",
-    // commentText: "",
-  });
-  const isTextAreaDisabled = texts.length === 0;
-  console.log(id);
+const CommentForm = ({ postId, onSuccess }) => {
+  const { id } = useParams();
+  // console.log(postId);
+  const { user } = useAuth();
+  const [comment, setComment] = useState("");
+  const disabled = comment.length === 0;
+
   const onSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      const res = await APIHandler.patch("/comments", texts);
-      console.log(texts, res.data);
-      //console.log("Comment data created >>", res.data);
-      textSubmit(texts);
-      setTexts("");
+      const res = await APIHandler.patch(`/posts/` + id, {
+        userId: user[0]._id,
+        comment,
+      });
+      console.log("Comment data created >>", res.data);
+      onSuccess(res.data); // post
+      setComment("");
     } catch (err) {
-      console.log("err");
+      console.log("OnSubmit err", err);
       console.error(err);
     }
   };
@@ -30,12 +32,12 @@ const CommentForm = ({ id, textSubmit }) => {
       <div>
         <input
           type="text"
-          // value={texts.text}
-          onChange={(e) => setTexts({ ...texts, text: e.target.value })}
+          value={comment}
+          onChange={(e) => setComment(e.target.value)}
         />
       </div>
       <div>
-        <button disabled={isTextAreaDisabled}>OK</button>
+        <button disabled={disabled}>OK</button>
       </div>
     </form>
   );

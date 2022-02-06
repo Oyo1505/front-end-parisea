@@ -1,28 +1,28 @@
-import React, { useState, useRef } from "react";
+import { useState, useRef } from "react";
 import APIHandler from "../../api/APIHandler";
 import { useNavigate } from "react-router-dom";
+import useAuth from "../user/UseAuth";
 
 function FormCreatePost() {
+  const { user } = useAuth();
   const navigate = useNavigate();
   const imageRef = useRef("");
 
   const [posts, setPosts] = useState({
-    userId: "",
-    userName: "Mimi",
-    userPfp: "",
+    // userId: "",
+    // userName: "Mimi",
+    // userPfp: "",
     image: "",
     description: "Behhhhh",
     // postedTime: new Date.now(),
   });
 
+  // console.log(user[0]._id);
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    const { userId, userName, userPfp, description } = posts;
+    const { description } = posts;
     const fd = new FormData();
-    // fd.append("userId", userId);
-    fd.append("userName", userName);
-    fd.append("userPfp", userPfp);
+    fd.append("userId", user[0]._id);
     fd.append("description", description);
     console.log(imageRef.current.files[0]);
     fd.append("image", imageRef.current.files[0]);

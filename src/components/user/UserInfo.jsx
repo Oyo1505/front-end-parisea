@@ -54,13 +54,14 @@ const UserInfo = () => {
       <div className="profile-info-section">
         {/* <h4>INFO</h4> */}
         <div className="id-metamask">
-          <p className="id-name">#{user.id_metamask}</p>
+          <i class="fas fa-hashtag"></i>
+          <strong className="id-name">{user.id_metamask}</strong>
           <i
             style={{ cursor: "pointer" }}
             onClick={() => {
               navigator.clipboard.writeText(user.id_metamask);
             }}
-            class="far fa-copy"
+            className="far fa-clone"
           ></i>
         </div>
 
