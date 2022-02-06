@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect } from "react";
+import Loading from "../loading/Loading";
 import useAuth from "../user/UseAuth";
 
 import ListNftsUserProfile from "./ListNftsUserProfile";
@@ -15,11 +16,11 @@ const HomeNfts = () => {
           .then((response) => console.log(response))
           .catch((err) => console.error(err));
       } catch (e) {
-        console.log(e);
+        console.error(e);
       }
     };
   }, []);
-  if (user.length === 0) return <p>Loading</p>;
+  if (user.length === 0) return <Loading />;
   return (
     <div>
       <h1>Created</h1>
