@@ -20,12 +20,6 @@ const UserEdit = () => {
     facebook: "",
     instagram: "",
   });
-
-  // console.log(id);
-  console.log("useAuth", useAuth());
-
-  // console.log(user);
-
   const { user: connectedUser, checkIfWalletIsConnected } = useAuth();
 
   useEffect(() => {
@@ -52,6 +46,7 @@ const UserEdit = () => {
     e.preventDefault();
 
     const formData = new FormData();
+
     formData.append("image", imageRef.current.files[0]);
     formData.append("coverImage", coverImageRef.current.files[0]);
     formData.append("name", user.name);
@@ -62,8 +57,8 @@ const UserEdit = () => {
     formData.append("facebook", user.facebook);
     formData.append("instagram", user.instagram);
 
-    console.log("current image >>>>>>", imageRef.current.files[0]);
-
+    console.log("current image >>>>>>", imageRef.current.files);
+    console.log("cover image >>>>>>", coverImageRef.current.files[0]);
     try {
       const { data } = await APIHandler.patch(`/users/edit/${id}`, formData);
       console.log("Data >>>>>>>>>>> ", formData);
@@ -85,15 +80,13 @@ const UserEdit = () => {
     }
   };
 
-  // useEffect();
-
   return (
     <div className="main">
       <div>
         <h1 className="h1-edit-profile">Edit your profile</h1>
       </div>
       <div className="form">
-        <form className="formulaire-edit-profile">
+        <form className="formulaire-edit-profile" encType="multipart/form-data">
           <div className="details">
             <div className="title">
               <h2 className="h2-edit-profile">Enter your details</h2>
@@ -187,7 +180,9 @@ const UserEdit = () => {
               <div className="section-padding">
                 <div className="image-section">
                   <label className="label-section-edit-profile" htmlFor="files">
-                    {imageRef && <img width="350" src={imageRef} />}
+                    {imageRef.current?.files && (
+                      <img width="350" src={imageRef.current.files[0]} />
+                    )}
                   </label>
                 </div>
                 <div>
@@ -199,6 +194,7 @@ const UserEdit = () => {
                   ref={imageRef}
                   name="image"
                   type="file"
+                  onInput={() => console.log(imageRef.current.files[0], "ddd")}
                 />
               </div>
             </div>
@@ -227,8 +223,11 @@ const UserEdit = () => {
                   <input
                     className="image-input"
                     ref={coverImageRef}
-                    name="image"
+                    name="coverImage"
                     type="file"
+                    onInput={() =>
+                      console.log(coverImageRef.current.files[0], "cover")
+                    }
                   />
                 </div>
               </div>
