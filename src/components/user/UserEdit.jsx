@@ -62,6 +62,8 @@ const UserEdit = () => {
     formData.append("facebook", user.facebook);
     formData.append("instagram", user.instagram);
 
+    console.log("current image >>>>>>", imageRef.current.files[0]);
+
     try {
       const { data } = await APIHandler.patch(`/users/edit/${id}`, formData);
       console.log("Data >>>>>>>>>>> ", formData);
@@ -75,6 +77,8 @@ const UserEdit = () => {
         twitter: data.twitter,
         facebook: data.facebook,
         instagram: data.instagram,
+
+        coverImage: data.coverImage,
       });
     } catch (e) {
       console.error(e);

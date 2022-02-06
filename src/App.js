@@ -4,7 +4,6 @@ import { Routes, Route } from "react-router-dom";
 import AllPosts from "./components/posts/AllPosts";
 import FormCreatePost from "./components/posts/FormCreatePost";
 import FormUpdatePost from "./components/posts/FormUpdatePost";
-import ListNfts from "./components/nft/ListNfts";
 import Header from "./components/header/Header";
 import FormNFT from "./components/nft/FormNFT";
 import SingleNFT from "./components/nft/SingleNFT";
