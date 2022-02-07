@@ -21,8 +21,10 @@ const Post = ({ postId, postData }) => {
 
   const deletePost = async (postId) => {
     try {
-      console.log(postId);
-      await APIHandler.post("/posts/delete/" + postId);
+      
+      const {data} = await APIHandler.post("/posts/delete/" + postId);
+      console.log(data)
+      setPost(data)
     } catch (err) {
       console.error(err);
     }
@@ -62,13 +64,13 @@ const Post = ({ postId, postData }) => {
                 <div>
                   <i
                     className="far fa-edit"
-                    onClick={() => updatePost(post.postId)}
+                    onClick={() => updatePost(postId)}
                   ></i>
                 </div>
                 <div>
                   <i
                     className="far fa-trash-alt"
-                    onClick={() => deletePost(post.postId)}
+                    onClick={() => deletePost(postId)}
                   ></i>
                 </div>
               </div>
