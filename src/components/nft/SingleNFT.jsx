@@ -9,7 +9,20 @@ const SingleNFT = () => {
   const { currentUser } = useAuth();
   const [nft, setNft] = useState({});
   const { id } = useParams();
+  {
+    /*  mimi */
+  }
 
+  const [added, setAdded] = useState(false);
+  const emptyHeart = <i className="far fa-heart"></i>;
+  const fullHeart = <i className="fas fa-heart"></i>;
+
+  const toggle = () => {
+    setAdded(!added);
+  };
+  {
+    /*  mimi */
+  }
   useEffect(() => {
     const x = async () => {
       try {
@@ -37,6 +50,13 @@ const SingleNFT = () => {
       <p>Price : {nft.price} MhM</p>
       <div>  <Link to={`/${nft.creator._id}`}><h5>{nft.creator.name}</h5></Link></div>
     
+
+      {/*  mimi */}
+      <div onClick={() => toggle()}>
+        {added === true ? fullHeart : emptyHeart}
+      </div>
+      {/*  mimi */}
+
       {currentUser[0]._id === nft.creator ? (
         <Link to={`/nfts-edit/${id}`}>Edit NFT</Link>
       ) : nft.sold === true ? (

@@ -1,10 +1,8 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import APIHandler from "../../../api/APIHandler";
 import useAuth from "../../user/UseAuth";
-import { useParams } from "react-router-dom";
 
-const CommentForm = ({ postId, onSuccess }) => {
-  // console.log(postId);
+const CommentForm = ({ postId, setComments }) => {
   const { user } = useAuth();
   const [comment, setComment] = useState("");
   const disabled = comment.length === 0;
@@ -18,11 +16,13 @@ const CommentForm = ({ postId, onSuccess }) => {
         comment,
       });
       console.log("Comment data created >>", res.data);
-      onSuccess(res.data); // post
+      setComments((existComments) => [
+        res.data.comments[res.data.comments.length - 1],
+        ...existComments,
+      ]);
       setComment("");
     } catch (err) {
-      console.log("OnSubmit err", err);
-      console.error(err);
+      console.log("OnSubmit err >>> ", err);
     }
   };
 

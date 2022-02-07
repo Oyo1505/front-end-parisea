@@ -60,8 +60,9 @@
   font-size: 2rem;
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
   margin: 15px 0;
+  padding: 0 10px;
   cursor: pointer;
 }
 

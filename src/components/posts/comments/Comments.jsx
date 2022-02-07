@@ -8,30 +8,25 @@ const Comments = ({ postId }) => {
 
   useEffect(() => {
     (async () => {
-      const { data } = await APIHandler.get(`/posts/comments/${postId}`);
-    
-      setComments(data[0].comments);
+      const { data } = await APIHandler.get(`/posts/comments/` + postId);
+      setComments(data.comments);
     })();
   }, [postId]);
 
-  if(comments.length === 0 ) return <p>test</p>
+  // if (comments.length === 0) return <p>test</p>;
+  // console.log(comments);
 
   return (
     <>
-      <CommentForm
-        postId={postId}
-        onSuccess={() => setComments()}
-
-      />
-
+      <CommentForm postId={postId} setComments={setComments} />
       <div>
         {comments.map((comment) => {
           return (
             <div>
               <Comment
-                comment={comment}
-                commentId={comment.id}
-                key={comment.id}
+                postId={postId}
+                commentData={comment}
+                updateState={setComments}
               />
             </div>
           );

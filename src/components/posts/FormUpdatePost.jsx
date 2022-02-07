@@ -51,9 +51,7 @@ function FormUpdatePost() {
               type="text"
               placeholder="title"
               value={posts.description}
-              onChange={(e) =>
-                setPosts({ ...posts, title: e.target.value })
-              }
+              onChange={(e) => setPosts({ ...posts, title: e.target.value })}
             />
           </div>
           <div>
