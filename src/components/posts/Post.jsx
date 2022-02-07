@@ -4,15 +4,17 @@ import APIHandler from "../../api/APIHandler";
 import { useNavigate } from "react-router-dom";
 import "./post.css";
 import "./comments/comment.css";
-import useAuth from "../user/UseAuth";
 
-const Post = ({ postId, postData }) => {
+const Post = ({ postId, postData, comments }) => {
   const navigate = useNavigate();
   const [post, setPost] = useState(postData);
-  const [showComment, setShowComment] = useState(true); //FALSE
+  const [showComment, setShowComment] = useState(false); //FALSE
   const [count, setCount] = useState(0);
+  const [likeAdded, setLikeAdded] = useState(false);
 
-
+  const toggle = () => {
+    setLikeAdded(!likeAdded);
+  };
 
   const updatePost = (postId) => {
     navigate("/posts/update/" + postId);
@@ -25,34 +27,37 @@ const Post = ({ postId, postData }) => {
       console.error(err);
     }
   };
-console.log(postData)
+
+  console.log(postData);
+
   const emptyHeart = <i className="far fa-heart"></i>;
   const fullHeart = <i className="fas fa-heart"></i>;
 
-  if (post.length === 0 &&!post.userId ) return <p>loqd</p>;
+  // if (post.length === 0 && !post.userId) return <p>loading</p>;
+
   return (
     <>
       {post ? (
         <>
           <div className="postDiv">
             <div className="postUser">
-              <img src={post.userId.image} alt={post.userId.image} />
-              <div className="postUserName">{post.userName}</div> 
+              <img src={post.userId.image} alt="img" />
+              <div className="postUserName">{post.userId.name}</div>
             </div>
             <h4>{post.title}</h4>
             <div className="postDetail">
               <div className="postComment">{post.description}</div>
               <img src={post.image} alt="" />
               <div className="postIcons">
-                <div onClick={() => setCount(count + 1)}>
-                  {count === 0 ? emptyHeart : fullHeart}
-                  {count}
+                <div onClick={() => toggle()}>
+                  {likeAdded === true ? fullHeart : emptyHeart}
                 </div>
                 <div>
                   <i
                     className="far fa-comment"
                     onClick={() => setShowComment(!showComment)}
-                  ></i>
+                  ></i>{" "}
+                  {post.comments.length}
                 </div>
                 <div>
                   <i

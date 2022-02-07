@@ -1,52 +1,41 @@
-import React from "react";
-import useAuth from "../../user/UseAuth";
-import { useState, useEffect } from "react";
 import APIHandler from "../../../api/APIHandler";
-import { useParams } from "react-router-dom";
 
-const Comment = ({ postId }) => {
-  const { id } = useParams();
-  const { user } = useAuth();
-
-  const [comment, setComment] = useState(postId.comment);
-
-  useEffect(() => {
-    (async () => {
-      const { data } = await APIHandler.get(`/posts/${postId}/comments`);
-      console.log(data);
-      setComment(data);
-    })();
-  }, []);
-
-  const deleteComment = (id) => {
+const Comment = ({ updateState, postId, commentData }) => {
+  const deleteComment = async (id) => {
     if (window.confirm("Are you sure you want to delete comment?")) {
-      const updatedExistComments = comment.filter(
-        (existComment) => existComment.id !== id
-      );
-      setComment(updatedExistComments);
+      try {
+        await APIHandler.patch("/posts/comments/delete/" + id, {
+          commentId: commentData._id,
+        });
+        updateState((existComments) =>
+          existComments.filter((x) => x._id !== commentData._id)
+        );
+      } catch (err) {
+        console.log("ERROR", err);
+      }
     }
   };
 
-  if (comment.length === 0) return <p>No comment</p>;
+  if (commentData.length === 0) return <p>No comment</p>;
 
   return (
     <>
-      {comment ? (
+      {commentData ? (
         <div>
-          <div key={comment._id} className="commentedArea">
-            <img src={comment.userPfp} alt={comment.userName} />
+          <div key={commentData._id} className="commentedArea">
+            <img src={commentData.userId.image} alt="img" />
             <div className="commentDetail">
               <div className="commentDetailDiv">
-                <div className="commendUser">{comment.userName}</div>
+                <div className="commendUser">{commentData.userId.name}</div>
                 <div className="commentDate">
                   {new Date().toLocaleDateString()}
                 </div>
               </div>
               <div className="commentDetailDiv">
-                <div className="commentText">{comment.comment}</div>
+                <div className="commentText">{commentData.comment}</div>
                 <div
                   className="commentDelete"
-                  onClick={() => deleteComment(comment._id)}
+                  onClick={() => deleteComment(postId)}
                 >
                   Delete
                 </div>
