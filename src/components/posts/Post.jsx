@@ -44,11 +44,11 @@ const Post = ({ postId }) => {
     <>
       {post ? (
         <>
-          {/* <div className="postDiv">
-            <div className="postUser">
+          <div className="postDiv">
+            {/* <div className="postUser">
               <img src={post.userId.image} alt={post.userId.image} />
               <div className="postUserName">{post.userName}</div> 
-            </div>
+            </div> */}
             <div className="postDetail">
               <div className="postComment">{post.description}</div>
               <img src={post.image} alt="" />
@@ -84,8 +84,7 @@ const Post = ({ postId }) => {
               Posted on {post.postedTime.slice(0, 10)}{" "}
               {post.postedTime.slice(11, 19)}
             </div>
-          </div> */}
-        </>
+          </div>        </>
       ) : (
         <p>No post</p>
       )}
