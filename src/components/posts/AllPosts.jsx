@@ -30,12 +30,15 @@ function AllPosts() {
 
       <div className="container">
         {posts.map((post) => {
-        
-   
           const id = String(post._id);
           return (
             <div>
-              <Post postId={id} postData={post} key={id} />
+              <Post
+                postId={id}
+                postData={post}
+                key={id}
+                updateState={setPosts}
+              />
             </div>
           );
         })}

@@ -5,7 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import "./post.css";
 import "./comments/comment.css";
 
-const Post = ({ postId, postData }) => {
+const Post = ({ postId, postData, updateState }) => {
   const navigate = useNavigate();
   const [post, setPost] = useState(postData);
   const [showComment, setShowComment] = useState(false); //FALSE
@@ -20,11 +20,16 @@ const Post = ({ postId, postData }) => {
   };
 
   const deletePost = async (postId) => {
-    try {
-      console.log(postId);
-      await APIHandler.post("/posts/delete/" + postId);
-    } catch (err) {
-      console.error(err);
+    if (window.confirm("Are you sure you want to delete comment?")) {
+      try {
+        console.log(postId);
+        await APIHandler.post("/posts/delete/" + postId);
+        updateState((existPost) =>
+          existPost.filter((x) => x._id !== postId)
+        );
+      } catch (err) {
+        console.error(err);
+      }
     }
   };
 
@@ -62,13 +67,13 @@ const Post = ({ postId, postData }) => {
                 <div>
                   <i
                     className="far fa-edit"
-                    onClick={() => updatePost(post.postId)}
+                    onClick={() => updatePost(postId)}
                   ></i>
                 </div>
                 <div>
                   <i
                     className="far fa-trash-alt"
-                    onClick={() => deletePost(post.postId)}
+                    onClick={() => deletePost(postId)}
                   ></i>
                 </div>
               </div>
