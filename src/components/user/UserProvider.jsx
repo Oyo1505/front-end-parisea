@@ -17,10 +17,12 @@ const UserProvider = ({ children }) => {
       const accounts = await ethereum.request({ method: "eth_accounts" });
 
       if (accounts.length !== 0) {
-        const account = accounts[0];
-        const { data } = await APIHandler.get(`/connect-wallet/${account}`);
-        setCurrentUser(data);
-        console.log("Found an authorized account:", account);
+        // const account = accounts[0];
+        // const { data } = await APIHandler.get(`/connect-wallet/${account}`);
+        // setCurrentUser(data);
+        // console.log("Found an authorized account:", account);
+        const x = await getUser();
+        setCurrentUser(x);
       } else {
         console.log("No authorized account found");
       }
@@ -28,10 +30,28 @@ const UserProvider = ({ children }) => {
       console.log(error);
     }
   };
+
+  const getUser = () => {
+    return new Promise(async (resolve, reject) => {
+      try {
+        const { ethereum } = window;
+        const accounts = await ethereum.request({ method: "eth_accounts" });
+        const account = accounts[0];
+        const { data } = await APIHandler.get(`/connect-wallet/${account}`);
+        //console.log("data ?:", data[0]);
+
+        resolve(data);
+      } catch (err) {
+        reject(err);
+      }
+    });
+  };
+
   useEffect(() => {
     checkIfWalletIsConnected();
   }, []);
-  const isLogged = { currentUser, checkIfWalletIsConnected };
+
+  const isLogged = { currentUser, getUser, checkIfWalletIsConnected };
 
   return (
     <UserContext.Provider value={isLogged}>{children}</UserContext.Provider>

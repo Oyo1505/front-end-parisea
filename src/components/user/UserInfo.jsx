@@ -7,8 +7,9 @@ import useAuth from "./UseAuth";
 
 const UserInfo = () => {
   const { id } = useParams();
-  const { currentUser } = useAuth();
+  const { currentUser, getUser } = useAuth();
   const [isfollowed, setIsFollowed] = useState(false);
+
   const [user, setUser] = useState({
     name: "",
     image: "",
@@ -63,26 +64,33 @@ const UserInfo = () => {
   }, [id]);
 
   useEffect(() => {
+    console.log("user has changed");
     const y = async () => {
       // if (currentUser.length !== 0) {
-      console.log("following", isfollowed);
+      // console.log("following", isfollowed);
       try {
         const { data } = await APIHandler.get(
           `/follower/${id}/` + currentUser[0]._id
         );
-        setIsFollowed(data ? true : false);
+        setIsFollowed(data);
       } catch (err) {
         console.error(err);
       }
     };
     // };
     y();
-  }, [id]);
+  }, [id, currentUser]);
 
   const handleFollow = async (e) => {
     try {
-      await APIHandler.patch(`/add-follow/${id}/${currentUser[0]._id}`);
+      const { data } = await APIHandler.patch(
+        `/add-follow/${id}/${currentUser[0]._id}`
+      );
+      console.log("làààààààààà", data);
       setIsFollowed(!isfollowed);
+      const u = await getUser();
+      setUser(data.user);
+      console.log("--- updated user", u);
     } catch (err) {
       console.error(err);
     }
