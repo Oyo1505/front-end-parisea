@@ -5,7 +5,7 @@ import useAuth from "../user/UseAuth";
 import ListNftsUserProfile from "./ListNftsUserProfile";
 
 const HomeNfts = () => {
-  const { user } = useAuth();
+  const { currentUser } = useAuth();
   useEffect(() => {
     const x = async () => {
       try {
@@ -19,13 +19,13 @@ const HomeNfts = () => {
       }
     };
   }, []);
-  if (user.length === 0) return <p>Loading</p>;
+  if (currentUser.length === 0) return <p>Loading</p>;
   return (
     <div>
       <h1>Created</h1>
-      <ListNftsUserProfile mode={"creator"} userId={user[0]._id} />
+      <ListNftsUserProfile mode={"creator"} userId={currentUser[0]._id} />
       <h1>Owned</h1>
-      <ListNftsUserProfile mode={"owner"} userId={user[0]._id} />
+      <ListNftsUserProfile mode={"owner"} userId={currentUser[0]._id} />
     </div>
   );
 };

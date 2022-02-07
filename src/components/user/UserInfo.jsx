@@ -109,7 +109,9 @@ const UserInfo = () => {
           </div>
 
           <div>
-            {currentUser[0]._id !== id ? (
+            {currentUser &&
+            currentUser.length !== 0 &&
+            currentUser[0]._id !== id ? (
               <button onClick={(e) => handleFollow(e)} className="edit-profile">
                 {!isfollowed ? "Follow" : "Following"}
               </button>
