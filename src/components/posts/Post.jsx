@@ -2,8 +2,8 @@ import { useState, useEffect } from "react";
 import Comments from "./comments/Comments";
 import APIHandler from "../../api/APIHandler";
 import { Link, useNavigate } from "react-router-dom";
-import "./post.css";
-import "./comments/comment.css";
+import "../../assets/css/post/post.css";
+import "../../assets/css/post/comment.css";
 
 const Post = ({ postId, postData, updateState }) => {
   const navigate = useNavigate();
@@ -24,9 +24,7 @@ const Post = ({ postId, postData, updateState }) => {
       try {
         console.log(postId);
         await APIHandler.post("/posts/delete/" + postId);
-        updateState((existPost) =>
-          existPost.filter((x) => x._id !== postId)
-        );
+        updateState((existPost) => existPost.filter((x) => x._id !== postId));
       } catch (err) {
         console.error(err);
       }
