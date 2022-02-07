@@ -8,18 +8,20 @@ const Comments = ({ postId }) => {
 
   useEffect(() => {
     (async () => {
-      const { data } = await APIHandler.get(`/posts/${postId}/comments`);
-      console.log(data);
-      setComments(data);
+      const { data } = await APIHandler.get(`/posts/comments/${postId}`);
+    
+      setComments(data[0].comments);
     })();
   }, [postId]);
+
+  if(comments.length === 0 ) return <p>test</p>
 
   return (
     <>
       <CommentForm
         postId={postId}
         onSuccess={() => setComments()}
-        comments={comments}
+
       />
 
       <div>

@@ -20,6 +20,7 @@ function FormUpdatePost() {
 
     const fd = new FormData();
     fd.append("description", posts.description);
+    fd.append("title", posts.title);
     console.log(imageRef.current.files[0]);
     fd.append("image", imageRef.current.files[0]);
 
@@ -41,6 +42,19 @@ function FormUpdatePost() {
             <p>Image</p>
             <input ref={imageRef} name="image" type="file" />
             <input type="file" name="existingImage" hidden />
+          </div>
+          <div>
+            <p>title</p>
+            <textarea
+              className="input"
+              name="title"
+              type="text"
+              placeholder="title"
+              value={posts.description}
+              onChange={(e) =>
+                setPosts({ ...posts, title: e.target.value })
+              }
+            />
           </div>
           <div>
             <p>Description</p>

@@ -6,23 +6,13 @@ import "./post.css";
 import "./comments/comment.css";
 import useAuth from "../user/UseAuth";
 
-const Post = ({ postId }) => {
+const Post = ({ postId, postData }) => {
   const navigate = useNavigate();
-  const [post, setPost] = useState({});
+  const [post, setPost] = useState(postData);
   const [showComment, setShowComment] = useState(true); //FALSE
   const [count, setCount] = useState(0);
 
-  useEffect(() => {
-    (async () => {
-      console.log(postId);
-      try {
-        const { data } = await APIHandler.get(`/posts/` + postId);
-        setPost(data);
-      } catch (e) {
-        console.error(e);
-      }
-    })();
-  }, []);
+
 
   const updatePost = (postId) => {
     navigate("/posts/update/" + postId);
@@ -35,20 +25,21 @@ const Post = ({ postId }) => {
       console.error(err);
     }
   };
-
+console.log(postData)
   const emptyHeart = <i className="far fa-heart"></i>;
   const fullHeart = <i className="fas fa-heart"></i>;
 
-  if (post.length === 0) return <p>loqd</p>;
+  if (post.length === 0 &&!post.userId ) return <p>loqd</p>;
   return (
     <>
       {post ? (
         <>
-          {/* <div className="postDiv">
+          <div className="postDiv">
             <div className="postUser">
               <img src={post.userId.image} alt={post.userId.image} />
               <div className="postUserName">{post.userName}</div> 
             </div>
+            <h4>{post.title}</h4>
             <div className="postDetail">
               <div className="postComment">{post.description}</div>
               <img src={post.image} alt="" />
@@ -84,7 +75,7 @@ const Post = ({ postId }) => {
               Posted on {post.postedTime.slice(0, 10)}{" "}
               {post.postedTime.slice(11, 19)}
             </div>
-          </div> */}
+          </div>
         </>
       ) : (
         <p>No post</p>

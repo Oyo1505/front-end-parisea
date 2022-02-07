@@ -13,7 +13,7 @@ const CommentForm = ({ postId, onSuccess }) => {
     e.preventDefault();
 
     try {
-      const res = await APIHandler.patch(`/posts/${postId}/comments`, {
+      const res = await APIHandler.patch(`/posts/comments/${postId}`, {
         userId: user[0]._id,
         comment,
       });
