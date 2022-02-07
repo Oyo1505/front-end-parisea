@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react";
 import APIHandler from "../../api/APIHandler";
 import { Link } from "react-router-dom";
+import useAuth from "./UseAuth";
 
 const Login = () => {
   const [user, setUser] = useState([]);
+  const { currentUser } = useAuth();
+
   const checkIfWalletIsConnected = async () => {
     try {
       const { ethereum } = window;
@@ -48,7 +51,9 @@ const Login = () => {
   return (
     <div>
       {user.length !== 0 ? (
-        <Link to={`/${user._id}`}>Profile</Link>
+        <Link to={`/${user._id}`}>
+          <div className="logo-div">Profile</div>
+        </Link>
       ) : (
         <button onClick={connectAccounts}>Connect Wallet</button>
       )}
