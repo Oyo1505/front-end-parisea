@@ -17,10 +17,7 @@ const ListNftsUserProfile = ({ mode, userId }) => {
 
   return (
     <div className="nfts">
-      <div>
-        <Link to={"/nfts/create-item"}>Create NFT</Link>
-      </div>
-
+    
       {!nfts.length ? (
         <h1 className="px-20 py-10 text-3xl">No items in marketplace</h1>
       ) : (

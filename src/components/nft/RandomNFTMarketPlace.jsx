@@ -17,7 +17,7 @@ const RandomNFTMarketPlace = () => {
     };
     x();
   }, []);
-  if (nft.length === 0) return <Loading />;
+  if (nft.length === 0) return <p>NO item</p>;
   return (
     <div>
       <Link to={`nfts/${nft._id}`}>
