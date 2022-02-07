@@ -26,18 +26,19 @@ const UserInfo = () => {
   });
 
   useEffect(() => {
-    const y = async () => {
-      if (currentUser.length !== 0) {
-        try {
-          const { data } = await APIHandler.get(
-            `/follower/${id}/` + currentUser[0]._id
-          );
-          setIsFollowed(data ? true : false);
-        } catch (err) {
-          console.error(err);
-        }
-      }
-    };
+    // const y = async () => {
+    //   if (currentUser.length !== 0) {
+    //     try {
+    //       const { data } = await APIHandler.get(
+    //         `/follower/${id}/` + currentUser[0]._id
+    //       );
+    //       setIsFollowed(data ? true : false);
+    //       console.log("following", isfollowed);
+    //     } catch (err) {
+    //       console.error(err);
+    //     }
+    //   }
+    // };
     const x = async () => {
       const { data } = await APIHandler.get("/users/edit/" + id);
       setUser({
@@ -57,15 +58,30 @@ const UserInfo = () => {
       });
     };
 
+    // y();
     x();
+  }, [id]);
+
+  useEffect(() => {
+    const y = async () => {
+      // if (currentUser.length !== 0) {
+      console.log("following", isfollowed);
+      try {
+        const { data } = await APIHandler.get(
+          `/follower/${id}/` + currentUser[0]._id
+        );
+        setIsFollowed(data ? true : false);
+      } catch (err) {
+        console.error(err);
+      }
+    };
+    // };
     y();
   }, [id]);
 
   const handleFollow = async (e) => {
     try {
-      const { data } = await APIHandler.patch(
-        `/add-follow/${id}/${currentUser[0]._id}`
-      );
+      await APIHandler.patch(`/add-follow/${id}/${currentUser[0]._id}`);
       setIsFollowed(!isfollowed);
     } catch (err) {
       console.error(err);

@@ -51,7 +51,9 @@ const Login = () => {
   return (
     <div>
       {user.length !== 0 ? (
-        <Link to={`/${user._id}`}>Profile</Link>
+        <Link to={`/${user._id}`}>
+          <div className="logo-div">Profile</div>
+        </Link>
       ) : (
         <button onClick={connectAccounts}>Connect Wallet</button>
       )}

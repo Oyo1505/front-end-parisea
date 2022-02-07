@@ -2,10 +2,13 @@ import React, { useRef, useState, useEffect } from "react";
 import "../../App.css";
 import APIHandler from "../../api/APIHandler";
 import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "../../assets/css/user/user-edit-style.css";
 import useAuth from "./UseAuth";
+import { useNavigate } from "react-router-dom";
 
 const UserEdit = () => {
+  const navigate = useNavigate();
   const { id } = useParams();
   const imageRef = useRef("");
   const coverImageRef = useRef("");
@@ -80,6 +83,7 @@ const UserEdit = () => {
 
         coverImage: data.coverImage,
       });
+      navigate(`/${data._id}`);
     } catch (e) {
       console.error(e);
     }
@@ -251,7 +255,7 @@ const UserEdit = () => {
                   className="input-section"
                   type="url"
                   name="twitter"
-                  placeholder="Twitter Link"
+                  placeholder="Twitter Username"
                   value={user.twitter}
                   onChange={(e) =>
                     setUser({ ...user, twitter: e.target.value })
@@ -270,7 +274,7 @@ const UserEdit = () => {
                   className="input-section"
                   type="url"
                   name="facebook"
-                  placeholder="Facebook Link"
+                  placeholder="Facebook Username"
                   value={user.facebook}
                   onChange={(e) =>
                     setUser({ ...user, facebook: e.target.value })
@@ -289,7 +293,7 @@ const UserEdit = () => {
                   className="input-section"
                   type="url"
                   name="instagram"
-                  placeholder="Instagram Link"
+                  placeholder="Instagram Username"
                   value={user.instagram}
                   onChange={(e) =>
                     setUser({ ...user, instagram: e.target.value })
@@ -299,9 +303,11 @@ const UserEdit = () => {
             </div>
           </div>
 
-          <button className="submit" onClick={handleSubmit}>
-            Save changes
-          </button>
+          <div className="onHover">
+            <button className="submit" onClick={handleSubmit}>
+              Save changes
+            </button>
+          </div>
         </form>
       </div>
     </div>

@@ -19,11 +19,11 @@ const Header = () => {
             </div>
           </NavLink>
         </div>
-        <div>
+        {/* <div>
           <NavLink to={"/"}>Home</NavLink>
-        </div>
+        </div> */}
         {/* <NavLink to={"/posts"}>Posts</NavLink> */}
-        <div className="logo-div">
+        <div>
           <Login />
         </div>
         <div>
