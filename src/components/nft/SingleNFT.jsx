@@ -27,7 +27,11 @@ const SingleNFT = () => {
       return <BuyNFT nftId={nft._id} buyerId={currentUser[0]._id} />;
     }
   };
+<<<<<<< HEAD
   if (currentUser.length === 0) return <p>loading</p>;
+=======
+  if (currentUser.length === 0) return <p>Loading</p>;
+>>>>>>> df19d8af2b55e959cdc7a50ad4477c0a50d53608
 
   return (
     <>

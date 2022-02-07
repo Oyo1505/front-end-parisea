@@ -49,8 +49,8 @@ const UserEdit = () => {
 
     const formData = new FormData();
 
-     formData.append("image", imageRef.current.files[0]);
-     formData.append("coverImage", coverImageRef.current.files[0]);
+    formData.append("image", imageRef.current.files[0]);
+    formData.append("coverImage", coverImageRef.current.files[0]);
     formData.append("name", user.name);
     formData.append("userName", user.userName);
     formData.append("email", user.email);
@@ -58,13 +58,8 @@ const UserEdit = () => {
     formData.append("twitter", user.twitter);
     formData.append("facebook", user.facebook);
     formData.append("instagram", user.instagram);
-
-    console.log("current image >>>>>>", imageRef.current.files[0]);
-    console.log("cover image >>>>>>", coverImageRef.current.files[0]);
     try {
       const { data } = await APIHandler.patch(`/users/edit/${id}`, formData);
-      console.log("Data >>>>>>>>>>> ", data);
-     // checkIfWalletIsConnected();
       setUser({
         name: data.name,
         userName: data.userName,
@@ -77,7 +72,7 @@ const UserEdit = () => {
 
         coverImage: data.coverImage,
       });
-      // navigate(`/${data._id}`);
+       navigate(`/${data._id}`);
     } catch (e) {
       console.error(e);
     }
