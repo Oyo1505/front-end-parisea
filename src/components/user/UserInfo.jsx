@@ -4,11 +4,19 @@ import "../../assets/css/user/user-info-style.css";
 import { useParams } from "react-router-dom";
 import APIHandler from "../../api/APIHandler";
 import useAuth from "./UseAuth";
+import ModalFollowers from "./ModalFollowers";
 
 const UserInfo = () => {
   const { id } = useParams();
   const { currentUser, getUser } = useAuth();
   const [isfollowed, setIsFollowed] = useState(false);
+  const [open, setOpen] = useState(false);
+  const [mode, setMode] = useState("");
+  const onOpenModal = (mode) => {
+    setMode(mode);
+    setOpen(true);
+  };
+  const onCloseModal = () => setOpen(false);
 
   const [user, setUser] = useState({
     name: "",
@@ -27,19 +35,6 @@ const UserInfo = () => {
   });
 
   useEffect(() => {
-    // const y = async () => {
-    //   if (currentUser.length !== 0) {
-    //     try {
-    //       const { data } = await APIHandler.get(
-    //         `/follower/${id}/` + currentUser[0]._id
-    //       );
-    //       setIsFollowed(data ? true : false);
-    //       console.log("following", isfollowed);
-    //     } catch (err) {
-    //       console.error(err);
-    //     }
-    //   }
-    // };
     const x = async () => {
       const { data } = await APIHandler.get("/users/edit/" + id);
       setUser({
@@ -63,6 +58,7 @@ const UserInfo = () => {
     x();
   }, [id]);
 
+  console.log("user", user);
   useEffect(() => {
     console.log("user has changed");
     const y = async () => {
@@ -124,12 +120,27 @@ const UserInfo = () => {
         <div className="followers-following">
           <div className="following">
             <strong className="following-count">{user.following.length}</strong>
-            <p className="following-title">Following</p>
+            <button
+              onClick={() => onOpenModal("following")}
+              className="following-title"
+            >
+              Following
+            </button>
           </div>
           <div className="followers">
             <strong className="followers-count">{user.follower.length}</strong>
 
-            <p className="followers-title">Followers</p>
+            <button
+              onClick={() => onOpenModal("follower")}
+              className="followers-title"
+            >
+              Followers
+            </button>
+            <ModalFollowers
+              onCloseModal={onCloseModal}
+              open={open}
+              users={mode === "follower" ? user.follower : user.following}
+            />
           </div>
 
           <div>

@@ -229,3 +229,10 @@
     transition: color 0.7s ease-out;
 
 }
+
+.modal-follow {
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(20px);
+    padding-left: 32px;
+    padding-right: 32px;
+}
