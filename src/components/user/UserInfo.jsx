@@ -86,7 +86,6 @@ const UserInfo = () => {
       const { data } = await APIHandler.patch(
         `/add-follow/${id}/${currentUser[0]._id}`
       );
-      console.log("làààààààààà", data);
       setIsFollowed(!isfollowed);
       const u = await getUser();
       setUser(data.user);

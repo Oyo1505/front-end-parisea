@@ -48,9 +48,10 @@ const UserEdit = () => {
     e.preventDefault();
 
     const formData = new FormData();
-
-    formData.append("image", imageRef.current.files[0]);
-    formData.append("coverImage", coverImageRef.current.files[0]);
+    const image = imageRef.current.files[0] || user.image;
+    const coverImage = coverImageRef.current.files[0] || user.coverImage;
+     formData.append("image", image);
+     formData.append("coverImage", coverImage);
     formData.append("name", user.name);
     formData.append("userName", user.userName);
     formData.append("email", user.email);
@@ -58,8 +59,13 @@ const UserEdit = () => {
     formData.append("twitter", user.twitter);
     formData.append("facebook", user.facebook);
     formData.append("instagram", user.instagram);
+
+    console.log("current image >>>>>>", imageRef.current.files[0]);
+    console.log("cover image >>>>>>", coverImageRef.current.files[0]);
     try {
       const { data } = await APIHandler.patch(`/users/edit/${id}`, formData);
+      console.log("Data >>>>>>>>>>> ", data);
+     // checkIfWalletIsConnected();
       setUser({
         name: data.name,
         userName: data.userName,
@@ -69,10 +75,9 @@ const UserEdit = () => {
         twitter: data.twitter,
         facebook: data.facebook,
         instagram: data.instagram,
-
         coverImage: data.coverImage,
       });
-       navigate(`/${data._id}`);
+      // navigate(`/${data._id}`);
     } catch (e) {
       console.error(e);
     }
@@ -297,7 +302,7 @@ const UserEdit = () => {
           </div>
 
           <div className="onHover">
-            <button className="submit" onClick={handleSubmit}>
+            <button className="submit" onClick={(e)=>handleSubmit(e)}>
               Save changes
             </button>
           </div>
