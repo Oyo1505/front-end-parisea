@@ -21,11 +21,7 @@ const HomeNfts = () => {
       }
     };
   }, []);
-<<<<<<< HEAD
-  if (user.length === 0) return <p>lod</p>;
-=======
-  if (currentUser.length === 0) return <p>Loading</p>;
->>>>>>> 925002a46a0376abebfa2832e022769cccac80e4
+  if (currentUser.length === 0) return <p>lod</p>;
   return (
     <div>
         <div>

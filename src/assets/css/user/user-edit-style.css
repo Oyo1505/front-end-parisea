@@ -182,19 +182,6 @@
 }
 
 .input-section:focus {
-<<<<<<< HEAD
-  outline: none !important;
-  border-color: black;
-  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.05);
-}
-
-.input-section:hover {
-  outline: none !important;
-  border-color: black;
-  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.05);
-  cursor: text;
-}
-=======
     outline: none !important;
     border-color: black;
     box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.05);
@@ -209,4 +196,3 @@
 
     transition: border-color 2s ease-out;
 }
->>>>>>> 925002a46a0376abebfa2832e022769cccac80e4

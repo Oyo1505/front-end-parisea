@@ -21,13 +21,6 @@ const Header = () => {
         </div>
         {/* <div>
           <NavLink to={"/"}>Home</NavLink>
-<<<<<<< HEAD
-        </div>
-        <Login />
-        <NavLink className={"button-create"} to={"/nfts"}>
-          Create
-        </NavLink>
-=======
         </div> */}
         {/* <NavLink to={"/posts"}>Posts</NavLink> */}
         <div>
@@ -40,7 +33,6 @@ const Header = () => {
             </NavLink>
           </div>
         </div>
->>>>>>> 925002a46a0376abebfa2832e022769cccac80e4
       </div>
     </nav>
   );

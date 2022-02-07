@@ -2,11 +2,8 @@ import React, { useRef, useState, useEffect } from "react";
 import "../../App.css";
 import APIHandler from "../../api/APIHandler";
 import { useParams } from "react-router-dom";
-<<<<<<< HEAD
 import useRefs from "react-use-refs";
-=======
 import { Link } from "react-router-dom";
->>>>>>> 925002a46a0376abebfa2832e022769cccac80e4
 import "../../assets/css/user/user-edit-style.css";
 import useAuth from "./UseAuth";
 import { useNavigate } from "react-router-dom";
@@ -46,11 +43,7 @@ const UserEdit = () => {
     };
     x();
   }, [id]);
-  // useEffect(()=>{
-  //   // imageRef.current["image"]
-  //   // imageRef.current["coverImage"]
-  //   // console.log(imageRef)
-  // }, [])
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -70,8 +63,8 @@ const UserEdit = () => {
     console.log("cover image >>>>>>", coverImageRef.current.files[0]);
     try {
       const { data } = await APIHandler.patch(`/users/edit/${id}`, formData);
-      console.log("Data >>>>>>>>>>> ", formData);
-      checkIfWalletIsConnected();
+      console.log("Data >>>>>>>>>>> ", data);
+     // checkIfWalletIsConnected();
       setUser({
         name: data.name,
         userName: data.userName,
@@ -84,7 +77,7 @@ const UserEdit = () => {
 
         coverImage: data.coverImage,
       });
-      navigate(`/${data._id}`);
+      // navigate(`/${data._id}`);
     } catch (e) {
       console.error(e);
     }
