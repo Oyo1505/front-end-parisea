@@ -6,7 +6,7 @@ import useAuth from "../user/UseAuth";
 
 const FormNFT = () => {
   const { id } = useParams();
-  const { user } = useAuth();
+  const { currentUser } = useAuth();
   const [nft, setNft] = useState({
     title: "test",
     description: "test",
@@ -41,11 +41,11 @@ const FormNFT = () => {
 
   useEffect(() => {
     setNft({
-      creator: user[0]._id,
-      owner: user[0]._id,
-      seller: user[0]._id,
+      creator: currentUser[0]._id,
+      owner: currentUser[0]._id,
+      seller: currentUser[0]._id,
     });
-  }, [user]);
+  }, [currentUser]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -85,7 +85,7 @@ const FormNFT = () => {
       console.log(e);
     }
   };
-  if (!user[0]) return <p>Loading</p>;
+  if (!currentUser[0]) return <p>Loading</p>;
   return (
     <>
       {id ? <h1>Update</h1> : <h1>Create</h1>}

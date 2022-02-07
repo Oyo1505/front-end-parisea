@@ -4,25 +4,26 @@ import { useNavigate } from "react-router-dom";
 import useAuth from "../user/UseAuth";
 
 function FormCreatePost() {
-  const { user } = useAuth();
+  const { currentUser } = useAuth();
   const navigate = useNavigate();
   const imageRef = useRef("");
 
   const [posts, setPosts] = useState({
     image: "",
     description: "Behhhhh",
-    // postedTime: new Date.now(),
   });
+
+  console.log(currentUser);
 
   // console.log(user[0]._id);
   const handleSubmit = async (e) => {
     e.preventDefault();
     const { description, title } = posts;
     const fd = new FormData();
-    fd.append("userId", user[0]._id);
+    fd.append("userId", currentUser[0]._id);
     fd.append("title", title);
     fd.append("description", description);
-    console.log(imageRef.current.files[0]);
+    // console.log(imageRef.current.files[0]);
     fd.append("image", imageRef.current.files[0]);
 
     try {
@@ -51,9 +52,7 @@ function FormCreatePost() {
               type="text"
               placeholder="Title"
               value={posts.title}
-              onChange={(e) =>
-                setPosts({ ...posts, title: e.target.value })
-              }
+              onChange={(e) => setPosts({ ...posts, title: e.target.value })}
             />
           </div>
           <div>

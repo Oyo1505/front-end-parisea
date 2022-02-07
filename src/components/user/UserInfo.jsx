@@ -7,6 +7,8 @@ import useAuth from "./UseAuth";
 
 const UserInfo = () => {
   const { id } = useParams();
+  const { currentUser } = useAuth();
+  const [isfollowed, setIsFollowed] = useState(false);
   const [user, setUser] = useState({
     name: "",
     image: "",
@@ -24,9 +26,21 @@ const UserInfo = () => {
   });
 
   useEffect(() => {
+    // const y = async () => {
+    //   if (currentUser.length !== 0) {
+    //     try {
+    //       const { data } = await APIHandler.get(
+    //         `/follower/${id}/` + currentUser[0]._id
+    //       );
+    //       setIsFollowed(data ? true : false);
+    //       console.log("following", isfollowed);
+    //     } catch (err) {
+    //       console.error(err);
+    //     }
+    //   }
+    // };
     const x = async () => {
       const { data } = await APIHandler.get("/users/edit/" + id);
-      // console.log(data);
       setUser({
         name: data.name,
         image: data.image,
@@ -44,10 +58,35 @@ const UserInfo = () => {
       });
     };
 
+    // y();
     x();
   }, [id]);
 
-  console.log(user);
+  useEffect(() => {
+    const y = async () => {
+      // if (currentUser.length !== 0) {
+      console.log("following", isfollowed);
+      try {
+        const { data } = await APIHandler.get(
+          `/follower/${id}/` + currentUser[0]._id
+        );
+        setIsFollowed(data ? true : false);
+      } catch (err) {
+        console.error(err);
+      }
+    };
+    // };
+    y();
+  }, [id]);
+
+  const handleFollow = async (e) => {
+    try {
+      await APIHandler.patch(`/add-follow/${id}/${currentUser[0]._id}`);
+      setIsFollowed(!isfollowed);
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
   return (
     <div>
@@ -73,7 +112,8 @@ const UserInfo = () => {
             </div>
           </div>
         </div>
-
+            <img src={user.image} />
+            <img src={user.coverImage} />
         <div className="followers-following">
           <div className="following">
             <strong className="following-count">{user.following.length}</strong>
@@ -86,9 +126,17 @@ const UserInfo = () => {
           </div>
 
           <div>
-            <Link to={`/profile/edit/${id}`}>
-              <button className="edit-profile">Edit Profile</button>
-            </Link>
+            {currentUser &&
+            currentUser.length !== 0 &&
+            currentUser[0]._id !== id ? (
+              <button onClick={(e) => handleFollow(e)} className="edit-profile">
+                {!isfollowed ? "Follow" : "Following"}
+              </button>
+            ) : (
+              <Link to={`/profile/edit/${id}`}>
+                <button className="edit-profile">Edit Profile</button>
+              </Link>
+            )}
           </div>
         </div>
 

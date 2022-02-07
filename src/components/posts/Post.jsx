@@ -1,15 +1,14 @@
 import { useState, useEffect } from "react";
 import Comments from "./comments/Comments";
 import APIHandler from "../../api/APIHandler";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./post.css";
 import "./comments/comment.css";
 
-const Post = ({ postId, postData, comments }) => {
+const Post = ({ postId, postData }) => {
   const navigate = useNavigate();
   const [post, setPost] = useState(postData);
   const [showComment, setShowComment] = useState(false); //FALSE
-  const [count, setCount] = useState(0);
   const [likeAdded, setLikeAdded] = useState(false);
 
   const toggle = () => {
@@ -22,13 +21,12 @@ const Post = ({ postId, postData, comments }) => {
 
   const deletePost = async (postId) => {
     try {
+      console.log(postId);
       await APIHandler.post("/posts/delete/" + postId);
     } catch (err) {
       console.error(err);
     }
   };
-
-  console.log(postData);
 
   const emptyHeart = <i className="far fa-heart"></i>;
   const fullHeart = <i className="fas fa-heart"></i>;
@@ -40,11 +38,13 @@ const Post = ({ postId, postData, comments }) => {
       {post ? (
         <>
           <div className="postDiv">
-            <div className="postUser">
-              <img src={post.userId.image} alt="img" />
-              <div className="postUserName">{post.userId.name}</div>
-            </div>
-            <h4>{post.title}</h4>
+            <Link to={`/${postData.userId._id}`}>
+              <div className="postUser">
+                <img src={post.userId.image} alt="img" />
+                <div className="postUserName">{post.userId.name}</div>
+              </div>
+            </Link>
+            {/* <h4>{post.title}</h4> */}
             <div className="postDetail">
               <div className="postComment">{post.description}</div>
               <img src={post.image} alt="" />

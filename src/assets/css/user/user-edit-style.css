@@ -167,6 +167,13 @@
   font-size: 16px;
 }
 
+.submit:hover {
+    background-color: white;
+    color: black;
+    border: solid 1px #E6E6E6;
+    transition: background-color 0.25s ease-out;
+}
+
 .details-links {
   display: flex;
   flex-direction: column;
@@ -175,14 +182,17 @@
 }
 
 .input-section:focus {
-  outline: none !important;
-  border-color: black;
-  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.05);
+    outline: none !important;
+    border-color: black;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.05);
+
 }
 
 .input-section:hover {
-  outline: none !important;
-  border-color: black;
-  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.05);
-  cursor: text;
+    outline: none !important;
+    border-color: black;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.05);
+    cursor: text;
+
+    transition: border-color 2s ease-out;
 }
