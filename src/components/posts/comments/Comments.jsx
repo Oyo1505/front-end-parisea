@@ -16,7 +16,11 @@ const Comments = ({ postId }) => {
 
   return (
     <>
-      <CommentForm onSuccess={() => setComments()} comments={comments} />
+      <CommentForm
+        postId={postId}
+        onSuccess={() => setComments()}
+        comments={comments}
+      />
 
       <div>
         {comments.map((comment) => {
