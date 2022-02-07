@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "../../assets/css/user/user-info-style.css";
 import { useParams } from "react-router-dom";
@@ -119,8 +119,8 @@ const UserInfo = () => {
             </div>
           </div>
         </div>
-            <img src={user.image} />
-            <img src={user.coverImage} />
+        <img src={user.image} />
+        <img src={user.coverImage} />
         <div className="followers-following">
           <div className="following">
             <strong className="following-count">{user.following.length}</strong>

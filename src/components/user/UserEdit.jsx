@@ -1,11 +1,9 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import "../../App.css";
 import APIHandler from "../../api/APIHandler";
 import { useParams } from "react-router-dom";
 import useRefs from "react-use-refs";
-import { Link } from "react-router-dom";
 import "../../assets/css/user/user-edit-style.css";
-import useAuth from "./UseAuth";
 import { useNavigate } from "react-router-dom";
 
 const UserEdit = () => {
@@ -24,7 +22,6 @@ const UserEdit = () => {
     facebook: "",
     instagram: "",
   });
-  const { user: connectedUser, checkIfWalletIsConnected } = useAuth();
 
   useEffect(() => {
     const x = async () => {
@@ -48,10 +45,12 @@ const UserEdit = () => {
     e.preventDefault();
 
     const formData = new FormData();
+
     const image = imageRef.current.files[0] || user.image;
     const coverImage = coverImageRef.current.files[0] || user.coverImage;
-     formData.append("image", image);
-     formData.append("coverImage", coverImage);
+
+    formData.append("image", image);
+    formData.append("coverImage", coverImage);
     formData.append("name", user.name);
     formData.append("userName", user.userName);
     formData.append("email", user.email);
@@ -60,12 +59,10 @@ const UserEdit = () => {
     formData.append("facebook", user.facebook);
     formData.append("instagram", user.instagram);
 
-    console.log("current image >>>>>>", imageRef.current.files[0]);
-    console.log("cover image >>>>>>", coverImageRef.current.files[0]);
     try {
       const { data } = await APIHandler.patch(`/users/edit/${id}`, formData);
       console.log("Data >>>>>>>>>>> ", data);
-     // checkIfWalletIsConnected();
+      // checkIfWalletIsConnected();
       setUser({
         name: data.name,
         userName: data.userName,
@@ -191,14 +188,7 @@ const UserEdit = () => {
                 <div>
                   <h4 className="image-info">{user.image}</h4>
                 </div>
-                <input
-                  id="files"
-               
-                  ref={imageRef}
-                  name="image"
-                  type="file"
-                  onInput={() => console.log(imageRef.current.files[0], "image")}
-                />
+                <input id="files" ref={imageRef} name="image" type="file" />
               </div>
             </div>
           </div>
@@ -224,7 +214,6 @@ const UserEdit = () => {
                 </div>
                 <div>
                   <input
-                   
                     ref={coverImageRef}
                     name="coverImage"
                     type="file"
@@ -302,7 +291,7 @@ const UserEdit = () => {
           </div>
 
           <div className="onHover">
-            <button className="submit" onClick={(e)=>handleSubmit(e)}>
+            <button className="submit" onClick={(e) => handleSubmit(e)}>
               Save changes
             </button>
           </div>

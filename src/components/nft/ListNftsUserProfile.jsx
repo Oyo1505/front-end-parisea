@@ -6,14 +6,13 @@ const ListNftsUserProfile = ({ mode, userId }) => {
   useEffect(() => {
     const x = async () => {
       try {
-        if(mode === "creator" || mode === "owner"){
+        if (mode === "creator" || mode === "owner") {
           const { data } = await APIHandler.get(`/list-nfts/${mode}/${userId}`);
           setNfts(data);
-        }else{
-         // const { data } = await APIHandler.get(`/list-posts/${mode}/${userId}`);
+        } else {
+          // const { data } = await APIHandler.get(`/list-posts/${mode}/${userId}`);
           setNfts([]);
         }
-       
       } catch (e) {
         console.error(e);
       }
@@ -29,10 +28,8 @@ const ListNftsUserProfile = ({ mode, userId }) => {
       ) : (
         nfts.map((el) => {
           return (
-            <div  key={el._id}>
-              <Link to={`/nfts/${el._id}`}>
-                {el.title}
-              </Link>
+            <div key={el._id}>
+              <Link to={`/nfts/${el._id}`}>{el.title}</Link>
               <p>{el.creator}</p>
             </div>
           );
