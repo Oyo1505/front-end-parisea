@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import APIHandler from "../../api/APIHandler";
+import Loading from "../loading/Loading";
 import useAuth from "../user/UseAuth";
 import BuyNFT from "./BuyNFT";
 import ResellNFT from "./ResellNFT";
@@ -25,6 +26,7 @@ const SingleNFT = () => {
   useEffect(() => {
     const x = async () => {
       try {
+        console.log(id);
         const { data } = await APIHandler.get(`/nfts/${id}`);
         setNft(data);
       } catch (e) {
@@ -38,7 +40,7 @@ const SingleNFT = () => {
       return <BuyNFT nftId={nft._id} buyerId={user[0]._id} />;
     }
   };
-  if (user.length === 0) return <p>Loading</p>;
+  if (user.length === 0) return <Loading />;
 
   return (
     <>

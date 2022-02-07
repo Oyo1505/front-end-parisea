@@ -1,202 +1,188 @@
 .main {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-self: center;
-
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-self: center;
 }
 
 .h1-edit-profile {
-    margin-top: 48px;
-    font-size: 56px;
+  margin-top: 48px;
+  font-size: 56px;
 }
 
 .formulaire-edit-profile {
-    background-color: white;
-    max-width: 740px;
-    padding: 48px;
-    margin-left: auto;
-    margin-right: auto;
-    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.05);
-    border-radius: 12px;
+  background-color: white;
+  max-width: 740px;
+  padding: 48px;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.05);
+  border-radius: 12px;
 
-    margin-top: 48px;
-    margin-bottom: 48px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-self: center;
+  margin-top: 48px;
+  margin-bottom: 48px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-self: center;
 }
 
 .details {
-    display: flex;
-    gap: 64px;
-    justify-content: space-between;
-    min-width: 0px;
-
-
+  display: flex;
+  gap: 64px;
+  justify-content: space-between;
+  min-width: 0px;
 }
 
 .title {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    text-align: start;
-    width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: start;
+  width: 100%;
 }
 
 .inputs {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 
-    margin-bottom: 8px;
-    width: 100%;
+  margin-bottom: 8px;
+  width: 100%;
 }
 
-
-
 .h2-edit-profile {
-    font-weight: 600;
-    margin-bottom: 24px;
+  font-weight: 600;
+  margin-bottom: 24px;
 }
 
 .p-edit-profile {
-    line-height: 1.7;
-    margin-bottom: 30px;
+  line-height: 1.7;
+  margin-bottom: 30px;
 }
 
 .label-section-edit-profile {
-    margin-bottom: 12px;
-    font-weight: 600;
+  margin-bottom: 12px;
+  font-weight: 600;
 }
 
 .input-section {
-    display: flex;
-    align-items: center;
-    border-radius: 8px;
-    border: solid 1px #E6E6E6;
-    margin-bottom: 24px;
-    font-size: 16px;
+  display: flex;
+  align-items: center;
+  border-radius: 8px;
+  border: solid 1px #e6e6e6;
+  margin-bottom: 24px;
+  font-size: 16px;
 
-    min-height: 60px;
-    width: 100%;
-    padding-left: 20px;
-    padding-right: 20px;
-    padding-top: 16px;
-    padding-bottom: 16px;
+  min-height: 60px;
+  width: 100%;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 16px;
+  padding-bottom: 16px;
 }
 
 .bio {
-    height: 226px;
-    line-height: 1.7;
+  height: 226px;
+  line-height: 1.7;
 
-    align-items: flex-start;
-    text-align: start;
-    text-align: start;
-    font-family: inherit;
-    font-size: 16px;
+  align-items: flex-start;
+  text-align: start;
+  text-align: start;
+  font-family: inherit;
+  font-size: 16px;
 }
 
-
-
 .profile-image {
+  min-height: 115px;
+  min-width: 0px;
+  width: 100%;
+  background: white;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.05);
 
-    min-height: 115px;
-    min-width: 0px;
-    width: 100%;
-    background: white;
-    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.05);
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 12px;
-    /* padding: 20px; */
-    height: 115px;
-    object-fit: cover;
-
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  /* padding: 20px; */
+  height: 115px;
+  object-fit: cover;
 }
 
 .section-padding {
-    padding: 20px;
-    display: flex;
-    width: 100%;
-
-
+  padding: 20px;
+  display: flex;
+  width: 100%;
 }
 
-
 .image-section {
-    position: relative;
-    min-width: 72px;
-    min-height: 72px;
-    max-width: 72px;
-    max-height: 72px;
-    margin-right: 24px;
+  position: relative;
+  min-width: 72px;
+  min-height: 72px;
+  max-width: 72px;
+  max-height: 72px;
+  margin-right: 24px;
 
-    border-radius: 50px;
-    border: solid 1px #E6E6E6;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    align-self: center;
-    padding: 26px;
-    width: 100%;
-    height: 100%;
-    cursor: pointer;
-    object-fit: cover;
-
+  border-radius: 50px;
+  border: solid 1px #e6e6e6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+  padding: 26px;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  object-fit: cover;
 }
 
 .image-input {
-    visibility: hidden;
+  visibility: hidden;
 }
 
 .image-info {
-    text-overflow: ellipsis;
+  text-overflow: ellipsis;
 }
 
 .image-info {
+  width: 150px;
+  padding: 30px 6px 30px;
 
-    width: 150px;
-    padding: 30px 6px 30px;
-
-    /* Les deux règles suivantes sont nécessaires pour text-overflow */
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+  /* Les deux règles suivantes sont nécessaires pour text-overflow */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .submit {
-    background-color: black;
-    color: white;
-    width: 100%;
-    height: 60px;
-    border-radius: 12px;
-    border: solid 1px #E6E6E6;
+  background-color: black;
+  color: white;
+  width: 100%;
+  height: 60px;
+  border-radius: 12px;
+  border: solid 1px #e6e6e6;
 
-    font-weight: 600;
-    cursor: pointer;
-    font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 16px;
 }
 
 .details-links {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 
-    min-width: 0px;
+  min-width: 0px;
 }
 
 .input-section:focus {
-    outline: none !important;
-    border-color: black;
-    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.05);
+  outline: none !important;
+  border-color: black;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.05);
 }
 
 .input-section:hover {
-    outline: none !important;
-    border-color: black;
-    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.05);
-    cursor: text;
+  outline: none !important;
+  border-color: black;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.05);
+  cursor: text;
 }

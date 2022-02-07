@@ -9,9 +9,6 @@ function FormCreatePost() {
   const imageRef = useRef("");
 
   const [posts, setPosts] = useState({
-    // userId: "",
-    // userName: "Mimi",
-    // userPfp: "",
     image: "",
     description: "Behhhhh",
     // postedTime: new Date.now(),
@@ -20,15 +17,15 @@ function FormCreatePost() {
   // console.log(user[0]._id);
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const { description } = posts;
+    const { description, title } = posts;
     const fd = new FormData();
     fd.append("userId", user[0]._id);
+    fd.append("title", title);
     fd.append("description", description);
     console.log(imageRef.current.files[0]);
     fd.append("image", imageRef.current.files[0]);
 
     try {
-      console.log(fd);
       const res = await APIHandler.post("/posts/create", fd);
       console.log("Post data created >>", res.data);
       navigate("/posts");
@@ -45,6 +42,19 @@ function FormCreatePost() {
           <div>
             <p>Image</p>
             <input ref={imageRef} name="image" type="file" />
+          </div>
+          <div>
+            <p>Title</p>
+            <input
+              className="input"
+              name="title"
+              type="text"
+              placeholder="Title"
+              value={posts.title}
+              onChange={(e) =>
+                setPosts({ ...posts, title: e.target.value })
+              }
+            />
           </div>
           <div>
             <p>Description</p>

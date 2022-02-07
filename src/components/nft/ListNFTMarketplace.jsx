@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-
 import APIHandler from "../../api/APIHandler";
 
 const ListNFTMarketplace = ({ limit }) => {
@@ -8,7 +7,7 @@ const ListNFTMarketplace = ({ limit }) => {
   useEffect(() => {
     const x = async () => {
       try {
-        const { data } = await APIHandler.get(`/nfts/${limit}`);
+        const { data } = await APIHandler.get(`/nfts/market/${limit}`);
         console.log(data);
         setNfts(data);
       } catch (e) {

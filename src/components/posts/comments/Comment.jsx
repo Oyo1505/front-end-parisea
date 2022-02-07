@@ -7,7 +7,7 @@ import { useParams } from "react-router-dom";
 const Comment = ({ postId }) => {
   const { id } = useParams();
   const { user } = useAuth();
-  console.log(user);
+
   const [comment, setComment] = useState(postId.comment);
 
   useEffect(() => {
