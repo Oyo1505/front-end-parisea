@@ -4,19 +4,19 @@ import { useState, useEffect } from "react";
 import APIHandler from "../../../api/APIHandler";
 import { useParams } from "react-router-dom";
 
-const Comment = (props) => {
+const Comment = ({ postId }) => {
   const { id } = useParams();
   const { user } = useAuth();
   console.log(user);
-  const [comment, setComment] = useState(props.comment);
+  const [comment, setComment] = useState(postId.comment);
 
-  // useEffect(() => {
-  //   (async () => {
-  //     const { data } = await APIHandler.get(`/posts/${id}`);
-  //     console.log(data);
-  //     setComment(data);
-  //   })();
-  // }, []);
+  useEffect(() => {
+    (async () => {
+      const { data } = await APIHandler.get(`/posts/${postId}/comments`);
+      console.log(data);
+      setComment(data);
+    })();
+  }, []);
 
   const deleteComment = (id) => {
     if (window.confirm("Are you sure you want to delete comment?")) {

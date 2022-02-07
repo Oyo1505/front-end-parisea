@@ -4,7 +4,6 @@ import useAuth from "../../user/UseAuth";
 import { useParams } from "react-router-dom";
 
 const CommentForm = ({ postId, onSuccess }) => {
-  const { id } = useParams();
   // console.log(postId);
   const { user } = useAuth();
   const [comment, setComment] = useState("");
@@ -14,7 +13,7 @@ const CommentForm = ({ postId, onSuccess }) => {
     e.preventDefault();
 
     try {
-      const res = await APIHandler.patch(`/posts/` + id, {
+      const res = await APIHandler.patch(`/posts/${postId}/comments`, {
         userId: user[0]._id,
         comment,
       });

@@ -12,7 +12,7 @@ function AllPosts() {
   useEffect(() => {
     (async () => {
       const { data } = await APIHandler.get(`/posts`);
-      console.log(data);
+
       setPosts(data);
     })();
   }, []);
@@ -20,8 +20,8 @@ function AllPosts() {
   const createPost = () => {
     navigate("/posts/create");
   };
+  if (posts.length === 0) return <p>Loading...</p>;
 
-  console.log(posts);
   return (
     <>
       <h1>All Posts Page</h1>
@@ -31,13 +31,10 @@ function AllPosts() {
 
       <div className="container">
         {posts.map((post) => {
-          if (posts.length === 0) return <p>Loading...</p>;
           const id = String(post._id);
           return (
             <div>
-              {/* <Link to={id}> */}
-              <Post post={post} postId={id} key={id} />
-              {/* </Link> */}
+              <Post postId={id} key={id} />
             </div>
           );
         })}
