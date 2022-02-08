@@ -2,16 +2,33 @@ import React from "react";
 import "react-responsive-modal/styles.css";
 import { Modal } from "react-responsive-modal";
 import { Link } from "react-router-dom";
+import "../../assets/css/user/user-info-style.css";
 
 const ModalFollowers = ({ open, users, onCloseModal }) => {
   return (
     <div className="modal-follow">
-      <Modal open={open} onClose={onCloseModal}>
+      <Modal
+        open={open}
+        center
+        onClose={onCloseModal}
+        classNames={{
+          overlay: "customOverlay",
+          modal: "customModal",
+        }}
+      >
         <ul>
           {users.map((e) => (
             <li>
               <Link to={`/${e._id}`} onClick={onCloseModal}>
-                {e.name}
+                <div className="modal-list">
+                  <div className="modal-list-user">
+                    <div className="image-modal">{e.image}</div>
+                    <div className="name-username">
+                      {e.name} <br />
+                      {e.userName}
+                    </div>
+                  </div>
+                </div>
               </Link>
             </li>
           ))}

@@ -236,3 +236,51 @@
     padding-left: 32px;
     padding-right: 32px;
 }
+
+.customOverlay {
+    /* background: rgba(36, 123, 160, 0.7); */
+}
+
+.customModal {
+
+    min-height: 640px;
+    max-width: 760px;
+    padding: 0px;
+    overflow-y: scroll;
+    border-radius: 12px;
+
+}
+
+.modal-list {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
+}
+
+.modal-list-user {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-top: 24px;
+    padding-bottom: 24px;
+    padding-right: 0px;
+}
+
+.image-modal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+    margin-right: 24px;
+    width: 50px;
+    height: 50px;
+    border: solid 1px #E6E6E6;
+    border-radius: 9999px;
+    object-fit: cover;
+}
+
+.name-username {
+    display: flex;
+}
