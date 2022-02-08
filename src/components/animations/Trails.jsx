@@ -4,14 +4,15 @@ import { useTrail, a } from 'react-spring';
 const Trails = ({  children, ...props }) => {
     const items = React.Children.toArray(children)
     const trail = useTrail(items.length, {
-      config: { duration : 300},
+      config: { duration : 200},
       opacity:  1,
       x:  0,
-      from: { opacity: 0, x: -30},
+      delay:100,
+      from: { opacity: 0, x: -50},
     })
     return (
-      <div style={{display : 'flex', flexDirection : "row"}} {...props}>
-        <div>
+      <div  {...props}>
+        <div className="list-cards-nfts">
           {trail.map(({ x }, index) => (
             <a.div
               key={items[index]}

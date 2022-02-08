@@ -16,3 +16,12 @@
     height: 500px;
     object-fit: contain;
 }
+
+.list-cards-nfts{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    gap: 50px;
+}

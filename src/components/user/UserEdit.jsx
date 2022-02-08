@@ -72,7 +72,7 @@ const UserEdit = () => {
         instagram: data.instagram,
         coverImage: data.coverImage,
       });
-      // navigate(`/${data._id}`);
+      navigate(`/${data._id}`);
     } catch (e) {
       console.error(e);
     }

@@ -16,14 +16,14 @@ const RandomNFTMarketPlace = () => {
     from: { opacity: 0, x : -50 }
   });
   const titleNftProps = useSpring({
-    config: {  duration: 900},
+    config: {  duration: 400},
     opacity: 1,
     x: 0,
-    height:  50,
-    from: { opacity: 0, x: 20, height: 0 }, 
+    delay: 500,
+    from: { opacity: 0, x: 20,  }, 
   });
   const titleProps = useSpring({
-     config: {  duration: 900},
+     config: {  duration: 400},
     opacity: 1,
     delay: 700,
     from: { opacity: 0 }, 
@@ -45,7 +45,9 @@ const RandomNFTMarketPlace = () => {
     <animated.h2 style={titleProps}>The choices that we make</animated.h2>
     <animated.div style={contentProps}>
         <div className="random-nft-home" >
-          <img src={nft.image} className="random-pic-home" />
+          <div style={{height : "500px"}}>
+             <img src={nft.image} className="random-pic-home" />
+          </div>
           <div>
           <animated.h2 style={titleNftProps}> <Link to={`nfts/${nft._id}`}>{nft.title}</Link></animated.h2>
           <div>

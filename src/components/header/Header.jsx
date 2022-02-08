@@ -1,13 +1,10 @@
 import React from "react";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import Login from "../user/Login";
 import "../../assets/css/header/header.css";
 import logoGif from "../../assets/logo/GIF LOGO.gif";
-import useAuth from "../user/UseAuth";
 
 const Header = () => {
- const {currentUser} = useAuth()
- console.log(currentUser)
   return (
     <header>
       <nav>
@@ -22,16 +19,8 @@ const Header = () => {
               </div>
             </NavLink>
           </div>
-          <NavLink to={"/posts"}>Posts</NavLink>
-          <div>
-          
-          </div>
-          <div>
+          <NavLink to={"/posts"}>Posts</NavLink>    
           <Login />
-       
-       
-           
-          </div>
         </div>
       </nav>
     </header>

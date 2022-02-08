@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import APIHandler from "../../api/APIHandler";
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   const [user, setUser] = useState([]);
-
+  
   const checkIfWalletIsConnected = async () => {
     try {
       const { ethereum } = window;
@@ -18,7 +18,9 @@ const Login = () => {
 
       if (accounts.length !== 0) {
         const account = accounts[0];
+   
         const { data } = await APIHandler.post(`/connect-wallet/${account}`);
+
         setUser(data);
       } else {
         console.log("No authorized account found");
