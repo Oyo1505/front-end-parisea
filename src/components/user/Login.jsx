@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import APIHandler from "../../api/APIHandler";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const Login = () => {
   const [user, setUser] = useState([]);
@@ -48,9 +48,14 @@ const Login = () => {
   return (
     <div>
       {user.length !== 0 ? (
+        <div>
         <Link to={`/${user._id}`}>
           <div className="logo-div">Profile</div>
         </Link>
+        <Link className={"button-create"} to={"/nfts/create-item"}>
+                Create
+          </Link>
+        </div>
       ) : (
         <button onClick={connectAccounts}>Connect Wallet</button>
       )}

@@ -17,9 +17,9 @@ import PrivateRoute from "./components/protectedRoute/PrivateRoute";
 function App() {
   return (
     <>
-      <div className="App">
+   
         <Header />
-
+        <div className="App">
         <Routes>
           <Route path="/" element={<Marketplace />}></Route>
           <Route path="/posts" element={<AllPosts />} />
