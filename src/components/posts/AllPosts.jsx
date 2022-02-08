@@ -20,11 +20,7 @@ function AllPosts() {
   const createPost = () => {
     navigate("/posts/create");
   };
-<<<<<<< HEAD
-   if (posts.length === 0) return <p>Loading...</p>;
-=======
   if (posts.length === 0) return <p>Loading...</p>;
->>>>>>> 984a07385eb7ae8c4b9cd564ccabd11c122b14ce
   return (
     <>
       <h1>All Posts Page</h1>

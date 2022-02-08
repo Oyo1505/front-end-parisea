@@ -186,7 +186,19 @@ const UserEdit = () => {
                 <div>
                   <h4 className="image-info">{user.image}</h4>
                 </div>
+<<<<<<< HEAD
                 <input id="files" ref={imageRef} name="image" type="file" />
+=======
+                <input
+                  id="files"
+                  ref={imageRef}
+                  name="image"
+                  type="file"
+                  onInput={() =>
+                    console.log(imageRef.current.files[0], "image")
+                  }
+                />
+>>>>>>> fd0e2c0c179dc39bcd186768c68f1901a080ec70
               </div>
             </div>
           </div>

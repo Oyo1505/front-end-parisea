@@ -67,5 +67,14 @@
 .commentDelete {
   margin-left: 30px;
   align-self: flex-end;
+  display: flex;
+  flex-direction: row;
   cursor: pointer;
+  gap: 5px;
+}
+
+.commentsList {
+  margin-top: 10px;
+  height: 150px;
+  overflow-y: scroll;
 }

@@ -13,6 +13,7 @@ const UserProfile = () => {
   return (
     <div>
       <NavLink to={"/posts"}>Posts</NavLink>
+      <NavLink to={"/w"}>WishList</NavLink>
 
       <UserInfo />
       <span onClick={() => setMode("creator")}>Creator</span>

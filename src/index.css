@@ -2,24 +2,32 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  list-style-type: none;
+  text-decoration: none;
 }
 
 @import url('./assets/fonts/clash-grotesk.css');
-
 
 body {
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+<<<<<<< HEAD
   font-family: 'ClashGrotesk-Light';
   font-size: 16px;
   background-color: #F2F2F2;
+=======
+  font-family: "ClashGrotesk-Light";
+
+  background-color: #f2f2f2;
+>>>>>>> fd0e2c0c179dc39bcd186768c68f1901a080ec70
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+<<<<<<< HEAD
 
 header {
   padding: 0 40px;
@@ -37,3 +45,5 @@ h2 {
 p {
   font-size: 18px;
 }
+=======
+>>>>>>> fd0e2c0c179dc39bcd186768c68f1901a080ec70
