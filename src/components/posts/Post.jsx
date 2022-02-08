@@ -47,7 +47,6 @@ const Post = ({ postId, postData, updateState }) => {
                 <div className="postUserName">{post.userId.name}</div>
               </div>
             </Link>
-            <h4>{post.title}</h4>
             <div className="postDetail">
               <div className="postComment">{post.description}</div>
               <img src={post.image} alt="" />

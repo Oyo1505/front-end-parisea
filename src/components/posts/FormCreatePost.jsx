@@ -18,10 +18,9 @@ function FormCreatePost() {
   // console.log(user[0]._id);
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const { description, title } = posts;
+    const { description } = posts;
     const fd = new FormData();
     fd.append("userId", currentUser[0]._id);
-    fd.append("title", title);
     fd.append("description", description);
     // console.log(imageRef.current.files[0]);
     fd.append("image", imageRef.current.files[0]);
@@ -43,17 +42,6 @@ function FormCreatePost() {
           <div>
             <p>Image</p>
             <input ref={imageRef} name="image" type="file" />
-          </div>
-          <div>
-            <p>Title</p>
-            <input
-              className="input"
-              name="title"
-              type="text"
-              placeholder="Title"
-              value={posts.title}
-              onChange={(e) => setPosts({ ...posts, title: e.target.value })}
-            />
           </div>
           <div>
             <p>Description</p>
