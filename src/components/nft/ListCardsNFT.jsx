@@ -10,7 +10,7 @@ const ListCardsNFT = ({ nfts }) => {
       })}
       </Trails>
     </>
-  );
+  )
 };
 
 export default ListCardsNFT;
