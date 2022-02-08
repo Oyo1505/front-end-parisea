@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import APIHandler from "../../api/APIHandler";
 import { useNavigate, useParams } from "react-router-dom";
 
@@ -20,11 +20,12 @@ function FormUpdatePost() {
 
     const fd = new FormData();
     fd.append("description", posts.description);
+    fd.append("title", posts.title);
     console.log(imageRef.current.files[0]);
     fd.append("image", imageRef.current.files[0]);
 
     try {
-      const { data } = await APIHandler.patch("/posts/" + id, fd);
+      const { data } = await APIHandler.patch("/posts/update/" + id, fd);
       console.log("Post data updated >> ", data);
       navigate("/posts");
     } catch (err) {
@@ -41,6 +42,17 @@ function FormUpdatePost() {
             <p>Image</p>
             <input ref={imageRef} name="image" type="file" />
             <input type="file" name="existingImage" hidden />
+          </div>
+          <div>
+            <p>title</p>
+            <textarea
+              className="input"
+              name="title"
+              type="text"
+              placeholder="title"
+              value={posts.title}
+              onChange={(e) => setPosts({ ...posts, title: e.target.value })}
+            />
           </div>
           <div>
             <p>Description</p>

@@ -45,7 +45,7 @@ const FormNFT = () => {
       owner: currentUser[0]._id,
       seller: currentUser[0]._id,
     });
-  }, []);
+  }, [currentUser]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();

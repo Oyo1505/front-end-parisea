@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import APIHandler from "../../api/APIHandler";
+import Loading from "../loading/Loading";
 
 const RandomNFTMarketPlace = () => {
   const [nft, setNft] = useState([]);
@@ -9,7 +10,6 @@ const RandomNFTMarketPlace = () => {
     const x = async () => {
       try {
         const { data } = await APIHandler.get("/random-nft");
-
         setNft(data);
       } catch (e) {
         console.log(e);
@@ -17,7 +17,7 @@ const RandomNFTMarketPlace = () => {
     };
     x();
   }, []);
-  if (nft.length === 0) return <p>Loading</p>;
+  if (nft.length === 0) return <p>NO item</p>;
   return (
     <div>
       <Link to={`nfts/${nft._id}`}>
