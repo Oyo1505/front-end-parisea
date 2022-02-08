@@ -39,7 +39,7 @@ const RandomNFTMarketPlace = () => {
     };
     x();
   }, []);
-  if (nft.length === 0) return <p>NO item</p>;
+  if (Object.keys(nft).length === 0) return <p>NO item</p>;
   return (
     <div className="random-nft-home-container">
     <animated.h2 style={titleProps}>The choices that we make</animated.h2>

@@ -204,7 +204,7 @@ const UserEdit = () => {
               <div className="section-padding">
                 <div className="image-section">
                   <label className="label-section-edit-profile" htmlFor="files">
-                    {/* {coverImageRef && <img width="350" src={coverImageRef} />} */}
+                    {coverImageRef && <img width="350" src={coverImageRef} />}
                   </label>
                 </div>
                 <div>
@@ -288,7 +288,7 @@ const UserEdit = () => {
             </div>
           </div>
 
-          <div className="onHover">
+          <div>
             <button className="submit" onClick={(e) => handleSubmit(e)}>
               Save changes
             </button>

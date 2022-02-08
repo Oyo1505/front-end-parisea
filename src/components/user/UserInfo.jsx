@@ -206,7 +206,7 @@ const UserInfo = () => {
         </div>
 
         <div className="biography">
-          <strong className="bio-title">Bio</strong>
+          <p className="bio-title">Bio</p>
           {/* <hr style={{ color: "#7F7F7F", width: 350 }} /> */}
 
           <div>
@@ -220,10 +220,10 @@ const UserInfo = () => {
             className="balance balance-title"
           >
             <span>
-              <strong>Balance</strong>
+              <p>Balance</p>
             </span>
             <div>
-              <strong>{user.balance} $MHM</strong>
+              <p>{user.balance} $MHM</p>
             </div>
           </div>
         </div>

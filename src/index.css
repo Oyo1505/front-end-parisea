@@ -20,6 +20,20 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
 header {
   padding: 0 40px;
+}
+
+h1 {
+  font-family: 'ClashGrotesk-SemiBold';
+
+}
+
+h2 {
+  font-family: 'ClashGrotesk-SemiBold';
+}
+
+p {
+  font-size: 18px;
 }

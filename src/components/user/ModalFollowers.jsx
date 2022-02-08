@@ -22,10 +22,11 @@ const ModalFollowers = ({ open, users, onCloseModal }) => {
               <Link to={`/${e._id}`} onClick={onCloseModal}>
                 <div className="modal-list">
                   <div className="modal-list-user">
-                    <div className="image-modal">{e.image}</div>
+                    <div className="image-modal">
+                      <img className="img-modal-user" src={e.image} alt="" />
+                    </div>
                     <div className="name-username">
-                      {e.name} <br />
-                      {e.userName}
+                      {e.name} <br />@{e.userName}
                     </div>
                   </div>
                 </div>

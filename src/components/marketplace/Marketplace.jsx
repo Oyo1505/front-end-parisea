@@ -4,10 +4,11 @@ import RandomNFTMarketPlace from "../nft/RandomNFTMarketPlace";
 
 const Marketplace = () => {
   return (
-    <>
-      <RandomNFTMarketPlace />
+    <div>
+      <h1>Marketplace</h1>
+      {/* <RandomNFTMarketPlace /> */}
       <ListNFTMarketplace limit={10} />
-    </>
+    </div>
   );
 };
 
