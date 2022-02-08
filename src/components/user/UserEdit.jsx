@@ -48,7 +48,6 @@ const UserEdit = () => {
 
     const image = imageRef.current.files[0] || user.image;
     const coverImage = coverImageRef.current.files[0] || user.coverImage;
-
     formData.append("image", image);
     formData.append("coverImage", coverImage);
     formData.append("name", user.name);
