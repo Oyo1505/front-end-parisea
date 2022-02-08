@@ -26,8 +26,7 @@ const ModalFollowers = ({ open, users, onCloseModal }) => {
                       <img className="img-modal-user" src={e.image} alt="" />
                     </div>
                     <div className="name-username">
-                      {e.name} <br />
-                      {e.userName}
+                      {e.name} <br />@{e.userName}
                     </div>
                   </div>
                 </div>

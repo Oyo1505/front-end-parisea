@@ -288,7 +288,7 @@ const UserEdit = () => {
             </div>
           </div>
 
-          <div className="onHover">
+          <div>
             <button className="submit" onClick={(e) => handleSubmit(e)}>
               Save changes
             </button>

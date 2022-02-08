@@ -42,6 +42,8 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    font-family: 'ClashGrotesk-SemiBold';
+
 }
 
 .about-user {
@@ -68,7 +70,7 @@
     background-color: initial;
     -webkit-text-fill-color: transparent;
 
-    font-weight: 600;
+    font-family: 'ClashGrotesk-SemiBold';
     font-size: 24px;
 }
 
@@ -91,28 +93,42 @@
 
 .following-count {
     color: black;
-    font-weight: 600;
+    font-family: 'ClashGrotesk-SemiBold';
     font-size: 24px;
 }
 
 .followers-count {
     color: black;
-    font-weight: 600;
+    font-family: 'ClashGrotesk-SemiBold';
     font-size: 24px;
 }
 
 .following-title {
+    border: #f2f2f200;
+    background-color: #f2f2f200;
     color: #7F7F7F;
     font-size: 18px;
-    font-weight: 600;
-
+    font-family: 'ClashGrotesk-SemiBold';
+    cursor: pointer;
 }
 
 .followers-title {
+    border: #f2f2f200;
+    background-color: #f2f2f200;
     color: #7F7F7F;
     font-size: 18px;
-    font-weight: 600;
+    font-family: 'ClashGrotesk-SemiBold';
+    cursor: pointer;
+}
 
+.following-title:hover {
+    color: black;
+    transition: color 0.2s ease-out;
+}
+
+.followers-title:hover {
+    color: black;
+    transition: color 0.2s ease-out;
 }
 
 .edit-profile {
@@ -133,10 +149,7 @@
 
     font-size: 18px;
     font-weight: 600;
-
     cursor: pointer;
-
-
 }
 
 
@@ -200,14 +213,17 @@
 
 .bio-title {
     border-bottom: solid 2px #E6E6E6;
-    padding-bottom: 20px
+    padding-bottom: 20px;
+    font-family: 'ClashGrotesk-Semibold';
 }
 
 .balance-title {
     border-bottom: solid 2px #E6E6E6;
     border-top: solid 2px #E6E6E6;
     padding-bottom: 20px;
-    width: 350px
+    width: 350px;
+    font-family: 'ClashGrotesk-Semibold';
+
 }
 
 .fa-clone {
@@ -284,6 +300,7 @@
 
 .name-username {
     display: flex;
+    flex-direction: column;
 }
 
 .img-modal-user {
@@ -295,4 +312,7 @@
 
 .customModal {
     min-height: 30px;
+
+    height: 330px;
+    overflow-y: scroll;
 }
