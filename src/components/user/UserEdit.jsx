@@ -73,7 +73,7 @@ const UserEdit = () => {
         instagram: data.instagram,
         coverImage: data.coverImage,
       });
-      // navigate(`/${data._id}`);
+      navigate(`/${data._id}`);
     } catch (e) {
       console.error(e);
     }
@@ -205,7 +205,7 @@ const UserEdit = () => {
               <div className="section-padding">
                 <div className="image-section">
                   <label className="label-section-edit-profile" htmlFor="files">
-                    {/* {coverImageRef && <img width="350" src={coverImageRef} />} */}
+                    {coverImageRef && <img width="350" src={coverImageRef} />}
                   </label>
                 </div>
                 <div>
