@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Comments from "./comments/Comments";
 import APIHandler from "../../api/APIHandler";
 import { Link, useNavigate } from "react-router-dom";
@@ -34,7 +34,7 @@ const Post = ({ postId, postData, updateState }) => {
   const emptyHeart = <i className="far fa-heart"></i>;
   const fullHeart = <i className="fas fa-heart"></i>;
 
-  // if (post.length === 0 && !post.userId) return <p>loading</p>;
+  // if (post.length === 0) return <p>loading</p>;
 
   return (
     <>
@@ -47,7 +47,7 @@ const Post = ({ postId, postData, updateState }) => {
                 <div className="postUserName">{post.userId.name}</div>
               </div>
             </Link>
-            {/* <h4>{post.title}</h4> */}
+            <h4>{post.title}</h4>
             <div className="postDetail">
               <div className="postComment">{post.description}</div>
               <img src={post.image} alt="" />

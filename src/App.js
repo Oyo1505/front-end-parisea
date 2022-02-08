@@ -13,6 +13,7 @@ import UserProfile from "./components/user/UserProfile";
 import Marketplace from "./components/marketplace/Marketplace";
 import HomeNfts from "./components/nft/HomeNfts";
 import PrivateRoute from "./components/protectedRoute/PrivateRoute";
+import WishList from "./components/wishList/WishList";
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
           <Route path="/posts/update/:id" element={<FormUpdatePost />} />
           <Route path="/posts/create" element={<FormCreatePost />} />
           <Route path="/nfts-edit/:id" element={<FormNFT />} />
+          <Route path="/wishlist" element={<WishList />} />
         </Routes>
       </div>
     </>

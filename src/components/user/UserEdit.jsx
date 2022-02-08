@@ -49,8 +49,8 @@ const UserEdit = () => {
 
     const formData = new FormData();
 
-     formData.append("image", imageRef.current.files[0]);
-     formData.append("coverImage", coverImageRef.current.files[0]);
+    formData.append("image", imageRef.current.files[0]);
+    formData.append("coverImage", coverImageRef.current.files[0]);
     formData.append("name", user.name);
     formData.append("userName", user.userName);
     formData.append("email", user.email);
@@ -64,7 +64,7 @@ const UserEdit = () => {
     try {
       const { data } = await APIHandler.patch(`/users/edit/${id}`, formData);
       console.log("Data >>>>>>>>>>> ", data);
-     // checkIfWalletIsConnected();
+      // checkIfWalletIsConnected();
       setUser({
         name: data.name,
         userName: data.userName,
@@ -193,11 +193,12 @@ const UserEdit = () => {
                 </div>
                 <input
                   id="files"
-               
                   ref={imageRef}
                   name="image"
                   type="file"
-                  onInput={() => console.log(imageRef.current.files[0], "image")}
+                  onInput={() =>
+                    console.log(imageRef.current.files[0], "image")
+                  }
                 />
               </div>
             </div>
@@ -224,7 +225,6 @@ const UserEdit = () => {
                 </div>
                 <div>
                   <input
-                   
                     ref={coverImageRef}
                     name="coverImage"
                     type="file"

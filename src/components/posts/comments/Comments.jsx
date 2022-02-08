@@ -19,7 +19,7 @@ const Comments = ({ postId }) => {
   return (
     <>
       <CommentForm postId={postId} setComments={setComments} />
-      <div>
+      <div className="commentsList">
         {comments.map((comment) => {
           return (
             <div>
