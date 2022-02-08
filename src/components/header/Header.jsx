@@ -13,27 +13,14 @@ const Header = () => {
             <NavLink to={"/"}>
               <div className="logo-section">
                 <div className="logo-div">
-                  <img className="gif" src={logoGif} alt="" />
+                  <img className="gif" src={logoGif} alt="logo" />
                 </div>
                 <p className="pariSea">PariSea</p>
-                {/* <img className="logo-style" src={logoBlack} alt="Logo" /> */}
               </div>
             </NavLink>
           </div>
-          {/* <div>
-          <NavLink to={"/"}>Home</NavLink>
-        </div> */}
-          {/* <NavLink to={"/posts"}>Posts</NavLink> */}
-          <div>
-            <Login />
-          </div>
-          <div>
-            <div className="div-create-btn">
-              <NavLink className={"button-create"} to={"/posts/create"}>
-                Create
-              </NavLink>
-            </div>
-          </div>
+          <NavLink to={"/posts"}>Posts</NavLink>    
+          <Login />
         </div>
       </nav>
     </header>

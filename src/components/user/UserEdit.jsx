@@ -60,7 +60,6 @@ const UserEdit = () => {
 
     try {
       const { data } = await APIHandler.patch(`/users/edit/${id}`, formData);
-      console.log("Data >>>>>>>>>>> ", data);
       // checkIfWalletIsConnected();
       setUser({
         name: data.name,

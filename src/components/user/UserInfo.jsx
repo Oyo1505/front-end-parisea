@@ -53,8 +53,6 @@ const UserInfo = () => {
         instagram: data.instagram,
       });
     };
-
-    // y();
     x();
   }, [id]);
 
@@ -62,8 +60,6 @@ const UserInfo = () => {
   useEffect(() => {
     console.log("user has changed");
     const y = async () => {
-      // if (currentUser.length !== 0) {
-      // console.log("following", isfollowed);
       try {
         const { data } = await APIHandler.get(
           `/follower/${id}/` + currentUser[0]._id
@@ -73,7 +69,6 @@ const UserInfo = () => {
         console.error(err);
       }
     };
-    // };
     y();
   }, [id, currentUser]);
 
