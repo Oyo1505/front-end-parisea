@@ -30,6 +30,7 @@ const Login = () => {
       console.log(error);
     }
   };
+
   async function connectAccounts() {
     try {
       if (window.ethereum) {
@@ -70,6 +71,8 @@ const Login = () => {
           </button>
         </div>
       )}
+
+    
     </div>
   );
 };

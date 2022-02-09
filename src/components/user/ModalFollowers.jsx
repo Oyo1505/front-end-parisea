@@ -19,7 +19,7 @@ const ModalFollowers = ({ open, users, onCloseModal }) => {
         <ul>
           {users.map((e) => (
             <li>
-              <Link to={`/${e._id}`} onClick={onCloseModal}>
+              <Link to={`/profile/${e._id}`} onClick={onCloseModal}>
                 <div className="modal-list">
                   <div className="modal-list-user">
                     <div className="image-modal">

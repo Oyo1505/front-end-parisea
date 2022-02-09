@@ -8,7 +8,7 @@ import ModalFollowers from "./ModalFollowers";
 
 const UserInfo = () => {
   const { id } = useParams();
-  const { currentUser, getUser } = useAuth();
+  const { currentUser, getUser, handleCoverImage } = useAuth();
   const [isfollowed, setIsFollowed] = useState(false);
   const [open, setOpen] = useState(false);
   const [mode, setMode] = useState("");
@@ -52,11 +52,12 @@ const UserInfo = () => {
         facebook: data.facebook,
         instagram: data.instagram,
       });
+      handleCoverImage(data._id, data.coverImage);
     };
+
     x();
   }, [id]);
 
-  console.log("user", user);
   useEffect(() => {
     console.log("user has changed");
     const y = async () => {
@@ -111,7 +112,6 @@ const UserInfo = () => {
           </div>
         </div>
         <img src={user.image} />
-        <img src={user.coverImage} />
         <div className="followers-following">
           <div className="following">
             <strong className="following-count">{user.following.length}</strong>

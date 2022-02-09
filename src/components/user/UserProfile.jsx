@@ -8,9 +8,10 @@ import useAuth from "./UseAuth";
 import "../../assets/css/user/user-content.css";
 
 const UserProfile = () => {
-  const { currentUser } = useAuth();
+  const { currentUser, coverImage } = useAuth();
+
   const [mode, setMode] = useState("creator");
-  if (currentUser.length === 0) return <p>loading</p>;
+  // if (currentUser.length === 0) return <p>loading</p>;
   return (
     <div className="body-profile">
       {/* <NavLink to={"/posts"}>Posts</NavLink> */}
@@ -20,7 +21,7 @@ const UserProfile = () => {
       <span onClick={() => setMode("creator")}>Creator</span>
       <span onClick={() => setMode("owner")}>Owner</span>
       <span onClick={() => setMode("posts")}>Posts</span>
-      <ListNftsUserProfile mode={mode} userId={currentUser[0]._id} />
+      <ListNftsUserProfile mode={mode} userId={coverImage.id} />
     </div>
   );
 };

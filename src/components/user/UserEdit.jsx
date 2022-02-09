@@ -5,10 +5,11 @@ import { useParams } from "react-router-dom";
 import useRefs from "react-use-refs";
 import "../../assets/css/user/user-edit-style.css";
 import { useNavigate } from "react-router-dom";
-
+import useAuth from "../user/UseAuth";
 const UserEdit = () => {
   const navigate = useNavigate();
   const { id } = useParams();
+
   const [imageRef, coverImageRef] = useRefs();
 
   const [user, setUser] = useState({
@@ -60,7 +61,6 @@ const UserEdit = () => {
 
     try {
       const { data } = await APIHandler.patch(`/users/edit/${id}`, formData);
-      // checkIfWalletIsConnected();
       setUser({
         name: data.name,
         userName: data.userName,
@@ -72,7 +72,7 @@ const UserEdit = () => {
         instagram: data.instagram,
         coverImage: data.coverImage,
       });
-      navigate(`/${data._id}`);
+      //navigate(`/${data._id}`);
     } catch (e) {
       console.error(e);
     }

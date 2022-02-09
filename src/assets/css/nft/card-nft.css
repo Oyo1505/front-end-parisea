@@ -1,7 +1,63 @@
-.card-nft{
-    width: 420px;
-    height: 585px;
+.card-nft {
+  width: 364px;
+  height: 490px;
+  border-radius: 10px;
+  color: white;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.background-nft{
+    position:absolute;
+    height: 100%;
+    width:100%;
     background: #C4C4C4;
-    border-radius: 10px;
-    color: white;
+mix-blend-mode: multiply;
+opacity: 0.7;
+z-index: 0;
+}
+.card-nft .logo-user-card {
+  object-fit: cover;
+  height: 85%;
+  width: 85%;
+  border-radius: 4px;
+}
+
+.card-nft .boder-blur-logo {
+  display: flex;
+  backdrop-filter: 10px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(6px);
+  height: 106px;
+  width: 106px;
+}
+
+.card-nft .content-nft-card {
+    width: 70%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index:1;
+ 
+}
+.content-nft-card h4 {
+    font-family: "ClashGrotesk-Semibold";
+  font-size: 2.25em;
+  line-height: 0.8;
+}
+.content-nft-card p {
+    font-family: "ClashGrotesk-Medium";
+}
+.price-card {
+    width: 75%;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(6px);
+  padding: 15px 25px;
+  border-radius: 44px;
+  font-weight: 700;
 }
