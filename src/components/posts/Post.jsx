@@ -11,11 +11,16 @@ const Post = ({ postId, postData, updateState }) => {
   const { currentUser } = useAuth();
   const navigate = useNavigate();
   const [post, setPost] = useState(postData);
-  const [showComment, setShowComment] = useState(false); //FALSE=FOLDED
+  const [showComment, setShowComment] = useState(false); 
   const [likeAdded, setLikeAdded] = useState(false);
   const emptyHeart = <i className="far fa-heart"></i>;
   const fullHeart = <i className="fas fa-heart"></i>;
 
+<<<<<<< HEAD
+=======
+  // console.log("Current User >>>", currentUser[0]._id);
+
+>>>>>>> 006acaba606244e0620bd5ebd7197cd0a3e216a1
   // POST
 
   const updatePost = (postId) => {
@@ -25,7 +30,7 @@ const Post = ({ postId, postData, updateState }) => {
   const deletePost = async (postId) => {
     if (window.confirm("Are you sure you want to delete comment?")) {
       try {
-        console.log(postId);
+        // console.log(postId);
         await APIHandler.post("/posts/delete/" + postId);
         updateState((existPost) => existPost.filter((x) => x._id !== postId));
       } catch (err) {
@@ -35,17 +40,13 @@ const Post = ({ postId, postData, updateState }) => {
   };
 
   // LIKE
-  // const HeartButton = () => {
-  //   return <>{likeAdded === true ? fullHeart : emptyHeart}</>;
-  // };
 
   useEffect(() => {
     (async () => {
       const { data } = await APIHandler.get(
         `/posts/likes/${postId}/${currentUser[0]._id}`
       );
-      console.log("likes data", data);
-      // console.log("likes data", data.likes.userId);//undefined
+      // console.log("likes data", data);
       setLikeAdded(data.likeAdded);
     })();
   }, [postId]);
@@ -123,7 +124,12 @@ const Post = ({ postId, postData, updateState }) => {
             <div className="postCommentDiv">
               <div className="postIconsComment">
                 <div onClick={handleLike}>
+<<<<<<< HEAD
                   {likeAdded ? fullHeart : emptyHeart} {post.likes.length}
+=======
+                  {likeAdded ? fullHeart : emptyHeart}{" "}
+                  {post.likes.length}
+>>>>>>> 006acaba606244e0620bd5ebd7197cd0a3e216a1
                 </div>
                 <i
                   className="far fa-comment"

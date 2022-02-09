@@ -31,7 +31,7 @@ function App() {
           <Route path="/posts/update/:id" element={<FormUpdatePost />} />
           <Route path="/posts/create" element={<FormCreatePost />} />
           <Route path="/nfts-edit/:id" element={<FormNFT />} />
-          {/* <Route path="/wishlist" element={<WishList />} /> */}
+          <Route path="/wishlist/:id" element={<WishList />} />
         </Routes>
       </div>
     </>

@@ -15,7 +15,9 @@ const UserProfile = () => {
  
   // if (currentUser.length === 0) return <p>loading</p>;
   return (
-    <div className="body-profile">
+    <div>
+      
+      <NavLink to={"/wishlist/" + currentUser[0]._id}>WishList</NavLink>
 
       <div className="profile-image-header">
         <img src={coverImage.image} />
