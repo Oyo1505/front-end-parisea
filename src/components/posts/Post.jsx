@@ -11,12 +11,12 @@ const Post = ({ postId, postData, updateState }) => {
   const { currentUser } = useAuth();
   const navigate = useNavigate();
   const [post, setPost] = useState(postData);
-  const [showComment, setShowComment] = useState(false); //FALSE=FOLDED
+  const [showComment, setShowComment] = useState(false); 
   const [likeAdded, setLikeAdded] = useState(false);
   const emptyHeart = <i className="far fa-heart"></i>;
   const fullHeart = <i className="fas fa-heart"></i>;
 
-  console.log("Current User >>>", currentUser[0]._id);
+  // console.log("Current User >>>", currentUser[0]._id);
 
   // POST
 
@@ -27,7 +27,7 @@ const Post = ({ postId, postData, updateState }) => {
   const deletePost = async (postId) => {
     if (window.confirm("Are you sure you want to delete comment?")) {
       try {
-        console.log(postId);
+        // console.log(postId);
         await APIHandler.post("/posts/delete/" + postId);
         updateState((existPost) => existPost.filter((x) => x._id !== postId));
       } catch (err) {
@@ -37,17 +37,13 @@ const Post = ({ postId, postData, updateState }) => {
   };
 
   // LIKE
-  // const HeartButton = () => {
-  //   return <>{likeAdded === true ? fullHeart : emptyHeart}</>;
-  // };
 
   useEffect(() => {
     (async () => {
       const { data } = await APIHandler.get(
         `/posts/likes/${postId}/${currentUser[0]._id}`
       );
-      console.log("likes data", data);
-      // console.log("likes data", data.likes.userId);//undefined
+      // console.log("likes data", data);
       setLikeAdded(data.likeAdded);
     })();
   }, [postId]);
@@ -68,7 +64,7 @@ const Post = ({ postId, postData, updateState }) => {
   };
 
   // if (post.length === 0) return <p>loading</p>;
-  // console.log(post.likes.length);
+
   return (
     <>
       {post ? (
@@ -126,7 +122,6 @@ const Post = ({ postId, postData, updateState }) => {
               <div className="postIconsComment">
                 <div onClick={handleLike}>
                   {likeAdded ? fullHeart : emptyHeart}{" "}
-                  {console.log(likeAdded)}
                   {post.likes.length}
                 </div>
                 <i
