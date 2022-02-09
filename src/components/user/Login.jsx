@@ -53,15 +53,14 @@ const Login = () => {
     <div>
       {user.length !== 0 ? (
         <div>
-<<<<<<< HEAD
+
         <Link to={`/profile/${user._id}`}>
           <div className="logo-div">Profile</div>
         </Link>
         <Link className={"button-create"} to={"/nfts/create-item"}>
                 Create
           </Link>
-          
-=======
+
           <div className="nav-header">
             <Link to={`/${user._id}`}>
               <div className="profile-btn">
@@ -72,7 +71,7 @@ const Login = () => {
               Create
             </Link>
           </div>
->>>>>>> 6d2a3785e5ac6d1bec36f53b6c35b6ac4d8a5373
+
         </div>
       ) : (
         <div>

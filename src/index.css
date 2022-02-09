@@ -12,15 +12,9 @@ body {
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-<<<<<<< HEAD
   font-family: "ClashGrotesk-Light";
   font-size: 16px;
   background-color: #f2f2f2;
-=======
-  font-family: 'ClashGrotesk-Light';
-  font-size: 16px;
-  background-color: #F2F2F2;
->>>>>>> 6d2a3785e5ac6d1bec36f53b6c35b6ac4d8a5373
 }
 
 code {
@@ -43,6 +37,7 @@ h2 {
 p {
   font-size: 18px;
 <<<<<<< HEAD
+<<<<<<< HEAD
 }
 a,
 a:visited,
@@ -50,6 +45,3 @@ a:active {
   text-decoration: none;
   color: inherit;
 }
-=======
-}
->>>>>>> 6d2a3785e5ac6d1bec36f53b6c35b6ac4d8a5373
