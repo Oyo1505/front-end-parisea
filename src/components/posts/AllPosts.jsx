@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 // import { Link } from "react-router-dom";
 import APIHandler from "../../api/APIHandler";
+import Loading from "../loading/Loading";
 import Post from "./Post";
 import "./post.css";
 
@@ -20,7 +21,7 @@ function AllPosts() {
   const createPost = () => {
     navigate("/posts/create");
   };
-  if (posts.length === 0) return <p>Loading...</p>;
+  if (posts.length === 0) return <Loading />;
   return (
     <>
       <h1>All Posts Page</h1>

@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import Login from "../user/Login";
 import "../../assets/css/header/header.css";
-import logoGif from "../../assets/logo/GIF LOGO.gif";
+import logoGif from "../../assets/logo/gifLogo.gif";
 
 const Header = () => {
   return (
@@ -19,7 +19,7 @@ const Header = () => {
               </div>
             </NavLink>
           </div>
-          <NavLink to={"/posts"}>Posts</NavLink>    
+          <NavLink to={"/posts"}>Posts</NavLink>
           <Login />
         </div>
       </nav>
