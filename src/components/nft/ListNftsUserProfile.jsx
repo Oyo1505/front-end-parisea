@@ -10,6 +10,7 @@ const ListNftsUserProfile = ({ mode, userId }) => {
     const x = async () => {
       try {
         if (mode === "creator" || mode === "owner") {
+          console.log("creator")
           const { data } = await APIHandler.get(`/list-nfts/${mode}/${userId}`);
           setItems(data);
         } else {
@@ -22,7 +23,20 @@ const ListNftsUserProfile = ({ mode, userId }) => {
     };
     x();
   }, [mode]);
+  useEffect(() => {
+    const x = async () => {
+      try {
 
+          console.log("creator")
+          const { data } = await APIHandler.get(`/list-nfts/${mode}/${userId}`);
+          setItems(data);
+        
+      } catch (e) {
+        console.error(e);
+      }
+    };
+    x();
+  }, []);
   return (
     <div className="nfts">
       <h4>Mode : {mode}</h4>

@@ -25,8 +25,9 @@ function FormCreatePost() {
     fd.append("image", imageRef.current.files[0]);
 
     try {
+      console.log("d")
       const res = await APIHandler.post("/posts/create", fd);
-      // console.log("Post data created >>", res.data);
+      console.log("Post data created >>", res.data);
       navigate("/posts");
     } catch (err) {
       console.error(err);

@@ -11,12 +11,10 @@ const UserProfile = () => {
   const { currentUser, coverImage } = useAuth();
 
   const [mode, setMode] = useState("creator");
+  console.log(mode)
   // if (currentUser.length === 0) return <p>loading</p>;
   return (
     <div className="body-profile">
-      {/* <NavLink to={"/posts"}>Posts</NavLink> */}
-      <NavLink to={"/w"}>WishList</NavLink>
-
       <UserInfo />
       <span onClick={() => setMode("creator")}>Creator</span>
       <span onClick={() => setMode("owner")}>Owner</span>

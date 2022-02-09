@@ -43,7 +43,7 @@ const Header = () => {
               </div>
             </NavLink>
           </div>
-          {/* <NavLink to={"/posts"}>Posts</NavLink> */}
+        
           <Login />
         </div>
       </nav>
