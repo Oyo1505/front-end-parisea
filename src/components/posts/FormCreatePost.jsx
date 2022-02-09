@@ -22,7 +22,7 @@ function FormCreatePost() {
     fd.append("image", imageRef.current.files[0]);
 
     try {
-      console.log("d")
+      console.log("d");
       const res = await APIHandler.post("/posts/create", fd);
       console.log("Post data created >>", res.data);
       navigate("/posts");
@@ -38,7 +38,7 @@ function FormCreatePost() {
         <form className="postForm">
           <div className="postFormContent">
             <div className="postFormLabel">
-              <p>Image</p>
+              <h2 className="h2-create-post">Image</h2>
               <p className="postFormLabelText">
                 Share us your NTF news!<br></br>PNG & JPG accepted
               </p>
@@ -54,7 +54,7 @@ function FormCreatePost() {
           </div>
           <div className="postFormContent">
             <div className="postFormLabel">
-              <p>Description</p>
+              <h2 className="h2-create-post">Description</h2>
               <p className="postFormLabelText">Let's talk about it!</p>
             </div>
             <textarea
@@ -69,7 +69,7 @@ function FormCreatePost() {
             />
           </div>
           <button className="postBtns" onClick={handleSubmit}>
-            CREATE
+            Post Now !
           </button>
         </form>
       </div>

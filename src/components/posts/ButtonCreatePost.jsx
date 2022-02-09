@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import "../../assets/css/post/post.css";
+import "../../assets/css/header/header.css";
 
 function ButtonCreatePost() {
   const navigate = useNavigate();
@@ -7,10 +7,10 @@ function ButtonCreatePost() {
     navigate("/posts/create");
   };
   return (
-    <>     
-        <button className="postBtns " onClick={createPost}>
-          Create a post
-        </button>
+    <>
+      <button className="logo-div " onClick={createPost}>
+        <i class="fa fa-feather"></i>
+      </button>
     </>
   );
 }

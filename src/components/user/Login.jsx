@@ -55,7 +55,7 @@ const Login = () => {
       {user.length !== 0 ? (
         <div>
           <div className="nav-header">
-          <ButtonCreatePost />
+            <ButtonCreatePost />
             <Link to={`/profile/${user._id}`}>
               <div className="profile-btn">
                 <img className="profile-btn-img" src={user.image} alt="" />
@@ -64,7 +64,6 @@ const Login = () => {
             <Link className={"button-create"} to={"/nfts/create-item"}>
               Create
             </Link>
-         
           </div>
         </div>
       ) : (
