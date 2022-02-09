@@ -18,9 +18,8 @@ import WishList from "./components/wishList/WishList";
 function App() {
   return (
     <>
-   
-        <Header />
-        <div className="App">
+      <Header />
+      <div className="App">
         <Routes>
           <Route path="/" element={<Marketplace />}></Route>
           <Route path="/posts" element={<AllPosts />} />
@@ -34,7 +33,7 @@ function App() {
           <Route path="/posts/update/:id" element={<FormUpdatePost />} />
           <Route path="/posts/create" element={<FormCreatePost />} />
           <Route path="/nfts-edit/:id" element={<FormNFT />} />
-          <Route path="/wishlist" element={<WishList />} />
+          {/* <Route path="/wishlist" element={<WishList />} /> */}
         </Routes>
       </div>
     </>

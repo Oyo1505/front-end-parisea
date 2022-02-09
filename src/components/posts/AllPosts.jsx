@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 // import { Link } from "react-router-dom";
 import APIHandler from "../../api/APIHandler";
 import Post from "./Post";
-import "./post.css";
+import "../../assets/css/post/post.css";
 
 function AllPosts() {
   const navigate = useNavigate();

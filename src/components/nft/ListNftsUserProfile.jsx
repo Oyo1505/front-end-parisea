@@ -11,17 +11,10 @@ const ListNftsUserProfile = ({ mode, userId }) => {
       try {
         if (mode === "creator" || mode === "owner") {
           const { data } = await APIHandler.get(`/list-nfts/${mode}/${userId}`);
-<<<<<<< HEAD
-          setNfts(data);
-        } else {
-          // const { data } = await APIHandler.get(`/list-posts/${mode}/${userId}`);
-          setNfts([]);
-=======
           setItems(data);
         } else {
           const { data } = await APIHandler.get(`/posts/mypost/${userId}`);
           setItems(data);
->>>>>>> fd0e2c0c179dc39bcd186768c68f1901a080ec70
         }
       } catch (e) {
         console.error(e);
@@ -41,7 +34,6 @@ const ListNftsUserProfile = ({ mode, userId }) => {
             items.map((el) => {
               return (
                 <Link to={`/nfts/${el._id}`} key={el._id}>
-                  {" "}
                   NFT title : {el.title} <p>User ID : {el.creator}</p>
                 </Link>
               );
@@ -49,20 +41,8 @@ const ListNftsUserProfile = ({ mode, userId }) => {
           )}
         </div>
       ) : (
-<<<<<<< HEAD
-        nfts.map((el) => {
-          return (
-            <div key={el._id}>
-              <Link to={`/nfts/${el._id}`}>{el.title}</Link>
-              <p>{el.creator}</p>
-            </div>
-          );
-        })
-      )}
-=======
         <h1 className="px-20 py-10 text-3xl">No items in marketplace</h1>
-      )}{" "}
->>>>>>> fd0e2c0c179dc39bcd186768c68f1901a080ec70
+      )}
     </div>
   );
 };

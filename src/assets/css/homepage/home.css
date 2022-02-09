@@ -1,27 +1,32 @@
-.random-nft-home-container{
-    width: 100%;
-    height: 600px;
+.random-nft-home-container {
+  width: 100%;
+  height: 600px;
 }
-.random-nft-home-container h2{
-    text-align: center;
- }
-.random-nft-home{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    gap: 160px;
-    align-items: center;
+.random-nft-home-container h2 {
+  text-align: center;
+  font-size: 3em;
 }
-.random-nft-home-container img{
-    height: 500px;
-    object-fit: contain;
+.random-nft-home {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 100px;
+  align-items: center;
+}
+.random-nft-home h2 {
+  font-size: 2.2em;
+}
+.random-nft-home-container img {
+  height: 500px;
+  object-fit: contain;
 }
 
-.list-cards-nfts{
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
-    width: 100%;
-    gap: 50px;
+.list-cards-nfts {
+  padding-top: 200px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  gap: 50px;
 }

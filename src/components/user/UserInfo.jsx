@@ -52,7 +52,7 @@ const UserInfo = () => {
         facebook: data.facebook,
         instagram: data.instagram,
       });
-      handleCoverImage(data._id,data.coverImage)
+      handleCoverImage(data._id, data.coverImage);
     };
 
     x();
@@ -112,7 +112,6 @@ const UserInfo = () => {
           </div>
         </div>
         <img src={user.image} />
-        <img src={user.coverImage} />
         <div className="followers-following">
           <div className="following">
             <strong className="following-count">{user.following.length}</strong>
