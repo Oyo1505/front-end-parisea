@@ -19,12 +19,10 @@ function FormUpdatePost() {
 
     const fd = new FormData();
     fd.append("description", posts.description);
-    // console.log(imageRef.current.files[0]);
     fd.append("image", imageRef.current.files[0]);
 
     try {
       const { data } = await APIHandler.patch("/posts/update/" + id, fd);
-      // console.log("Post data updated >> ", data);
       navigate("/posts");
     } catch (err) {
       console.error(err);

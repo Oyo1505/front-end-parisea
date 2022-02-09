@@ -88,6 +88,7 @@ const FormNFT = () => {
   if (currentUser.length === 0) return <p>loading</p>;
   return (
     <>
+    <div className="container">
       {id ? <h1>Update</h1> : <h1>Create</h1>}
       <form onSubmit={handleSubmit}>
         <div>
@@ -134,6 +135,7 @@ const FormNFT = () => {
         <button>{id ? "Update" : "Create"}</button>
       </form>
       {id && <button onClick={handleDelete}>Delete</button>}
+      </div>
     </>
   );
 };

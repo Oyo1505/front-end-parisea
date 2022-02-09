@@ -7,8 +7,8 @@ const Marketplace = () => {
   return (
     <div>
       <RandomNFTMarketPlace />
-      <ListNFTMarketplace  limit={10} />
-      <ListPostsMarketplace  limit={10} />
+      <ListNFTMarketplace  limit={10}/>
+      <ListPostsMarketplace  limit={10}  />
     </div>
   );
 };

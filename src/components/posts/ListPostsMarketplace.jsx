@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import APIHandler from '../../api/APIHandler';
 import Loading from '../loading/Loading';
 import ListPosts from './ListPosts';
-const ListPostsMarketplace = ({limit}) => {
+const ListPostsMarketplace = ({limit, title}) => {
     const [posts, setPosts] = useState([]);
     useEffect(() => {
       const x = async () => {
@@ -18,7 +18,7 @@ const ListPostsMarketplace = ({limit}) => {
     }, []);
     if (posts.length === 0) return <Loading />;
 
-  return <ListPosts posts={posts} />;
+  return <ListPosts posts={posts}  />;
 };
 
 export default ListPostsMarketplace;

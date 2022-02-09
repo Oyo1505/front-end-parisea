@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "../../assets/css/nft/card-nft.css";
 const CardNFT = ({ nft }) => {
   return (
@@ -24,7 +25,7 @@ const CardNFT = ({ nft }) => {
         </div>
         <div className="content-nft-card">
           <div>
-            <h4>{nft.title}</h4>
+            <h4><Link to={`/nfts/${nft._id}`}>{nft.title}</Link></h4>
             <p>@{nft.creator.name}</p>
           </div>
           <p className="price-card">{nft.price} MHM</p>

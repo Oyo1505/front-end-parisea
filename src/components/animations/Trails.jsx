@@ -2,7 +2,7 @@ import React from "react";
 import { useTrail, animated } from "react-spring";
 import { useInView } from "react-intersection-observer";
 import "../../assets/css/animation/animation.css";
-const Trails = ({ children }) => {
+const Trails = ({ children, config }) => {
   const { ref, inView, entry } = useInView({
     triggerOnce: true,
     threshold: 0.9,
@@ -17,7 +17,9 @@ const Trails = ({ children }) => {
 
   return (
     <>
+ 
       <div className="list-cards-nfts" ref={ref}>
+        
         {trail.map(({ x, opacity }, index) => (
           <animated.div
             key={index}

@@ -24,6 +24,7 @@
 .header-post-card .header-name{
     font-family: "ClashGrotesk-Semibold";
     line-height: 0.8;
+    color: black;
 }
 .header-post-card .header-username{
     font-size: 0.9em;
@@ -39,7 +40,9 @@
     height: 65px;
     background-color: white;
     border-radius:  0 0 10px 10px ;
+    
 }
+
 .content-post-card p {
     
     font-size: 1.5em;

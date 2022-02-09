@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import "../../assets/css/post/card-post.css"
 
 const CardPost = ({post}) => {
@@ -16,7 +17,7 @@ const CardPost = ({post}) => {
         <div className='header-post-card'>
             <img src={post.userId.image} />
             <div  >
-                <p className='header-name'>{post.userId.name}</p>
+                <Link to={`/profile/${post.userId._id}`} className='header-name'>{post.userId.name}</Link>
                 <p className='header-username'>@{post.userId.userName}</p>
             </div>
         </div>

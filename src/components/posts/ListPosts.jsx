@@ -3,16 +3,16 @@ import Trails from '../animations/Trails';
 import CardPost from './CardPost';
 
 const ListPosts = ({posts}) => {
-  console.log(posts)
+
     return (
-        <>
-     <h2>Last NFTs</h2>
+      <div style={{marginTop : '120px'}}>
+      <h2 style={{marginBottom : '25px'}}>Last Posts</h2>
           <Trails>
           {posts.map((post) => {
             return <CardPost key={post._id} post={post} />;
           })}
           </Trails>
-        </>
+        </div>
       )
 };
 

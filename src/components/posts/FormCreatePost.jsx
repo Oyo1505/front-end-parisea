@@ -12,9 +12,6 @@ function FormCreatePost() {
     description: "Behhhhh",
   });
 
-  console.log(currentUser);
-
-  // console.log(user[0]._id);
   const handleSubmit = async (e) => {
     e.preventDefault();
     const { description } = posts;

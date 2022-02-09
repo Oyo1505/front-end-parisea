@@ -14,7 +14,7 @@ const ListNftsUserProfile = ({ mode, userId }) => {
           const { data } = await APIHandler.get(`/list-nfts/${mode}/${userId}`);
           setItems(data);
         } else {
-          const { data } = await APIHandler.get(`/posts/mypost/${userId}`);
+          const { data } = await APIHandler.get(`/posts/${userId}`);
           setItems(data);
         }
       } catch (e) {
