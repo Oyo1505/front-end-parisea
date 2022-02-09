@@ -3,18 +3,20 @@ import { NavLink } from "react-router-dom";
 import Login from "../user/Login";
 import "../../assets/css/header/header.css";
 import useAuth from "../user/UseAuth";
+import { useParams } from "react-router-dom";
 import logoGif from "../../assets/logo/gifLogo.gif";
 
 const Header = () => {
-  const {  coverImage } = useAuth();
-
+  const { coverImage } = useAuth();
 
   const inProfileUser = () => {
-    if (window.location.href === `http://localhost:3000/profile/${coverImage.id}`)
+    if (
+      window.location.href === `http://localhost:3000/profile/${coverImage.id}`
+    )
       return true;
     else return false;
   };
- 
+
   return (
     <header
       style={{

@@ -66,7 +66,6 @@ const Login = () => {
             </Link>
          
           </div>
-
         </div>
       ) : (
         <div>
@@ -75,8 +74,6 @@ const Login = () => {
           </button>
         </div>
       )}
-
-    
     </div>
   );
 };

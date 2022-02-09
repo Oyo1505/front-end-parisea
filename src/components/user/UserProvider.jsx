@@ -4,7 +4,10 @@ import UserContext from "./UserContext";
 import { useNavigate } from "react-router-dom";
 const UserProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState([]);
-  const [coverImage, setImage] = useState({ id: "", coverImage: "" });
+  const [coverImage, setImage] = useState({
+    id: "",
+    coverImage: "",
+  });
   const navigate = useNavigate();
 
   const checkIfWalletIsConnected = async () => {
@@ -65,8 +68,8 @@ const UserProvider = ({ children }) => {
       }
     });
   };
-  const handleCoverImage = (id, coverImage) => {
-    setImage({ id, coverImage });
+  const handleCoverImage = (id, coverImage, image) => {
+    setImage({ id, coverImage, image });
   };
   useEffect(() => {
     checkIfWalletIsConnected();

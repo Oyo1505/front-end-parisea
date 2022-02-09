@@ -56,8 +56,7 @@ const ListNftsUserProfile = ({ mode, userId }) => {
         </div>
       ) : (
         <h1 className="px-20 py-10 text-3xl">No items in marketplace</h1>
-      )}
-   
+      )}{" "}
     </div>
   );
 };

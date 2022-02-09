@@ -111,7 +111,7 @@ const UserInfo = () => {
             </div>
           </div>
         </div>
-        <img src={user.image} />
+        {/* <img src={user.image} /> */}
         <div className="followers-following">
           <div className="following">
             <strong className="following-count">{user.following.length}</strong>
