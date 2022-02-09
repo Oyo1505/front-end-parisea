@@ -56,16 +56,17 @@ const SingleNFT = () => {
       {/*  mimi */}
       <div onClick={() => toggle()}>
         {added === true ? fullHeart : emptyHeart}
-      <div>
-        {Object.entries(nft).length !== 0 ? (
-          <>
-            <Link to={`/${nft.creator._id}`}>
-              <h5>{nft.creator.name}</h5>
-            </Link>
-          </>
-        ) : (
-          "d"
-        )}
+        <div>
+          {Object.entries(nft).length !== 0 ? (
+            <>
+              <Link to={`/${nft.creator._id}`}>
+                <h5>{nft.creator.name}</h5>
+              </Link>
+            </>
+          ) : (
+            "d"
+          )}
+        </div>
       </div>
 
       {currentUser[0]._id === nft.creator._id ? (
@@ -73,10 +74,10 @@ const SingleNFT = () => {
       ) : nft.sold === true ? (
         <ResellNFT nftId={nft._id} />
       ) : (
-        showBuyBtn();
+        showBuyBtn()
       )}
     </>
-  )
+  );
 };
 
 export default SingleNFT;

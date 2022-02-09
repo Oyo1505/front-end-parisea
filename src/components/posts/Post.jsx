@@ -42,7 +42,7 @@ const Post = ({ postId, postData, updateState }) => {
     (async () => {
       const { data } = await APIHandler.get(`/posts/likes/` + postId);
       console.log("likes data", data.likes.length);
-      // setLikeAdded(data.likeAdded);
+      setLikeAdded(data);
     })();
   }, [postId]);
 
