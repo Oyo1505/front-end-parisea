@@ -1,7 +1,7 @@
 import React from "react";
 import "../../assets/css/nft/card-nft.css";
 const CardNFT = ({ nft }) => {
-  console.log(nft);
+
   return (
     <>
        <div className="background-nft">

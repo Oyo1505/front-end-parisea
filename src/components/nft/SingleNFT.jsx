@@ -10,10 +10,6 @@ const SingleNFT = () => {
   const [nft, setNft] = useState({});
   const { id } = useParams();
 
-  {
-    /*  mimi */
-  }
-
   const [added, setAdded] = useState(false);
   const emptyHeart = <i className="far fa-heart"></i>;
   const fullHeart = <i className="fas fa-heart"></i>;
@@ -54,7 +50,7 @@ const SingleNFT = () => {
       <div>
         {Object.entries(nft).length !== 0 ? (
           <>
-            <Link to={`/${nft.creator._id}`}>
+            <Link to={`/profile/${nft.creator._id}`}>
               <h5>{nft.creator.name}</h5>
             </Link>
           </>

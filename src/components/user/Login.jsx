@@ -54,7 +54,7 @@ const Login = () => {
       {user.length !== 0 ? (
         <div>
           <div className="nav-header">
-            <Link to={`/${user._id}`}>
+            <Link to={`/profile/${user._id}`}>
               <div className="profile-btn">
                 <img className="profile-btn-img" src={user.image} alt="" />
               </div>
@@ -71,8 +71,6 @@ const Login = () => {
           </button>
         </div>
       )}
-
-    
     </div>
   );
 };

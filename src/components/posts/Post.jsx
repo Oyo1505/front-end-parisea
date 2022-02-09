@@ -37,32 +37,38 @@ const Post = ({ postId, postData, updateState }) => {
   };
 
   // LIKE
+  // const HeartButton = () => {
+  //   return <>{likeAdded === true ? fullHeart : emptyHeart}</>;
+  // };
 
   useEffect(() => {
     (async () => {
-      const { data } = await APIHandler.get(`/posts/likes/` + postId);
-      console.log("likes data", data.likes.length);
-      // setLikeAdded(data.likeAdded);
+      const { data } = await APIHandler.get(
+        `/posts/likes/${postId}/${currentUser[0]._id}`
+      );
+      console.log("likes data", data);
+      // console.log("likes data", data.likes.userId);//undefined
+      setLikeAdded(data.likeAdded);
     })();
   }, [postId]);
 
-  const onSubmit = async (e) => {
+  const handleLike = async (e) => {
     e.preventDefault();
 
     try {
       const res = await APIHandler.patch(`/posts/likes/` + postId, {
         userId: currentUser[0]._id,
-        likeAdded,
       });
-      console.log("Like data created >>", res.data.likeAdded);
-      setLikeAdded(!likeAdded);
+      // console.log("Like data created >>", res.data);
+      setLikeAdded(res.data.likeAdded);
+      setPost(res.data.post);
     } catch (err) {
       console.log("OnSubmit err >>> ", err);
     }
   };
 
   // if (post.length === 0) return <p>loading</p>;
-
+  // console.log(post.likes.length);
   return (
     <>
       {post ? (
@@ -118,8 +124,9 @@ const Post = ({ postId, postData, updateState }) => {
 
             <div className="postCommentDiv">
               <div className="postIconsComment">
-                <div onClick={onSubmit}>
-                  {likeAdded === true ? fullHeart : emptyHeart}{" "}
+                <div onClick={handleLike}>
+                  {likeAdded ? fullHeart : emptyHeart}{" "}
+                  {console.log(likeAdded)}
                   {post.likes.length}
                 </div>
                 <i
