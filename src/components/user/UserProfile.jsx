@@ -5,14 +5,15 @@ import { NavLink } from "react-router-dom";
 import HomeNfts from "../nft/HomeNfts";
 import ListNftsUserProfile from "../nft/ListNftsUserProfile";
 import useAuth from "./UseAuth";
+import "../../assets/css/user/user-content.css";
 
 const UserProfile = () => {
   const { currentUser } = useAuth();
   const [mode, setMode] = useState("creator");
   if (currentUser.length === 0) return <p>loading</p>;
   return (
-    <div>
-      <NavLink to={"/posts"}>Posts</NavLink>
+    <div className="body-profile">
+      {/* <NavLink to={"/posts"}>Posts</NavLink> */}
       <NavLink to={"/w"}>WishList</NavLink>
 
       <UserInfo />
