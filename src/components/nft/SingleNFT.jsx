@@ -16,7 +16,6 @@ const SingleNFT = () => {
   const removeCart = <i className="fas fa-heart"></i>;
   // UNTIL HERE
 
-<<<<<<< HEAD
   const [added, setAdded] = useState(false);
   const emptyHeart = <i className="far fa-heart"></i>;
   const fullHeart = <i className="fas fa-heart"></i>;
@@ -27,8 +26,6 @@ const SingleNFT = () => {
   {
     /*  mimi */
   }
-=======
->>>>>>> 006acaba606244e0620bd5ebd7197cd0a3e216a1
   useEffect(() => {
     const x = async () => {
       try {

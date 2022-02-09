@@ -6,7 +6,7 @@ import useAuth from "../user/UseAuth";
 import ListNftsUserProfile from "./ListNftsUserProfile";
 
 const HomeNfts = () => {
-  const { currentUser } = useAuth();
+  const { currentUser } = useAuth()
   useEffect(() => {
     const x = async () => {
       try {
@@ -16,7 +16,7 @@ const HomeNfts = () => {
           .then((response) => console.log(response))
           .catch((err) => console.error(err));
       } catch (e) {
-        console.error(e);
+        console.error(e)
       }
     };
   }, []);

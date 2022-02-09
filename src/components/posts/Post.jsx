@@ -16,11 +16,6 @@ const Post = ({ postId, postData, updateState }) => {
   const emptyHeart = <i className="far fa-heart"></i>;
   const fullHeart = <i className="fas fa-heart"></i>;
 
-<<<<<<< HEAD
-=======
-  // console.log("Current User >>>", currentUser[0]._id);
-
->>>>>>> 006acaba606244e0620bd5ebd7197cd0a3e216a1
   // POST
 
   const updatePost = (postId) => {
@@ -124,12 +119,7 @@ const Post = ({ postId, postData, updateState }) => {
             <div className="postCommentDiv">
               <div className="postIconsComment">
                 <div onClick={handleLike}>
-<<<<<<< HEAD
                   {likeAdded ? fullHeart : emptyHeart} {post.likes.length}
-=======
-                  {likeAdded ? fullHeart : emptyHeart}{" "}
-                  {post.likes.length}
->>>>>>> 006acaba606244e0620bd5ebd7197cd0a3e216a1
                 </div>
                 <i
                   className="far fa-comment"
