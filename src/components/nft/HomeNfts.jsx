@@ -1,7 +1,6 @@
 import axios from "axios";
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
-import Loading from "../loading/Loading";
 import useAuth from "../user/UseAuth";
 
 import ListNftsUserProfile from "./ListNftsUserProfile";
@@ -24,7 +23,7 @@ const HomeNfts = () => {
   if (currentUser.length === 0) return <p>lod</p>;
   return (
     <div>
-        <div>
+      <div>
         <Link to={"/nfts/create-item"}>Create NFT</Link>
       </div>
 

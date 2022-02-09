@@ -1,11 +1,9 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import "../../App.css";
 import APIHandler from "../../api/APIHandler";
 import { useParams } from "react-router-dom";
 import useRefs from "react-use-refs";
-import { Link } from "react-router-dom";
 import "../../assets/css/user/user-edit-style.css";
-import useAuth from "./UseAuth";
 import { useNavigate } from "react-router-dom";
 
 const UserEdit = () => {
@@ -24,7 +22,6 @@ const UserEdit = () => {
     facebook: "",
     instagram: "",
   });
-  const { user: connectedUser, checkIfWalletIsConnected } = useAuth();
 
   useEffect(() => {
     const x = async () => {
@@ -49,8 +46,10 @@ const UserEdit = () => {
 
     const formData = new FormData();
 
-    formData.append("image", imageRef.current.files[0]);
-    formData.append("coverImage", coverImageRef.current.files[0]);
+    const image = imageRef.current.files[0] || user.image;
+    const coverImage = coverImageRef.current.files[0] || user.coverImage;
+    formData.append("image", image);
+    formData.append("coverImage", coverImage);
     formData.append("name", user.name);
     formData.append("userName", user.userName);
     formData.append("email", user.email);
@@ -59,11 +58,8 @@ const UserEdit = () => {
     formData.append("facebook", user.facebook);
     formData.append("instagram", user.instagram);
 
-    console.log("current image >>>>>>", imageRef.current.files[0]);
-    console.log("cover image >>>>>>", coverImageRef.current.files[0]);
     try {
       const { data } = await APIHandler.patch(`/users/edit/${id}`, formData);
-      console.log("Data >>>>>>>>>>> ", data);
       // checkIfWalletIsConnected();
       setUser({
         name: data.name,
@@ -74,10 +70,9 @@ const UserEdit = () => {
         twitter: data.twitter,
         facebook: data.facebook,
         instagram: data.instagram,
-
         coverImage: data.coverImage,
       });
-      // navigate(`/${data._id}`);
+      navigate(`/${data._id}`);
     } catch (e) {
       console.error(e);
     }
@@ -217,7 +212,7 @@ const UserEdit = () => {
               <div className="section-padding">
                 <div className="image-section">
                   <label className="label-section-edit-profile" htmlFor="files">
-                    {/* {coverImageRef && <img width="350" src={coverImageRef} />} */}
+                    {coverImageRef && <img width="350" src={coverImageRef} />}
                   </label>
                 </div>
                 <div>
@@ -301,8 +296,8 @@ const UserEdit = () => {
             </div>
           </div>
 
-          <div className="onHover">
-            <button className="submit" onClick={handleSubmit}>
+          <div>
+            <button className="submit" onClick={(e) => handleSubmit(e)}>
               Save changes
             </button>
           </div>

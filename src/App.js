@@ -18,9 +18,9 @@ import WishList from "./components/wishList/WishList";
 function App() {
   return (
     <>
-      <div className="App">
+   
         <Header />
-
+        <div className="App">
         <Routes>
           <Route path="/" element={<Marketplace />}></Route>
           <Route path="/posts" element={<AllPosts />} />

@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "../../assets/css/user/user-info-style.css";
 import { useParams } from "react-router-dom";
@@ -53,8 +53,6 @@ const UserInfo = () => {
         instagram: data.instagram,
       });
     };
-
-    // y();
     x();
   }, [id]);
 
@@ -62,8 +60,6 @@ const UserInfo = () => {
   useEffect(() => {
     console.log("user has changed");
     const y = async () => {
-      // if (currentUser.length !== 0) {
-      // console.log("following", isfollowed);
       try {
         const { data } = await APIHandler.get(
           `/follower/${id}/` + currentUser[0]._id
@@ -73,7 +69,6 @@ const UserInfo = () => {
         console.error(err);
       }
     };
-    // };
     y();
   }, [id, currentUser]);
 
@@ -82,7 +77,6 @@ const UserInfo = () => {
       const { data } = await APIHandler.patch(
         `/add-follow/${id}/${currentUser[0]._id}`
       );
-      console.log("làààààààààà", data);
       setIsFollowed(!isfollowed);
       const u = await getUser();
       setUser(data.user);
@@ -116,8 +110,8 @@ const UserInfo = () => {
             </div>
           </div>
         </div>
-            <img src={user.image} />
-            <img src={user.coverImage} />
+        <img src={user.image} />
+        <img src={user.coverImage} />
         <div className="followers-following">
           <div className="following">
             <strong className="following-count">{user.following.length}</strong>
@@ -211,7 +205,7 @@ const UserInfo = () => {
         </div>
 
         <div className="biography">
-          <strong className="bio-title">Bio</strong>
+          <p className="bio-title">Bio</p>
           {/* <hr style={{ color: "#7F7F7F", width: 350 }} /> */}
 
           <div>
@@ -225,10 +219,10 @@ const UserInfo = () => {
             className="balance balance-title"
           >
             <span>
-              <strong>Balance</strong>
+              <p>Balance</p>
             </span>
             <div>
-              <strong>{user.balance} $MHM</strong>
+              <p>{user.balance} $MHM</p>
             </div>
           </div>
         </div>

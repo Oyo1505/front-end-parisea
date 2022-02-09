@@ -15,7 +15,7 @@ const UserProvider = ({ children }) => {
         console.log("We have the ethereum object", ethereum);
       }
       const accounts = await ethereum.request({ method: "eth_accounts" });
-
+      console.log(accounts)
       if (accounts.length !== 0) {
         // const account = accounts[0];
         // const { data } = await APIHandler.get(`/connect-wallet/${account}`);

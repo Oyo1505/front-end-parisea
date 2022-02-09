@@ -85,7 +85,7 @@ const FormNFT = () => {
       console.log(e);
     }
   };
-  if (!currentUser[0]) return <p>Loading</p>;
+  if (currentUser.length === 0) return <p>loading</p>;
   return (
     <>
       {id ? <h1>Update</h1> : <h1>Create</h1>}
