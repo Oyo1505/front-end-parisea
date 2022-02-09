@@ -20,12 +20,7 @@ const RandomNFTMarketPlace = () => {
     delay: 500,
     from: { opacity: 0, x: 20 },
   });
-  const titleProps = useSpring({
-    config: { duration: 400 },
-    opacity: 1,
-    delay: 700,
-    from: { opacity: 0 },
-  });
+
   useEffect(() => {
     const x = async () => {
       try {
@@ -40,7 +35,7 @@ const RandomNFTMarketPlace = () => {
   if (Object.keys(nft).length === 0) return <p>NO item</p>;
   return (
     <div className="random-nft-home-container">
-      <animated.h2 style={titleProps}>The choices that we make</animated.h2>
+
       <animated.div style={contentProps}>
         <div className="random-nft-home">
           <div style={{ height: "500px" }}>

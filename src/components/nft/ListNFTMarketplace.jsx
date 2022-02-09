@@ -16,7 +16,10 @@ const ListNFTMarketplace = ({ limit }) => {
     x();
   }, []);
   if (nfts.length === 0) return <p>no Items to show</p>;
-  return <ListCardsNFT nfts={nfts} />;
+  return <>
+  
+  <ListCardsNFT nfts={nfts} />
+  </>;
 };
 
 export default ListNFTMarketplace;

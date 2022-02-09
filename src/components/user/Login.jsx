@@ -52,7 +52,7 @@ const Login = () => {
     <div>
       {user.length !== 0 ? (
         <div>
-        <Link to={`/${user._id}`}>
+        <Link to={`/profile/${user._id}`}>
           <div className="logo-div">Profile</div>
         </Link>
         <Link className={"button-create"} to={"/nfts/create-item"}>

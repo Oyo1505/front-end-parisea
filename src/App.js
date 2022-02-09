@@ -26,7 +26,7 @@ function App() {
           <Route path="/posts/:id" element={<Post />} />
           <Route path="/nfts" element={<HomeNfts />} />
           <Route path="/nfts/:id" element={<SingleNFT />} />
-          <Route path="/:id" element={<UserProfile />} />
+          <Route path="/profile/:id" element={<UserProfile />} />
           <Route element={<PrivateRoute />}> </Route>
           <Route path="/nfts/create-item" element={<FormNFT />} />
           <Route path="/profile/edit/:id" element={<UserEdit />} />

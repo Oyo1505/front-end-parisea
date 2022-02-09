@@ -10,7 +10,7 @@ const Header = () => {
   const { id } = useParams();
 
   const inProfileUser = () => {
-    if (window.location.href === `http://localhost:3000/${coverImage.id}`)
+    if (window.location.href === `http://localhost:3000/profile/${coverImage.id}`)
       return true;
     else return false;
   };
