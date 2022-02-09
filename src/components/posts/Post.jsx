@@ -41,8 +41,8 @@ const Post = ({ postId, postData, updateState }) => {
   useEffect(() => {
     (async () => {
       const { data } = await APIHandler.get(`/posts/likes/` + postId);
-      console.log("likes data", data);
-      setLikeAdded(data.likes.length);
+      console.log("likes data", data.likes.length);
+      // setLikeAdded(data.likeAdded);
     })();
   }, [postId]);
 
@@ -50,15 +50,11 @@ const Post = ({ postId, postData, updateState }) => {
     e.preventDefault();
 
     try {
-      const res = await APIHandler.patch(`/posts/likes/addlike/` + postId, {
+      const res = await APIHandler.patch(`/posts/likes/` + postId, {
         userId: currentUser[0]._id,
         likeAdded,
       });
-      console.log("Like data created >>", res.data.userId);
-      // setLikeAdded((existComments) => [
-      //   res.data.comments[res.data.comments.length - 1],
-      //   ...existComments,
-      // ]);
+      console.log("Like data created >>", res.data.likeAdded);
       setLikeAdded(!likeAdded);
     } catch (err) {
       console.log("OnSubmit err >>> ", err);
@@ -123,7 +119,8 @@ const Post = ({ postId, postData, updateState }) => {
             <div className="postCommentDiv">
               <div className="postIconsComment">
                 <div onClick={onSubmit}>
-                  {likeAdded === true ? fullHeart : emptyHeart}
+                  {likeAdded === true ? fullHeart : emptyHeart}{" "}
+                  {post.likes.length}
                 </div>
                 <i
                   className="far fa-comment"
