@@ -273,6 +273,8 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+    color: black;
+
 
 }
 
@@ -283,6 +285,7 @@
     /* padding-top: 24px;
     padding-bottom: 24px; */
     padding-right: 0px;
+    color: inherit;
 }
 
 .image-modal {
@@ -315,4 +318,20 @@
 
     height: 330px;
     overflow-y: scroll;
+}
+
+.modal-list-empty {
+
+    /* padding: 24px; */
+    padding-top: 125px;
+    padding-left: 24px;
+    padding-right: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+    font-family: 'ClashGrotesk-Semibold';
+
+
 }

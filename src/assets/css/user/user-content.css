@@ -1,5 +1,53 @@
 .body-profile {
+
     margin-left: 100px;
     margin-right: 100px;
     margin-bottom: 48px;
+
+
+}
+
+.profile-image-header {
+    width: 180px;
+    height: 180px;
+    background-color: white;
+    border-radius: 50%;
+    position: absolute;
+
+    display: flex;
+    justify-content: center;
+    top: 160px;
+    left: 124px;
+}
+
+.body-profile-bis {
+    margin-top: 150px;
+    display: flex;
+    flex-direction: row;
+    gap: 100px;
+    /* border-bottom: solid 2px #E6E6E6; */
+
+
+}
+
+.whole-cat-profile {
+    border-bottom: solid 2px #E6E6E6;
+
+}
+
+.categories-profile {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+
+}
+
+.categories-profile p {
+    font-family: 'ClashGrotesk-Semibold';
+    color: #7F7F7F;
+}
+
+.categories-profile p:hover {
+    color: black;
+    cursor: pointer;
 }
