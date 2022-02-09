@@ -5,7 +5,7 @@ import "../../assets/css/animation/animation.css";
 const Trails = ({ children }) => {
   const { ref, inView, entry } = useInView({
     triggerOnce: true,
-    threshold: 0.75,
+    threshold: 0.9,
   });
   const items = React.Children.toArray(children);
   const trail = useTrail(items.length, {
