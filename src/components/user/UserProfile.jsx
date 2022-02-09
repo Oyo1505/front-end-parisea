@@ -12,6 +12,7 @@ const UserProfile = () => {
   console.log("ici ++++++", currentUser);
 
   const [mode, setMode] = useState("creator");
+  console.log(mode);
   // if (currentUser.length === 0) return <p>loading</p>;
   return (
     <div className="body-profile">

@@ -1,7 +1,6 @@
 import "./App.css";
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import AllPosts from "./components/posts/AllPosts";
 import Post from "./components/posts/Post";
 import FormCreatePost from "./components/posts/FormCreatePost";
 import FormUpdatePost from "./components/posts/FormUpdatePost";
@@ -22,7 +21,6 @@ function App() {
       <div className="App">
         <Routes>
           <Route path="/" element={<Marketplace />}></Route>
-          <Route path="/posts" element={<AllPosts />} />
           <Route path="/posts/:id" element={<Post />} />
           <Route path="/nfts" element={<HomeNfts />} />
           <Route path="/nfts/:id" element={<SingleNFT />} />

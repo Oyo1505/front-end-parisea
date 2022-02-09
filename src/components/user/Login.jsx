@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import APIHandler from "../../api/APIHandler";
 import { Link } from "react-router-dom";
 import "../../assets/css/header/header.css";
+import ButtonCreatePost from "../posts/ButtonCreatePost";
 
 const Login = () => {
   const [user, setUser] = useState([]);
@@ -54,6 +55,7 @@ const Login = () => {
       {user.length !== 0 ? (
         <div>
           <div className="nav-header">
+          <ButtonCreatePost />
             <Link to={`/profile/${user._id}`}>
               <div className="profile-btn">
                 <img className="profile-btn-img" src={user.image} alt="" />
@@ -62,6 +64,7 @@ const Login = () => {
             <Link className={"button-create"} to={"/nfts/create-item"}>
               Create
             </Link>
+         
           </div>
         </div>
       ) : (

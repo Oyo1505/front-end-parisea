@@ -16,7 +16,6 @@ const Post = ({ postId, postData, updateState }) => {
   const emptyHeart = <i className="far fa-heart"></i>;
   const fullHeart = <i className="fas fa-heart"></i>;
 
-  console.log("Current User >>>", currentUser[0]._id);
 
   // POST
 
@@ -67,8 +66,8 @@ const Post = ({ postId, postData, updateState }) => {
     }
   };
 
-  // if (post.length === 0) return <p>loading</p>;
-  // console.log(post.likes.length);
+  if (post.length === 0 || currentUser.length === 0) return <p>loading</p>;
+  
   return (
     <>
       {post ? (
@@ -126,7 +125,7 @@ const Post = ({ postId, postData, updateState }) => {
               <div className="postIconsComment">
                 <div onClick={handleLike}>
                   {likeAdded ? fullHeart : emptyHeart}{" "}
-                  {console.log(likeAdded)}
+                
                   {post.likes.length}
                 </div>
                 <i
