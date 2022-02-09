@@ -29,6 +29,7 @@ const Login = () => {
       console.log(error);
     }
   };
+
   async function connectAccounts() {
     try {
       if (window.ethereum) {
@@ -51,16 +52,19 @@ const Login = () => {
     <div>
       {user.length !== 0 ? (
         <div>
-        <Link to={`/${user._id}`}>
+        <Link to={`/profile/${user._id}`}>
           <div className="logo-div">Profile</div>
         </Link>
         <Link className={"button-create"} to={"/nfts/create-item"}>
                 Create
           </Link>
+          
         </div>
       ) : (
         <button onClick={connectAccounts}>Connect Wallet</button>
       )}
+
+    
     </div>
   );
 };

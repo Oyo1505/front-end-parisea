@@ -1,12 +1,33 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import Login from "../user/Login";
 import "../../assets/css/header/header.css";
 import logoGif from "../../assets/logo/gifLogo.gif";
-
+import useAuth from "../user/UseAuth";
+import { useParams } from "react-router-dom";
 const Header = () => {
+  const { currentUser, coverImage } = useAuth();
+  const { id } = useParams();
+
+  const inProfileUser = () => {
+    if (
+      window.location.href === `http://localhost:3000/profile/${coverImage.id}`
+    )
+      return true;
+    else return false;
+  };
+  console.log(inProfileUser());
   return (
-    <header>
+    <header
+      style={{
+        backgroundImage: inProfileUser()
+          ? `url(${coverImage.coverImage})  `
+          : "",
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "cover",
+        height: inProfileUser() ? `250px` : "",
+      }}
+    >
       <nav>
         <div className="nav-header">
           <div className="logo-section">
@@ -15,7 +36,12 @@ const Header = () => {
                 <div className="logo-div">
                   <img className="gif" src={logoGif} alt="logo" />
                 </div>
-                <p className="pariSea">PariSea</p>
+                <p
+                  className="pariSea"
+                  style={{ color: inProfileUser() ? `white` : "black" }}
+                >
+                  PariSea
+                </p>
               </div>
             </NavLink>
           </div>

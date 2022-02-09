@@ -18,23 +18,22 @@ import WishList from "./components/wishList/WishList";
 function App() {
   return (
     <>
-   
-        <Header />
-        <div className="App">
+      <Header />
+      <div className="App">
         <Routes>
           <Route path="/" element={<Marketplace />}></Route>
           <Route path="/posts" element={<AllPosts />} />
           <Route path="/posts/:id" element={<Post />} />
           <Route path="/nfts" element={<HomeNfts />} />
           <Route path="/nfts/:id" element={<SingleNFT />} />
-          <Route path="/:id" element={<UserProfile />} />
+          <Route path="/profile/:id" element={<UserProfile />} />
           <Route element={<PrivateRoute />}> </Route>
           <Route path="/nfts/create-item" element={<FormNFT />} />
           <Route path="/profile/edit/:id" element={<UserEdit />} />
           <Route path="/posts/update/:id" element={<FormUpdatePost />} />
           <Route path="/posts/create" element={<FormCreatePost />} />
           <Route path="/nfts-edit/:id" element={<FormNFT />} />
-          <Route path="/wishlist" element={<WishList />} />
+          {/* <Route path="/wishlist" element={<WishList />} /> */}
         </Routes>
       </div>
     </>

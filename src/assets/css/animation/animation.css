@@ -1,0 +1,13 @@
+/* .trailsText {
+  line-height: 80px;
+  color: black;
+  font-size: 6em;
+  font-weight: 800;
+  letter-spacing: -0.05em;
+  will-change: transform, opacity;
+  overflow: hidden;
+}
+.trailsText > div {
+  padding-right: 0.05em;
+  overflow: hidden;
+} */

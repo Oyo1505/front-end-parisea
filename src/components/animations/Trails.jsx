@@ -1,28 +1,38 @@
-import React from 'react';
-import { useTrail, a } from 'react-spring';
+import React from "react";
+import { useTrail, animated } from "react-spring";
+import { useInView } from "react-intersection-observer";
+import "../../assets/css/animation/animation.css";
+const Trails = ({ children }) => {
+  const { ref, inView, entry } = useInView({
+    triggerOnce: true,
+    threshold: 0.75,
+  });
+  const items = React.Children.toArray(children);
+  const trail = useTrail(items.length, {
+    config: { mass: 5, tension: 2000, friction: 200 },
+    opacity: inView ? 1 : 0,
+    x: inView ? 0 : -40,
+    from: { opacity: 0, },
+  });
 
-const Trails = ({  children, ...props }) => {
-    const items = React.Children.toArray(children)
-    const trail = useTrail(items.length, {
-      config: { duration : 200},
-      opacity:  1,
-      x:  0,
-      delay:100,
-      from: { opacity: 0, x: -50},
-    })
-    return (
-      <div  {...props}>
-        <div className="list-cards-nfts">
-          {trail.map(({ x }, index) => (
-            <a.div
-              key={items[index]}
-              style={{ transform: x.interpolate((x) => `translate3d(${x}px,0px,0)`) }}>
-              <a.div>{items[index]}</a.div>
-            </a.div>
-          ))}
-        </div>
+  return (
+    <>
+      <div className="list-cards-nfts" ref={ref}>
+        {trail.map(({ x, opacity }, index) => (
+          <animated.div
+            key={index}
+            className="trailsText"
+            style={{
+              transform: x.interpolate((x) => `translate3d(${x}px,0px,0)`),
+              position:"relative"
+            }}
+          >
+            <animated.div style={{ opacity, }} key={items[index]._id}>{items[index]}</animated.div>
+          </animated.div>
+        ))}
       </div>
-    )
+    </>
+  );
 };
 
 export default Trails;

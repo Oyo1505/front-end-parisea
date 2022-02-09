@@ -34,7 +34,6 @@ const ListNftsUserProfile = ({ mode, userId }) => {
             items.map((el) => {
               return (
                 <Link to={`/nfts/${el._id}`} key={el._id}>
-                  {" "}
                   NFT title : {el.title} <p>User ID : {el.creator}</p>
                 </Link>
               );

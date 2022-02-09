@@ -5,10 +5,11 @@ import { useParams } from "react-router-dom";
 import useRefs from "react-use-refs";
 import "../../assets/css/user/user-edit-style.css";
 import { useNavigate } from "react-router-dom";
-
+import useAuth from "../user/UseAuth";
 const UserEdit = () => {
   const navigate = useNavigate();
   const { id } = useParams();
+
   const [imageRef, coverImageRef] = useRefs();
 
   const [user, setUser] = useState({
@@ -72,7 +73,7 @@ const UserEdit = () => {
         instagram: data.instagram,
         coverImage: data.coverImage,
       });
-      navigate(`/${data._id}`);
+      //navigate(`/${data._id}`);
     } catch (e) {
       console.error(e);
     }
@@ -186,6 +187,7 @@ const UserEdit = () => {
                 <div>
                   <h4 className="image-info">{user.image}</h4>
                 </div>
+<<<<<<< HEAD
                 <input
                   id="files"
                   ref={imageRef}
@@ -195,6 +197,9 @@ const UserEdit = () => {
                     console.log(imageRef.current.files[0], "image")
                   }
                 />
+=======
+                <input id="files" ref={imageRef} name="image" type="file" />
+>>>>>>> 4ec380a524f1fc81004f3640e5279f152165137e
               </div>
             </div>
           </div>
