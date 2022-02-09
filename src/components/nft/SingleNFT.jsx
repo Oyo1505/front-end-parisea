@@ -10,10 +10,6 @@ const SingleNFT = () => {
   const [nft, setNft] = useState({});
   const { id } = useParams();
 
-  {
-    /*  mimi */
-  }
-
   const [added, setAdded] = useState(false);
   const emptyHeart = <i className="far fa-heart"></i>;
   const fullHeart = <i className="fas fa-heart"></i>;

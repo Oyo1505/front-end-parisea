@@ -3,7 +3,7 @@ import APIHandler from "../../../api/APIHandler";
 import useAuth from "../../user/UseAuth";
 
 const CommentForm = ({ postId, setComments }) => {
-  const { user } = useAuth();
+  const { currentUser } = useAuth();
   const [comment, setComment] = useState("");
   const disabled = comment.length === 0;
 
@@ -12,7 +12,7 @@ const CommentForm = ({ postId, setComments }) => {
 
     try {
       const res = await APIHandler.patch(`/posts/comments/${postId}`, {
-        userId: user[0]._id,
+        userId: currentUser[0]._id,
         comment,
       });
       console.log("Comment data created >>", res.data);
@@ -31,7 +31,9 @@ const CommentForm = ({ postId, setComments }) => {
       <div>
         <input
           type="text"
+          maxlength="50"
           value={comment}
+          placeholder="Comment here (Max 50 letters)"
           onChange={(e) => setComment(e.target.value)}
         />
       </div>

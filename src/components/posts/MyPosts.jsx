@@ -18,8 +18,7 @@ function MyPosts() {
 
   return (
     <>
-      <h1>All My Posts</h1>
-      <hr></hr>
+      {/* <h1>All My Posts</h1> */}
       <div className="container">
         {myPosts.map((post) => {
           const id = String(post._id);

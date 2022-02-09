@@ -2,9 +2,10 @@ import React, { useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import Login from "../user/Login";
 import "../../assets/css/header/header.css";
-import logoGif from "../../assets/logo/GIF LOGO.gif";
 import useAuth from "../user/UseAuth";
 import { useParams } from "react-router-dom";
+import logoGif from "../../assets/logo/gifLogo.gif";
+
 const Header = () => {
   const { currentUser, coverImage } = useAuth();
   const { id } = useParams();

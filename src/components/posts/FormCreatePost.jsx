@@ -1,6 +1,6 @@
 import { useState, useRef } from "react";
-import APIHandler from "../../api/APIHandler";
 import { useNavigate } from "react-router-dom";
+import APIHandler from "../../api/APIHandler";
 import useAuth from "../user/UseAuth";
 
 function FormCreatePost() {
@@ -9,7 +9,6 @@ function FormCreatePost() {
   const imageRef = useRef("");
 
   const [posts, setPosts] = useState({
-    image: "",
     description: "Behhhhh",
   });
 
@@ -27,7 +26,7 @@ function FormCreatePost() {
 
     try {
       const res = await APIHandler.post("/posts/create", fd);
-      console.log("Post data created >>", res.data);
+      // console.log("Post data created >>", res.data);
       navigate("/posts");
     } catch (err) {
       console.error(err);
@@ -37,16 +36,31 @@ function FormCreatePost() {
   return (
     <>
       <div className="container">
-        <h1>Create - post</h1>
-        <form className="form">
-          <div>
-            <p>Image</p>
-            <input ref={imageRef} name="image" type="file" />
+        <h1>Create a new post</h1>
+        <form className="postForm">
+          <div className="postFormContent">
+            <div className="postFormLabel">
+              <p>Image</p>
+              <p className="postFormLabelText">
+                Share us your NTF news!<br></br>PNG & JPG accepted
+              </p>
+            </div>
+            <label for="file">Choose your image file</label>
+            <input
+              className="postFormInput"
+              ref={imageRef}
+              name="image"
+              type="file"
+              id="file"
+            />
           </div>
-          <div>
-            <p>Description</p>
+          <div className="postFormContent">
+            <div className="postFormLabel">
+              <p>Description</p>
+              <p className="postFormLabelText">Let's talk about it!</p>
+            </div>
             <textarea
-              className="input"
+              className="postFormInput"
               name="description"
               type="text"
               placeholder="description"
@@ -56,7 +70,9 @@ function FormCreatePost() {
               }
             />
           </div>
-          <button onClick={handleSubmit}>CREATE</button>
+          <button className="postBtns" onClick={handleSubmit}>
+            CREATE
+          </button>
         </form>
       </div>
     </>
