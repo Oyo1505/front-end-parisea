@@ -1,0 +1,213 @@
+/* ⬇︎⬇︎⬇︎⬇︎⬇︎　POST PAGE ⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎ */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 0;
+}
+
+.container h1 {
+  margin: 30px;
+  font-size: 55px;
+}
+
+.postBtns.createBtn {
+  margin: 30px;
+  width: 350px;
+}
+
+/* ⬇︎⬇︎⬇︎⬇︎⬇︎　CREATE & UPDATE FORM ⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎ */
+
+.postForm {
+  max-width: 740px;
+  margin: 20px;
+  padding: 70px;
+  background-color: white;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.05);
+  border-radius: 12px;
+  text-align: left;
+}
+
+.postFormContent {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 50px;
+}
+
+.postFormLabel {
+  width: 300px;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.postFormLabelText {
+  line-height: 1.7;
+  font-size: 1rem;
+  font-weight: normal;
+  color: gray;
+  margin-top: 10px;
+}
+.postFormContent input[type="file"] {
+  position: absolute;
+  overflow: hidden;
+  width: 0;
+  height: 0;
+  padding: 0;
+}
+
+.postFormContent label {
+  width: 350px;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: gray;
+  font-weight: bold;
+  border: 1px solid lightgray;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.05);
+}
+
+.postFormContent textarea {
+  border: solid 1px lightgray;
+  border-radius: 10px;
+  padding: 10px;
+  width: 350px;
+  height: 150px;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.05);
+}
+
+.postFormContent textarea:hover {
+  background-color: white;
+  color: black;
+  border: solid 1px #e6e6e6;
+  transition: background-color 0.25s ease-out;
+}
+
+.postBtns {
+  background-color: black;
+  color: white;
+  width: 100%;
+  height: 60px;
+  border-radius: 10px;
+  border: solid 1px #e6e6e6;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.postBtns:hover {
+  background-color: white;
+  color: black;
+  border: solid 1px #e6e6e6;
+  transition: background-color 0.25s ease-out;
+}
+
+/* ⬇︎⬇︎⬇︎⬇︎⬇︎　POSTS CARD ⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎ */
+
+.postDiv {
+  display: flex;
+  flex-direction: column;
+  width: 350px;
+  border-radius: 10px;
+  margin-bottom: 50px;
+  background-color: white;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.05);
+}
+
+/* ⬇︎⬇︎⬇︎⬇︎⬇︎　SINGLE POST HEADER ⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎ */
+
+.postHeader {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.postUser {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.postUser img {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+}
+
+.postUserInfo {
+  padding-left: 15px;
+  text-align: left;
+}
+
+.postUserName {
+  font-size: 16px;
+  font-weight: bold;
+  color: black;
+}
+
+.postUserAccountName {
+  font-size: 12px;
+  color: gray;
+}
+
+.postIcons {
+  font-size: 25px;
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  color: rgb(75, 74, 74);
+  gap: 20px;
+}
+
+/* ⬇︎⬇︎⬇︎⬇︎⬇︎　SINGLE POST BODY ⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎ */
+
+.postBody {
+  padding: 0;
+  margin: 0;
+}
+
+.postBody img {
+  width: 100%;
+}
+
+.postDescription {
+  height: 100%;
+  padding: 10px 20px;
+  text-align: left;
+  word-break: break-all;
+}
+
+.postedTime {
+  margin: 0 10px 10px 0;
+  text-align: right;
+  align-self: flex-end;
+  color: grey;
+  font-size: 0.6rem;
+}
+
+/* ⬇︎⬇︎⬇︎⬇︎⬇︎　SINGLE POST COMMENT DIV ⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎ */
+
+.postCommentDiv {
+  background-color: black;
+  color: white;
+  padding: 15px 0;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.postIconsComment {
+  font-size: 25px;
+  cursor: pointer;
+  padding-right: 20px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: right;
+}
+
+.fas.fa-heart {
+  color: red;
+}

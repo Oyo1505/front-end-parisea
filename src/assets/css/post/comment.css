@@ -1,0 +1,99 @@
+/* ⬇︎⬇︎⬇︎⬇︎⬇︎　COMMENT CREATE FROM ⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎ */
+
+.foldedCommentArea {
+  background-color: black;
+  color: white;
+}
+
+.commentForm {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0 20px;
+  margin: 10px 0 20px 0;
+}
+
+.commentForm input {
+  width: 250px;
+  height: 30px;
+  border: 1px solid lightgray;
+  border-radius: 10px;
+  padding: 0 10px;
+}
+
+.commentForm button {
+  padding: 0 15px;
+  height: 30px;
+  border: 1px solid lightgray;
+  border-radius: 10px;
+  align-self: right;
+  color: black;
+}
+
+/* ⬇︎⬇︎⬇︎⬇︎⬇︎　SINGLE COMMENT ⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎ */
+
+.commentedArea {
+  display: flex;
+  flex-direction: row;
+  margin: 0 20px 10px 20px;
+}
+
+.commentedArea img {
+  width: 35px;
+  height: 35px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.commentDetail {
+  width: 400px;
+  margin-left: 15px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+}
+
+.commentDetailDiv {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.commendUser {
+  font-weight: bold;
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+}
+
+.commendAccountUser {
+  color: gray;
+  font-size: 0.8rem;
+  display: flex;
+  align-self: center;
+}
+
+.commentDateDelete {
+  font-size: 0.9rem;
+  color: grey;
+  display: flex;
+  flex-direction: row;
+  gap: 7px;
+}
+
+.commentDateDelete i {
+  cursor: pointer;
+  align-self: baseline;
+}
+
+.commentText {
+  word-break: break-all;
+}
+
+/* ⬇︎⬇︎⬇︎⬇︎⬇︎　ALL COMMENTS LIST⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎ */
+
+.commentsList {
+  margin-top: 10px;
+  height: 115px;
+  overflow-y: scroll;
+}

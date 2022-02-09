@@ -26,19 +26,22 @@ const Comment = ({ updateState, postId, commentData }) => {
             <img src={commentData.userId.image} alt="img" />
             <div className="commentDetail">
               <div className="commentDetailDiv">
-                <div className="commendUser">{commentData.userId.name}</div>
-                <div className="commentDate">
-                  {new Date().toLocaleDateString()}
+                <div className="commendUser">
+                  {commentData.userId.name}{" "}
+                  <div className="commendAccountUser">
+                    @{commentData.userId.userName.toLowerCase()}
+                  </div>
+                </div>
+                <div className="commentDateDelete">
+                  <div>{commentData.commentedTime.slice(0, 10)}</div>
+                  <i
+                    className="far fa-trash-alt"
+                    onClick={() => deleteComment(postId)}
+                  ></i>
                 </div>
               </div>
               <div className="commentDetailDiv">
                 <div className="commentText">{commentData.comment}</div>
-                <div
-                  className="commentDelete"
-                  onClick={() => deleteComment(postId)}
-                >
-                  Delete
-                </div>
               </div>
             </div>
           </div>

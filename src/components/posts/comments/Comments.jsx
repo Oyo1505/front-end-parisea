@@ -13,13 +13,10 @@ const Comments = ({ postId }) => {
     })();
   }, [postId]);
 
-  // if (comments.length === 0) return <p>test</p>;
-  // console.log(comments);
-
   return (
     <>
       <CommentForm postId={postId} setComments={setComments} />
-      <div>
+      <div className="commentsList">
         {comments.map((comment) => {
           return (
             <div>

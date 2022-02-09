@@ -1,10 +1,9 @@
 import { useState, useEffect, useRef } from "react";
-import APIHandler from "../../api/APIHandler";
 import { useNavigate, useParams } from "react-router-dom";
+import APIHandler from "../../api/APIHandler";
 
 function FormUpdatePost() {
   const { id } = useParams();
-  // console.log(id);
   const navigate = useNavigate();
   const imageRef = useRef();
   const [posts, setPosts] = useState(null);
@@ -20,13 +19,12 @@ function FormUpdatePost() {
 
     const fd = new FormData();
     fd.append("description", posts.description);
-    fd.append("title", posts.title);
-    console.log(imageRef.current.files[0]);
+    // console.log(imageRef.current.files[0]);
     fd.append("image", imageRef.current.files[0]);
 
     try {
       const { data } = await APIHandler.patch("/posts/update/" + id, fd);
-      console.log("Post data updated >> ", data);
+      // console.log("Post data updated >> ", data);
       navigate("/posts");
     } catch (err) {
       console.error(err);
@@ -36,28 +34,32 @@ function FormUpdatePost() {
   return posts ? (
     <>
       <div className="container">
-        <h1>Update - post</h1>
-        <form className="form" onSubmit={handleSubmit}>
-          <div>
-            <p>Image</p>
-            <input ref={imageRef} name="image" type="file" />
+        <h1>Edit your post</h1>
+        <form className="postForm" onSubmit={handleSubmit}>
+          <div className="postFormContent">
+            <div className="postFormLabel">
+              <p>Image</p>
+              <p className="postFormLabelText">
+                Modify your post image<br></br>PNG & JPG accepted
+              </p>
+            </div>
+            <label for="file">Choose your image file</label>
+            <input
+              className="postFormInput"
+              ref={imageRef}
+              name="image"
+              type="file"
+              id="file"
+            />
             <input type="file" name="existingImage" hidden />
           </div>
-          <div>
-            <p>title</p>
+          <div className="postFormContent">
+            <div className="postFormLabel">
+              <p>Description</p>
+              <p className="postFormLabelText">Let's talk about it!</p>
+            </div>
             <textarea
-              className="input"
-              name="title"
-              type="text"
-              placeholder="title"
-              value={posts.title}
-              onChange={(e) => setPosts({ ...posts, title: e.target.value })}
-            />
-          </div>
-          <div>
-            <p>Description</p>
-            <textarea
-              className="input"
+              className="postFormInput"
               name="description"
               type="text"
               placeholder="description"
@@ -67,7 +69,7 @@ function FormUpdatePost() {
               }
             />
           </div>
-          <button>UPDATE</button>
+          <button className="postBtns">UPDATE</button>
         </form>
       </div>
     </>

@@ -63,7 +63,7 @@ const SingleNFT = () => {
         )}
       </div>
 
-      {currentUser[0]._id === nft.creator._id ? (
+      {currentUser[0]._id === nft.creator ? (
         <Link to={`/nfts-edit/${id}`}>Edit NFT</Link>
       ) : nft.sold === true ? (
         <ResellNFT nftId={nft._id} />
