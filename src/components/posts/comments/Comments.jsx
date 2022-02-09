@@ -13,9 +13,6 @@ const Comments = ({ postId }) => {
     })();
   }, [postId]);
 
-  // if (comments.length === 0) return <p>test</p>;
-  // console.log(comments);
-
   return (
     <>
       <CommentForm postId={postId} setComments={setComments} />

@@ -15,7 +15,7 @@ const CommentForm = ({ postId, setComments }) => {
         userId: user[0]._id,
         comment,
       });
-      console.log("Comment data created >>", res.data);
+      // console.log("Comment data created >>", res.data);
       setComments((existComments) => [
         res.data.comments[res.data.comments.length - 1],
         ...existComments,
@@ -31,7 +31,9 @@ const CommentForm = ({ postId, setComments }) => {
       <div>
         <input
           type="text"
+          maxlength="50"
           value={comment}
+          placeholder="Comment here (Max 50 letters)"
           onChange={(e) => setComment(e.target.value)}
         />
       </div>
