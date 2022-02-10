@@ -10,7 +10,22 @@ const BuyNFT = ({ nftId, buyerId }) => {
     }
   };
 
-  return <button onClick={handleSubmit}>Buy</button>;
+  return (
+    <button
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        alignContent: "center",
+        color: "white",
+        border: "none",
+        background: "none",
+      }}
+      onClick={handleSubmit}
+    >
+      <p style={{ fontFamily: "ClashGrotesk-SemiBold" }}>Buy</p>
+    </button>
+  );
 };
 
 export default BuyNFT;

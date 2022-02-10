@@ -5,6 +5,7 @@ import Loading from "../loading/Loading";
 import useAuth from "../user/UseAuth";
 import BuyNFT from "./BuyNFT";
 import ResellNFT from "./ResellNFT";
+import "../../assets/css/nft/single-nft.css";
 
 const SingleNFT = () => {
   const { currentUser } = useAuth();
@@ -64,33 +65,102 @@ const SingleNFT = () => {
 
   return (
     <>
-      <h1>{nft.title}</h1>
-      <img src={nft.image} alt="nft" />
-      <p>{nft.description}</p>
-      <p>Price : {nft.price} MhM</p>
-
-      <div onClick={handleCart}>
-        {cartAdded ? removeFromCart : addInCart}
+      <div className="random-nft-home">
+        <div className="random-pic-home">
+          <img src={nft.image} alt="nft" />
+        </div>
         <div>
-          {Object.entries(nft).length !== 0 ? (
-            <>
-              <Link to={`/profile/${nft.creator._id}`}>
-                <h5>{nft.creator.name}</h5>
-              </Link>
-            </>
-          ) : (
-            "d"
-          )}
+          <h2 className="random-title">{nft.title}</h2>
+          <div className="random-component-home">
+            <div className="created-by">
+              <div>
+                <p className="created-by-title">Created by</p>
+                <div
+                  onClick={handleCart}
+                  style={{ display: "flex", alignItems: "center" }}
+                >
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      alignContent: "center",
+                      gap: 30,
+                    }}
+                  >
+                    {Object.entries(nft).length !== 0 ? (
+                      <>
+                        <Link
+                          className="profile-random-creator"
+                          to={`/profile/${nft.creator._id}`}
+                          style={{ marginBottom: 15 }}
+                        >
+                          <img
+                            className="profile-pic-random"
+                            src={nft.creator.image}
+                            alt=""
+                          />
+                          <p>{nft.creator.name}</p>
+                        </Link>
+                      </>
+                    ) : (
+                      "d"
+                    )}
+                    <div className="twitter">
+                      {cartAdded ? removeFromCart : addInCart}
+                    </div>
+                  </div>
+                </div>
+                <div style={{ marginTop: "20px" }}>
+                  <p className="created-by-title">Current Price</p>
+                  <p className="random-nft-price">{nft.price} MHM</p>
+                </div>
+                <div>
+                  <p className="created-by-title">Description</p>
+                  <h2>{nft.description}</h2>
+                </div>
+              </div>
+            </div>
+            <div
+              className="btn-view-random"
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                alignContent: "center",
+                color: "white",
+              }}
+            >
+              {currentUser[0]._id === nft.creator._id ? (
+                <Link
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    alignContent: "center",
+                    color: "white",
+                  }}
+                  to={`/nfts-edit/${id}`}
+                >
+                  Edit NFT
+                </Link>
+              ) : nft.sold === true ? (
+                <ResellNFT
+                  nftId={nft._id}
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    alignContent: "center",
+                    color: "white",
+                  }}
+                />
+              ) : (
+                showBuyBtn()
+              )}
+            </div>
+          </div>
         </div>
       </div>
-
-      {currentUser[0]._id === nft.creator._id ? (
-        <Link to={`/nfts-edit/${id}`}>Edit NFT</Link>
-      ) : nft.sold === true ? (
-        <ResellNFT nftId={nft._id} />
-      ) : (
-        showBuyBtn()
-      )}
     </>
   );
 };
