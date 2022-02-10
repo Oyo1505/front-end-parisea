@@ -18,14 +18,16 @@ function MyPosts() {
 
   return (
     <>
-      {myPosts.map((post) => {
-        const id = String(post._id);
-        return (
-          <div>
-            <Post postId={id} postData={post} key={id} />
-          </div>
-        );
-      })}
+      <div className="profilePostDiv">
+        {myPosts.map((post) => {
+          const id = String(post._id);
+          return (
+            <div>
+              <Post postId={id} postData={post} key={id} />
+            </div>
+          );
+        })}
+      </div>
     </>
   );
 }

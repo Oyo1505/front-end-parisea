@@ -25,7 +25,7 @@ function FormCreatePost() {
     try {
       const res = await APIHandler.post("/posts/create", fd);
       console.log("Post data created >>", res.data);
-      navigate("/posts");
+      navigate("/");
     } catch (err) {
       console.error(err);
     }
@@ -80,7 +80,8 @@ function FormCreatePost() {
               className="postFormInput"
               name="description"
               type="text"
-              placeholder="description"
+              placeholder="description(Max 100 letters)"
+              maxlength="75"
               value={posts.description}
               onChange={(e) =>
                 setPosts({ ...posts, description: e.target.value })

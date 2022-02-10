@@ -136,6 +136,19 @@
   width: 350px;
   height: 500px;
   border-radius: 10px;
+  margin-bottom: 100px;
+  background-color: white;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.05);
+}
+
+/* ⬇︎⬇︎⬇︎⬇︎⬇︎　POSTS CARD (MAIN) ⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎ */
+
+.postDivMarketPlace {
+  display: flex;
+  flex-direction: column;
+  width: 364px;
+  height: 490px;
+  border-radius: 10px;
   margin-bottom: 50px;
   background-color: white;
   box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.05);
@@ -148,6 +161,11 @@
   max-width: 350px;
   padding: 10px;
   font-size: 1.2rem;
+}
+
+/* ⬇︎⬇︎⬇︎⬇︎⬇︎　POSTS CARD (MAIN) ⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎ */
+.profilePostDiv {
+  margin: 20px 0;
 }
 
 /* ⬇︎⬇︎⬇︎⬇︎⬇︎　SINGLE POST HEADER ⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎ */
@@ -204,12 +222,11 @@
 
 .postBody img {
   width: 100%;
-  max-height: 350px;
+  height: 350px;
   object-fit: cover;
 }
 
 .postDescription {
-  height: 100%;
   padding: 10px 20px;
   text-align: left;
   word-break: break-all;

@@ -5,7 +5,7 @@ const CardPost = ({ post }) => {
   console.log(post);
   return (
     <>
-      <div className="postDiv">
+      <div className="postDivMarketPlace">
         <div className="postHeader">
           <Link to={`/profile/${post.userId._id}`}>
             <div className="postUser">
