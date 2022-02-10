@@ -24,7 +24,7 @@ code {
 }
 
 header {
-  padding: 0 120px;
+  padding: 0 100px;
 }
 
 h1 {
@@ -49,4 +49,6 @@ a:active {
   text-decoration: none;
   cursor: pointer;
   color: none;
+  font-family: "ClashGrotesk-SemiBold";
+
 }

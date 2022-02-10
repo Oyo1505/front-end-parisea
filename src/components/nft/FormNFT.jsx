@@ -109,9 +109,11 @@ const FormNFT = () => {
           {!id ? (
             <div className="postFormContent">
               <div className="postFormLabel">
-                <h2 className="h2-create-post">Image</h2>
+                <h2 className="h2-create-post">Upload File</h2>
                 <p className="postFormLabelText">
-                  Share us your NTF news!<br></br>PNG & JPG accepted
+                  Make sure each of your <br></br> creations are unique !
+                  <br></br>
+                  <br></br>PNG & JPG accepted
                 </p>
               </div>
 
@@ -141,7 +143,9 @@ const FormNFT = () => {
           <div className="postFormContent">
             <div className="postFormLabel">
               <h2 className="h2-create-post">Title</h2>
-              <p className="postFormLabelText">Let's talk about it!</p>
+              <p className="postFormLabelText">
+                Nothing is as better <br></br>as a catchy title !
+              </p>
             </div>
             <input
               className="input-section"
@@ -156,7 +160,10 @@ const FormNFT = () => {
           <div className="postFormContent">
             <div className="postFormLabel">
               <h2 className="h2-create-post">Price</h2>
-              <p className="postFormLabelText">Let's talk about it!</p>
+              <p className="postFormLabelText">
+                Enter price to allow <br></br> users instantly <br></br>
+                purchase your NFT
+              </p>
             </div>
             <input
               className="input-section"
@@ -173,7 +180,9 @@ const FormNFT = () => {
           <div className="postFormContent">
             <div className="postFormLabel">
               <h2 className="h2-create-post">Description</h2>
-              <p className="postFormLabelText">Let's talk about it!</p>
+              <p className="postFormLabelText">
+                Tell us the story behind your amazing artwork !
+              </p>
             </div>
             <input
               className="input-section"
@@ -185,7 +194,7 @@ const FormNFT = () => {
             />
           </div>
 
-          <button className="postBtns">{id ? "Update" : "Create"}</button>
+          <button className="postBtns">{id ? "Update" : "Create Now !"}</button>
         </form>
         {id && <button onClick={handleDelete}>Delete</button>}
       </div>

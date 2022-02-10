@@ -1,4 +1,5 @@
 .profile-info-section {
+    margin-top: 10px;
     display: flex;
     justify-content: flex-start;
     flex-direction: column;

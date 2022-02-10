@@ -2,15 +2,17 @@ import React, { useEffect, useState } from "react";
 import APIHandler from "../../api/APIHandler";
 import Loading from "../loading/Loading";
 import ListPosts from "./ListPosts";
+
 const ListPostsMarketplace = ({ limit, title }) => {
   const [posts, setPosts] = useState([]);
   useEffect(() => {
     const x = async () => {
       try {
         const { data } = await APIHandler.get(`/posts/market/${limit}`);
+        console.log(data);
         setPosts(data);
       } catch (e) {
-        console(e);
+        console.error(e);
       }
     };
     x();
