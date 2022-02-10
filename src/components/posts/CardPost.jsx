@@ -6,7 +6,7 @@ const CardPost = ({ post }) => {
     <>
       <div className="postDiv">
         <div className="postHeader">
-          <Link to={`/${post.userId._id}`}>
+          <Link to={`/profile/${post.userId._id}`}>
             <div className="postUser">
               <img src={post.userId.image} alt="img" />
               <div className="postUserInfo">
