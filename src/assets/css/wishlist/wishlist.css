@@ -1,5 +1,5 @@
 .wishlist {
-  width: 650px;
+  width: 800px;
   border: 0;
   background-color: white;
   border-radius: 10px;
@@ -8,10 +8,24 @@
   flex-direction: row;
   padding: 15px;
   gap: 50px;
+  margin-bottom: 50px;
+}
+
+.wishlist h1 {
+  margin: 0;
+}
+
+.wishlist h2 {
+  margin: 10px 0;
+  font-size: 2rem;
+}
+
+.wishlist p {
+  font-size: 1.5rem;
 }
 
 .wishlist img {
-  width: 300px;
+  width: 400px;
 }
 
 .wishlistBody {
@@ -19,7 +33,7 @@
 }
 
 .wishlistDetail {
-  margin-bottom: 40px;
+  margin-bottom: 70px;
 }
 
 .wishListIcons {

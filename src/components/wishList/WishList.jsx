@@ -24,7 +24,9 @@ const WishList = () => {
     ) {
       try {
         await APIHandler.patch(`/wishlist/delete/${id}/${currentUser[0]._id}`);
-        setWishlists((existWishlist) => existWishlist.filter((x) => x._id !== id));
+        setWishlists((existWishlist) =>
+          existWishlist.filter((x) => x._id !== id)
+        );
       } catch (err) {
         console.error(err);
       }
@@ -35,7 +37,7 @@ const WishList = () => {
 
   return (
     <>
-      <h1>My wishlist</h1>
+      {/* <h1>My wishlist</h1> */}
       <div className="container">
         {wishlists.map((wishlist) => {
           const id = String(wishlist._id);
@@ -44,7 +46,7 @@ const WishList = () => {
               <img src={wishlist.image} alt="" />
               <div className="wishlistBody">
                 <div className="wishlistDetail">
-                  <h2>{wishlist.price} MHM</h2>
+                  <h1>{wishlist.price} MHM</h1>
                   <h2 className="wishlistSoldOrNot">
                     {wishlist.sold === false ? "STILL AVALIABLE" : "SOLD"}
                   </h2>

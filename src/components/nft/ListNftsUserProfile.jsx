@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import APIHandler from "../../api/APIHandler";
 import { Link, useParams } from "react-router-dom";
 import MyPosts from "./../posts/MyPosts";
+import MyWishList from "./../wishList/WishList";
 import CardNFT from "./CardNFT";
 import { useTrail, animated, config } from "react-spring";
 import "../../assets/css/animation/animation.css";
@@ -44,6 +45,12 @@ const ListNftsUserProfile = ({ mode, userId }) => {
         if (mode === "creator" || mode === "owner") {
           const { data } = await APIHandler.get(`/list-nfts/${mode}/${userId}`);
           setItems(data);
+        } else if (mode === "posts") {
+          const { data } = await APIHandler.get(`/posts/mypost/${userId}`);
+          setItems(data);
+        } else if (mode === "wishlists") {
+          const { data } = await APIHandler.get(`/wishlist/${userId}`);
+          setItems(data);
         }
       } catch (e) {
         console.error(e);
@@ -51,6 +58,7 @@ const ListNftsUserProfile = ({ mode, userId }) => {
     };
     x();
   }, [mode]);
+
   useEffect(() => {
     const x = async () => {
       try {
@@ -62,13 +70,14 @@ const ListNftsUserProfile = ({ mode, userId }) => {
     };
     x();
   }, [userId]);
+
   return (
     <>
       {items ? (
         <>
-          {mode === "posts" ? (
-            <MyPosts />
-          ) : (
+          {mode === "posts" ? <MyPosts /> : ""}
+          {mode === "wishlists" ? <MyWishList /> : ""}
+          {mode === "owner" ? (
             <>
               <Trails>
                 {items.map((item) => {
@@ -76,11 +85,13 @@ const ListNftsUserProfile = ({ mode, userId }) => {
                 })}
               </Trails>
             </>
+          ) : (
+            ""
           )}
         </>
       ) : (
-        <h1 className="px-20 py-10 text-3xl">No items in marketplace</h1>
-      )}{" "}
+        ""
+      )}
     </>
   );
 };
