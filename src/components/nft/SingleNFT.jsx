@@ -46,7 +46,7 @@ const SingleNFT = () => {
           userId: currentUser[0]._id,
         }
       );
-      console.log("Cart added >>", data.cartAdded);
+      console.log("Cart added >>", data);
       setCartAdded(data.cartAdded);
       setNft(data.nft);
     } catch (err) {

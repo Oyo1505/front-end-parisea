@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import APIHandler from "../../api/APIHandler";
 import Loading from "../loading/Loading";
 import ListPosts from "./ListPosts";
+
 const ListPostsMarketplace = ({ limit, title }) => {
   const [posts, setPosts] = useState([]);
   useEffect(() => {
