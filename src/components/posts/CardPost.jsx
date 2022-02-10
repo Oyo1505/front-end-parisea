@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const CardPost = ({ post }) => {
   return (
     <>
-      <div className="postDiv">
+      <div className="postDivMarketPlace">
         <div className="postHeader">
           <Link to={`/profile/${post.userId._id}`}>
             <div className="postUser">

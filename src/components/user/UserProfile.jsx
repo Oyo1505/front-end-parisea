@@ -31,7 +31,7 @@ const UserProfile = () => {
                 Created
               </NavLink>
               <div onClick={() => setMode("owner")}>Owned</div>
-              <div onClick={() => setMode("wishlist")}>Wishlist</div>
+              <div onClick={() => setMode("wishlists")}>Wishlist</div>
               <div onClick={() => setMode("posts")}>Posts</div>
             </div>
           </div>
