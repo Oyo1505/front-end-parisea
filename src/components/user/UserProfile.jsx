@@ -9,13 +9,16 @@ import Loading from "../loading/Loading";
 const UserProfile = () => {
   const { currentUser, coverImage } = useAuth();
   const { id } = useParams();
+  console.log(coverImage);
   const [mode, setMode] = useState("creator");
   const [isActive, setActive] = useState(false);
   if (currentUser.length === 0) return <Loading />;
   return (
     <div>
       <div className="profile-image-header">
-        <div>{/* <img src={currentUser[0].image} /> */}</div>
+        <div>
+          <img src={coverImage.image} />
+        </div>
       </div>
 
       <div className="body-profile-bis">

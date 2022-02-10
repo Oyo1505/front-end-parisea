@@ -52,7 +52,7 @@ const UserInfo = () => {
         facebook: data.facebook,
         instagram: data.instagram,
       });
-      handleCoverImage(data._id, data.coverImage);
+      handleCoverImage(data._id, data.coverImage, data.image);
     };
 
     x();
