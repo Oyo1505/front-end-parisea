@@ -1,9 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-
 import APIHandler from "../../api/APIHandler";
 import useAuth from "../user/UseAuth";
-
+import Loading from "../loading/Loading";
 const FormNFT = () => {
   const { id } = useParams();
   const { currentUser } = useAuth();
@@ -85,56 +84,83 @@ const FormNFT = () => {
       console.log(e);
     }
   };
-  if (currentUser.length === 0) return <p>loading</p>;
+  if (currentUser.length === 0) return <Loading />
   return (
     <>
-    <div className="container">
-      {id ? <h1>Update</h1> : <h1>Create</h1>}
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="title">Title</label>
-          <input
-            id="title"
-            value={nft.title}
-            name="title"
-            onChange={(e) => setNft({ ...nft, title: e.target.value })}
-            type="text"
-          />
-        </div>
-
-        <div>
-          <label htmlFor="price">Price</label>
-          <input
-            min={0}
-            step={0.1}
-            id="price"
-            value={nft.price}
-            name="price"
-            onChange={(e) => setNft({ ...nft, price: e.target.value })}
-            type="number"
-          />
-        </div>
-
-        <div>
-          <label htmlFor="description">Description</label>
-          <input
-            id="description"
-            value={nft.description}
-            name="title"
-            onChange={(e) => setNft({ ...nft, description: e.target.value })}
-            type="text"
-          />
-        </div>
-        {!id && (
-          <div>
-            <label htmlFor="description">Image</label>
-            <input ref={imageRef} id="image" name="image" type="file" />
+      <div className="container">
+        {id ? <h1>Update</h1> : <h1>Create a NFT</h1>}
+        <form className="postForm" onSubmit={handleSubmit}>
+          {!id ? (
+            <div className="postFormContent">
+              <div className="postFormLabel">
+                <h2 className="h2-create-post">Image</h2>
+                <p className="postFormLabelText">
+                  Share us your NTF news!<br></br>PNG & JPG accepted
+                </p>
+              </div>
+             
+              <label for="file">Choose your image file</label>
+              <input
+                className="postFormInput"
+                ref={imageRef}
+                id="image"
+                name="image"
+                type="file"
+              />
+            </div>
+          ) : <div>{nft.image ?  <img src={nft.image} alt="-uploaded" /> : ""}</div> }
+          <div className="postFormContent">
+            <div className="postFormLabel">
+              <h2 className="h2-create-post">Title</h2>
+              <p className="postFormLabelText">Let's talk about it!</p>
+            </div>
+            <input
+              className="postFormInput"
+              id="title"
+              value={nft.title}
+              className="postFormInput"
+              name="title"
+              onChange={(e) => setNft({ ...nft, title: e.target.value })}
+              type="text"
+            />
           </div>
-        )}
-        <div>{nft.image && <img src={nft.image} alt="-uploaded" />}</div>
-        <button>{id ? "Update" : "Create"}</button>
-      </form>
-      {id && <button onClick={handleDelete}>Delete</button>}
+
+          <div className="postFormContent">
+          <div className="postFormLabel">
+              <h2 className="h2-create-post">Price</h2>
+              <p className="postFormLabelText">Let's talk about it!</p>
+            </div>
+            <input
+            className="postFormInput"
+              min={0}
+              step={0.1}
+              id="price"
+              value={nft.price}
+              name="price"
+              onChange={(e) => setNft({ ...nft, price: e.target.value })}
+              type="number"
+            />
+          </div>
+
+          <div className="postFormContent">
+          <div className="postFormLabel">
+              <h2 className="h2-create-post">Description</h2>
+              <p className="postFormLabelText">Let's talk about it!</p>
+            </div>
+            <input
+            className="postFormInput"
+              id="description"
+              value={nft.description}
+              name="title"
+              onChange={(e) => setNft({ ...nft, description: e.target.value })}
+              type="textarea"
+            />
+          </div>
+
+        
+          <button className="postBtns">{id ? "Update" : "Create"}</button>
+        </form>
+        {id && <button  onClick={handleDelete}>Delete</button>}
       </div>
     </>
   );

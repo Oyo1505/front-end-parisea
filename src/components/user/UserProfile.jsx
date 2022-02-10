@@ -6,6 +6,7 @@ import HomeNfts from "../nft/HomeNfts";
 import ListNftsUserProfile from "../nft/ListNftsUserProfile";
 import useAuth from "./UseAuth";
 import "../../assets/css/user/user-content.css";
+import Loading from "../loading/Loading";
 
 const UserProfile = () => {
   const { currentUser, coverImage } = useAuth();
@@ -13,7 +14,7 @@ const UserProfile = () => {
 
   const [mode, setMode] = useState("creator");
  
-  // if (currentUser.length === 0) return <p>loading</p>;
+   if (currentUser.length === 0) return <Loading />
   return (
     <div>
       

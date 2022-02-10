@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import APIHandler from "../../api/APIHandler";
+import Loading from "../loading/Loading";
 
 function FormUpdatePost() {
   const { id } = useParams();
@@ -72,7 +73,7 @@ function FormUpdatePost() {
       </div>
     </>
   ) : (
-    <p>...loading</p>
+    <Loading />
   );
 }
 

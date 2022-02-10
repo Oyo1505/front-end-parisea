@@ -23,6 +23,7 @@ const Header = () => {
           ? `url(${coverImage.coverImage})  `
           : "",
         backgroundRepeat: "no-repeat",
+        backgroundPositionY: "center",
         backgroundSize: "cover",
         height: inProfileUser() ? `250px` : "",
       }}
