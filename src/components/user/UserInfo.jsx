@@ -95,7 +95,7 @@ const UserInfo = () => {
           <i class="fas fa-hashtag"></i>
           <strong className="id-name">{user.id_metamask}</strong>
           <i
-            style={{ cursor: "pointer" }}
+            style={{ cursor: "pointer", marginLeft: 2 }}
             onClick={() => {
               navigator.clipboard.writeText(user.id_metamask);
             }}
