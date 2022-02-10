@@ -65,8 +65,22 @@
 }
 
 .label-section-edit-profile {
-  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  align-items: center;
+  justify-content: center;
+
   font-weight: 600;
+  object-fit: cover;
+}
+
+.label-section-edit-profile img {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  object-fit: cover;
+  cursor: pointer;
+
 }
 
 .input-section {
@@ -177,6 +191,17 @@ strong {
   cursor: pointer;
   font-size: 16px;
   font-family: 'ClashGrotesk-SemiBold';
+
+}
+
+.imgPreview {
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  width: 50px;
+  height: 50px;
+
+  object-fit: cover;
 
 }
 
