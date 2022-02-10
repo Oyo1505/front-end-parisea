@@ -19,7 +19,7 @@ const SingleNFT = () => {
       try {
         if (currentUser.length > 0) {
           const { data } = await APIHandler.get(
-            `/nfts/${id}/${currentUser[0]._id}`,
+            `/nfts/single/${id}/${currentUser[0]._id}`,
             {
               nft,
               userId: currentUser[0]._id,
