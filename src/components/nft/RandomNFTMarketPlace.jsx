@@ -33,8 +33,12 @@ const RandomNFTMarketPlace = () => {
     x();
   }, []);
   if (Object.keys(nft).length === 0) return <p>NO item</p>;
+
   return (
-    <div className="random-nft-home-container">
+    <div
+
+    // className="random-nft-home-container"
+    >
       <animated.div style={contentProps}>
         <div className="random-nft-home">
           <div style={{ height: "500px" }}>
@@ -42,13 +46,35 @@ const RandomNFTMarketPlace = () => {
           </div>
           <animated.div style={titleNftProps}>
             <h2>
-              <Link to={`nfts/${nft._id}`}>{nft.title}</Link>
+              <Link className="random-title" to={`nfts/${nft._id}`}>
+                {nft.title}
+              </Link>
             </h2>
-            <div>
-              <div>Creator by </div>
-              <div>{nft.creator.name}</div>
+            <div className="random-component-home">
+              <div className="created-by">
+                <Link to={`/profile/${nft.creator._id}`}>
+                  <div>
+                    <p className="created-by-title">Created by</p>
+                  </div>
+                  <div className="profile-random-creator">
+                    <img
+                      className="profile-pic-random"
+                      src={nft.creator.image}
+                      alt=""
+                    />
+
+                    <p>{nft.creator.name}</p>
+                  </div>
+                </Link>
+              </div>
+              <div>
+                <p className="created-by-title">Current Price</p>
+                <p className="random-nft-price">{nft.price} MHM</p>
+              </div>
+              <Link to={`nfts/${nft._id}`}>
+                <button className="btn-view-random">View NFT</button>
+              </Link>
             </div>
-            <Link to={`nfts/${nft._id}`}>View NFT</Link>
           </animated.div>
         </div>
       </animated.div>

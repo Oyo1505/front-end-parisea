@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "../../App.css";
 import APIHandler from "../../api/APIHandler";
 import { useParams } from "react-router-dom";
@@ -6,11 +6,17 @@ import useRefs from "react-use-refs";
 import "../../assets/css/user/user-edit-style.css";
 import { useNavigate } from "react-router-dom";
 import useAuth from "../user/UseAuth";
+import IconPreview from "./IconPreview";
+
 const UserEdit = () => {
   const navigate = useNavigate();
   const { id } = useParams();
+  const { handleCoverImage } = useAuth();
+  //const [imageRef, coverImageRef] = useRefs();
+  const imageRef = useRef();
+  const coverImageRef = useRef();
 
-  const [imageRef, coverImageRef] = useRefs();
+  const [newImageTmp, setNewImageTmp] = useState("");
 
   const [user, setUser] = useState({
     name: "",
@@ -72,10 +78,30 @@ const UserEdit = () => {
         instagram: data.instagram,
         coverImage: data.coverImage,
       });
-      //navigate(`/${data._id}`);
+      handleCoverImage(user._id, user.coverImage, user.image);
+      navigate(`/profile/${data._id}`);
     } catch (e) {
       console.error(e);
     }
+  };
+
+  const [imgSrc, setImgSrc] = useState("");
+  const [imgCoverSrc, setImgCoverSrc] = useState("");
+
+  const encodeFileToBase64 = (e) => {
+    console.log(e.target);
+    const reader = new FileReader();
+    reader.readAsDataURL(e.target.files[0]);
+    return new Promise((resolve) => {
+      reader.onload = () => {
+        if (e.target.name === "profileImage") {
+          setImgSrc(reader.result);
+        } else if (e.target.name === "coverImage") {
+          setImgCoverSrc(reader.result);
+        }
+        resolve();
+      };
+    });
   };
 
   return (
@@ -173,20 +199,44 @@ const UserEdit = () => {
                 10MB max size.
               </p>
             </div>
+            {/* <IconPreview
+              image={newImageTmp || user.imageRef}
+              clbk={(e) => handleImage(e.target.files[0])}
+            /> */}
 
             <div className="profile-image">
               <div className="section-padding">
                 <div className="image-section">
-                  <label className="label-section-edit-profile" htmlFor="files">
-                    {imageRef.current?.files && (
-                      <img width="350" src={imageRef.current.files[0]} />
-                    )}
-                  </label>
+                  <div>
+                    <label
+                      className="label-section-edit-profile"
+                      htmlFor="profileImage"
+                    >
+                      {imgSrc ? (
+                        imgSrc && (
+                          <img
+                            src={imgSrc}
+                            alt="previewImg"
+                            // className="imgPreview"
+                          />
+                        )
+                      ) : (
+                        <img src={imgSrc} alt="imageRef" />
+                      )}
+                    </label>
+                  </div>
                 </div>
                 <div>
                   <h4 className="image-info">{user.image}</h4>
                 </div>
-                <input id="files" ref={imageRef} name="image" type="file" />
+                <input
+                  id="profileImage"
+                  ref={imageRef}
+                  name="profileImage"
+                  type="file"
+                  hidden
+                  onChange={encodeFileToBase64}
+                />
               </div>
             </div>
           </div>
@@ -203,21 +253,34 @@ const UserEdit = () => {
             <div className="profile-image">
               <div className="section-padding">
                 <div className="image-section">
-                  <label className="label-section-edit-profile" htmlFor="files">
-                    {coverImageRef && <img width="350" src={coverImageRef} />}
+                  <label
+                    className="label-section-edit-profile"
+                    htmlFor="coverImage"
+                  >
+                    {imgCoverSrc ? (
+                      imgCoverSrc && (
+                        <img
+                          src={imgCoverSrc}
+                          alt="previewImg"
+                          // className="imgPreview"
+                        />
+                      )
+                    ) : (
+                      <img src={imgCoverSrc} alt="" />
+                    )}
                   </label>
                 </div>
                 <div>
-                  <h4 className="image-info">{user.image}</h4>
+                  <h4 className="image-info">{user.coverImage}</h4>
                 </div>
                 <div>
                   <input
+                    id="coverImage"
                     ref={coverImageRef}
                     name="coverImage"
                     type="file"
-                    onInput={() =>
-                      console.log(coverImageRef.current.files[0], "cover")
-                    }
+                    hidden
+                    onChange={encodeFileToBase64}
                   />
                 </div>
               </div>
