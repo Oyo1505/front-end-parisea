@@ -11,10 +11,10 @@ function MyPosts() {
   useEffect(() => {
     (async () => {
       const { data } = await APIHandler.get(`/posts/mypost/` + id);
-      // console.log(data);
+       console.log(data);
       setMyPosts(data);
     })();
-  }, [id]);
+  }, []);
 
   return (
     <>

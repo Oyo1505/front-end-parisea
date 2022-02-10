@@ -82,7 +82,7 @@ const SingleNFT = () => {
 
           {Object.entries(nft).length !== 0 ? (
             <>
-              <Link to={`/${nft.creator._id}`}>
+              <Link to={`/profile/${nft.creator._id}`}>
                 <h5>{nft.creator.name}</h5>
               </Link>
             </>

@@ -1,9 +1,9 @@
 import React from 'react'
 
-const CardContentProfile = (item) => {
-
+const CardContentProfile = ({item}) => {
+  console.log(item)
   return (
-    <div></div>
+    <div>{item.title}</div>
   )
 }
 

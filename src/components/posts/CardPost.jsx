@@ -1,9 +1,8 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import "../../assets/css/post/card-post.css"
+import React from "react";
+import { Link } from "react-router-dom";
+import "../../assets/css/post/card-post.css";
 
-const CardPost = ({post}) => {
-    console.log(post)
+const CardPost = ({ post }) => {
   return (
     <>
       <div
@@ -14,20 +13,22 @@ const CardPost = ({post}) => {
           backgroundSize: "cover",
         }}
       >
-        <div className='header-post-card'>
-            <img src={post.userId.image} />
-            <div  >
-                <Link to={`/profile/${post.userId._id}`} className='header-name'>{post.userId.name}</Link>
-                <p className='header-username'>@{post.userId.userName}</p>
-            </div>
+        <div className="header-post-card">
+          <img src={post.userId.image} />
+          <div>
+            <Link to={`/profile/${post.userId._id}`} className="header-name">
+              {post.userId.name}
+            </Link>
+            <p className="header-username">@{post.userId.userName}</p>
+          </div>
         </div>
-       
+
         <div className="content-post-card">
-            <p>{post.description}</p>
+          <p>{post.description}</p>
         </div>
       </div>
     </>
-  );;
+  );
 };
 
 export default CardPost;

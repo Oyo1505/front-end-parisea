@@ -1,53 +1,83 @@
 .body-profile {
-
-    margin-left: 100px;
-    margin-right: 100px;
-    margin-bottom: 48px;
-
-
+  margin-left: 100px;
+  margin-right: 100px;
+  margin-bottom: 48px;
+}
+.side-elements-profile {
+  width: 100%;
+  min-height: 600px;
 }
 
+.list-cards-profile {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+  gap: 50px;
+  margin-top: 10px;
+}
 .profile-image-header {
-    width: 180px;
-    height: 180px;
-    background-color: white;
-    border-radius: 50%;
-    position: absolute;
+  width: 180px;
+  height: 180px;
+  background-color: white;
+  border-radius: 50%;
+  position: absolute;
 
-    display: flex;
-    justify-content: center;
-    top: 160px;
-    left: 124px;
+  display: flex;
+  justify-content: center;
+  top: 160px;
+  left: 124px;
 }
 
 .body-profile-bis {
-    margin-top: 150px;
-    display: flex;
-    flex-direction: row;
-    gap: 100px;
-    /* border-bottom: solid 2px #E6E6E6; */
-
-
-}
-
-.whole-cat-profile {
-    border-bottom: solid 2px #E6E6E6;
-
+  margin-top: 150px;
+  display: flex;
+  flex-direction: row;
+  gap: 100px;
+  /* border-bottom: solid 2px #E6E6E6; */
 }
 
 .categories-profile {
-    display: flex;
-    flex-direction: row;
-    gap: 20px;
-
+  display: flex;
+  flex-direction: row;
+  height: 50px;
+  gap: 20px;
+  justify-content: flex-start;
+  align-items: center;
 }
-
-.categories-profile p {
-    font-family: 'ClashGrotesk-Semibold';
-    color: #7F7F7F;
+.categories-profile div:hover {
+  color: black;
 }
-
+.categories-profile .is-active {
+  color: black;
+}
+/* .categories-profile div::after {
+  height: 2px;
+  display: block;
+  width: 100%;
+  margin-top: 30px;
+  background: #1a1919;
+  border-right: 1px white;
+  content: " ";
+} */
+.whole-cat-profile::after {
+  height: 2px;
+  display: block;
+  width: 100%;
+  background: #c2b2b2;
+  border-right: 1px white;
+  content: " ";
+}
+.categories-profile div {
+  font-family: "ClashGrotesk-Semibold";
+  color: #7f7f7f;
+}
+.categories-profile div:hover {
+  cursor: pointer;
+}
 .categories-profile p:hover {
-    color: black;
-    cursor: pointer;
+  color: black;
+  cursor: pointer;
 }
