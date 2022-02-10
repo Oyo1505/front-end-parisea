@@ -27,7 +27,7 @@ const SingleNFT = () => {
           );
           console.log(data);
           console.log("is this already inside cart?", data.cartAdded);
-          // setCartAdded(data.cartAdded);
+          setCartAdded(data.cartAdded);
           setNft(data.nft);
         }
       } catch (e) {
