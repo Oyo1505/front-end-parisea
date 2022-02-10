@@ -26,23 +26,13 @@ const UserProfile = () => {
               <NavLink
                 to={"#"}
                 activeClassName="is-active"
-                onClick={() => {
-                  setActive(true);
-                  setMode("creator");
-                }}
+                onClick={() => setMode("creator")}
               >
                 Created
               </NavLink>
-              <div
-                onClick={() => {
-                  setActive(true);
-                  setMode("owner");
-                }}
-              >
-                Owned
-              </div>
-              <div onClick={() => setMode("posts")}>Posts</div>
+              <div onClick={() => setMode("owner")}>Owned</div>
               <div onClick={() => setMode("wishlist")}>Wishlist</div>
+              <div onClick={() => setMode("posts")}>Posts</div>
             </div>
           </div>
           <ListNftsUserProfile mode={mode} userId={id} />

@@ -11,7 +11,7 @@ const Post = ({ postId, postData, updateState }) => {
   const { currentUser } = useAuth();
   const navigate = useNavigate();
   const [post, setPost] = useState(postData);
-  const [showComment, setShowComment] = useState(false); 
+  const [showComment, setShowComment] = useState(false);
   const [likeAdded, setLikeAdded] = useState(false);
   const emptyHeart = <i className="far fa-heart"></i>;
   const fullHeart = <i className="fas fa-heart"></i>;

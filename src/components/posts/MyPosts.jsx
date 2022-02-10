@@ -11,24 +11,21 @@ function MyPosts() {
   useEffect(() => {
     (async () => {
       const { data } = await APIHandler.get(`/posts/mypost/` + id);
-       console.log(data);
+      console.log(data);
       setMyPosts(data);
     })();
   }, []);
 
   return (
     <>
-      {/* <h1>All My Posts</h1> */}
-      <div className="container">
-        {myPosts.map((post) => {
-          const id = String(post._id);
-          return (
-            <div>
-              <Post postId={id} postData={post} key={id} />
-            </div>
-          );
-        })}
-      </div>
+      {myPosts.map((post) => {
+        const id = String(post._id);
+        return (
+          <div>
+            <Post postId={id} postData={post} key={id} />
+          </div>
+        );
+      })}
     </>
   );
 }
