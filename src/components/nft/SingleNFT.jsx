@@ -17,14 +17,15 @@ const SingleNFT = () => {
   useEffect(() => {
     const x = async () => {
       try {
-        if (currentUser.length > 0) {
+        if (currentUser) {
           const { data } = await APIHandler.get(
-            `/nfts/${id}/${currentUser[0]._id}`,
+            `/nfts/single/${id}/${currentUser[0]._id}`,
             {
               nft,
               userId: currentUser[0]._id,
             }
           );
+          console.log(data);
           console.log("is this already inside cart?", data.cartAdded);
           // setCartAdded(data.cartAdded);
           setNft(data.nft);
@@ -60,7 +61,8 @@ const SingleNFT = () => {
       return <BuyNFT nftId={nft._id} buyerId={currentUser[0]._id} />;
     }
   };
-  if (Object.keys(nft).length === 0) return <Loading />;
+  if (currentUser.length === 0 || Object.keys(nft).length === 0)
+    return <Loading />;
 
   return (
     <>
@@ -70,7 +72,7 @@ const SingleNFT = () => {
       <p>Price : {nft.price} MhM</p>
 
       <div onClick={handleCart}>
-        {/* {cartAdded ? removeFromCart : addInCart} */}
+        {cartAdded ? removeFromCart : addInCart}
         <div>
           {Object.entries(nft).length !== 0 ? (
             <>

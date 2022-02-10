@@ -23,13 +23,12 @@ const UserProfile = () => {
         <div className="side-elements-profile">
           <div className="whole-cat-profile">
             <div className="categories-profile">
-              <NavLink
-                to={"#"}
-                activeClassName="is-active"
+              <div
+                className={({ isActive }) => (isActive ? "active" : "inactive")}
                 onClick={() => setMode("creator")}
               >
                 Created
-              </NavLink>
+              </div>
               <div onClick={() => setMode("owner")}>Owned</div>
               <div onClick={() => setMode("wishlist")}>Wishlist</div>
               <div onClick={() => setMode("posts")}>Posts</div>

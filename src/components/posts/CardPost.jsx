@@ -18,7 +18,6 @@ const CardPost = ({ post }) => {
             </div>
           </Link>
         </div>
-
         <div className="postBody">
           <img src={post.image} alt="" />
           <div className="postDescriptionMarketPlace">{post.description}</div>
