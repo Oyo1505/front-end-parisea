@@ -25,8 +25,6 @@ const SingleNFT = () => {
               userId: currentUser[0]._id,
             }
           );
-          console.log(data);
-          console.log("is this already inside cart?", data.cartAdded);
           setCartAdded(data.cartAdded);
           setNft(data.nft);
         }
@@ -66,33 +64,37 @@ const SingleNFT = () => {
 
   return (
     <>
-      <h1>{nft.title}</h1>
-      <img src={nft.image} alt="nft" />
-      <p>{nft.description}</p>
-      <p>Price : {nft.price} MhM</p>
-
-      <div onClick={handleCart}>
-        {cartAdded ? removeFromCart : addInCart}
-        <div>
-          {Object.entries(nft).length !== 0 ? (
-            <>
-              <Link to={`/profile/${nft.creator._id}`}>
-                <h5>{nft.creator.name}</h5>
-              </Link>
-            </>
-          ) : (
-            "d"
-          )}
-        </div>
+      <div>
+        <img src={nft.image} alt="nft" />
       </div>
+      <div>
+        <h1>{nft.title}</h1>
+        <p>{nft.description}</p>
+        <p>Price : {nft.price} MhM</p>
 
-      {currentUser[0]._id === nft.creator._id ? (
-        <Link to={`/nfts-edit/${id}`}>Edit NFT</Link>
-      ) : nft.sold === true ? (
-        <ResellNFT nftId={nft._id} />
-      ) : (
-        showBuyBtn()
-      )}
+        <div onClick={handleCart}>
+          {cartAdded ? removeFromCart : addInCart}
+          <div>
+            {Object.entries(nft).length !== 0 ? (
+              <>
+                <Link to={`/profile/${nft.creator._id}`}>
+                  <h5>{nft.creator.name}</h5>
+                </Link>
+              </>
+            ) : (
+              "d"
+            )}
+          </div>
+        </div>
+
+        {currentUser[0]._id === nft.creator._id ? (
+          <Link to={`/nfts-edit/${id}`}>Edit NFT</Link>
+        ) : nft.sold === true ? (
+          <ResellNFT nftId={nft._id} />
+        ) : (
+          showBuyBtn()
+        )}
+      </div>
     </>
   );
 };
