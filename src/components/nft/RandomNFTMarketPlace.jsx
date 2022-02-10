@@ -41,8 +41,8 @@ const RandomNFTMarketPlace = () => {
     >
       <animated.div style={contentProps}>
         <div className="random-nft-home">
-          <div style={{ height: "500px" }}>
-            <img src={nft.image} className="random-pic-home" />
+          <div className="random-pic-home">
+            <img src={nft.image} alt="" />
           </div>
           <animated.div style={titleNftProps}>
             <h2>

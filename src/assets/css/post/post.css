@@ -204,6 +204,8 @@
 
 .postBody img {
   width: 100%;
+  max-height: 350px;
+  object-fit: cover;
 }
 
 .postDescription {

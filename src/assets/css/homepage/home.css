@@ -6,7 +6,6 @@
 .random-nft-home-container h2 {
   text-align: center;
   font-size: 3em;
-
 }
 
 .random-nft-home {
@@ -19,7 +18,14 @@
 
 .random-nft-home-container img {
   height: 500px;
-  object-fit: contain;
+  object-fit: cover;
+}
+
+.random-pic-home img {
+  width: 500px;
+  height: 500px;
+  object-fit: cover;
+  border-radius: 10px;
 }
 
 .list-cards-nfts {
@@ -34,7 +40,6 @@
 .random-title {
   font-size: 66px;
   color: black;
-
 }
 
 .created-by {
@@ -44,14 +49,12 @@
   gap: 10px;
   margin-top: 40px;
   margin-bottom: 40px;
-
 }
 
 .created-by-title {
-  font-family: 'ClashGrotesk-SemiBold';
+  font-family: "ClashGrotesk-SemiBold";
   color: #666666;
   margin-bottom: 10px;
-
 }
 
 .profile-pic-random {
@@ -91,8 +94,7 @@
 }
 
 .profile-random-creator p {
-  font-family: 'ClashGrotesk-SemiBold';
-
+  font-family: "ClashGrotesk-SemiBold";
 }
 
 .profile-random-creator:hover {
@@ -103,10 +105,9 @@
 }
 
 .random-nft-price {
-  font-family: 'ClashGrotesk-SemiBold';
+  font-family: "ClashGrotesk-SemiBold";
   font-size: 36px;
   margin-bottom: 40px;
-
 }
 
 .btn-view-random {
@@ -120,7 +121,7 @@
   font-size: 20px;
   cursor: pointer;
   font-size: 16px;
-  font-family: 'ClashGrotesk-SemiBold';
+  font-family: "ClashGrotesk-SemiBold";
 }
 
 .random-component-home {
