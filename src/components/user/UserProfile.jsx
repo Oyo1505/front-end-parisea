@@ -9,7 +9,6 @@ import Loading from "../loading/Loading";
 const UserProfile = () => {
   const { currentUser, coverImage } = useAuth();
   const { id } = useParams();
-  console.log(coverImage);
   const [mode, setMode] = useState("creator");
   const [isActive, setActive] = useState(false);
   if (currentUser.length === 0) return <Loading />;
@@ -33,12 +32,7 @@ const UserProfile = () => {
         <div className="side-elements-profile">
           <div className="whole-cat-profile">
             <div className="categories-profile">
-              <div
-                className={({ isActive }) => (isActive ? "active" : "inactive")}
-                onClick={() => setMode("creator")}
-              >
-                Created
-              </div>
+              <div onClick={() => setMode("creator")}>Created</div>
               <div onClick={() => setMode("owner")}>Owned</div>
               <div onClick={() => setMode("wishlists")}>Wishlist</div>
               <div onClick={() => setMode("posts")}>Posts</div>

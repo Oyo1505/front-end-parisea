@@ -11,23 +11,16 @@ function MyPosts() {
   useEffect(() => {
     (async () => {
       const { data } = await APIHandler.get(`/posts/mypost/` + id);
-      console.log(data);
       setMyPosts(data);
     })();
   }, []);
 
   return (
     <>
-      <div className="profilePostDiv">
-        {myPosts.map((post) => {
-          const id = String(post._id);
-          return (
-            <div>
-              <Post postId={id} postData={post} key={id} />
-            </div>
-          );
-        })}
-      </div>
+      {myPosts.map((post) => {
+        const id = String(post._id);
+        return <Post postId={id} postData={post} key={id} />;
+      })}
     </>
   );
 }

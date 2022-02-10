@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import "../../assets/css/nft/card-nft.css";
 
 const CardNFT = ({ nft }) => {
+  if (nft.length === 0) return <p>tes</p>;
   return (
     <>
       <Link to={`/nfts/${nft._id}`}>
