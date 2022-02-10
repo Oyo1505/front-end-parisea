@@ -9,6 +9,8 @@
 }
 
 .random-nft-home {
+  margin-top: 190px;
+  margin-bottom: 190px;
   display: flex;
   flex-direction: row;
   justify-content: center;

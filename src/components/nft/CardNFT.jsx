@@ -34,7 +34,7 @@ const CardNFT = ({ nft }) => {
               <div>
                 <h4>{nft.title}</h4>
 
-                <p>@{nft.creator.name}</p>
+                <p>@{nft.creator.userName}</p>
               </div>
               <p className="price-card">{nft.price} MHM</p>
             </div>
