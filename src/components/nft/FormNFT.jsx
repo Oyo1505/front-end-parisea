@@ -3,9 +3,11 @@ import { useParams, useNavigate } from "react-router-dom";
 import APIHandler from "../../api/APIHandler";
 import useAuth from "../user/UseAuth";
 import Loading from "../loading/Loading";
+
 const FormNFT = () => {
   const { id } = useParams();
   const { currentUser } = useAuth();
+  const [imgPreviewSrc, setImgPreviewSrc] = useState("");
   const [nft, setNft] = useState({
     title: "test",
     description: "test",
@@ -84,7 +86,20 @@ const FormNFT = () => {
       console.log(e);
     }
   };
-  if (currentUser.length === 0) return <Loading />
+
+  const encodeFileToBase64 = (file) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    return new Promise((resolve) => {
+      reader.onload = () => {
+        setImgPreviewSrc(reader.result);
+        resolve();
+      };
+    });
+  };
+
+  if (currentUser.length === 0) return <Loading />;
+
   return (
     <>
       <div className="container">
@@ -98,17 +113,29 @@ const FormNFT = () => {
                   Share us your NTF news!<br></br>PNG & JPG accepted
                 </p>
               </div>
-             
-              <label for="file">Choose your image file</label>
+
+              <label for="file" className="imgPreview">
+                {imgPreviewSrc
+                  ? imgPreviewSrc && (
+                      <img src={imgPreviewSrc} alt="previewImg" />
+                    )
+                  : "Choose your image file"}
+              </label>
               <input
-              className="postFormnIput"
-              ref={imageRef}
-              name="image"
-              type="file"
-              id="file"
-            />
+                className="postFormnIput"
+                name="image"
+                type="file"
+                id="file"
+                onChange={(e) => {
+                  encodeFileToBase64(e.target.files[0]);
+                }}
+              />
             </div>
-          ) : <div>{nft.image ?  <img src={nft.image} alt="-uploaded" /> : ""}</div> }
+          ) : (
+            <div>
+              {nft.image ? <img src={nft.image} alt="-uploaded" /> : ""}
+            </div>
+          )}
           <div className="postFormContent">
             <div className="postFormLabel">
               <h2 className="h2-create-post">Title</h2>
@@ -118,7 +145,6 @@ const FormNFT = () => {
               className="input-section"
               id="title"
               value={nft.title}
-            
               name="title"
               onChange={(e) => setNft({ ...nft, title: e.target.value })}
               type="text"
@@ -126,12 +152,12 @@ const FormNFT = () => {
           </div>
 
           <div className="postFormContent">
-          <div className="postFormLabel">
+            <div className="postFormLabel">
               <h2 className="h2-create-post">Price</h2>
               <p className="postFormLabelText">Let's talk about it!</p>
             </div>
             <input
-            className="input-section"
+              className="input-section"
               min={0}
               step={0.1}
               id="price"
@@ -143,12 +169,12 @@ const FormNFT = () => {
           </div>
 
           <div className="postFormContent">
-          <div className="postFormLabel">
+            <div className="postFormLabel">
               <h2 className="h2-create-post">Description</h2>
               <p className="postFormLabelText">Let's talk about it!</p>
             </div>
             <input
-            className="input-section"
+              className="input-section"
               id="description"
               value={nft.description}
               name="title"
@@ -157,10 +183,9 @@ const FormNFT = () => {
             />
           </div>
 
-        
           <button className="postBtns">{id ? "Update" : "Create"}</button>
         </form>
-        {id && <button  onClick={handleDelete}>Delete</button>}
+        {id && <button onClick={handleDelete}>Delete</button>}
       </div>
     </>
   );

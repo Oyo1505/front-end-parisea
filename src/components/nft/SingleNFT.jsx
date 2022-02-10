@@ -10,22 +10,10 @@ const SingleNFT = () => {
   const { currentUser } = useAuth();
   const [nft, setNft] = useState({});
   const { id } = useParams();
-  // WISHLIST (MINYOUNG ADDED)
   const [cartAdded, setCartAdded] = useState(false);
   const removeFromCart = <i className="fas fa-bookmark"></i>;
   const addInCart = <i className="far fa-bookmark"></i>;
-  // UNTIL HERE
 
-  const [added, setAdded] = useState(false);
-  const emptyHeart = <i className="far fa-heart"></i>;
-  const fullHeart = <i className="fas fa-heart"></i>;
-
-  const toggle = () => {
-    setAdded(!added);
-  };
-  {
-    /*  mimi */
-  }
   useEffect(() => {
     const x = async () => {
       try {
@@ -46,7 +34,6 @@ const SingleNFT = () => {
     x();
   }, [id]);
 
-  // WISHLIST (MINYOUNG ADDED)
   const handleCart = async (e) => {
     e.preventDefault();
 
@@ -66,8 +53,6 @@ const SingleNFT = () => {
     }
   };
 
-  // UNTIL HERE
-
   const showBuyBtn = () => {
     if (nft.seller !== currentUser[0]._id) {
       return <BuyNFT nftId={nft._id} buyerId={currentUser[0]._id} />;
@@ -83,12 +68,9 @@ const SingleNFT = () => {
       <p>{nft.description}</p>
       <p>Price : {nft.price} MhM</p>
 
-      {/* WISHLIST (MINYOUNG ADDED) */}
       <div onClick={handleCart}>
         {cartAdded ? removeFromCart : addInCart}
         <div>
-          {/* UNTIL HERE */}
-
           {Object.entries(nft).length !== 0 ? (
             <>
               <Link to={`/profile/${nft.creator._id}`}>
