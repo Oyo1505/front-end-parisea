@@ -17,7 +17,7 @@ const Trails = ({ children }) => {
 
   return (
     <>
-      <div className="list-cards-profile">
+      <div className="list-cards-nfts">
         {trail.map(({ y, opacity }, index) => (
           <animated.div
             key={index}
@@ -42,11 +42,7 @@ const ListNftsUserProfile = ({ mode, userId }) => {
     const x = async () => {
       try {
         if (mode === "creator" || mode === "owner") {
-          console.log("creator");
           const { data } = await APIHandler.get(`/list-nfts/${mode}/${userId}`);
-          setItems(data);
-        } else {
-          const { data } = await APIHandler.get(`/posts/${userId}`);
           setItems(data);
         }
       } catch (e) {
