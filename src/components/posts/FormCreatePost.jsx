@@ -13,9 +13,6 @@ function FormCreatePost() {
     description: "Behhhhh",
   });
 
-  console.log(currentUser);
-
-  // console.log(user[0]._id);
   const handleSubmit = async (e) => {
     e.preventDefault();
     const { description } = posts;
@@ -27,7 +24,7 @@ function FormCreatePost() {
 
     try {
       const res = await APIHandler.post("/posts/create", fd);
-      // console.log("Post data created >>", res.data);
+      console.log("Post data created >>", res.data);
       navigate("/posts");
     } catch (err) {
       console.error(err);
@@ -52,7 +49,7 @@ function FormCreatePost() {
         <form className="postForm">
           <div className="postFormContent">
             <div className="postFormLabel">
-              <p>Image</p>
+              <h2 className="h2-create-post">Image</h2>
               <p className="postFormLabelText">
                 Share us your NTF news!<br></br>PNG & JPG accepted
               </p>
@@ -63,7 +60,7 @@ function FormCreatePost() {
                 : "Choose your image file"}
             </label>
             <input
-              className="postFormInput"
+              className="postFormnIput"
               ref={imageRef}
               name="image"
               type="file"
@@ -76,7 +73,7 @@ function FormCreatePost() {
 
           <div className="postFormContent">
             <div className="postFormLabel">
-              <p>Description</p>
+              <h2 className="h2-create-post">Description</h2>
               <p className="postFormLabelText">Let's talk about it!</p>
             </div>
             <textarea
@@ -91,7 +88,7 @@ function FormCreatePost() {
             />
           </div>
           <button className="postBtns" onClick={handleSubmit}>
-            CREATE
+            Post Now !
           </button>
         </form>
       </div>

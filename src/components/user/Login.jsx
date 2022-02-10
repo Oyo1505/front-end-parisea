@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import APIHandler from "../../api/APIHandler";
 import { Link } from "react-router-dom";
+import "../../assets/css/header/header.css";
+import ButtonCreatePost from "../posts/ButtonCreatePost";
 
 const Login = () => {
   const [user, setUser] = useState([]);
-  
+
   const checkIfWalletIsConnected = async () => {
     try {
       const { ethereum } = window;
@@ -18,7 +20,7 @@ const Login = () => {
 
       if (accounts.length !== 0) {
         const account = accounts[0];
-   
+
         const { data } = await APIHandler.post(`/connect-wallet/${account}`);
 
         setUser(data);
@@ -52,19 +54,25 @@ const Login = () => {
     <div>
       {user.length !== 0 ? (
         <div>
-        <Link to={`/profile/${user._id}`}>
-          <div className="logo-div">Profile</div>
-        </Link>
-        <Link className={"button-create"} to={"/nfts/create-item"}>
-                Create
-          </Link>
-          
+          <div className="nav-header">
+            <ButtonCreatePost />
+            <Link to={`/profile/${user._id}`}>
+              <div className="profile-btn">
+                <img className="profile-btn-img" src={user.image} alt="" />
+              </div>
+            </Link>
+            <Link className={"button-create"} to={"/nfts/create-item"}>
+              Create
+            </Link>
+          </div>
         </div>
       ) : (
-        <button onClick={connectAccounts}>Connect Wallet</button>
+        <div>
+          <button className={"button-create"} onClick={connectAccounts}>
+            Connect Wallet
+          </button>
+        </div>
       )}
-
-    
     </div>
   );
 };

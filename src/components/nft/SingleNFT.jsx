@@ -16,6 +16,16 @@ const SingleNFT = () => {
   const addInCart = <i className="far fa-bookmark"></i>;
   // UNTIL HERE
 
+  const [added, setAdded] = useState(false);
+  const emptyHeart = <i className="far fa-heart"></i>;
+  const fullHeart = <i className="fas fa-heart"></i>;
+
+  const toggle = () => {
+    setAdded(!added);
+  };
+  {
+    /*  mimi */
+  }
   useEffect(() => {
     const x = async () => {
       try {
@@ -63,7 +73,6 @@ const SingleNFT = () => {
       return <BuyNFT nftId={nft._id} buyerId={currentUser[0]._id} />;
     }
   };
-
   if (currentUser.length === 0 || Object.keys(nft).length === 0)
     return <Loading />;
 
@@ -82,7 +91,7 @@ const SingleNFT = () => {
 
           {Object.entries(nft).length !== 0 ? (
             <>
-              <Link to={`/${nft.creator._id}`}>
+              <Link to={`/profile/${nft.creator._id}`}>
                 <h5>{nft.creator.name}</h5>
               </Link>
             </>

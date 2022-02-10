@@ -1,26 +1,53 @@
-import APIHandler from "../../api/APIHandler";
 import React, { useState } from "react";
 import UserInfo from "./UserInfo";
-import { NavLink } from "react-router-dom";
-import HomeNfts from "../nft/HomeNfts";
+import { NavLink, useParams } from "react-router-dom";
 import ListNftsUserProfile from "../nft/ListNftsUserProfile";
 import useAuth from "./UseAuth";
+import "../../assets/css/user/user-content.css";
+import Loading from "../loading/Loading";
 
 const UserProfile = () => {
   const { currentUser, coverImage } = useAuth();
-
+  const { id } = useParams();
   const [mode, setMode] = useState("creator");
-  // if (currentUser.length === 0) return <p>loading</p>;
+  const [isActive, setActive] = useState(false);
+  if (currentUser.length === 0) return <Loading />;
   return (
     <div>
-      <NavLink to={"/posts"}>Posts</NavLink>
-      <NavLink to={"/wishlist/" + currentUser[0]._id}>WishList</NavLink>
+      <div className="profile-image-header">
+        <div>{/* <img src={currentUser[0].image} /> */}</div>
+      </div>
 
-      <UserInfo />
-      <span onClick={() => setMode("creator")}>Creator</span>
-      <span onClick={() => setMode("owner")}>Owner</span>
-      <span onClick={() => setMode("posts")}>Posts</span>
-      <ListNftsUserProfile mode={mode} userId={coverImage.id} />
+      <div className="body-profile-bis">
+        <UserInfo />
+        <div className="side-elements-profile">
+          <div className="whole-cat-profile">
+            <div className="categories-profile">
+              <NavLink
+                to={"#"}
+                activeClassName="is-active"
+                onClick={() => {
+                  setActive(true);
+                  setMode("creator");
+                }}
+              >
+                Created
+              </NavLink>
+              <div
+                onClick={() => {
+                  setActive(true);
+                  setMode("owner");
+                }}
+              >
+                Owned
+              </div>
+              <div onClick={() => setMode("posts")}>Posts</div>
+              <div onClick={() => setMode("wishlist")}>Wishlist</div>
+            </div>
+          </div>
+          <ListNftsUserProfile mode={mode} userId={id} />
+        </div>
+      </div>
     </div>
   );
 };

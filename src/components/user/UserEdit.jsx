@@ -61,7 +61,6 @@ const UserEdit = () => {
 
     try {
       const { data } = await APIHandler.patch(`/users/edit/${id}`, formData);
-      // checkIfWalletIsConnected();
       setUser({
         name: data.name,
         userName: data.userName,
@@ -187,15 +186,7 @@ const UserEdit = () => {
                 <div>
                   <h4 className="image-info">{user.image}</h4>
                 </div>
-                <input
-                  id="files"
-                  ref={imageRef}
-                  name="image"
-                  type="file"
-                  onInput={() =>
-                    console.log(imageRef.current.files[0], "image")
-                  }
-                />
+                <input id="files" ref={imageRef} name="image" type="file" />
               </div>
             </div>
           </div>

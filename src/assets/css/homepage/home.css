@@ -22,7 +22,6 @@
 }
 
 .list-cards-nfts {
-  padding-top: 200px;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;

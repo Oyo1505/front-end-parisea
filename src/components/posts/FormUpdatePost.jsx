@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import APIHandler from "../../api/APIHandler";
+import Loading from "../loading/Loading";
 
 function FormUpdatePost() {
   const { id } = useParams();
@@ -20,12 +21,10 @@ function FormUpdatePost() {
 
     const fd = new FormData();
     fd.append("description", posts.description);
-    // console.log(imageRef.current.files[0]);
     fd.append("image", imageRef.current.files[0]);
 
     try {
       const { data } = await APIHandler.patch("/posts/update/" + id, fd);
-      // console.log("Post data updated >> ", data);
       navigate("/posts");
     } catch (err) {
       console.error(err);
@@ -95,7 +94,7 @@ function FormUpdatePost() {
       </div>
     </>
   ) : (
-    <p>...loading</p>
+    <Loading />
   );
 }
 

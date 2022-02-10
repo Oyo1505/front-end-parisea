@@ -209,3 +209,12 @@ strong {
 
   transition: border-color 2s ease-out;
 }
+
+.name-in-modal {
+  font-family: 'ClashGrotesk-Bold';
+}
+
+.username-in-modal {
+  font-family: 'ClashGrotesk-Regular';
+
+}

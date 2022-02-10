@@ -3,14 +3,14 @@ import CardNFT from "./CardNFT";
 import Trails from "../animations/Trails";
 const ListCardsNFT = ({ nfts }) => {
   return (
-    <>
-    <h2>Last NFTs</h2>
+    <div style={{marginTop : '120px'}}>
+    <h2 style={{marginBottom : '25px'}}>Last NFTs in sale</h2>
       <Trails>
       {nfts.map((nft) => {
         return <CardNFT key={nft._id} nft={nft} />;
       })}
       </Trails>
-    </>
+    </div>
   )
 };
 

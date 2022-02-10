@@ -1,8 +1,40 @@
 import React, { useEffect, useState } from "react";
 import APIHandler from "../../api/APIHandler";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import MyPosts from "./../posts/MyPosts";
+import CardNFT from "./CardNFT";
+import { useTrail, animated, config } from "react-spring";
+import "../../assets/css/animation/animation.css";
 
+const Trails = ({ children }) => {
+  const items = React.Children.toArray(children);
+  const trail = useTrail(items.length, {
+    config: { mass: 1, tension: 180, friction: 15 },
+    opacity: 1,
+    y: 0,
+    from: { opacity: 0, y: 40 },
+  });
+
+  return (
+    <>
+      <div className="list-cards-profile">
+        {trail.map(({ y, opacity }, index) => (
+          <animated.div
+            key={index}
+            style={{
+              transform: y.interpolate((y) => `translate3d(0px,${y}px,0)`),
+              position: "relative",
+            }}
+          >
+            <animated.div style={{ opacity }} key={items[index]._id}>
+              {items[index]}
+            </animated.div>
+          </animated.div>
+        ))}
+      </div>
+    </>
+  );
+};
 const ListNftsUserProfile = ({ mode, userId }) => {
   const [items, setItems] = useState();
 
@@ -10,10 +42,11 @@ const ListNftsUserProfile = ({ mode, userId }) => {
     const x = async () => {
       try {
         if (mode === "creator" || mode === "owner") {
+          console.log("creator");
           const { data } = await APIHandler.get(`/list-nfts/${mode}/${userId}`);
           setItems(data);
         } else {
-          const { data } = await APIHandler.get(`/posts/mypost/${userId}`);
+          const { data } = await APIHandler.get(`/posts/${userId}`);
           setItems(data);
         }
       } catch (e) {
@@ -22,28 +55,37 @@ const ListNftsUserProfile = ({ mode, userId }) => {
     };
     x();
   }, [mode]);
-
+  useEffect(() => {
+    const x = async () => {
+      try {
+        const { data } = await APIHandler.get(`/list-nfts/creator/${userId}`);
+        setItems(data);
+      } catch (e) {
+        console.error(e);
+      }
+    };
+    x();
+  }, [userId]);
   return (
-    <div className="nfts">
-      <h4>Mode : {mode}</h4>
+    <>
       {items ? (
-        <div>
+        <>
           {mode === "posts" ? (
             <MyPosts />
           ) : (
-            items.map((el) => {
-              return (
-                <Link to={`/nfts/${el._id}`} key={el._id}>
-                  NFT title : {el.title} <p>User ID : {el.creator}</p>
-                </Link>
-              );
-            })
+            <>
+              <Trails>
+                {items.map((item) => {
+                  return <CardNFT key={item._id} nft={item} />;
+                })}
+              </Trails>
+            </>
           )}
-        </div>
+        </>
       ) : (
         <h1 className="px-20 py-10 text-3xl">No items in marketplace</h1>
       )}{" "}
-    </div>
+    </>
   );
 };
 

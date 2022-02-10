@@ -150,6 +150,7 @@
     font-size: 18px;
     font-weight: 600;
     cursor: pointer;
+    font-family: 'ClashGrotesk-Semibold';
 }
 
 
@@ -199,8 +200,8 @@
 }
 
 .twitter:hover {
-    padding-bottom: 20px;
-    transition: padding-bottom 0.7s ease-out;
+    transition: 0.4s ease-out;
+    transform: translateY(-3px);
     box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.15);
 }
 
@@ -243,7 +244,6 @@
     font-weight: 600;
     color: black;
     transition: color 0.7s ease-out;
-
 }
 
 .modal-follow {
@@ -273,6 +273,8 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+    color: black;
+
 
 }
 
@@ -283,6 +285,7 @@
     /* padding-top: 24px;
     padding-bottom: 24px; */
     padding-right: 0px;
+    color: inherit;
 }
 
 .image-modal {
@@ -315,4 +318,20 @@
 
     height: 330px;
     overflow-y: scroll;
+}
+
+.modal-list-empty {
+
+    /* padding: 24px; */
+    padding-top: 125px;
+    padding-left: 24px;
+    padding-right: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+    font-family: 'ClashGrotesk-Semibold';
+
+
 }

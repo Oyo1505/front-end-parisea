@@ -2,12 +2,11 @@ import React, { useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import Login from "../user/Login";
 import "../../assets/css/header/header.css";
-import logoGif from "../../assets/logo/gifLogo.gif";
 import useAuth from "../user/UseAuth";
-import { useParams } from "react-router-dom";
+import logoGif from "../../assets/logo/gifLogo.gif";
+
 const Header = () => {
-  const { currentUser, coverImage } = useAuth();
-  const { id } = useParams();
+  const { coverImage } = useAuth();
 
   const inProfileUser = () => {
     if (
@@ -16,7 +15,7 @@ const Header = () => {
       return true;
     else return false;
   };
-  console.log(inProfileUser());
+
   return (
     <header
       style={{
@@ -24,6 +23,7 @@ const Header = () => {
           ? `url(${coverImage.coverImage})  `
           : "",
         backgroundRepeat: "no-repeat",
+        backgroundPositionY: "center",
         backgroundSize: "cover",
         height: inProfileUser() ? `250px` : "",
       }}
@@ -45,7 +45,7 @@ const Header = () => {
               </div>
             </NavLink>
           </div>
-          <NavLink to={"/posts"}>Posts</NavLink>
+        
           <Login />
         </div>
       </nav>

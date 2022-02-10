@@ -1,0 +1,49 @@
+.post-nft {
+    width: 364px;
+    height: 490px;
+    border-radius: 10px;
+    color: black;
+    margin-bottom: 50px;
+    display: flex;
+    font-family: "ClashGrotesk-Medium";
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.header-post-card{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    border-radius: 10px 10px 0 0 ;
+    padding: 15px 25px;
+    height: 75px;
+    background-color: white;
+    align-items: center;
+    
+}
+.header-post-card .header-name{
+    font-family: "ClashGrotesk-Semibold";
+    line-height: 0.8;
+    color: black;
+}
+.header-post-card .header-username{
+    font-size: 0.9em;
+    color: #686868;
+}
+.header-post-card img {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+}
+.content-post-card{
+    padding: 15px 25px;
+    height: 65px;
+    background-color: white;
+    border-radius:  0 0 10px 10px ;
+    
+}
+
+.content-post-card p {
+    
+    font-size: 1.5em;
+}

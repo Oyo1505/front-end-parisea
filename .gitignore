@@ -1,5 +1,5 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-package-lock.json
+
 # dependencies
 /node_modules
 /.pnp
@@ -17,7 +17,7 @@ package-lock.json
 .env.development.local
 .env.test.local
 .env.production.local
-
+.env.production
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
@@ -41,3 +41,5 @@ typechain
 #Hardhat files
 cache
 artifacts
+
+package-lock.json
