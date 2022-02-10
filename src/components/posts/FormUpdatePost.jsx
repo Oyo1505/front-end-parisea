@@ -7,6 +7,7 @@ function FormUpdatePost() {
   const navigate = useNavigate();
   const imageRef = useRef();
   const [posts, setPosts] = useState(null);
+  const [imgPreviewSrc, setImgPreviewSrc] = useState("");
 
   // UPDATE
   useEffect(async () => {
@@ -31,6 +32,17 @@ function FormUpdatePost() {
     }
   };
 
+  const encodeFileToBase64 = (file) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    return new Promise((resolve) => {
+      reader.onload = () => {
+        setImgPreviewSrc(reader.result);
+        resolve();
+      };
+    });
+  };
+
   return posts ? (
     <>
       <div className="container">
@@ -43,13 +55,22 @@ function FormUpdatePost() {
                 Modify your post image<br></br>PNG & JPG accepted
               </p>
             </div>
-            <label for="file">Choose your image file</label>
+            <label for="file" className="imgPreview">
+              {imgPreviewSrc ? (
+                imgPreviewSrc && <img src={imgPreviewSrc} alt="previewImg" />
+              ) : (
+                <img src={posts.image} alt="" />
+              )}
+            </label>
             <input
               className="postFormInput"
               ref={imageRef}
               name="image"
               type="file"
               id="file"
+              onChange={(e) => {
+                encodeFileToBase64(e.target.files[0]);
+              }}
             />
             <input type="file" name="existingImage" hidden />
           </div>

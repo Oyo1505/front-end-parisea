@@ -12,16 +12,23 @@ const SingleNFT = () => {
   const { id } = useParams();
   // WISHLIST (MINYOUNG ADDED)
   const [cartAdded, setCartAdded] = useState(false);
-  const addCart = <i className="far fa-heart"></i>;
-  const removeCart = <i className="fas fa-heart"></i>;
+  const removeFromCart = <i className="fas fa-bookmark"></i>;
+  const addInCart = <i className="far fa-bookmark"></i>;
   // UNTIL HERE
 
   useEffect(() => {
     const x = async () => {
       try {
-        const { data } = await APIHandler.get(`/nfts/${id}`);
-
-        setNft(data);
+        const { data } = await APIHandler.get(
+          `/nfts/${id}/${currentUser[0]._id}`,
+          {
+            nft,
+            userId: currentUser[0]._id,
+          }
+        );
+        console.log("is this already inside cart?", data.cartAdded);
+        setCartAdded(data.cartAdded);
+        setNft(data.nft);
       } catch (e) {
         console.error(e);
       }
@@ -34,19 +41,21 @@ const SingleNFT = () => {
     e.preventDefault();
 
     try {
-      const res = await APIHandler.patch(
+      const { data } = await APIHandler.patch(
         `/wishlist/${id}/${currentUser[0]._id}`,
         {
           nftId: id,
           userId: currentUser[0]._id,
         }
       );
-      console.log("Cart added >>", res.data);
-      setCartAdded(res.data.cartAdded);
+      console.log("Cart added >>", data.cartAdded);
+      setCartAdded(data.cartAdded);
+      setNft(data.nft);
     } catch (err) {
       console.log("OnSubmit err >>> ", err);
     }
   };
+
   // UNTIL HERE
 
   const showBuyBtn = () => {
@@ -56,7 +65,7 @@ const SingleNFT = () => {
   };
 
   if (currentUser.length === 0 || Object.keys(nft).length === 0)
-    return <p>loading</p>;
+    return <Loading />;
 
   return (
     <>
@@ -67,7 +76,7 @@ const SingleNFT = () => {
 
       {/* WISHLIST (MINYOUNG ADDED) */}
       <div onClick={handleCart}>
-        {cartAdded ? removeCart : addCart}
+        {cartAdded ? removeFromCart : addInCart}
         <div>
           {/* UNTIL HERE */}
 

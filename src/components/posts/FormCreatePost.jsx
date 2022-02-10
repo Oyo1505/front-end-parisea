@@ -7,6 +7,7 @@ function FormCreatePost() {
   const { currentUser } = useAuth();
   const navigate = useNavigate();
   const imageRef = useRef("");
+  const [imgPreviewSrc, setImgPreviewSrc] = useState("");
 
   const [posts, setPosts] = useState({
     description: "Behhhhh",
@@ -33,6 +34,17 @@ function FormCreatePost() {
     }
   };
 
+  const encodeFileToBase64 = (file) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    return new Promise((resolve) => {
+      reader.onload = () => {
+        setImgPreviewSrc(reader.result);
+        resolve();
+      };
+    });
+  };
+
   return (
     <>
       <div className="container">
@@ -45,15 +57,23 @@ function FormCreatePost() {
                 Share us your NTF news!<br></br>PNG & JPG accepted
               </p>
             </div>
-            <label for="file">Choose your image file</label>
+            <label for="file" className="imgPreview">
+              {imgPreviewSrc
+                ? imgPreviewSrc && <img src={imgPreviewSrc} alt="previewImg" />
+                : "Choose your image file"}
+            </label>
             <input
               className="postFormInput"
               ref={imageRef}
               name="image"
               type="file"
               id="file"
+              onChange={(e) => {
+                encodeFileToBase64(e.target.files[0]);
+              }}
             />
           </div>
+
           <div className="postFormContent">
             <div className="postFormLabel">
               <p>Description</p>

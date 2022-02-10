@@ -10,7 +10,6 @@ const WishList = () => {
   const { currentUser } = useAuth();
   const [wishlists, setWishlists] = useState([]);
 
-  console.log(id);
   useEffect(() => {
     (async () => {
       const res = await APIHandler.get(`/wishlist/${currentUser[0]._id}`);
@@ -21,22 +20,22 @@ const WishList = () => {
 
   const deleteWishlist = async (id) => {
     if (
-      window.confirm("Are you sure you want to delete it from your wishlist?")
+      window.confirm("Are you sure you want to remove it from your wishlist?")
     ) {
       try {
-        await APIHandler.post(`/wishlist/delete/${id}/${currentUser[0]._id}`);
-        // updateState((existPost) => existPost.filter((x) => x._id !== id));
+        await APIHandler.patch(`/wishlist/delete/${id}/${currentUser[0]._id}`);
+        setWishlists((existWishlist) => existWishlist.filter((x) => x._id !== id));
       } catch (err) {
         console.error(err);
       }
     }
   };
 
-  // if (wishlists.length === 0) return <Loading />;
+  if (wishlists.length === 0) return <p>No wishlist yet</p>;
 
   return (
     <>
-      <h1>Wishlist</h1>
+      <h1>My wishlist</h1>
       <div className="container">
         {wishlists.map((wishlist) => {
           const id = String(wishlist._id);
@@ -56,10 +55,15 @@ const WishList = () => {
 
                 <div className="wishListIcons">
                   <div className="wishListIcon">
-                    <i className="fas fa-heart"></i> DETAIL
+                    <Link to={`/nfts/${wishlist._id}`}>
+                      <i class="fa fa-search"></i>
+                    </Link>
                   </div>
-                  <div className="wishListIcon" onClick={deleteWishlist}>
-                    <i className="far fa-heart"></i> REMOVE
+                  <div
+                    className="wishListIcon"
+                    onClick={() => deleteWishlist(wishlist._id)}
+                  >
+                    <i className="far fa-trash-alt"></i>
                   </div>
                 </div>
               </div>
