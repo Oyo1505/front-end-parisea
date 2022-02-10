@@ -26,7 +26,7 @@ const SingleNFT = () => {
             }
           );
           console.log("is this already inside cart?", data.cartAdded);
-          // setCartAdded(data.cartAdded);
+          setCartAdded(data.cartAdded);
           setNft(data.nft);
         }
       } catch (e) {
@@ -70,7 +70,7 @@ const SingleNFT = () => {
       <p>Price : {nft.price} MhM</p>
 
       <div onClick={handleCart}>
-        {/* {cartAdded ? removeFromCart : addInCart} */}
+        {cartAdded ? removeFromCart : addInCart}
         <div>
           {Object.entries(nft).length !== 0 ? (
             <>

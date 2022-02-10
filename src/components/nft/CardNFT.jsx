@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "../../assets/css/nft/card-nft.css";
+
 const CardNFT = ({ nft }) => {
   return (
     <>
