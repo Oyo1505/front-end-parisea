@@ -42,9 +42,9 @@ function FormCreatePost() {
                 Share us your NTF news!<br></br>PNG & JPG accepted
               </p>
             </div>
-            <label for="file">Choose your image file</label>
+            <label for="file" >Choose your image file</label>
             <input
-              className="postFormInput"
+              className="postFormnIput"
               ref={imageRef}
               name="image"
               type="file"

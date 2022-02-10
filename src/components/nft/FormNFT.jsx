@@ -101,12 +101,12 @@ const FormNFT = () => {
              
               <label for="file">Choose your image file</label>
               <input
-                className="postFormInput"
-                ref={imageRef}
-                id="image"
-                name="image"
-                type="file"
-              />
+              className="postFormnIput"
+              ref={imageRef}
+              name="image"
+              type="file"
+              id="file"
+            />
             </div>
           ) : <div>{nft.image ?  <img src={nft.image} alt="-uploaded" /> : ""}</div> }
           <div className="postFormContent">
@@ -115,10 +115,10 @@ const FormNFT = () => {
               <p className="postFormLabelText">Let's talk about it!</p>
             </div>
             <input
-              className="postFormInput"
+              className="input-section"
               id="title"
               value={nft.title}
-              className="postFormInput"
+            
               name="title"
               onChange={(e) => setNft({ ...nft, title: e.target.value })}
               type="text"
@@ -131,7 +131,7 @@ const FormNFT = () => {
               <p className="postFormLabelText">Let's talk about it!</p>
             </div>
             <input
-            className="postFormInput"
+            className="input-section"
               min={0}
               step={0.1}
               id="price"
@@ -148,7 +148,7 @@ const FormNFT = () => {
               <p className="postFormLabelText">Let's talk about it!</p>
             </div>
             <input
-            className="postFormInput"
+            className="input-section"
               id="description"
               value={nft.description}
               name="title"

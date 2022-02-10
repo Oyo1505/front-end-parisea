@@ -4,7 +4,7 @@ import Trails from "../animations/Trails";
 const ListCardsNFT = ({ nfts }) => {
   return (
     <div style={{marginTop : '120px'}}>
-    <h2 style={{marginBottom : '25px'}}>Last NFTs</h2>
+    <h2 style={{marginBottom : '25px'}}>Last NFTs in sale</h2>
       <Trails>
       {nfts.map((nft) => {
         return <CardNFT key={nft._id} nft={nft} />;
