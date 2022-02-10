@@ -8,9 +8,10 @@ const ListPostsMarketplace = ({ limit, title }) => {
     const x = async () => {
       try {
         const { data } = await APIHandler.get(`/posts/market/${limit}`);
+        console.log(data);
         setPosts(data);
       } catch (e) {
-        console(e);
+        console.error(e);
       }
     };
     x();
