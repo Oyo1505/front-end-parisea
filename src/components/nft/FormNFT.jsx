@@ -72,6 +72,7 @@ const FormNFT = () => {
       setNft(data);
       navigate("/nfts");
     } else {
+      console.log(imgPreviewSrc);
       formData.append("image", imageRef.current.files[0]);
       await APIHandler.post(`/nfts/create-item`, formData);
       navigate("/nfts");
@@ -122,6 +123,7 @@ const FormNFT = () => {
                   : "Choose your image file"}
               </label>
               <input
+                ref={imageRef}
                 className="postFormnIput"
                 name="image"
                 type="file"
