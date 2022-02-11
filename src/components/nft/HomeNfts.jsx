@@ -3,7 +3,7 @@ import useAuth from "../user/UseAuth";
 import Loading from "../loading/Loading";
 import APIHandler from "../../api/APIHandler";
 import CardNFT from "./CardNFT";
-import { useTrail, animated, config } from "react-spring";
+import { useTrail, animated } from "react-spring";
 
 // import Trails from "../animations/Trails";
 
@@ -44,8 +44,8 @@ const HomeNfts = () => {
   useEffect(() => {
     (async () => {
       const res = await APIHandler.get(`/nfts`);
-      console.log(res.data);
-      setNfts(res.data).reverse();
+
+      setNfts(res.data);
     })();
   }, []);
 

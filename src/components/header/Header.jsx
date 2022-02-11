@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { NavLink } from "react-router-dom";
 import Login from "../user/Login";
 import "../../assets/css/header/header.css";
@@ -45,7 +45,7 @@ const Header = () => {
               </div>
             </NavLink>
           </div>
-        
+
           <Login />
         </div>
       </nav>

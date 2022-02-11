@@ -12,7 +12,6 @@ function AllPosts() {
   useEffect(() => {
     (async () => {
       const { data } = await APIHandler.get(`/posts`);
-
       setPosts(data);
     })();
   }, []);
@@ -22,7 +21,7 @@ function AllPosts() {
   };
 
   if (posts.length === 0) return <Loading />;
-  
+
   return (
     <>
       {/* <h1>All Posts Page</h1> */}

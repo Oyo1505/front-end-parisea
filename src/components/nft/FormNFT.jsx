@@ -10,8 +10,8 @@ const FormNFT = () => {
   const { currentUser } = useAuth();
   const [imgPreviewSrc, setImgPreviewSrc] = useState("");
   const [nft, setNft] = useState({
-    title: "",
-    description: "",
+    title: "test",
+    description: "test",
     price: 0,
     seller: null,
     owner: null,
@@ -142,11 +142,7 @@ const FormNFT = () => {
             </div>
           ) : (
             <div>
-              {nft.image ? (
-                <img src={nft.image} alt="-uploaded" width="100%" />
-              ) : (
-                ""
-              )}
+              {nft.image ? <img src={nft.image} alt="-uploaded" /> : ""}
             </div>
           )}
           <div className="nftCreateFormContent">
@@ -161,10 +157,8 @@ const FormNFT = () => {
               id="title"
               value={nft.title}
               name="title"
-              placeholder="Title of your NFT"
               onChange={(e) => setNft({ ...nft, title: e.target.value })}
               type="text"
-              required
             />
           </div>
 
@@ -179,7 +173,7 @@ const FormNFT = () => {
             <input
               className="nftCreateFormInput"
               min={0}
-              step={1}
+              step={0.1}
               id="price"
               value={nft.price}
               name="price"
@@ -203,12 +197,12 @@ const FormNFT = () => {
               placeholder="Desciption here"
               onChange={(e) => setNft({ ...nft, description: e.target.value })}
               type="textarea"
-              required
             />
           </div>
 
           <button className="postBtns">{id ? "Update" : "Create Now !"}</button>
         </form>
+        {id && <button onClick={handleDelete}>Delete</button>}
       </div>
     </>
   );

@@ -1,5 +1,5 @@
 import React from "react";
-import { useTrail, animated, config } from "react-spring";
+import { useTrail, animated } from "react-spring";
 import Loading from "../loading/Loading";
 const TrailUserProfile = ({ children }) => {
   const items = React.Children.toArray(children);

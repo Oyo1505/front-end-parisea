@@ -15,7 +15,7 @@ const ListNFTMarketplace = ({ limit }) => {
       }
     };
     x();
-  }, []);
+  }, [limit]);
   if (nfts.length === 0) return <Loading />;
   return <ListCardsNFT nfts={nfts} />;
 };

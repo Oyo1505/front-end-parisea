@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import "../../assets/css/nft/card-nft.css";
 
 const CardNFT = ({ nft }) => {
+  console.log(nft);
   if (nft.length === 0) return <p>tes</p>;
   return (
     <>
