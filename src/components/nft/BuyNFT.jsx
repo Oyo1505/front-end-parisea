@@ -37,12 +37,16 @@ const BuyNFT = ({ nftId, buyerId }) => {
         </p>
       </button>
       <Modal
-        styles={{ width: "15%", height: "75px", textAlign: "center" }}
+        styles={{
+          width: "15%",
+          height: "75px",
+          textAlign: "center",
+        }}
         open={open}
         onClose={onCloseModal}
         center
       >
-        <h2>Thank you !</h2>
+        <h2 style={{ padding: "30px" }}>Thank you !</h2>
       </Modal>
     </>
   );
