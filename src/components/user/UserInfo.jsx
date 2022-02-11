@@ -90,7 +90,6 @@ const UserInfo = () => {
   return (
     <div>
       <div className="profile-info-section">
-        {/* <h4>INFO</h4> */}
         <div className="id-metamask">
           <i class="fas fa-hashtag"></i>
           <strong className="id-name">{user.id_metamask}</strong>
@@ -111,7 +110,6 @@ const UserInfo = () => {
             </div>
           </div>
         </div>
-        {/* <img src={user.image} /> */}
         <div className="followers-following">
           <div className="following">
             <strong className="following-count">{user.following.length}</strong>

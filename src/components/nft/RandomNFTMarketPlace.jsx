@@ -85,10 +85,7 @@ const RandomNFTMarketPlace = () => {
   };
 
   return (
-    <div
-
-    // className="random-nft-home-container"
-    >
+    <div>
       <animated.div style={contentProps}>
         <div className="random-nft-home">
           <div className="random-pic-home">

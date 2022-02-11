@@ -10,8 +10,8 @@ const FormNFT = () => {
   const { currentUser } = useAuth();
   const [imgPreviewSrc, setImgPreviewSrc] = useState("");
   const [nft, setNft] = useState({
-    title: "test",
-    description: "test",
+    title: "",
+    description: "",
     price: 0,
     seller: null,
     owner: null,
@@ -24,7 +24,6 @@ const FormNFT = () => {
   useEffect(() => {
     const x = async () => {
       try {
-        console.log("d");
         const { data } = await APIHandler.get(`/nfts/${id}`);
         setNft({
           title: data.title,
@@ -74,7 +73,6 @@ const FormNFT = () => {
       setNft(data);
       navigate("/nfts");
     } else {
-      console.log(imgPreviewSrc);
       formData.append("image", imageRef.current.files[0]);
       await APIHandler.post(`/nfts/create-item`, formData);
       navigate("/nfts");
@@ -163,8 +161,10 @@ const FormNFT = () => {
               id="title"
               value={nft.title}
               name="title"
+              placeholder="Title of your NFT"
               onChange={(e) => setNft({ ...nft, title: e.target.value })}
               type="text"
+              required
             />
           </div>
 
@@ -179,7 +179,7 @@ const FormNFT = () => {
             <input
               className="nftCreateFormInput"
               min={0}
-              step={0.1}
+              step={1}
               id="price"
               value={nft.price}
               name="price"
@@ -203,6 +203,7 @@ const FormNFT = () => {
               placeholder="Desciption here"
               onChange={(e) => setNft({ ...nft, description: e.target.value })}
               type="textarea"
+              required
             />
           </div>
 

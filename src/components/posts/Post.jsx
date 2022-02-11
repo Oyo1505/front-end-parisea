@@ -63,7 +63,7 @@ const Post = ({ postId, postData, updateState }) => {
 
   return (
     <>
-      {post ? (
+      {post && postData ? (
         <>
           <div className="postDiv">
             <div className="postHeader">

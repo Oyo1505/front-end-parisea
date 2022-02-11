@@ -23,9 +23,7 @@ const UserProfile = () => {
           backgroundSize: "cover",
           border: "10px solid #F2F2F2",
         }}
-      >
-        <div>{/* <img src={currentUser[0].image} /> */}</div>
-      </div>
+      ></div>
 
       <div className="body-profile-bis">
         <UserInfo />
