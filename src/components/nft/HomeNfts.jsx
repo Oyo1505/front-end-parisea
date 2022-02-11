@@ -1,36 +1,69 @@
-import axios from "axios";
-import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
 import useAuth from "../user/UseAuth";
+import Loading from "../loading/Loading";
+import APIHandler from "../../api/APIHandler";
+import CardNFT from "./CardNFT";
+import { useTrail, animated, config } from "react-spring";
 
-import ListNftsUserProfile from "./ListNftsUserProfile";
+// import Trails from "../animations/Trails";
+
+const Trails = ({ children }) => {
+  const items = React.Children.toArray(children);
+  const trail = useTrail(items.length, {
+    config: { mass: 1, tension: 180, friction: 15 },
+    opacity: 1,
+    y: 0,
+    from: { opacity: 0, y: 40 },
+  });
+  if (items.length === 0) return <Loading />;
+  return (
+    <>
+      <div className="list-cards-profile">
+        {trail.map(({ y, opacity }, index) => (
+          <animated.div
+            key={index}
+            style={{
+              transform: y.interpolate((y) => `translate3d(0px,${y}px,0)`),
+              position: "relative",
+            }}
+          >
+            <animated.div style={{ opacity }} key={items[index]._id}>
+              {items[index]}
+            </animated.div>
+          </animated.div>
+        ))}
+      </div>
+    </>
+  );
+};
 
 const HomeNfts = () => {
-  const { currentUser } = useAuth()
-  useEffect(() => {
-    const x = async () => {
-      try {
-        axios
-          .get("https://api.opensea.io/api/v1/collection/doodles-official")
-          .then((response) => response.json())
-          .then((response) => console.log(response))
-          .catch((err) => console.error(err));
-      } catch (e) {
-        console.error(e)
-      }
-    };
-  }, []);
-  if (currentUser.length === 0) return <p>lod</p>;
-  return (
-    <div>
-      <div>
-        <Link to={"/nfts/create-item"}>Create NFT</Link>
-      </div>
+  const { currentUser } = useAuth();
+  const [nfts, setNfts] = useState([]);
 
-      <h1>Created</h1>
-      <ListNftsUserProfile mode={"creator"} userId={currentUser[0]._id} />
-      <h1>Owned</h1>
-      <ListNftsUserProfile mode={"owner"} userId={currentUser[0]._id} />
+  useEffect(() => {
+    (async () => {
+      const res = await APIHandler.get(`/nfts`);
+      console.log(res.data);
+      setNfts(res.data).reverse();
+    })();
+  }, []);
+
+  if (currentUser.length === 0 && nfts.length === 0) return <Loading />;
+
+  return (
+    <div style={{ marginBottom: "30px" }}>
+      <Trails>
+        {nfts.map((nft) => {
+          const id = String(nft._id);
+
+          return (
+            <div>
+              <CardNFT key={id} nft={nft} />
+            </div>
+          );
+        })}
+      </Trails>
     </div>
   );
 };

@@ -2,9 +2,11 @@ import { useState, useEffect, useRef } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import APIHandler from "../../api/APIHandler";
 import Loading from "../loading/Loading";
+import useAuth from "../user/UseAuth";
 
 function FormUpdatePost() {
   const { id } = useParams();
+  const { currentUser } = useAuth();
   const navigate = useNavigate();
   const imageRef = useRef();
   const [posts, setPosts] = useState(null);
@@ -25,7 +27,7 @@ function FormUpdatePost() {
 
     try {
       const { data } = await APIHandler.patch("/posts/update/" + id, fd);
-      navigate("/posts");
+      navigate("/profile/" + currentUser[0]._id);
     } catch (err) {
       console.error(err);
     }
@@ -49,7 +51,7 @@ function FormUpdatePost() {
         <form className="postForm" onSubmit={handleSubmit}>
           <div className="postFormContent">
             <div className="postFormLabel">
-              <p>Image</p>
+              <h2>Image</h2>
               <p className="postFormLabelText">
                 Modify your post image<br></br>PNG & JPG accepted
               </p>
@@ -75,7 +77,7 @@ function FormUpdatePost() {
           </div>
           <div className="postFormContent">
             <div className="postFormLabel">
-              <p>Description</p>
+              <h2>Description</h2>
               <p className="postFormLabelText">Let's talk about it!</p>
             </div>
             <textarea

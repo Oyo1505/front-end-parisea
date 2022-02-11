@@ -62,7 +62,7 @@ const RandomNFTMarketPlace = () => {
     };
     x();
   }, []);
-  if (Object.keys(nft).length === 0) return <p>NO item</p>;
+  if (Object.keys(nft).length === 0) return <Loading />;
 
   const handleCart = async (e) => {
     e.preventDefault();
