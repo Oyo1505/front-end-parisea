@@ -70,6 +70,9 @@
   border-radius: 50%;
   object-fit: cover;
 }
+.profile-pic-random img {
+  object-fit: cover;
+}
 
 .profile-random-creator {
   display: flex;
@@ -93,8 +96,8 @@
 
   padding-top: 8px;
   padding-bottom: 8px;
-  padding-right: 5px;
-  padding-left: 7px;
+  padding-right: 15px;
+  padding-left: 15px;
 }
 
 .profile-random-creator p {
