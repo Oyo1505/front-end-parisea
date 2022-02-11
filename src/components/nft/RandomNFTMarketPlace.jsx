@@ -4,9 +4,39 @@ import APIHandler from "../../api/APIHandler";
 import Loading from "../loading/Loading";
 import "../../assets/css/homepage/home.css";
 import { useSpring, animated } from "react-spring";
+import useAuth from "../user/UseAuth";
 
 const RandomNFTMarketPlace = () => {
+  const { currentUser } = useAuth();
+
+  const [cartAdded, setCartAdded] = useState(false);
+  const removeFromCart = (
+    <i
+      style={{
+        width: 50,
+        height: 50,
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+      className="fas fa-bookmark"
+    ></i>
+  );
+  const addInCart = (
+    <i
+      style={{
+        width: 50,
+        height: 50,
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+      className="far fa-bookmark"
+    ></i>
+  );
+
   const [nft, setNft] = useState([]);
+
   const contentProps = useSpring({
     config: { duration: 300 },
     opacity: 1,
@@ -34,6 +64,26 @@ const RandomNFTMarketPlace = () => {
   }, []);
   if (Object.keys(nft).length === 0) return <Loading />;
 
+  const handleCart = async (e) => {
+    e.preventDefault();
+
+    try {
+      const { data } = await APIHandler.patch(
+        `/wishlist/${nft.id}/${currentUser[0]._id}`,
+        {
+          nftId: nft.id,
+          userId: currentUser[0]._id,
+        }
+      );
+      console.log("Cart added >>", data);
+      setCartAdded(data.cartAdded);
+      setNft(data.nft);
+      console.log(data.nft);
+    } catch (err) {
+      console.log("OnSubmit err >>> ", err);
+    }
+  };
+
   return (
     <div
 
@@ -56,7 +106,11 @@ const RandomNFTMarketPlace = () => {
                   <div>
                     <p className="created-by-title">Created by</p>
                   </div>
-                  <div className="profile-random-creator">
+
+                  <div
+                    style={{ display: "flex", alignItems: "center" }}
+                    className="profile-random-creator"
+                  >
                     <img
                       className="profile-pic-random"
                       src={nft.creator.image}
@@ -67,6 +121,11 @@ const RandomNFTMarketPlace = () => {
                   </div>
                 </Link>
               </div>
+              {/* {nft.creator._id !== currentUser[0]._id && (
+                <div className="twitter">
+                  {cartAdded ? removeFromCart : addInCart}
+                </div>
+              )} */}
               <div>
                 <p className="created-by-title">Current Price</p>
                 <p className="random-nft-price">{nft.price} MHM</p>
