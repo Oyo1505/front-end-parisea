@@ -25,7 +25,7 @@ function FormCreatePost() {
     try {
       const res = await APIHandler.post("/posts/create", fd);
       console.log("Post data created >>", res.data);
-      navigate("/");
+      navigate("/profile/" + currentUser[0]._id);
     } catch (err) {
       console.error(err);
     }

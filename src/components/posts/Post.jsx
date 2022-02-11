@@ -101,7 +101,7 @@ const Post = ({ postId, postData, updateState }) => {
               <img src={post.image} alt="" />
               <div className="postDescription">
                 <Readmore
-                  charLimit={55}
+                  charLimit={62}
                   readMoreText={"▼ Read more"}
                   readLessText={"▲ Read less "}
                 >
@@ -116,14 +116,17 @@ const Post = ({ postId, postData, updateState }) => {
 
             <div className="postCommentDiv">
               <div className="postIconsComment">
-                <div onClick={handleLike}>
+                <div className="postLikeBtn" onClick={handleLike}>
                   {likeAdded ? fullHeart : emptyHeart} {post.likes.length}
                 </div>
-                <i
-                  className="far fa-comment"
-                  onClick={() => setShowComment(!showComment)}
-                ></i>
-                {post.comments.length}
+                <div className="postCommentBtn">
+                  <i
+                    className="far fa-comment"
+                    onClick={() => setShowComment(!showComment)}
+                  ></i>
+                  {""}
+                  {post.comments.length}
+                </div>
               </div>
               {showComment && <Comments postId={postId} />}
             </div>

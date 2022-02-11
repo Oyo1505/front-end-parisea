@@ -21,6 +21,7 @@ function MyPosts() {
         const id = String(post._id);
         return <Post postId={id} postData={post} key={id} />;
       })}
+      ;
     </>
   );
 }

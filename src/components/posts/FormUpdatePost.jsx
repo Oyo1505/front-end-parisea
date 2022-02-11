@@ -2,9 +2,11 @@ import { useState, useEffect, useRef } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import APIHandler from "../../api/APIHandler";
 import Loading from "../loading/Loading";
+import useAuth from "../user/UseAuth";
 
 function FormUpdatePost() {
   const { id } = useParams();
+  const { currentUser } = useAuth();
   const navigate = useNavigate();
   const imageRef = useRef();
   const [posts, setPosts] = useState(null);
@@ -25,7 +27,7 @@ function FormUpdatePost() {
 
     try {
       const { data } = await APIHandler.patch("/posts/update/" + id, fd);
-      navigate("/posts");
+      navigate("/profile/" + currentUser[0]._id);
     } catch (err) {
       console.error(err);
     }
