@@ -50,6 +50,7 @@ const SingleNFT = () => {
       console.log("Cart added >>", data);
       setCartAdded(data.cartAdded);
       setNft(data.nft);
+      console.log(data.nft);
     } catch (err) {
       console.log("OnSubmit err >>> ", err);
     }

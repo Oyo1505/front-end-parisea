@@ -10,6 +10,21 @@ const ResellNFT = ({ nftId }) => {
     }
   };
 
-  return <button onClick={handleSubmit}>Resell Your NFT</button>;
+  return (
+    <button
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        alignContent: "center",
+        color: "white",
+        border: "none",
+        background: "none",
+      }}
+      onClick={handleSubmit}
+    >
+      <p> Resell Your NFT</p>
+    </button>
+  );
 };
 export default ResellNFT;
