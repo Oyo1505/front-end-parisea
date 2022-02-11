@@ -23,7 +23,9 @@ const BuyNFT = ({ nftId, buyerId }) => {
       }}
       onClick={handleSubmit}
     >
-      <p style={{ fontFamily: "ClashGrotesk-SemiBold" }}>Buy</p>
+      <p style={{ fontFamily: "ClashGrotesk-SemiBold", cursor: "pointer" }}>
+        Buy
+      </p>
     </button>
   );
 };

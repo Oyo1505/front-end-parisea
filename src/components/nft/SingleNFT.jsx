@@ -12,8 +12,30 @@ const SingleNFT = () => {
   const [nft, setNft] = useState({});
   const { id } = useParams();
   const [cartAdded, setCartAdded] = useState(false);
-  const removeFromCart = <i className="fas fa-bookmark"></i>;
-  const addInCart = <i className="far fa-bookmark"></i>;
+  const removeFromCart = (
+    <i
+      style={{
+        width: 50,
+        height: 50,
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+      className="fas fa-bookmark"
+    ></i>
+  );
+  const addInCart = (
+    <i
+      style={{
+        width: 50,
+        height: 50,
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+      className="far fa-bookmark"
+    ></i>
+  );
 
   useEffect(() => {
     const x = async () => {
@@ -57,11 +79,15 @@ const SingleNFT = () => {
   const showBuyBtn = () => {
     if (nft.seller !== currentUser[0]._id) {
       return <BuyNFT nftId={nft._id} buyerId={currentUser[0]._id} />;
+    } else {
+      return "On sale";
     }
   };
   if (currentUser.length === 0 || Object.keys(nft).length === 0)
     return <Loading />;
 
+  console.log("currentUser", currentUser[0]._id);
+  console.log("nft.creator", nft.creator._id);
   return (
     <>
       <div className="random-nft-home">
@@ -104,9 +130,11 @@ const SingleNFT = () => {
                     ) : (
                       "d"
                     )}
-                    <div className="twitter">
-                      {cartAdded ? removeFromCart : addInCart}
-                    </div>
+                    {nft.creator._id !== currentUser[0]._id && (
+                      <div className="twitter">
+                        {cartAdded ? removeFromCart : addInCart}
+                      </div>
+                    )}
                   </div>
                 </div>
                 <div style={{ marginTop: "20px" }}>
