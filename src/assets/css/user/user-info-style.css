@@ -1,338 +1,330 @@
 .profile-info-section {
-    margin-top: 10px;
-    display: flex;
-    justify-content: flex-start;
-    flex-direction: column;
-    align-items: flex-start;
-    text-align: start;
-    width: 344px;
-    gap: 20px
+  margin-top: 10px;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: start;
+  width: 344px;
+  gap: 20px;
 }
 
 .id-metamask {
-    display: flex;
+  display: flex;
 
-    min-height: 35px;
-    border-radius: 9999px;
-    align-items: center;
-    background-color: white;
-    color: black;
-    padding-left: 16px;
-    padding-right: 16px;
-    padding-top: 9px;
-    padding-bottom: 9px;
-    font-size: 14px;
-    letter-spacing: 0.6px;
-    font-weight: 400;
+  min-height: 35px;
+  border-radius: 9999px;
+  align-items: center;
+  background-color: white;
+  color: black;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-top: 9px;
+  padding-bottom: 9px;
+  font-size: 14px;
+  letter-spacing: 0.6px;
+  font-weight: 400;
 
-
-    /* text-transform: uppercase;
+  /* text-transform: uppercase;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis; */
 
-    /* width: 265.65px; */
-    width: 265.65px;
-    height: 36.05px;
-    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.05);
-
+  /* width: 265.65px; */
+  width: 265.65px;
+  height: 36.05px;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.05);
 }
 
 .id-name {
-    text-transform: uppercase;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    font-family: 'ClashGrotesk-SemiBold';
-
+  text-transform: uppercase;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-family: "ClashGrotesk-SemiBold";
 }
 
 .about-user {
-    display: flex;
-    align-items: flex-start;
-    flex-direction: column;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
 }
 
 .h2-profil-info {
-    font-size: 36px
+  font-size: 36px;
 }
 
 .user-namer-color {
-    letter-spacing: -0.01em;
+  letter-spacing: -0.01em;
 
-    background-image: linear-gradient(110.78deg, rgb(118, 230, 80) -1.13%, rgb(249, 214, 73) 15.22%, rgb(240, 142, 53) 32.09%, rgb(236, 81, 87) 48.96%, rgb(255, 24, 189) 67.94%, rgb(26, 75, 255) 85.34%, rgb(98, 216, 249) 99.57%);
-    background-position-x: initial;
-    background-position-y: initial;
-    background-size: initial;
+  background-image: linear-gradient(
+    110.78deg,
+    rgb(118, 230, 80) -1.13%,
+    rgb(249, 214, 73) 15.22%,
+    rgb(240, 142, 53) 32.09%,
+    rgb(236, 81, 87) 48.96%,
+    rgb(255, 24, 189) 67.94%,
+    rgb(26, 75, 255) 85.34%,
+    rgb(98, 216, 249) 99.57%
+  );
+  background-position-x: initial;
+  background-position-y: initial;
+  background-size: initial;
 
-    background-attachment: initial;
-    background-origin: initial;
-    background-clip: text;
-    background-color: initial;
-    -webkit-text-fill-color: transparent;
+  background-attachment: initial;
+  background-origin: initial;
+  background-clip: text;
+  background-color: initial;
+  -webkit-text-fill-color: transparent;
 
-    font-family: 'ClashGrotesk-SemiBold';
-    font-size: 24px;
+  font-family: "ClashGrotesk-SemiBold";
+  font-size: 24px;
 }
 
 .followers-following {
-    display: flex;
-    gap: 32px;
-    align-items: center;
+  display: flex;
+  gap: 32px;
+  align-items: center;
 }
 
 .following {
-    /* margin-right: 20px */
-    display: flex;
-    flex-direction: column;
+  /* margin-right: 20px */
+  display: flex;
+  flex-direction: column;
 }
 
 .followers {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .following-count {
-    color: black;
-    font-family: 'ClashGrotesk-SemiBold';
-    font-size: 24px;
+  color: black;
+  font-family: "ClashGrotesk-SemiBold";
+  font-size: 24px;
 }
 
 .followers-count {
-    color: black;
-    font-family: 'ClashGrotesk-SemiBold';
-    font-size: 24px;
+  color: black;
+  font-family: "ClashGrotesk-SemiBold";
+  font-size: 24px;
 }
 
 .following-title {
-    border: #f2f2f200;
-    background-color: #f2f2f200;
-    color: #7F7F7F;
-    font-size: 18px;
-    font-family: 'ClashGrotesk-SemiBold';
-    cursor: pointer;
+  border: #f2f2f200;
+  background-color: #f2f2f200;
+  color: #7f7f7f;
+  font-size: 18px;
+  font-family: "ClashGrotesk-SemiBold";
+  cursor: pointer;
 }
 
 .followers-title {
-    border: #f2f2f200;
-    background-color: #f2f2f200;
-    color: #7F7F7F;
-    font-size: 18px;
-    font-family: 'ClashGrotesk-SemiBold';
-    cursor: pointer;
+  border: #f2f2f200;
+  background-color: #f2f2f200;
+  color: #7f7f7f;
+  font-size: 18px;
+  font-family: "ClashGrotesk-SemiBold";
+  cursor: pointer;
 }
 
 .following-title:hover {
-    color: black;
-    transition: color 0.2s ease-out;
+  color: black;
+  transition: color 0.2s ease-out;
 }
 
 .followers-title:hover {
-    color: black;
-    transition: color 0.2s ease-out;
+  color: black;
+  transition: color 0.2s ease-out;
 }
 
 .edit-profile {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    height: 52px;
-    padding-right: 16px;
-    padding-left: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 52px;
+  padding-right: 16px;
+  padding-left: 16px;
 
-    background-color: #F2F2F2;
-    color: black;
-    border: solid 2px #E6E6E6;
-    border-radius: 9999px;
-    min-width: 120px;
-    white-space: nowrap;
+  background-color: #f2f2f2;
+  color: black;
+  border: solid 2px #e6e6e6;
+  border-radius: 9999px;
+  min-width: 120px;
+  white-space: nowrap;
 
-    font-size: 18px;
-    font-weight: 600;
-    cursor: pointer;
-    font-family: 'ClashGrotesk-Semibold';
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: "ClashGrotesk-Semibold";
 }
 
-
-
 .edit-profile:hover {
-    background-color: black;
-    color: white;
-    border: solid 2px black;
-    transition: background-color 0.25s ease-out;
+  background-color: black;
+  color: white;
+  border: solid 2px black;
+  transition: background-color 0.25s ease-out;
 }
 
 .balance {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 
-    width: 100%;
-
-
+  width: 100%;
 }
 
 .social-media-links {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    gap: 30px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  gap: 30px;
 }
 
-
 .twitter {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.05);
-    border-radius: 50%;
-    padding: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.05);
+  border-radius: 50%;
+  padding: 12px;
 
-    text-decoration: none;
-    background-color: white;
-    color: black;
-    border: none;
-    font-size: 20px;
-    font-weight: 600;
-    width: 50px;
-    height: 50px;
-    cursor: pointer;
+  text-decoration: none;
+  background-color: white;
+  color: black;
+  border: none;
+  font-size: 20px;
+  font-weight: 600;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
 }
 
 .twitter:hover {
-    transition: 0.4s ease-out;
-    transform: translateY(-3px);
-    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.15);
+  transition: 0.4s ease-out;
+  transform: translateY(-3px);
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.15);
 }
 
 .biography {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    resize: none;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  resize: none;
+  width: 100%;
 }
 
 .bio-title {
-    border-bottom: solid 2px #E6E6E6;
-    padding-bottom: 20px;
-    font-family: 'ClashGrotesk-Semibold';
+  border-bottom: solid 2px #e6e6e6;
+  padding-bottom: 20px;
+  font-family: "ClashGrotesk-Semibold";
 }
 
 .balance-title {
-    border-bottom: solid 2px #E6E6E6;
-    border-top: solid 2px #E6E6E6;
-    padding-bottom: 20px;
-    width: 350px;
-    font-family: 'ClashGrotesk-Semibold';
-
+  border-bottom: solid 2px #e6e6e6;
+  border-top: solid 2px #e6e6e6;
+  padding-bottom: 20px;
+  width: 350px;
+  font-family: "ClashGrotesk-Semibold";
 }
 
 .fa-clone {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
 
-    color: #E6E6E6;
-    font-size: 16px;
-    font-weight: 300;
-    cursor: pointer;
-
+  color: #e6e6e6;
+  font-size: 16px;
+  font-weight: 300;
+  cursor: pointer;
 }
 
 .fa-clone:hover {
-    font-weight: 600;
-    color: black;
-    transition: color 0.7s ease-out;
+  font-weight: 600;
+  color: black;
+  transition: color 0.7s ease-out;
 }
 
 .modal-follow {
-    background: rgba(0, 0, 0, 0.8);
-    backdrop-filter: blur(20px);
-    padding-left: 32px;
-    padding-right: 32px;
-
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(20px);
+  padding-left: 32px;
+  padding-right: 32px;
 }
 
 .customOverlay {
-    /* background: rgba(36, 123, 160, 0.7); */
+  /* background: rgba(36, 123, 160, 0.7); */
 }
 
 .customModal {
-
-    min-height: 640px;
-    max-width: 760px;
-    padding: 0px;
-    overflow-y: scroll;
-    border-radius: 12px;
-
+  min-height: 640px;
+  max-width: 760px;
+  padding: 0px;
+  overflow-y: scroll;
+  border-radius: 12px;
 }
 
 .modal-list {
-    padding: 24px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    color: black;
-
-
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  color: black;
 }
 
 .modal-list-user {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    /* padding-top: 24px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  /* padding-top: 24px;
     padding-bottom: 24px; */
-    padding-right: 0px;
-    color: inherit;
+  padding-right: 0px;
+  color: inherit;
 }
 
 .image-modal {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    align-self: center;
-    margin-right: 24px;
-    width: 50px;
-    height: 50px;
-    border: solid 1px #E6E6E6;
-    border-radius: 9999px;
-    object-fit: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  margin-right: 24px;
+  width: 50px;
+  height: 50px;
+  border: solid 1px #e6e6e6;
+  border-radius: 9999px;
+  object-fit: cover;
 }
 
 .name-username {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .img-modal-user {
-    border-radius: 9999px;
-    object-fit: cover;
-    width: 50px;
-    height: 50px;
+  border-radius: 9999px;
+  object-fit: cover;
+  width: 50px;
+  height: 50px;
 }
 
 .customModal {
-    min-height: 30px;
+  min-height: 30px;
 
-    height: 330px;
-    overflow-y: scroll;
+  height: 330px;
+  overflow-y: scroll;
 }
 
 .modal-list-empty {
-
-    /* padding: 24px; */
-    padding-top: 125px;
-    padding-left: 24px;
-    padding-right: 24px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    align-self: center;
-    font-family: 'ClashGrotesk-Semibold';
-
-
+  /* padding: 24px; */
+  padding-top: 125px;
+  padding-left: 24px;
+  padding-right: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+  font-family: "ClashGrotesk-Semibold";
 }

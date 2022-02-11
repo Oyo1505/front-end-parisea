@@ -24,6 +24,7 @@ const FormNFT = () => {
   useEffect(() => {
     const x = async () => {
       try {
+        console.log("d");
         const { data } = await APIHandler.get(`/nfts/${id}`);
         setNft({
           title: data.title,
@@ -143,7 +144,11 @@ const FormNFT = () => {
             </div>
           ) : (
             <div>
-              {nft.image ? <img src={nft.image} alt="-uploaded" /> : ""}
+              {nft.image ? (
+                <img src={nft.image} alt="-uploaded" width="100%" />
+              ) : (
+                ""
+              )}
             </div>
           )}
           <div className="nftCreateFormContent">
