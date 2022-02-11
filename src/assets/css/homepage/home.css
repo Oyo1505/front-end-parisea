@@ -9,12 +9,12 @@
 }
 
 .random-nft-home {
-  margin-top: 190px;
-  margin-bottom: 190px;
+  margin-top: 50px;
+  margin-bottom: 100px;
   display: flex;
   flex-direction: row;
   justify-content: center;
-  gap: 100px;
+  gap: 150px;
   align-items: center;
 }
 
@@ -24,19 +24,21 @@
 }
 
 .random-pic-home img {
-  width: 500px;
-  height: 500px;
+  width: 650px;
+  height: 650px;
   object-fit: cover;
-  border-radius: 10px;
+  border-radius: 8px;
 }
 
 .list-cards-nfts {
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
+  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
   width: 100%;
-  gap: 50px;
+  gap: 20px;
+  flex-wrap: wrap;
 }
 
 .random-title {

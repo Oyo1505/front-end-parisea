@@ -221,7 +221,10 @@ const UserEdit = () => {
                           />
                         )
                       ) : (
-                        <img src={imgSrc} alt="imageRef" />
+                        <div style={{ cursor: "pointer" }}>
+                          <i class="fa fa-plus"></i>
+                          {/* <img src={imgSrc} alt="" /> */}
+                        </div>
                       )}
                     </label>
                   </div>
@@ -266,7 +269,10 @@ const UserEdit = () => {
                         />
                       )
                     ) : (
-                      <img src={imgCoverSrc} alt="" />
+                      <div style={{ cursor: "pointer" }}>
+                        <i class="fa fa-plus"></i>
+                        {/* <img src={imgSrc} alt="" /> */}
+                      </div>
                     )}
                   </label>
                 </div>

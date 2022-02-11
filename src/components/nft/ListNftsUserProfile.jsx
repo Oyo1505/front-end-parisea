@@ -76,45 +76,31 @@ const ListNftsUserProfile = ({ mode, userId }) => {
     <>
       {items ? (
         <>
-          {mode === "posts" ? (
-            <>
-              <Trails>
-                <MyPosts />
-              </Trails>
-            </>
-          ) : (
-            ""
+          {mode === "posts" && (
+            <Trails>
+              <MyPosts />
+            </Trails>
           )}
-          {mode === "wishlists" ? (
-            <>
-              <Trails>
-                <MyWishList />
-              </Trails>
-            </>
-          ) : (
-            ""
+          {mode === "wishlists" && (
+            <Trails>
+              {items.map((item) => {
+                return <CardNFT key={item._id} nft={item} />;
+              })}
+            </Trails>
           )}
-          {mode === "creator" ? (
-            <>
-              <Trails>
-                {items.map((item) => {
-                  return <CardNFT key={item._id} nft={item} />;
-                })}
-              </Trails>
-            </>
-          ) : (
-            ""
+          {mode === "creator" && (
+            <Trails>
+              {items.map((item) => {
+                return <CardNFT key={item._id} nft={item} />;
+              })}
+            </Trails>
           )}
-          {mode === "owner" ? (
-            <>
-              <Trails>
-                {items.map((item) => {
-                  return <CardNFT key={item._id} nft={item} />;
-                })}
-              </Trails>
-            </>
-          ) : (
-            ""
+          {mode === "owner" && (
+            <Trails>
+              {items.map((item) => {
+                return <CardNFT key={item._id} nft={item} />;
+              })}
+            </Trails>
           )}
         </>
       ) : (
