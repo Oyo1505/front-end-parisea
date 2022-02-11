@@ -1,6 +1,8 @@
 import React from "react";
 import CardNFT from "./CardNFT";
 import Trails from "../animations/Trails";
+import { Link } from "react-router-dom";
+
 const ListCardsNFT = ({ nfts }) => {
   return (
     <div
@@ -28,6 +30,14 @@ const ListCardsNFT = ({ nfts }) => {
           })}
         </Trails>
       </div>
+      <Link to={"/nfts"}>
+        <button
+          style={{ margin: "0 auto", marginTop: 25 }}
+          className="edit-profile"
+        >
+          <p>View All</p>
+        </button>
+      </Link>
     </div>
   );
 };
