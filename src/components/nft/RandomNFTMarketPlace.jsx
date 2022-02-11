@@ -7,34 +7,6 @@ import { useSpring, animated } from "react-spring";
 import useAuth from "../user/UseAuth";
 
 const RandomNFTMarketPlace = () => {
-  const { currentUser } = useAuth();
-
-  const [cartAdded, setCartAdded] = useState(false);
-  const removeFromCart = (
-    <i
-      style={{
-        width: 50,
-        height: 50,
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-      className="fas fa-bookmark"
-    ></i>
-  );
-  const addInCart = (
-    <i
-      style={{
-        width: 50,
-        height: 50,
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-      className="far fa-bookmark"
-    ></i>
-  );
-
   const [nft, setNft] = useState([]);
 
   const contentProps = useSpring({
@@ -62,27 +34,7 @@ const RandomNFTMarketPlace = () => {
     };
     x();
   }, []);
-  if (Object.keys(nft).length === 0) return <Loading />;
-
-  const handleCart = async (e) => {
-    e.preventDefault();
-
-    try {
-      const { data } = await APIHandler.patch(
-        `/wishlist/${nft.id}/${currentUser[0]._id}`,
-        {
-          nftId: nft.id,
-          userId: currentUser[0]._id,
-        }
-      );
-      console.log("Cart added >>", data);
-      setCartAdded(data.cartAdded);
-      setNft(data.nft);
-      console.log(data.nft);
-    } catch (err) {
-      console.log("OnSubmit err >>> ", err);
-    }
-  };
+  if (nft.length === 0) return <Loading />;
 
   return (
     <div>
@@ -118,11 +70,7 @@ const RandomNFTMarketPlace = () => {
                   </div>
                 </Link>
               </div>
-              {/* {nft.creator._id !== currentUser[0]._id && (
-                <div className="twitter">
-                  {cartAdded ? removeFromCart : addInCart}
-                </div>
-              )} */}
+
               <div>
                 <p className="created-by-title">Current Price</p>
                 <p className="random-nft-price">{nft.price} MHM</p>

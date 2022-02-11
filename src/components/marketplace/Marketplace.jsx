@@ -6,10 +6,10 @@ import ListPostsMarketplace from "../posts/ListPostsMarketplace";
 const Marketplace = () => {
   return (
     <div>
-      {/* <RandomNFTMarketPlace /> */}
-      {/* <ListNFTMarketplace limit={4} /> */}
+      <RandomNFTMarketPlace />
+      <ListNFTMarketplace limit={4} />
 
-      {/* <ListPostsMarketplace limit={4} /> */}
+      <ListPostsMarketplace limit={4} />
     </div>
   );
 };

@@ -4,7 +4,7 @@ import "../../assets/css/nft/card-nft.css";
 
 const CardNFT = ({ nft }) => {
   console.log(nft);
-  if (nft.length === 0) return <p>tes</p>;
+  if (nft.creator.length === 0) return <p>tes</p>;
   return (
     <>
       <Link to={`/nfts/${nft._id}`}>
