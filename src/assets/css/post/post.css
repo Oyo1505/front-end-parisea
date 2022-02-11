@@ -316,6 +316,7 @@
   word-break: break-all;
   font-size: 20px;
   line-height: 1.8rem;
+  height: 80px;
 }
 
 .postedTime {
