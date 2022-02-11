@@ -12,7 +12,6 @@ const UserEdit = () => {
   const navigate = useNavigate();
   const { id } = useParams();
   const { handleCoverImage } = useAuth();
-  //const [imageRef, coverImageRef] = useRefs();
   const imageRef = useRef();
   const coverImageRef = useRef();
 

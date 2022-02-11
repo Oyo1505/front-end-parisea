@@ -24,7 +24,6 @@ const FormNFT = () => {
   useEffect(() => {
     const x = async () => {
       try {
-        console.log("d");
         const { data } = await APIHandler.get(`/nfts/${id}`);
         setNft({
           title: data.title,
@@ -43,11 +42,13 @@ const FormNFT = () => {
   }, [id]);
 
   useEffect(() => {
-    setNft({
-      creator: currentUser[0]._id,
-      owner: currentUser[0]._id,
-      seller: currentUser[0]._id,
-    });
+    if (currentUser === true) {
+      setNft({
+        creator: currentUser[0]._id,
+        owner: currentUser[0]._id,
+        seller: currentUser[0]._id,
+      });
+    }
   }, [currentUser]);
 
   const handleSubmit = async (e) => {
@@ -101,7 +102,7 @@ const FormNFT = () => {
     });
   };
 
-  if (currentUser.length === 0) return <Loading />;
+  if (currentUser.length === 0 || !currentUser) return <Loading />;
 
   return (
     <>
@@ -178,8 +179,8 @@ const FormNFT = () => {
             </div>
             <input
               className="nftCreateFormInput"
-              min={0}
-              step={0.1}
+              min={1}
+              step={1}
               id="price"
               value={nft.price}
               name="price"
