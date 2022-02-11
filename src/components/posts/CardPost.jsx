@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const CardPost = ({ post }) => {
-  console.log(post);
   return (
     <>
       <div className="postDivMarketPlace">
@@ -19,7 +18,6 @@ const CardPost = ({ post }) => {
             </div>
           </Link>
         </div>
-
         <div className="postBody">
           <img src={post.image} alt="imag" />
           <div className="postDescriptionMarketPlace">{post.description}</div>
