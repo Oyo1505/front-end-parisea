@@ -45,7 +45,7 @@ const HomeNfts = () => {
     (async () => {
       const res = await APIHandler.get(`/nfts`);
       console.log(res.data);
-      setNfts(res.data).reverse();
+      setNfts(res.data);
     })();
   }, []);
 
