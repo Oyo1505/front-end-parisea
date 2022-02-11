@@ -22,7 +22,7 @@ const BuyNFT = ({ nftId, buyerId }) => {
     <>
       <button
         style={{
-          display: "flex",
+          display: "flex", 
           justifyContent: "center",
           alignItems: "center",
           alignContent: "center",
