@@ -10,8 +10,8 @@ const FormNFT = () => {
   const { currentUser } = useAuth();
   const [imgPreviewSrc, setImgPreviewSrc] = useState("");
   const [nft, setNft] = useState({
-    title: "test",
-    description: "test",
+    title: "",
+    description: "",
     price: 0,
     seller: null,
     owner: null,
@@ -42,13 +42,11 @@ const FormNFT = () => {
   }, [id]);
 
   useEffect(() => {
-    if (currentUser === true) {
-      setNft({
-        creator: currentUser[0]._id,
-        owner: currentUser[0]._id,
-        seller: currentUser[0]._id,
-      });
-    }
+    setNft({
+      creator: currentUser[0]._id,
+      owner: currentUser[0]._id,
+      seller: currentUser[0]._id,
+    });
   }, [currentUser]);
 
   const handleSubmit = async (e) => {
@@ -75,7 +73,6 @@ const FormNFT = () => {
       setNft(data);
       navigate("/nfts");
     } else {
-      console.log(imgPreviewSrc);
       formData.append("image", imageRef.current.files[0]);
       await APIHandler.post(`/nfts/create-item`, formData);
       navigate("/nfts");
@@ -102,7 +99,7 @@ const FormNFT = () => {
     });
   };
 
-  if (currentUser.length === 0 || !currentUser) return <Loading />;
+  if (currentUser.length === 0) return <Loading />;
 
   return (
     <>
@@ -164,8 +161,10 @@ const FormNFT = () => {
               id="title"
               value={nft.title}
               name="title"
+              placeholder="Title of your NFT"
               onChange={(e) => setNft({ ...nft, title: e.target.value })}
               type="text"
+              required
             />
           </div>
 
@@ -179,7 +178,7 @@ const FormNFT = () => {
             </div>
             <input
               className="nftCreateFormInput"
-              min={1}
+              min={0}
               step={1}
               id="price"
               value={nft.price}
@@ -204,12 +203,12 @@ const FormNFT = () => {
               placeholder="Desciption here"
               onChange={(e) => setNft({ ...nft, description: e.target.value })}
               type="textarea"
+              required
             />
           </div>
 
           <button className="postBtns">{id ? "Update" : "Create Now !"}</button>
         </form>
-        {id && <button onClick={handleDelete}>Delete</button>}
       </div>
     </>
   );
