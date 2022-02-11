@@ -18,7 +18,7 @@ const Trails = ({ children }) => {
   if (items.length === 0) return <Loading />;
   return (
     <>
-      <div className="list-cards-profile">
+      <div className="list-cards-nfts">
         {trail.map(({ y, opacity }, index) => (
           <animated.div
             key={index}
