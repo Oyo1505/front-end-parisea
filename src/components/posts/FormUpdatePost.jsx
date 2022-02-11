@@ -49,7 +49,7 @@ function FormUpdatePost() {
         <form className="postForm" onSubmit={handleSubmit}>
           <div className="postFormContent">
             <div className="postFormLabel">
-              <p>Image</p>
+              <h2>Image</h2>
               <p className="postFormLabelText">
                 Modify your post image<br></br>PNG & JPG accepted
               </p>
@@ -75,7 +75,7 @@ function FormUpdatePost() {
           </div>
           <div className="postFormContent">
             <div className="postFormLabel">
-              <p>Description</p>
+              <h2>Description</h2>
               <p className="postFormLabelText">Let's talk about it!</p>
             </div>
             <textarea

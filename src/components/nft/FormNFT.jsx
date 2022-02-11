@@ -208,7 +208,6 @@ const FormNFT = () => {
 
           <button className="postBtns">{id ? "Update" : "Create Now !"}</button>
         </form>
-        {id && <button onClick={handleDelete}>Delete</button>}
       </div>
     </>
   );

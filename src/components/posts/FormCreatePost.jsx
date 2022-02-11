@@ -49,7 +49,7 @@ function FormCreatePost() {
         <form className="postForm">
           <div className="postFormContent">
             <div className="postFormLabel">
-              <h2 className="h2-create-post">Image</h2>
+              <h2>Image</h2>
               <p className="postFormLabelText">
                 Share us your NTF news!<br></br>PNG & JPG accepted
               </p>
@@ -75,7 +75,7 @@ function FormCreatePost() {
 
           <div className="postFormContent">
             <div className="postFormLabel">
-              <h2 className="h2-create-post">Description</h2>
+              <h2>Description</h2>
               <p className="postFormLabelText">Let's talk about it!</p>
             </div>
             <textarea
