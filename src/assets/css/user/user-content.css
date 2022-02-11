@@ -74,7 +74,7 @@
   height: 2px;
   display: block;
   width: 100%;
-  background: #E6E6E6;
+  background: #e6e6e6;
   margin-bottom: 20px;
   border-right: 1px white;
   content: " ";
@@ -82,7 +82,7 @@
 
 .categories-profile div {
   font-family: "ClashGrotesk-Semibold";
-  color: #7F7F7F;
+  color: #7f7f7f;
   font-size: 18px;
 }
 
@@ -95,4 +95,5 @@
   cursor: pointer;
 }
 
-.image-on-profile {}
+.image-on-profile {
+}

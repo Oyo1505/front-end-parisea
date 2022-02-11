@@ -5,7 +5,7 @@ import "../../assets/css/animation/animation.css";
 const Trails = ({ children, config }) => {
   const { ref, inView, entry } = useInView({
     triggerOnce: true,
-    threshold: 0.9,
+    threshold: 0.5,
   });
   const items = React.Children.toArray(children);
   const trail = useTrail(items.length, {
@@ -21,7 +21,6 @@ const Trails = ({ children, config }) => {
         {trail.map(({ x, opacity }, index) => (
           <animated.div
             key={index}
-            className="trailsText"
             style={{
               transform: x.interpolate((x) => `translate3d(${x}px,0px,0)`),
               position: "relative",

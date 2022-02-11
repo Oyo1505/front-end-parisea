@@ -6,6 +6,7 @@ import MyWishList from "./../wishList/WishList";
 import CardNFT from "./CardNFT";
 import { useTrail, animated, config } from "react-spring";
 import "../../assets/css/animation/animation.css";
+import Loading from "../loading/Loading";
 
 const Trails = ({ children }) => {
   const items = React.Children.toArray(children);
@@ -15,7 +16,7 @@ const Trails = ({ children }) => {
     y: 0,
     from: { opacity: 0, y: 40 },
   });
-
+  if (items.length === 0) return <Loading />;
   return (
     <>
       <div className="list-cards-profile">
@@ -75,22 +76,35 @@ const ListNftsUserProfile = ({ mode, userId }) => {
     <>
       {items ? (
         <>
-          {mode === "posts" ? <MyPosts /> : ""}
-          {mode === "wishlists" ? <MyWishList /> : ""}
-          {mode === "owner" ? (
-            <>
-              <Trails>
-                {items.map((item) => {
-                  return <CardNFT key={item._id} nft={item} />;
-                })}
-              </Trails>
-            </>
-          ) : (
-            ""
+          {mode === "posts" && (
+            <Trails>
+              <MyPosts />
+            </Trails>
+          )}
+          {mode === "wishlists" && (
+            <Trails>
+              {items.map((item) => {
+                return <CardNFT key={item._id} nft={item} />;
+              })}
+            </Trails>
+          )}
+          {mode === "creator" && (
+            <Trails>
+              {items.map((item) => {
+                return <CardNFT key={item._id} nft={item} />;
+              })}
+            </Trails>
+          )}
+          {mode === "owner" && (
+            <Trails>
+              {items.map((item) => {
+                return <CardNFT key={item._id} nft={item} />;
+              })}
+            </Trails>
           )}
         </>
       ) : (
-        ""
+        <Loading />
       )}
     </>
   );

@@ -32,13 +32,7 @@ const UserProfile = () => {
         <div className="side-elements-profile">
           <div className="whole-cat-profile">
             <div className="categories-profile">
-              <NavLink
-                to={"#"}
-                activeClassName="is-active"
-                onClick={() => setMode("creator")}
-              >
-                Created
-              </NavLink>
+              <div onClick={() => setMode("creator")}>Created</div>
               <div onClick={() => setMode("owner")}>Owned</div>
               <div onClick={() => setMode("wishlists")}>Wishlist</div>
               <div onClick={() => setMode("posts")}>Posts</div>

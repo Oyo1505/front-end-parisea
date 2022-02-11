@@ -41,7 +41,6 @@ const Post = ({ postId, postData, updateState }) => {
       const { data } = await APIHandler.get(
         `/posts/likes/${postId}/${currentUser[0]._id}`
       );
-      // console.log("likes data", data);
       setLikeAdded(data.likeAdded);
     })();
   }, [postId]);
@@ -53,7 +52,6 @@ const Post = ({ postId, postData, updateState }) => {
       const res = await APIHandler.patch(`/posts/likes/` + postId, {
         userId: currentUser[0]._id,
       });
-      // console.log("Like data created >>", res.data);
       setLikeAdded(res.data.likeAdded);
       setPost(res.data.post);
     } catch (err) {

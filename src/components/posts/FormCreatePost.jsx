@@ -55,9 +55,11 @@ function FormCreatePost() {
               </p>
             </div>
             <label for="file" className="imgPreview">
-              {imgPreviewSrc
-                ? imgPreviewSrc && <img src={imgPreviewSrc} alt="previewImg" />
-                : "Choose your image file"}
+              {imgPreviewSrc ? (
+                imgPreviewSrc && <img src={imgPreviewSrc} alt="previewImg" />
+              ) : (
+                <p className="chooseImg">Upload</p>
+              )}
             </label>
             <input
               className="postFormnIput"
