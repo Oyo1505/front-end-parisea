@@ -1,0 +1,189 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-self: center;
+}
+
+.container h1 {
+  display: flex;
+  justify-content: center;
+  margin-top: 48px;
+  font-size: 56px;
+}
+
+.container h2 {
+  font-family: "ClashGrotesk-SemiBold";
+  font-size: 24px;
+}
+
+.container p {
+  line-height: 1.7;
+  margin-bottom: 30px;
+}
+/* ⬇︎⬇︎⬇︎⬇︎⬇︎　CREATE FORM ⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎ */
+
+.nftCreateForm {
+  background-color: white;
+  max-width: 740px;
+  padding: 48px;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.05);
+  border-radius: 12px;
+  margin-top: 48px;
+  margin-bottom: 48px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-self: center;
+}
+
+.nftCreateFormInput {
+  display: flex;
+  align-items: center;
+  border-radius: 8px;
+  border: solid 1px #e6e6e6;
+  margin-bottom: 24px;
+  font-size: 16px;
+  font-family: "ClashGrotesk-Regular";
+  height: 60px;
+  width: 100%;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
+
+.nftCreateFormInput:focus {
+  outline: none !important;
+  border-color: black;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.05);
+}
+
+.nftCreateFormInput:hover {
+  outline: none !important;
+  border-color: black;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.05);
+  cursor: text;
+  transition: border-color 2s ease-out;
+}
+
+.nftCreateFormContent {
+  padding: 20px;
+  display: flex;
+  width: 100%;
+}
+
+.nftCreateFormLabel {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: start;
+  width: 100%;
+}
+
+.nftCreateFormLabelText {
+  line-height: 1.7;
+  font-size: 1rem;
+  font-weight: normal;
+  color: black;
+  margin-top: 10px;
+  font-family: "ClashGrotesk-Regular";
+  font-size: 18px;
+}
+
+.nftCreateFormContent input[type="file"] {
+  position: absolute;
+  overflow: hidden;
+  width: 0;
+  height: 0;
+  padding: 0;
+}
+
+.nftCreateFormContent label {
+  width: 300px;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: gray;
+  font-weight: bold;
+  border: 2px dashed lightgray;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.05);
+}
+
+.imgPreviewDiv {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  font-family: "ClashGrotesk-Regular";
+  margin-bottom: 8px;
+  width: 100%;
+}
+
+.imgPreview img {
+  width: 90%;
+  height: 90%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.chooseImg {
+  color: white;
+  padding: 10px 50px;
+  background-color: black;
+  border-radius: 30px;
+}
+
+.nftCreateFormContent textarea {
+  display: flex;
+  align-items: center;
+  border-radius: 8px;
+  border: solid 1px #e6e6e6;
+  margin-bottom: 24px;
+  font-size: 16px;
+  font-family: "ClashGrotesk-Regular";
+  height: 200px;
+  width: 100%;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
+
+.nftCreateFormContent textarea:hover {
+  outline: none !important;
+  border-color: black;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.05);
+  cursor: text;
+
+  transition: border-color 2s ease-out;
+}
+
+.nftCreateFormContent textarea:focus {
+  outline: none !important;
+  border-color: black;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.05);
+}
+
+.postBtns {
+  background-color: black;
+  color: white;
+  width: 100%;
+  height: 60px;
+  border-radius: 10px;
+  border: solid 1px #e6e6e6;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.postBtns:hover {
+  background-color: white;
+  color: black;
+  border: solid 1px #e6e6e6;
+  transition: background-color 0.25s ease-out;
+}
