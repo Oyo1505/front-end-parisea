@@ -14,8 +14,17 @@ const UserProfile = () => {
   if (currentUser.length === 0) return <Loading />;
   return (
     <div>
-      <div className="profile-image-header">
-        <div><img src={currentUser[0].image} /></div>
+      <div
+        className="profile-image-header"
+        style={{
+          backgroundImage: `url(${coverImage.image})`,
+          backgroundRepeat: "no-repeat",
+          backgroundPositionY: "center",
+          backgroundSize: "cover",
+          border: "10px solid #F2F2F2",
+        }}
+      >
+        <div>{/* <img src={currentUser[0].image} /> */}</div>
       </div>
 
       <div className="body-profile-bis">

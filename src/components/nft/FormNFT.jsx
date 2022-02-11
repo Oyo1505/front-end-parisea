@@ -3,6 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import APIHandler from "../../api/APIHandler";
 import useAuth from "../user/UseAuth";
 import Loading from "../loading/Loading";
+import "../../assets/css/nft/createFormNft.css";
 
 const FormNFT = () => {
   const { id } = useParams();
@@ -105,28 +106,33 @@ const FormNFT = () => {
     <>
       <div className="container">
         {id ? <h1>Update</h1> : <h1>Create a NFT</h1>}
-        <form className="postForm" onSubmit={handleSubmit}>
+        <form className="nftCreateForm" onSubmit={handleSubmit}>
           {!id ? (
-            <div className="postFormContent">
-              <div className="postFormLabel">
+            <div className="nftCreateFormContent">
+              <div className="nftCreateFormLabel">
                 <h2 className="h2-create-post">Upload File</h2>
-                <p className="postFormLabelText">
+                <p className="nftCreateFormLabelText">
                   Make sure each of your <br></br> creations are unique !
                   <br></br>
                   <br></br>PNG & JPG accepted
                 </p>
               </div>
 
-              <label for="file" className="imgPreview">
-                {imgPreviewSrc
-                  ? imgPreviewSrc && (
+              <div className="imgPreviewDiv">
+                <label for="file" className="imgPreview">
+                  {imgPreviewSrc ? (
+                    imgPreviewSrc && (
                       <img src={imgPreviewSrc} alt="previewImg" />
                     )
-                  : "Choose your image file"}
-              </label>
+                  ) : (
+                    <p className="chooseImg">Upload</p>
+                  )}
+                </label>
+              </div>
+
               <input
                 ref={imageRef}
-                className="postFormnIput"
+                className="nftCreateFormInput"
                 name="image"
                 type="file"
                 id="file"
@@ -140,15 +146,15 @@ const FormNFT = () => {
               {nft.image ? <img src={nft.image} alt="-uploaded" /> : ""}
             </div>
           )}
-          <div className="postFormContent">
-            <div className="postFormLabel">
+          <div className="nftCreateFormContent">
+            <div className="nftCreateFormLabel">
               <h2 className="h2-create-post">Title</h2>
-              <p className="postFormLabelText">
+              <p className="nftCreateFormLabelText">
                 Nothing is as better <br></br>as a catchy title !
               </p>
             </div>
             <input
-              className="input-section"
+              className="nftCreateFormInput"
               id="title"
               value={nft.title}
               name="title"
@@ -157,16 +163,16 @@ const FormNFT = () => {
             />
           </div>
 
-          <div className="postFormContent">
-            <div className="postFormLabel">
+          <div className="nftCreateFormContent">
+            <div className="nftCreateFormLabel">
               <h2 className="h2-create-post">Price</h2>
-              <p className="postFormLabelText">
+              <p className="nftCreateFormLabelText">
                 Enter price to allow <br></br> users instantly <br></br>
                 purchase your NFT
               </p>
             </div>
             <input
-              className="input-section"
+              className="nftCreateFormInput"
               min={0}
               step={0.1}
               id="price"
@@ -177,18 +183,19 @@ const FormNFT = () => {
             />
           </div>
 
-          <div className="postFormContent">
-            <div className="postFormLabel">
+          <div className="nftCreateFormContent">
+            <div className="nftCreateFormLabel">
               <h2 className="h2-create-post">Description</h2>
-              <p className="postFormLabelText">
+              <p className="nftCreateFormLabelText">
                 Tell us the story behind your amazing artwork !
               </p>
             </div>
-            <input
-              className="input-section"
+            <textarea
+              className="nftCreateFormInput"
               id="description"
               value={nft.description}
               name="title"
+              placeholder="Desciption here"
               onChange={(e) => setNft({ ...nft, description: e.target.value })}
               type="textarea"
             />
