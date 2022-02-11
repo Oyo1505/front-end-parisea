@@ -1,36 +1,33 @@
-import axios from "axios";
-import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
 import useAuth from "../user/UseAuth";
-
-import ListNftsUserProfile from "./ListNftsUserProfile";
+import Loading from "../loading/Loading";
+import APIHandler from "../../api/APIHandler";
+import CardNFT from "./CardNFT";
 
 const HomeNfts = () => {
-  const { currentUser } = useAuth()
+  const { currentUser } = useAuth();
+  const [nfts, setNfts] = useState([]);
+
   useEffect(() => {
-    const x = async () => {
-      try {
-        axios
-          .get("https://api.opensea.io/api/v1/collection/doodles-official")
-          .then((response) => response.json())
-          .then((response) => console.log(response))
-          .catch((err) => console.error(err));
-      } catch (e) {
-        console.error(e)
-      }
-    };
+    (async () => {
+      const res = await APIHandler.get(`/nfts`);
+      console.log(res.data);
+      setNfts(res.data).reverse();
+    })();
   }, []);
-  if (currentUser.length === 0) return <p>lod</p>;
+
+  if (currentUser.length === 0) return <Loading />;
+
   return (
     <div>
-      <div>
-        <Link to={"/nfts/create-item"}>Create NFT</Link>
-      </div>
-
-      <h1>Created</h1>
-      <ListNftsUserProfile mode={"creator"} userId={currentUser[0]._id} />
-      <h1>Owned</h1>
-      <ListNftsUserProfile mode={"owner"} userId={currentUser[0]._id} />
+      {nfts.map((nft) => {
+        const id = String(nft._id);
+        return (
+          <div>
+            <CardNFT id={id} />
+          </div>
+        );
+      })}
     </div>
   );
 };
