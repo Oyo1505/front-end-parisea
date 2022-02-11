@@ -16,7 +16,7 @@ const BuyNFT = ({ nftId, buyerId }) => {
     } catch (e) {
       console.error(e);
     }
-  };
+  }; 
 
   return (
     <>
