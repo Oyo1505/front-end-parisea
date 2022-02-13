@@ -38,22 +38,24 @@ const SingleNFT = () => {
   );
 
   useEffect(() => {
-    const x = async () => {
-      try {
-        const { data } = await APIHandler.get(
-          `/nfts/single/${id}/${currentUser[0]._id}`,
-          {
-            nft,
-            userId: currentUser[0]._id,
-          }
-        );
-        setCartAdded(data.cartAdded);
-        setNft(data.nft);
-      } catch (e) {
-        console.error(e);
-      }
-    };
-    x();
+    if (currentUser.length > 0) {
+      const x = async () => {
+        try {
+          const { data } = await APIHandler.get(
+            `/nfts/single/${id}/${currentUser[0]._id}`,
+            {
+              nft,
+              userId: currentUser[0]._id,
+            }
+          );
+          setCartAdded(data.cartAdded);
+          setNft(data.nft);
+        } catch (e) {
+          console.error(e);
+        }
+      };
+      x();
+    }
   }, [id]);
 
   const handleCart = async (e) => {
