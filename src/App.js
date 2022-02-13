@@ -14,7 +14,6 @@ import Marketplace from "./components/marketplace/Marketplace";
 import HomeNfts from "./components/nft/HomeNfts";
 import PrivateRoute from "./components/protectedRoute/PrivateRoute";
 import WishList from "./components/wishList/WishList";
-
 function App() {
   return (
     <>
