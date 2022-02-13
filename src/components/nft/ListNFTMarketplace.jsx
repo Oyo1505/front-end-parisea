@@ -11,7 +11,7 @@ const ListNFTMarketplace = ({ limit }) => {
         const { data } = await APIHandler.get(`/nfts/market/${limit}`);
         setNfts(data);
       } catch (e) {
-        console.error(e);
+        console.log(e);
       }
     };
     x();
