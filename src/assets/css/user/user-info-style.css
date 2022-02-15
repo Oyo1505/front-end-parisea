@@ -159,14 +159,12 @@
   cursor: pointer;
   font-family: "ClashGrotesk-Semibold";
 }
-
 .edit-profile:hover {
   background-color: black;
   color: white;
   border: solid 2px black;
   transition: background-color 0.25s ease-out;
 }
-
 .balance {
   display: flex;
   flex-direction: row;

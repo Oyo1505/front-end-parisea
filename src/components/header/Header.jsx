@@ -10,7 +10,8 @@ const Header = () => {
 
   const inProfileUser = () => {
     if (
-      window.location.href === `http://localhost:3000/profile/${coverImage.id}`
+      window.location.href ===
+      `${process.env.REACT_APP_BACKEND_URL}/profile/${coverImage.id}`
     )
       return true;
     else return false;
